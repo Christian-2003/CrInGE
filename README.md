@@ -1,5 +1,5 @@
 # CrInGE
-The <span style="text-decoration:underline;">C</span>ompute<span style="text-decoration:underline;">r</span>ized <span style="text-decoration:underline;">In</span>tegrated <span style="text-decoration:underline;">G</span>ame <span style="text-decoration:underline;">E</span>ngine is a simple Game Engine capable of developing two-dimensional video games with Java Swing.
+The <ins>C</ins>ompute<ins>r</ins>ized <ins>In</ins>tegrated <ins>G</ins>ame <ins>E</ins>ngine is a simple Game Engine capable of developing two-dimensional video games with Java Swing.
 
 ### Table of Contents
 1. [Contributors](#contributors)
