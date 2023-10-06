@@ -101,4 +101,15 @@ public class EPoint implements Serializable {
         return Objects.hash(x, y);
     }
     
+    
+    /**
+     * Method converts this {@link EPoint} into a String of the following format:
+     * {@code (<x>,<y>)}.
+     *
+     * @return  String representation of the point.
+     */
+    public String toString() {
+        return "(" + x + "," + y + ")";
+    }
+    
 }

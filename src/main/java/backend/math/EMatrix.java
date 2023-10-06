@@ -12,7 +12,7 @@ public class EMatrix {
     
     /**
      * Attribute stores the matrix's values within a two-dimensional array.
-     * The array is defined as follows: {@code double[<width>][<height>]}.
+     * The array is defined as follows: {@code double[<height>][<width>]}.
      */
     private double[][] values;
     
@@ -27,15 +27,15 @@ public class EMatrix {
     /**
      * Constructor instantiates a new {@link EMatrix} with the passed width and height.
      *
-     * @param width             Width for the matrix.
      * @param height            Height for the matrix.
+     * @param width             Width for the matrix.
      * @throws MathException    The passed width or height is less than (or equal to) 1.
      */
-    public EMatrix(int width, int height) throws MathException {
+    public EMatrix(int height, int width) throws MathException {
         if (width < 1 || height < 1) {
             throw new MathException("EMatrix width and height must be greater than 1");
         }
-        values = new double[width][height];
+        values = new double[height][width];
     }
     
     /**
@@ -68,7 +68,7 @@ public class EMatrix {
         if (matrix == null) {
             throw new NullPointerException("Null is invalid matrix");
         }
-        values = new double[matrix.width()][matrix.height()];
+        values = new double[matrix.height()][matrix.width()];
         try {
             setMatrix(matrix.getMatrix());
         }
@@ -99,11 +99,11 @@ public class EMatrix {
         if (values == null) {
             throw new NullPointerException("Null is invalid matrix");
         }
-        if (values.length != width() || values[0].length != height()) {
+        if (values[0].length != width() || values.length != height()) {
             throw new MathException("Width and height of matrices do not match");
         }
-        for (int x = 0; x < width(); x++) {
-            System.arraycopy(values[x], 0, this.values[x], 0, height());
+        for (int y = 0; y < height(); y++) {
+            System.arraycopy(values[y], 0, this.values[y], 0, values[y].length);
         }
     }
     
@@ -111,19 +111,19 @@ public class EMatrix {
     /**
      * Method returns the value at the passed position within the {@link EMatrix}.
      *
-     * @param x                             X-position of the value.
      * @param y                             Y-position of the value.
+     * @param x                             X-position of the value.
      * @return                              Value at the specified position.
      * @throws IndexOutOfBoundsException    The passed position does not exist within this matrix.
      */
-    public double get(int x, int y) throws IndexOutOfBoundsException {
+    public double get(int y, int x) throws IndexOutOfBoundsException {
         if (x < 0 || x >= width()) {
             throw new IndexOutOfBoundsException("Index x=" + x + " out of bounds for matrix of width " + width() + ".");
         }
         else if (y < 0 || y >= height()) {
             throw new IndexOutOfBoundsException("Index y=" + y + " out of bounds for matrix of height " + height() + ".");
         }
-        return values[x][y];
+        return values[y][x];
     }
     
     /**
@@ -135,14 +135,14 @@ public class EMatrix {
      * @param value                         New value for the position.
      * @throws IndexOutOfBoundsException    The passed position does not exist within this matrix.
      */
-    public void set(int x, int y, double value) throws IndexOutOfBoundsException {
+    public void set(int y, int x, double value) throws IndexOutOfBoundsException {
         if (x < 0 || x >= width()) {
             throw new IndexOutOfBoundsException("Index x=" + x + " out of bounds for matrix of width " + width() + ".");
         }
         else if (y < 0 || y >= height()) {
             throw new IndexOutOfBoundsException("Index y=" + y + " out of bounds for matrix of height " + height() + ".");
         }
-        values[x][y] = value;
+        values[y][x] = value;
     }
     
     
@@ -152,7 +152,7 @@ public class EMatrix {
      * @return  Width of the matrix.
      */
     public int width() {
-        return values.length;
+        return values[0].length;
     }
     
     /**
@@ -161,7 +161,7 @@ public class EMatrix {
      * @return  Height of the matrix.
      */
     public int height() {
-        return values[0].length;
+        return values.length;
     }
     
     
@@ -241,6 +241,56 @@ public class EMatrix {
     
     
     /**
+     * Method multiplies the passed{@link EMatrix} with this instance and returns the result
+     * as a new matrix.
+     *
+     * @param matrix                Matrix with which this instance shall be multiplied.
+     * @return                      Calculated matrix.
+     * @throws NullPointerException The passed matrix is {@code null}.
+     * @throws MathException        The matrices could not be multiplied.
+     */
+    public EMatrix multiply(EMatrix matrix) throws NullPointerException, MathException {
+        if (matrix == null) {
+            throw new NullPointerException("Null is invalid EMatrix");
+        }
+        if (width() != matrix.height()) {
+            throw new MathException("Dimensions of matrices (" + height() + "x" + width() + " and " + matrix.height() + "x" + matrix.width() + ") insufficient for matrix multiplication");
+        }
+        EMatrix result = new EMatrix(height(), matrix.width());
+        for (int i = 0; i < result.height(); i++) {
+            for (int j = 0; j < result.width(); j++) {
+                for (int k = 0; k < matrix.height(); k++) {
+                    result.set(i, j, result.get(i, j) + values[i][k] * matrix.get(k, j));
+                }
+            }
+        }
+        return result;
+    }
+    
+    /**
+     * Method transposes this {@link EMatrix} and returns the result as a new matrix.
+     *
+     * @return  Transposed matrix.
+     */
+    public EMatrix transpose() {
+        EMatrix result;
+        try {
+            result = new EMatrix(height(), width());
+        }
+        catch (MathException e) {
+            //Should never happen:
+            return new EMatrix();
+        }
+        for (int x = 0; x < width(); x++) {
+            for (int y = 0; y < height(); y++) {
+                result.set(y, x, values[x][y]);
+            }
+        }
+        return result;
+    }
+    
+    
+    /**
      * Method tests whether this {@link EMatrix} is a square matrix, i.e.
      * {@code width() == height()}.
      *
@@ -280,6 +330,31 @@ public class EMatrix {
      */
     public int hashCode() {
         return Objects.hash(values);
+    }
+    
+    /**
+     * Method converts this {@link EMatrix} into a String of the following format:<br>
+     * <c>[<i>&lt;v1&gt;</i> <i>&lt;v1&gt;</i> <i>&lt;v1&gt;</i> ...]<br>
+     *    [<i>&lt;v4&gt;</i> <i>&lt;v5&gt;</i> <i>&lt;v6&gt;</i> ...]<br>
+     *    [<i>&lt;v7&gt;</i> <i>&lt;v8&gt;</i> <i>&lt;v9&gt;</i> ...]<br>
+     *    ...</c>
+     *
+     * @return  String representation of the matrix.
+     */
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        for (int y = 0; y < height(); y++) {
+            builder.append("[");
+            for (int x = 0; x < width(); x++) {
+                builder.append(values[y][x]);
+                builder.append("\t");
+            }
+            builder.append("]");
+            if (y < height() - 1) {
+                builder.append(System.lineSeparator());
+            }
+        }
+        return builder.toString();
     }
     
 }
