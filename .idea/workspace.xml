@@ -6,14 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="22a06120-e1fb-4e46-a2b9-1fc4de4b527f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/backend/math/EMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/math/EMatrix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/math/EPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/math/EPoint.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="printScope" value="1" />
+    <option name="OPEN_IN_BROWSER" value="true" />
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/exportToHTML" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">

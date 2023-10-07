@@ -1,10 +1,23 @@
 package backend.math;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 
 /**
  * Class models a matrix and provides basic mathematical operations for matrices.
+ * In order to easily create an EMatrix, use a two-dimensional double array created as follows:
+ * <br><c>
+ * &nbsp;&nbsp;&nbsp;&nbsp;double[][] a = {<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<i>&lt;a11&gt;</i>, <i>&lt;a12&gt;</i>, <i>&lt;a13&gt;</i>, ...},<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<i>&lt;a21&gt;</i>, <i>&lt;a22&gt;</i>, <i>&lt;a23&gt;</i>, ...},<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<i>&lt;a31&gt;</i>, <i>&lt;a32&gt;</i>, <i>&lt;a33&gt;</i>, ...},<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;};
+ * </c><br>
+ * and pass as argument to the constructor {@link #EMatrix(double[][])}.
  *
  * @author  Christian-2003
  */
@@ -291,6 +304,55 @@ public class EMatrix {
     
     
     /**
+     * Method generates an identity matrix for this {@link EMatrix}. This only works with an {@code NxN} matrix.
+     * The identity matrix is as follows:
+     * <br><c>
+     *     [1, 0, 0, 0, ...]<br>
+     *     [0, 1, 0, 0, ...]<br>
+     *     [0, 0, 1, 0, ...]<br>
+     *     [0, 0, 0, 1, ...]<br>
+     *     ...
+     * </c>
+     *
+     * @return                  Identity matrix for this instance.
+     * @throws MathException    The {@link #width()} and {@link #height()} of the matrix are insufficient to
+     *                          create an identity matrix.
+     */
+    public EMatrix createIdentity() throws MathException {
+        if (height() != width()) {
+            throw new MathException("Cannot create matrix identity for " + height() + "x" + width() + "-matrix");
+        }
+        EMatrix identity = new EMatrix(height(), width());
+        for (int y = 0; y < height(); y++) {
+            for (int x = 0; x < width(); x++) {
+                if (x == y) {
+                    identity.set(y, x, 1);
+                }
+                else {
+                    identity.set(y, x, 0);
+                }
+            }
+        }
+        return identity;
+    }
+    
+    
+    /**
+     * Method calculates the determinant for this {@link EMatrix}. This only works with an {@code NxN} matrix.
+     *
+     * @return                  Determinant of this matrix.
+     * @throws MathException    The {@link #width()} and {@link #height()} of the matrix are insufficient to
+     *                          calculate a determinant.
+     */
+    public double determinant() throws MathException {
+        if (width() != height()) {
+            throw new MathException("Cannot calculate determinant for " + height() + "x" + width() + "-matrix");
+        }
+        return det(values);
+    }
+    
+    
+    /**
      * Method tests whether this {@link EMatrix} is a square matrix, i.e.
      * {@code width() == height()}.
      *
@@ -314,7 +376,7 @@ public class EMatrix {
             }
             for (int x = 0; x < width(); x++) {
                 for (int y = 0; y < height(); y++) {
-                    if (values[x][y] != matrix.get(x, y)) {
+                    if (values[y][x] != matrix.get(y, x)) {
                         return false;
                     }
                 }
@@ -355,6 +417,95 @@ public class EMatrix {
             }
         }
         return builder.toString();
+    }
+    
+    
+    /**
+     * Method calculates the determinant of the passed two-dimensional array.
+     *
+     * @param matrix                Two-dimensional array whose determinant shall be calculated.
+     * @return                      The determinant for the array.
+     * @throws NullPointerException The passed array is {@code null}.
+     * @throws MathException        The determinant could not be calculated.
+     */
+    private double det(double[][] matrix) throws NullPointerException, MathException {
+        if (matrix == null) {
+            throw new NullPointerException("Null is invalid matrix");
+        }
+        if (matrix.length < 1 || matrix[0].length < 1) {
+            throw new MathException("Matrix too small to calculate determinant");
+        }
+        if (matrix.length != matrix[0].length) {
+            throw new MathException("Width and height of matrix must match to calculate determinant");
+        }
+        if (matrix.length == 2) {
+            return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
+        }
+        double det = 0;
+        for (int i = 0; i < matrix.length; i++) {
+            double[][] newMatrix = removeRowAndColFromMatrix(matrix, i, 0);
+            double newDet = det(newMatrix);
+            if (i % 2 == 0) {
+                det += matrix[0][i] * newDet;
+            }
+            else {
+                det -= matrix[0][i] * newDet;
+            }
+        }
+        return det;
+    }
+    
+    
+    /**
+     * Method removes the specified row and column from the passed two-dimensional array. The result is returned as
+     * array which is exactly one unit smaller in both directions than the passed array.
+     *
+     * @param matrix                        Two-dimensional array from which a row and column shall be removed.
+     * @param col                           Index of the column to be removed.
+     * @param row                           Index of the row to be removed.
+     * @return                              Two-dimensional array without the respective column and row.
+     * @throws NullPointerException         The passed array is {@code null}.
+     * @throws IndexOutOfBoundsException    The specified column or row is out of bounds.
+     * @throws MathException                The column or row could not be removed.
+     */
+    private double[][] removeRowAndColFromMatrix(double[][] matrix, int col, int row) throws NullPointerException, IndexOutOfBoundsException, MathException {
+        if (matrix == null) {
+            throw new NullPointerException("Null is invalid matrix");
+        }
+        if (row < 0 || row > matrix.length) {
+            throw new IndexOutOfBoundsException("Row index " + row + " out of bounds for length " + matrix.length);
+        }
+        if (col < 0 || col > matrix.length) {
+            throw new IndexOutOfBoundsException("Column index " + col + " out of bounds for length " + matrix.length);
+        }
+        if (matrix.length < 1 || matrix[0].length < 1) {
+            throw new MathException("Matrix is too small to remove row or column");
+        }
+        double[][] result = new double[matrix.length - 1][matrix[0].length - 1];
+        boolean rowSkipped = false;
+        for (int y = 0; y < matrix.length; y++) {
+            if (y == row) {
+                rowSkipped = true;
+                continue;
+            }
+            boolean colSkipped = false;
+            for (int x = 0; x < matrix[y].length; x++) {
+                if (x == col) {
+                    colSkipped = true;
+                    continue;
+                }
+                int nX = x;
+                int nY = y;
+                if (colSkipped) {
+                    nX--;
+                }
+                if (rowSkipped) {
+                    nY--;
+                }
+                result[nY][nX] = matrix[y][x];
+            }
+        }
+        return result;
     }
     
 }
