@@ -1,8 +1,5 @@
 package backend.math;
 
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Objects;
 
 
@@ -391,7 +388,11 @@ public class EMatrix {
      * @return  Hash code for the matrix.
      */
     public int hashCode() {
-        return Objects.hash(values);
+        int[] hashs = new int[values.length];
+        for(int i=0; i<hashs.length; i++){
+            hashs[i] = Objects.hash(values[i]);
+        }
+        return Objects.hash(hashs);
     }
     
     /**
