@@ -1,14 +1,29 @@
 # CrInGE
-The <ins>C</ins>ompute<ins>r</ins>ized <ins>In</ins>tegrated <ins>G</ins>ame <ins>E</ins>ngine is a simple Game Engine capable of developing two-dimensional video games with Java Swing.
 
-### Table of Contents
-1. [Contributors](#contributors)
+The **C**ompute**r**ized **In**tegrated **G**ame **E**ngine is a simple Game Engine capable of developing two-dimensional video games with Java Swing.  
 
-<br>
+**Status**: In Development
 
-***
-## Contributors
+**Table of Contents**:
+
+1. [Planning](#planning)
+2. [Documentation](#documentation)
+3. [Contributors](#contributors)
+
+## Planning
+
+All Requirements and Tasks can be seen in the corresponding [GitHub Project](https://github.com/users/Christian-2003/projects/2)
+
+## Documentation
+
+Currently there is no documentation. It will be added in future Updates.
+
+---
+
+### Contributors
+
 Currently, the project is developed by the following people:
+
 * [elekt0](https://github.com/Elekt0)
 * [FabianDev001](https://github.com/FabianDev001)
 * [Flinks271](https://github.com/Flinks271)
