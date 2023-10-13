@@ -6,11 +6,11 @@ The **C**ompute**r**ized **In**tegrated **G**ame **E**ngine is a simple Game Eng
 
 **Table of Contents**:
 
-1. [Planning](#planning)
+1. [Project Management](#project-management)
 2. [Documentation](#documentation)
 3. [Contributors](#contributors)
 
-## Planning
+## Project Management
 
 All Requirements and Tasks can be seen in the corresponding [GitHub Project](https://github.com/users/Christian-2003/projects/2)
 
