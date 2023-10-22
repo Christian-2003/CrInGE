@@ -2,6 +2,10 @@
 > Hier können wir Anforderungen sammeln, die in die SRS aufgenommen werden sollen, falls euch noch was einfällt:
 >
 > ###### Neue Anforderungen
+> - [Funktional](#2-funktionale-anforderungen): eigene Grafiken in den Editor laden [Link](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=42294330)
+> - [nicht funktional](#3-nichtfunktionale-anforderungen): Obect Inspector zum ändern von Objekteingenschaften als Popup, um Entwickler Gefühl zu erleichtern
+> - [nicht funktional](#3-nichtfunktionale-anforderungen): Das Gruppieren von Objekten soll ermöglichen allen Items der Gruppe die selben Eigenschaften auf einmal zuteilen zu können [Link](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=42294373)
+> - [Technicsche Einschränkung](#4-technische-einschränkungen): möglichtst auf externe Bibliotheken verzichten, um Unabhängigkeit garantieren zu können
 > - ...
 >
 > ###### Aufgenommene Anforderungen
