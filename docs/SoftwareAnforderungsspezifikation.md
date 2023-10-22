@@ -2,17 +2,17 @@
 > Hier können wir Anforderungen sammeln, die in die SRS aufgenommen werden sollen, falls euch noch was einfällt:
 >
 > ###### Neue Anforderungen
-> - [Funktional](#2-funktionale-anforderungen): eigene Grafiken in den Editor laden [Link](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=42294330)
-> - [nicht funktional](#3-nichtfunktionale-anforderungen): Obect Inspector zum ändern von Objekteingenschaften als Popup, um Entwickler Gefühl zu erleichtern
-> - [nicht funktional](#3-nichtfunktionale-anforderungen): Das Gruppieren von Objekten soll ermöglichen allen Items der Gruppe die selben Eigenschaften auf einmal zuteilen zu können [Link](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=42294373)
-> - [Technicsche Einschränkung](#4-technische-einschränkungen): möglichtst auf externe Bibliotheken verzichten, um Unabhängigkeit garantieren zu können
 > - ...
 >
 > ###### Aufgenommene Anforderungen
-> - Welteneditor
-> - API zur Programmierung
-> - Spiel in Jar-Datei exportieren
-> - Physikengine
+> - [Funktional](#2-funktionale-anforderungen): Welteneditor
+> - [Funktional](#2-funktionale-anforderungen): API zur Programmierung
+> - [Funktional](#2-funktionale-anforderungen): Spiel in Jar-Datei exportieren
+> - [Funktional](#2-funktionale-anforderungen): Physikengine
+> - [Funktional](#2-funktionale-anforderungen): eigene Grafiken in den Editor laden [Link](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=42294330) (Realisiert als weitere Eigenschaft von "Welteneditor)
+> - [nicht funktional](#3-nichtfunktionale-anforderungen): Das Gruppieren von Objekten soll ermöglichen allen Items der Gruppe die selben Eigenschaften auf einmal zuteilen zu können [Link](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=42294373)
+> - [Technicsche Einschränkung](#4-technische-einschränkungen): möglichtst auf externe Bibliotheken verzichten, um Unabhängigkeit garantieren zu können
+> - [nicht funktional](#3-nichtfunktionale-anforderungen): Obect Inspector zum ändern von Objekteingenschaften als Popup, um Entwickler Gefühl zu erleichtern
 >
 > Dieser Teil des Dokumentes wird vor der Vorlesung entfernt!
 >
@@ -75,13 +75,15 @@ Die Anwendung beinhaltet einen grafischen Welteneditor, welcher dem Benutzer das
 
 Darüber Hinaus befindet sich in diesem Welteneditor eine Liste an Objekten, die sich in der Videospielwelt befinden, aus welcher der Benutzer beliebige Objekte auswählen und inspizieren kann.
 
-Für das jeweils ausgewählte Objekt stellt ein weiterer Bereich des Editors die Möglichkeit bereit, dessen Einstellungen (bspw. Kollisionsverhalten, Farbe, Textur, Durchsichtigkeit, ID, ...) zu bearbeiten.
+Für das jeweils ausgewählte Objekt stellt ein weiterer Bereich des Editors die Möglichkeit bereit, dessen Einstellungen (bspw. Kollisionsverhalten, Farbe, Textur, Durchsichtigkeit, ID, ...) zu bearbeiten. Hier soll es auch die Möglichkeit geben, Objekte zu gruppieren, damit derartige Einstellungen für alle Objekte einer solchen Gruppe getroffen werden können.
 
-In einem weiteren Bereich des Welteneditors soll der Benutzer vorgefertigte Formen (bspw. Rechtecke, Dreiecke, Kreise, Lichtquellen, ...) auswählen und in die Videospielwelt ziehen können. Hier kann der Benutzer ebenfalls eigene sogenannte Assets erstellen und aufbewahren.
+In einem weiteren Bereich des Welteneditors soll der Benutzer vorgefertigte Formen (bspw. Rechtecke, Dreiecke, Kreise, Lichtquellen, ...) auswählen und in die Videospielwelt ziehen können. Hier kann der Benutzer ebenfalls eigene sogenannte Assets erstellen und aufbewahren. Damit solche Assets besser angepasst werden können, soll der Benutzer hier auch die Möglichkeit haben, eigene Texturen hochzuladen.
 
 Diese Anforderung basiert auf den folgenden User Stories:
 1. [Als Spieleentwickler möchte ich die Welt, in der mein Spiel stattfindet, durch Drag and Drop zusammenbauen können, damit ich meiner gestalterischen Kreativität freien Lauf lassen kann](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=41353628)
-2. [Als Spieleentwickler möchte ich das Kollisionsverhalten von Objekten bearbeiten können](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=41354086).
+2. [Als Spieleentwickler möchte ich das Kollisionsverhalten von Objekten bearbeiten können](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=41354086)
+3. [Als Spieleentwickler möchte ich eigene Texturen laden können](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=42294330)
+4. [Als Spieleentwickler möchte ich Blöcke gruppieren können, um deren Eigenschaften gleichzeitig zu bearbeiten](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=42294373)
 
 Der Aufwand für diese Anforderung wird auf **hoch** geschätzt.
 
@@ -172,25 +174,20 @@ Damit die grundlegenden physikalischen Funktionalitäten verwendet werden könne
 
 N/A
 
-### 2.6 Name von Feature 5 / Anwendungsfall 5
-
-> Spezifizieren Sie diese Funktion/diesen Anwendungsfall durch:
-
-> - Relevante **User Stories**
-> - **UI-Mockups**
-> - **UML-Verhaltensdiagramme** und notwendige Textspezifikation
-> - **Voraussetzungen**. *Eine Voraussetzung für einen Anwendungsfall ist der Zustand des Systems, der vorliegen muss, bevor ein Anwendungsfall ausgeführt wird.*
-> - **Nachbedingungen**. *Eine Nachbedingung eines Anwendungsfalls ist eine Liste möglicher Zustände, in denen sich das System unmittelbar nach Abschluss eines Anwendungsfalls befinden kann.*
-> - **Geschätzter Aufwand (hoch, mittel, niedrig)**
-
 ## 3. Nichtfunktionale Anforderungen
 
-> [WICHTIG:]
-> Es ist nicht notwendig, alle der folgenden Kategorien abzudecken. Konzentrieren Sie sich auf das, was Sie in Ihrem Projekt umsetzten werden.
-> Wenn einige nichtfunktionale Anforderungen als User Stories in Ihrem Backlog beschrieben werden, fügen Sie deren **Links** in diesem Abschnitt hinzu oder beliebige Informationen, die den Leser bei der Suche nach ihnen in Ihrem Backlog unterstützen, z.B. die **Bezeichnung** der relevanten User Story.
+Im Nachfolgenden sollen alle nichtfunktionalen Anforderungen für die Anwendung CrInGE dokumentiert werden.
 
-> Kategorien: Benutzerfreundlichkeit, Zuverlässigkeit, Leistung, Effizienz, Integrität, Wartbarkeit, Flexibilität, Testbarkeit, Wiederverwendbarkeit, Sicherheit.
+### 3.1 Benutzerfreundlichkeit
+
+Der Objektinspektor (beschrieben in [2.2 Welteneditor](#22-welteneditor)) soll als Popup-Fenster realisiert werden. Hierdurch soll verhindert werden, dass der Bearbeitungsbereich für die Videospielwelt verkleinert wird. Des Weiteren soll hierdurch das Gefühl des Entwicklers erleichtert werden.
+
+Im [Welteneditor](#22-welteneditor) sollen Objekte gruppiert werden können, damit verschiedene Einstellungen einheitlich für alle Objekte einer solchen Gruppe getroffen werden können.
+
+<!--
+Kategorien: Benutzerfreundlichkeit, Zuverlässigkeit, Leistung, Effizienz, Integrität, Wartbarkeit, Flexibilität, Testbarkeit, Wiederverwendbarkeit, Sicherheit.
+-->
 
 ## 4. Technische Einschränkungen
 
-> Geben Sie alle wichtigen Einschränkungen, Annahmen oder Abhängigkeiten an, z. B. alle Einschränkungen darüber, welcher Servertyp verwendet werden soll, welche Art von Open-Source-Lizenz eingehalten werden muss usw.
+Bei dieser Anwendung soll, soweit möglich, auf externe Bibliotheken verzichtet werden. Hiervon ausgenommen ist die Java Standardbibliothek. Des Weiteren behält sich das Entwicklungsteam vor, bei Bedarf und nach gründlicher Ausarbeitung einzelne externe Bibliotheken zu inkludieren, was entsprechend gekennzeichnet wird.
