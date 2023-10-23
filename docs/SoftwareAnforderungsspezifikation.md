@@ -75,7 +75,7 @@ Die Anwendung beinhaltet einen grafischen Welteneditor, welcher dem Benutzer das
 
 Darüber Hinaus befindet sich in diesem Welteneditor eine Liste an Objekten, die sich in der Videospielwelt befinden, aus welcher der Benutzer beliebige Objekte auswählen und inspizieren kann.
 
-Für das jeweils ausgewählte Objekt stellt ein weiterer Bereich des Editors die Möglichkeit bereit, dessen Einstellungen (bspw. Kollisionsverhalten, Farbe, Textur, Durchsichtigkeit, ID, ...) zu bearbeiten. Hier soll es auch die Möglichkeit geben, Objekte zu gruppieren, damit derartige Einstellungen für alle Objekte einer solchen Gruppe getroffen werden können.
+Für das jeweils ausgewählte Objekt stellt ein weiterer Bereich des Editors die Möglichkeit bereit, dessen Einstellungen (bspw. Kollisionsverhalten, Farbe, Textur, Durchsichtigkeit, ID, ...) zu bearbeiten.
 
 In einem weiteren Bereich des Welteneditors soll der Benutzer vorgefertigte Formen (bspw. Rechtecke, Dreiecke, Kreise, Lichtquellen, ...) auswählen und in die Videospielwelt ziehen können. Hier kann der Benutzer ebenfalls eigene sogenannte Assets erstellen und aufbewahren. Damit solche Assets besser angepasst werden können, soll der Benutzer hier auch die Möglichkeit haben, eigene Texturen hochzuladen.
 
@@ -179,7 +179,14 @@ Im Nachfolgenden sollen alle nichtfunktionalen Anforderungen für die Anwendung 
 
 ### 3.1 Benutzerfreundlichkeit
 
+#### 3.1.1 Objektinspektor
+
 Der Objektinspektor (beschrieben in [2.2 Welteneditor](#22-welteneditor)) soll als Popup-Fenster realisiert werden. Hierdurch soll verhindert werden, dass der Bearbeitungsbereich für die Videospielwelt verkleinert wird. Des Weiteren soll hierdurch das Gefühl des Entwicklers erleichtert werden.
+
+Diese Anforderung basiert auf den folgender User Stories:  
+[Als Spieleentwickler möchte ich eine möglichst große Weltendarstellung haben, um eine verbesserte Übersicht zu behalten](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=42338777)
+
+#### 3.1.2 Objektgruppierung
 
 Im [Welteneditor](#22-welteneditor) sollen Objekte gruppiert werden können, damit verschiedene Einstellungen einheitlich für alle Objekte einer solchen Gruppe getroffen werden können.
 
