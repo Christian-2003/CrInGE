@@ -75,4 +75,18 @@ public class EVectorTest {
     void crossProduct(){
         assertEquals(11, new EVector(3, 4).crossProduct(new EVector(1, 5)));
     }
+
+    @Test
+    @DisplayName("crossproduct with null throws NullPointerException")
+    void dependenNull(){
+        assertThrowsExactly(NullPointerException.class, () -> {new EVector().isLinearlyDependend(null);});
+    }
+
+    @Test
+    @DisplayName("if two vectors are linearly depended")
+    void depended(){
+        assertTrue(new EVector(1,2).isLinearlyDependend(new EVector(2, 4)));
+        assertTrue(new EVector(1, 2).isLinearlyDependend(new EVector(100000, 200000)));
+        assertFalse(new EVector(1, 2).isLinearlyDependend(new EVector(3, 2)));
+    }
 }

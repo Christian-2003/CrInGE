@@ -136,4 +136,13 @@ public class EVector extends EPoint {
         return x * vector.getY() - y * vector.getX();
     }
     
+    public boolean isLinearlyDependend(EVector vector) throws NullPointerException {
+        if(vector == null){
+            throw new NullPointerException("Null is invalid EVector");
+        }
+        if(this.x/vector.getX() == this.y/vector.getY()){
+            return true;
+        }
+        return false;
+    }
 }
