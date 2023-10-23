@@ -83,7 +83,6 @@ Diese Anforderung basiert auf den folgenden User Stories:
 1. [Als Spieleentwickler möchte ich die Welt, in der mein Spiel stattfindet, durch Drag and Drop zusammenbauen können, damit ich meiner gestalterischen Kreativität freien Lauf lassen kann](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=41353628)
 2. [Als Spieleentwickler möchte ich das Kollisionsverhalten von Objekten bearbeiten können](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=41354086)
 3. [Als Spieleentwickler möchte ich eigene Texturen laden können](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=42294330)
-4. [Als Spieleentwickler möchte ich Blöcke gruppieren können, um deren Eigenschaften gleichzeitig zu bearbeiten](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=42294373)
 
 Der Aufwand für diese Anforderung wird auf **hoch** geschätzt.
 
@@ -183,6 +182,9 @@ Im Nachfolgenden sollen alle nichtfunktionalen Anforderungen für die Anwendung 
 Der Objektinspektor (beschrieben in [2.2 Welteneditor](#22-welteneditor)) soll als Popup-Fenster realisiert werden. Hierdurch soll verhindert werden, dass der Bearbeitungsbereich für die Videospielwelt verkleinert wird. Des Weiteren soll hierdurch das Gefühl des Entwicklers erleichtert werden.
 
 Im [Welteneditor](#22-welteneditor) sollen Objekte gruppiert werden können, damit verschiedene Einstellungen einheitlich für alle Objekte einer solchen Gruppe getroffen werden können.
+
+Diese Anforderung basiert auf den folgender User Stories:  
+[Als Spieleentwickler möchte ich Blöcke gruppieren können, um deren Eigenschaften gleichzeitig zu bearbeiten](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=42294373)
 
 <!--
 Kategorien: Benutzerfreundlichkeit, Zuverlässigkeit, Leistung, Effizienz, Integrität, Wartbarkeit, Flexibilität, Testbarkeit, Wiederverwendbarkeit, Sicherheit.
