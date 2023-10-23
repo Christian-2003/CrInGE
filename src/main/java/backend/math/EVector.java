@@ -99,17 +99,25 @@ public class EVector extends EPoint {
     }
     
     /**
-     * Calculates the angle between this {@link EVector} and the passed vector.
+     * Calculates the angle between this {@link EVector} and the passed vector in <b>radiant</b>.
      *
      * @param vector                Vector with whom the angle shall be calculated.
      * @return                      Angle between this vector and the passed vector.
      * @throws NullPointerException The passed vector is {@code null}.
      */
     public double angle(EVector vector) throws NullPointerException {
+        final int decimalPlace = 10;
         if (vector == null) {
             throw new NullPointerException("Null is invalid EVector");
         }
-        return Math.acos(dotProduct(vector) / (length() * vector.length()));
+        else if (this.equals(vector)){
+            return 0.0;
+        }
+        double step = dotProduct(vector) / (length() * vector.length());
+        if(step > 1){
+            return 0.0;
+        }
+        return Math.round(Math.acos(step)*Math.pow(10, decimalPlace))/Math.pow(10, decimalPlace);
     }
     
     /**
