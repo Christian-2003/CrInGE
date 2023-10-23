@@ -64,7 +64,7 @@ public class EVectorTest {
         double result = 0.9097531579; // richtiger Wert für (1,2).angle(5,1) berchnet
         assertEquals(result, new EVector(1, 2).angle(new EVector(5, 1)));
     }
-//:20-30
+
     @Test
     @DisplayName("crossproduct with null throws NullPointerException")
     void crossProductNull(){
