@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.*;
 
-class FirstTest {
+class EinleseTest {
 
     @Test
     void ressourceTest() throws Exception{
