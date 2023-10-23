@@ -16,7 +16,9 @@ All Requirements and Tasks can be seen in the corresponding [GitHub Project](htt
 
 ## Documentation
 
-Currently there is no documentation. It will be added in future Updates.
+The [Software Requirment Specifications](https://github.com/Christian-2003/CrInGE/blob/master/docs/SoftwareAnforderungsspezifikation.md) document the ideas of the Requirements as well as their corresponding User Story, UML diagramm and an UI Mockup.
+
+>Documentation about the implementation does not exist due to missing implementations
 
 ---
 
