@@ -1,8 +1,10 @@
+<img src="https://cdn.discordapp.com/attachments/1159393243507736617/1165983298300956732/very_CrInGE_wei_lecht.png" height="100" align="right">
+
 # CrInGE
 
 The **C**ompute**r**ized **In**tegrated **G**ame **E**ngine is a simple Game Engine capable of developing two-dimensional video games with Java Swing.  
 
-**Status**: In Development
+**Status**: In Development 🚧
 
 **Table of Contents**:
 
@@ -16,7 +18,7 @@ All Requirements and Tasks can be seen in the corresponding [GitHub Project](htt
 
 ## Documentation
 
-The [Software Requirment Specifications](https://github.com/Christian-2003/CrInGE/blob/master/docs/SoftwareAnforderungsspezifikation.md) document the ideas of the Requirements as well as their corresponding User Story, UML diagramm and an UI Mockup.
+The [Software Requirement Specifications](https://github.com/Christian-2003/CrInGE/blob/master/docs/SoftwareAnforderungsspezifikation.md) document the ideas of the Requirements as well as their corresponding User Story, UML diagrams, and a UI Mockup.
 
 >Documentation about the implementation does not exist due to missing implementations
 
