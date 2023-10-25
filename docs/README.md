@@ -5,7 +5,7 @@
 Dieser Ordner stellt die oberste Ebene der docs dar.  
 Hier sollen ausschließlich die Markdown Dokumentationsdateien liegen.
 
-Alle für die Dokumentation benötigten Ressourcen, wie [UML Diagramme](https://github.com/Christian-2003/CrInGE/tree/master/docs/ressources/UML) oder [UI Mockups](https://github.com/Christian-2003/CrInGE/tree/master/docs/ressources/UI%20Mockup), bekommen einen eigenen Ordner innerhalb des [ressources Ordners](https://github.com/Christian-2003/CrInGE/tree/master/docs/ressources).
+Alle für die Dokumentation benötigten Ressourcen, wie [UML Diagramme](https://github.com/Christian-2003/CrInGE/tree/master/docs/resources/UML) oder [UI Mockups](https://github.com/Christian-2003/CrInGE/tree/master/docs/resources/UI%20Mockup), bekommen einen eigenen Ordner innerhalb des [resources Ordners](https://github.com/Christian-2003/CrInGE/tree/master/docs/resources).
 
 ## Geforderte Dateien
 
