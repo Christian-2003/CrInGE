@@ -2,10 +2,14 @@ name: Java CI with Maven
 on:
   push:
     branches: ["Git-Hub-Action"]
-    paths-ignore: -'docs/**'
+    paths-ignore: 
+      -'docs/**'
+      -'target/**'
   pull_request:
     branches: ["main"]
-    paths-ignore: -'docs/**'
+    paths-ignore: 
+      -'docs/**'
+      -'target/**'
   workflow_dispatch:
 
 jobs:
