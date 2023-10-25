@@ -38,7 +38,7 @@ Anwendungsdiagramm | 25.10.2023 | CrInGE Entwicklungsteam | [Andwendungsdiagramm
 
 ### 1.6 UML-Anwendungsfalldiagramm
 
-![AndwendungsdiagrammUML](./resources/UML/AnwendungsdiagrammUML.png)
+![AndwendungsdiagrammUML](./resources/UML/AndwendungsdiagrammUML.png)
 
 ### 1.7 Mock-Up
 
