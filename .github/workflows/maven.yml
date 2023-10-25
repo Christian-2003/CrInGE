@@ -30,6 +30,10 @@ jobs:
     needs: Build
     steps:
       - uses: actions/checkout@v3
+      - name: Restore Cache
+        uses: actions/cache@v3
+        with:
+          key: setup-java-Windows-maven-{{hash-Files('pom.xml')}}
       - name: Set Up JDK
         uses: actions/setup-java@v3
         with:
