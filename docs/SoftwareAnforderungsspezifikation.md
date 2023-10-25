@@ -76,7 +76,9 @@ Diese Anforderung basiert auf den folgenden User Stories:
 
 Der Aufwand für diese Anforderung wird auf **hoch** geschätzt.
 
-> :warning: **UI-Mockup(Projekt Editor)** und **UML-Verhaltensdiagramm(e)** hinzufügen.
+![UI-Mock_Welteneditor](./resources/UI%20Mockup/UI-Mock_Welteneditor.png)
+
+> :warning: **UML-Verhaltensdiagramm(e)** hinzufügen.
 
 #### 2.2.1 Voraussetzungen
 
@@ -106,7 +108,9 @@ Diese Anforderung basiert auf den User Stories:
 
 Der Aufwand für diese Anforderung wird auf **hoch** geschätzt.
 
-> :warning: **UI-Mockup(Object Inspector)** und **UML-Verhaltensdiagramm(e)** hinzufügen.
+![UI-Mock_Welteneditor](./resources/UI%20Mockup/UI-Mock_ObjektInspektor.png)
+
+> :warning: **UML-Verhaltensdiagramm(e)** hinzufügen.
 
 #### 2.3.1 Voraussetzungen
 
@@ -132,7 +136,9 @@ Diese Anforderung basiert auf der User Story:
 
 Der Aufwand für diese Anforderung wird auf **mittel** geschätzt.
 
-> :warning: **UI-Mockup(Projekt Auswahl [Exportieren hinzufügen])** und **UML-Verhaltensdiagramm(e)** hinzufügen.
+![UI-Mock_Welteneditor](./resources/UI%20Mockup/UI-Mock_Projekt_Auswahl.png)
+
+> :warning: **UML-Verhaltensdiagramm(e)** hinzufügen.
 
 #### 2.4.1 Voraussetzungen
 
@@ -156,7 +162,7 @@ Diese Anforderung basiert auf der User Story:
 
 Der Aufwand für diese Anforderung wird auf **niedrig** geschätzt.
 
-> :warning: **UI-Mockup(hat kein)** und **UML-Verhaltensdiagramm(e)** hinzufügen.
+> :warning: **UML-Verhaltensdiagramm(e)** hinzufügen.
 
 #### 2.5.1 Voraussetzungen
 
