@@ -35,6 +35,7 @@ jobs:
         with:
           key: setup-java-Windows-maven-${{hashFiles('pom.xml')}}
           path: '~/.m2'
+          lookup-only: true
       - name: Set Up JDK
         uses: actions/setup-java@v3
         with:
