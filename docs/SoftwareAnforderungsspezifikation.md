@@ -1,23 +1,3 @@
-> ###### Anforderungen
-> Hier können wir Anforderungen sammeln, die in die SRS aufgenommen werden sollen, falls euch noch was einfällt:
->
-> ###### Neue Anforderungen
-> - ...
->
-> ###### Aufgenommene Anforderungen
-> - [Funktional](#2-funktionale-anforderungen): Welteneditor
-> - [Funktional](#2-funktionale-anforderungen): API zur Programmierung
-> - [Funktional](#2-funktionale-anforderungen): Spiel in Jar-Datei exportieren
-> - [Funktional](#2-funktionale-anforderungen): Physikengine
-> - [Funktional](#2-funktionale-anforderungen): eigene Grafiken in den Editor laden [Link](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=42294330) (Realisiert als weitere Eigenschaft von "Welteneditor)
-> - [nicht funktional](#3-nichtfunktionale-anforderungen): Das Gruppieren von Objekten soll ermöglichen allen Items der Gruppe die selben Eigenschaften auf einmal zuteilen zu können [Link](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=42294373)
-> - [Technicsche Einschränkung](#4-technische-einschränkungen): möglichtst auf externe Bibliotheken verzichten, um Unabhängigkeit garantieren zu können
-> - [nicht funktional](#3-nichtfunktionale-anforderungen): Obect Inspector zum ändern von Objekteingenschaften als Popup, um Entwickler Gefühl zu erleichtern
->
-> Dieser Teil des Dokumentes wird vor der Vorlesung entfernt!
->
-> :warning: An mehreren Stellen des Dokuments müssen noch Diagramme eingefügt werden.
-
 # CrInGE - Softwareanforderungen
 
 ## 1. Einleitung
@@ -53,13 +33,12 @@ Im Nachfolgenden folgt eine Liste aller Referenzen, die im weiteren Verlauf dies
 
 Titel | Datum | Veröffentlichungsorganisation | Link
 --- | --: | --- | ---
-Projekt-README     | 13.10.2023 | CrInGE Entwicklungsteam | [README](../README.md)
-MockUp             | 25.10.2023 | CrInGE Entwicklungsteam | [Mock-Up](./resources/UI%20Mockup/MochUp.png)   
+MockUp | 25.10.2023 | CrInGE Entwicklungsteam | [Mock-Up](./resources/UI%20Mockup/MochUp.png)   
 Anwendungsdiagramm | 25.10.2023 | CrInGE Entwicklungsteam | [AndwendungsdiagrammUML](./resources/UML/AnwendungsdiagrammUML.png)
 
 ### 1.6 UML-Anwendungsfalldiagramm 
 
-![AnwUML](./resources/UML/AnwendungsdiagrammUML.png)
+![AndwendungsdiagrammUML](./resources/UML/AnwendungsdiagrammUML.png)
 
 ### 1.7 Mock-Up
 
@@ -193,14 +172,14 @@ Im Nachfolgenden sollen alle nichtfunktionalen Anforderungen für die Anwendung 
 
 Der Objektinspektor (beschrieben in [2.2 Welteneditor](#22-welteneditor)) soll als Popup-Fenster realisiert werden. Hierdurch soll verhindert werden, dass der Bearbeitungsbereich für die Videospielwelt verkleinert wird. Des Weiteren soll hierdurch das Gefühl des Entwicklers erleichtert werden.
 
-Diese Anforderung basiert auf den folgender User Stories:  
+Diese Anforderung basiert auf folgender User Story:  
 [Als Spieleentwickler möchte ich eine möglichst große Weltendarstellung haben, um eine verbesserte Übersicht zu behalten](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=42338777)
 
 #### 3.1.2 Objektgruppierung
 
 Im [Welteneditor](#22-welteneditor) sollen Objekte gruppiert werden können, damit verschiedene Einstellungen einheitlich für alle Objekte einer solchen Gruppe getroffen werden können.
 
-Diese Anforderung basiert auf den folgender User Stories:  
+Diese Anforderung basiert auf folgender User Story:  
 [Als Spieleentwickler möchte ich Blöcke gruppieren können, um deren Eigenschaften gleichzeitig zu bearbeiten](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=42294373)
 
 <!--
