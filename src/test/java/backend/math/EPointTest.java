@@ -12,6 +12,10 @@ public class EPointTest {
     @DisplayName("Test the EPoint-construtors")
     class Creation{
         @Test
+        void fail(){
+            fail();
+        }
+        @Test
         @DisplayName("default constructor with values")
         void createEPoint(){
             assertInstanceOf(EPoint.class, new EPoint(0,0));
