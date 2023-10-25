@@ -12,6 +12,7 @@ jobs:
   Set-Up:
     runs-on: windows-latest
     steps:
+      - uses: actions/checkout@v3
       - name: Set Up JDK
         uses: actions/setup-java@v3
         with:
@@ -29,5 +30,6 @@ jobs:
     runs-on: windows-latest
     needs: [Set-Up, Build]
     steps:
+      - uses: actions/checkout@v3
       - name: Test with Maven
         run: mvn test
