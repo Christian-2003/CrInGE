@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Set-Up:
+  Build:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
@@ -19,25 +19,18 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
           cache: maven
-  Build:
-    needs: Set-Up
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Restore Cache
-      uses: actions/cache@v3
-      with:
-        key: setup-java-windows-${{ packageManager }}-${{ fileHash }}
-    - name: Build with Maven
-      run: mvn -B compile --file pom.xml
+      - name: Build with Maven
+        run: mvn -B compile --file pom.xml
   Test:
     runs-on: windows-latest
-    needs: [Set-Up, Build]
+    needs: Build
     steps:
       - uses: actions/checkout@v3
-      - name: Restore Cache
-        uses: actions/cache@v3
+      - name: Set Up JDK
+        uses: actions/setup-java@v3
         with:
-          key: setup-java-${{ platform }}-${{ packageManager }}-${{ fileHash }}
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
       - name: Test with Maven
         run: mvn -B test --file pom.xml
