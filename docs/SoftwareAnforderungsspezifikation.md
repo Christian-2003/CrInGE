@@ -75,7 +75,7 @@ Diese Anforderung basiert auf den folgenden User Stories:
 
 Der Aufwand für diese Anforderung wird auf **hoch** geschätzt.
 
-> :warning: **UI-Mockup(s)** und **UML-Verhaltensdiagramm(e)** hinzufügen.
+> :warning: **UI-Mockup(Projekt Editor)** und **UML-Verhaltensdiagramm(e)** hinzufügen.
 
 #### 2.2.1 Voraussetzungen
 
@@ -104,7 +104,7 @@ Diese Anforderung basiert auf den User Stories:
 
 Der Aufwand für diese Anforderung wird auf **hoch** geschätzt.
 
-> :warning: **UI-Mockup(s)** und **UML-Verhaltensdiagramm(e)** hinzufügen.
+> :warning: **UI-Mockup(Object Inspector)** und **UML-Verhaltensdiagramm(e)** hinzufügen.
 
 #### 2.3.1 Voraussetzungen
 
@@ -129,7 +129,7 @@ Diese Anforderung basiert auf der User Story:
 
 Der Aufwand für diese Anforderung wird auf **mittel** geschätzt.
 
-> :warning: **UI-Mockup(s)** und **UML-Verhaltensdiagramm(e)** hinzufügen.
+> :warning: **UI-Mockup(Projekt Auswahl [Exportieren hinzufügen])** und **UML-Verhaltensdiagramm(e)** hinzufügen.
 
 #### 2.4.1 Voraussetzungen
 
@@ -152,7 +152,7 @@ Diese Anforderung basiert auf der User Story:
 
 Der Aufwand für diese Anforderung wird auf **niedrig** geschätzt.
 
-> :warning: **UI-Mockup(s)** und **UML-Verhaltensdiagramm(e)** hinzufügen.
+> :warning: **UI-Mockup(hat kein)** und **UML-Verhaltensdiagramm(e)** hinzufügen.
 
 #### 2.5.1 Voraussetzungen
 
@@ -170,7 +170,7 @@ Im Nachfolgenden sollen alle nichtfunktionalen Anforderungen für die Anwendung 
 
 #### 3.1.1 Objektinspektor
 
-Der Objektinspektor (beschrieben in [2.2 Welteneditor](#22-welteneditor)) soll als Popup-Fenster realisiert werden. Hierdurch soll verhindert werden, dass der Bearbeitungsbereich für die Videospielwelt verkleinert wird. Des Weiteren soll hierdurch das Gefühl des Entwicklers erleichtert werden.
+Der Objektinspektor realisiert die Bearbeitung der einzelenen Objekte (beschrieben in [2.2 Welteneditor](#22-welteneditor)) und soll als Popup-Fenster realisiert werden. Hierdurch soll verhindert werden, dass der Bearbeitungsbereich für die Videospielwelt verkleinert wird. Des Weiteren soll hierdurch das Gefühl des Entwicklers erleichtert werden.
 
 Diese Anforderung basiert auf folgender User Story:  
 [Als Spieleentwickler möchte ich eine möglichst große Weltendarstellung haben, um eine verbesserte Übersicht zu behalten](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=42338777)
