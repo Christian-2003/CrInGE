@@ -10,7 +10,7 @@ name: Tests
 
 on:
   push:
-    branches: [ "Git-Hub_Action" ]
+    branches: [ "Git-Hub-Action" ]
   pull_request:
     branches: [ "master" ]
 
