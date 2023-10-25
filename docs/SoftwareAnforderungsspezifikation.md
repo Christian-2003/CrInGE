@@ -36,10 +36,6 @@ Titel | Datum | Veröffentlichungsorganisation | Link
 UI-MockUps | 25.10.2023 | CrInGE Entwicklungsteam | [UI-MockUps](./resources/UI%20Mockup)
 Anwendungsdiagramm | 25.10.2023 | CrInGE Entwicklungsteam | [Anwendungsfalldiagramm](./resources/UML/Anwendungsfalldiagramm.png)
 
-### 1.6 UML-Anwendungsfalldiagramm
-
-![Anwendungsfalldiagramm](./resources/UML/Anwendungsfalldiagramm.png)
-
 ## 2. Funktionale Anforderungen
 
 Dieser Abschnitt beschreibt die verschiedenen funktionalen Anforderungen an die Anwendung.
@@ -53,6 +49,10 @@ Hierzu ermöglicht die Anwendung dem Benutzer das Zusammenbauen einer Videospiel
 Darüber Hinaus stellt die Anwendung eine API bereit, über welche das Verhalten der Videospielwelt, sowie diverse Events (beispielsweise Berührungen des Spielers mit Objekten oder Ähnlichem) in der Programmiersprache Java implementiert werden können.
 
 Des Weiteren kann der Benutzer das erstellte Videospiel anschließend in eine Jar-Datei kompilieren und exportieren. Hierdurch wird ermöglicht, dass das Videospiel ohne vorhande Videospielengine auf möglichst vielen Endgeräten problemlos ausgeführt werden kann.
+
+<div align="center">
+    <img src="./resources/UML/Anwendungsfalldiagramm.png" height="390">
+</div>
 
 ### 2.2 Welteneditor
 
@@ -72,9 +72,9 @@ Diese Anforderung basiert auf den folgenden User Stories:
 
 Der Aufwand für diese Anforderung wird auf **hoch** geschätzt.
 
-![UI-Mock_Welteneditor](./resources/UI%20Mockup/UI-Mock_Welteneditor.png)
-
-> :warning: **UML-Verhaltensdiagramm(e)** hinzufügen.
+<div align="center">
+    <img src="./resources/UI%20Mockup/UI-Mock_Welteneditor.png" height="390">
+</div>
 
 #### 2.2.1 Voraussetzungen
 
@@ -104,9 +104,9 @@ Diese Anforderung basiert auf den User Stories:
 
 Der Aufwand für diese Anforderung wird auf **hoch** geschätzt.
 
-![UI-Mock_Welteneditor](./resources/UI%20Mockup/UI-Mock_ObjektInspektor.png)
-
-> :warning: **UML-Verhaltensdiagramm(e)** hinzufügen.
+<div align="center">
+    <img src="./resources/UI%20Mockup/UI-Mock_ObjektInspektor.png" height="390">
+</div>
 
 #### 2.3.1 Voraussetzungen
 
@@ -132,9 +132,9 @@ Diese Anforderung basiert auf der User Story:
 
 Der Aufwand für diese Anforderung wird auf **mittel** geschätzt.
 
-![UI-Mock_Welteneditor](./resources/UI%20Mockup/UI-Mock_Projekt_Auswahl.png)
-
-> :warning: **UML-Verhaltensdiagramm(e)** hinzufügen.
+<div align="center">
+    <img src="./resources/UI%20Mockup/UI-Mock_Projekt_Auswahl.png" height="390">
+</div>
 
 #### 2.4.1 Voraussetzungen
 
@@ -157,8 +157,6 @@ Diese Anforderung basiert auf der User Story:
 1. [Als Spieleentwickler möchte ich auf grundlegende physikalische Funktionalitäten der Engine zugreifen, sodass ich diese beliebig verwenden kann.](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=41354193)
 
 Der Aufwand für diese Anforderung wird auf **niedrig** geschätzt.
-
-> :warning: **UML-Verhaltensdiagramm(e)** hinzufügen.
 
 #### 2.5.1 Voraussetzungen
 
