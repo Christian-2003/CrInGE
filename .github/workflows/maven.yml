@@ -33,7 +33,7 @@ jobs:
       - name: Restore Cache
         uses: actions/cache@v3
         with:
-          key: setup-java-Windows-maven-${{hash-Files('pom.xml')}}
+          key: setup-java-Windows-maven-${{hashFiles('pom.xml')}}
           path: '~/.m2'
       - name: Set Up JDK
         uses: actions/setup-java@v3
