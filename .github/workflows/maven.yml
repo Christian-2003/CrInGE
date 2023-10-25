@@ -17,15 +17,16 @@ jobs:
         with:
           java-version: '21'
           cache: maven
-  build:
+  Build:
+    needs: Set-Up
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v3
     - name: Build with Maven
       run: mvn compile
-  test:
+  Test:
     runs-on: windows-latest
-    needs: build
+    needs: [Set-Up, Build]
     steps:
       - name: Test with Maven
         run: mvn test
