@@ -2,7 +2,10 @@ package backend.math;
 
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
-//10:40-11:00,11:20-
+
+/**
+ * @author Tim Schnur
+ */
 public class EVectorTest {
     @Test
     @DisplayName("adding null to vector")

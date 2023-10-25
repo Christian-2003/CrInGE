@@ -3,6 +3,9 @@ import org.junit.jupiter.api.Test;
 
 import java.io.*;
 
+/**
+ * @author Tim Schnur
+ */
 class EinleseTest {
 
     @Test

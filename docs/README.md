@@ -17,3 +17,7 @@ Die Benennung dieser Dateien folgt dabei dem festen Prinzip:
 
 - Der Dateiname soll äquivalent zu dem Anwedungsfall namen sein
 - Bei Leerzeichen soll ein Unterstrich eingefügt werden.
+
+### Author
+
+Tim Schnur

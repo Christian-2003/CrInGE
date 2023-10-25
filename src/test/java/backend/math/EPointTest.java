@@ -3,6 +3,9 @@ package backend.math;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @author Tim Schnur
+ */
 public class EPointTest {
     
     @Nested
