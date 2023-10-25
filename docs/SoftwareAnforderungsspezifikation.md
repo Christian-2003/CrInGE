@@ -33,16 +33,12 @@ Im Nachfolgenden folgt eine Liste aller Referenzen, die im weiteren Verlauf dies
 
 Titel | Datum | Veröffentlichungsorganisation | Link
 --- | --: | --- | ---
-UI-MockUp | 25.10.2023 | CrInGE Entwicklungsteam | [UI-MockUp](./resources/UI%20Mockup/MochUp.png)
+UI-MockUps | 25.10.2023 | CrInGE Entwicklungsteam | [UI-MockUps](./resources/UI%20Mockup)
 Anwendungsdiagramm | 25.10.2023 | CrInGE Entwicklungsteam | [Anwendungsfalldiagramm](./resources/UML/Anwendungsfalldiagramm.png)
 
 ### 1.6 UML-Anwendungsfalldiagramm
 
 ![Anwendungsfalldiagramm](./resources/UML/Anwendungsfalldiagramm.png)
-
-### 1.7 Mock-Up
-
-![UI-MockUp](./resources/UI%20Mockup/MochUp.png)
 
 ## 2. Funktionale Anforderungen
 
