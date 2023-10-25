@@ -24,12 +24,20 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v3
+    - name: Restore Cache
+      uses: actions/cache@v3
+      with:
+        key: setup-java-${{ platform }}-${{ packageManager }}-${{ fileHash }}
     - name: Build with Maven
-      run: mvn compile
+      run: mvn -B compile --file pom.xml
   Test:
     runs-on: windows-latest
     needs: [Set-Up, Build]
     steps:
       - uses: actions/checkout@v3
+      - name: Restore Cache
+        uses: actions/cache@v3
+        with:
+          key: setup-java-${{ platform }}-${{ packageManager }}-${{ fileHash }}
       - name: Test with Maven
-        run: mvn test
+        run: mvn -B test --file pom.xml
