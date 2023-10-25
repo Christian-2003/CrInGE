@@ -1,8 +1,11 @@
 name: Java CI with Maven
 on:
   push:
-    branches: [ "master" ]
-    paths-ignore: -'target/**'
+    branches: ["Git-Hub-Action"]
+    paths-ignore: -'docs/**'
+  pull_request:
+    branches: ["main"]
+    paths-ignore: -'docs/**'
   workflow_dispatch:
 
 jobs:
@@ -17,12 +20,10 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
-      
-    test:
-      runs-on: windows-latest
-      steps:
-        needs: build
-        cache: maven
-        - name:  Test with Maven
-            run: mvn test
+      run: mvn -B
+  test:
+    runs-on: windows-latest
+    needs: build
+    steps:
+      - name: Test with Maven
+        run: mvn test
