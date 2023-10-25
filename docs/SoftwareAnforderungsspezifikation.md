@@ -33,10 +33,10 @@ Im Nachfolgenden folgt eine Liste aller Referenzen, die im weiteren Verlauf dies
 
 Titel | Datum | Veröffentlichungsorganisation | Link
 --- | --: | --- | ---
-MockUp | 25.10.2023 | CrInGE Entwicklungsteam | [Mock-Up](./resources/UI%20Mockup/MochUp.png)   
+MockUp | 25.10.2023 | CrInGE Entwicklungsteam | [Mock-Up](./resources/UI%20Mockup/MochUp.png)
 Anwendungsdiagramm | 25.10.2023 | CrInGE Entwicklungsteam | [AndwendungsdiagrammUML](./resources/UML/AnwendungsdiagrammUML.png)
 
-### 1.6 UML-Anwendungsfalldiagramm 
+### 1.6 UML-Anwendungsfalldiagramm
 
 ![AndwendungsdiagrammUML](./resources/UML/AnwendungsdiagrammUML.png)
 
@@ -60,7 +60,7 @@ Des Weiteren kann der Benutzer das erstellte Videospiel anschließend in eine Ja
 
 ### 2.2 Welteneditor
 
-Die Anwendung beinhaltet einen grafischen Welteneditor, welcher dem Benutzer das Zusammenstellen einer Videospielwelt ermöglicht. Hierzu wird die erstellte Videospielwelt im zentralen Bereich des Editors dargestellt. 
+Die Anwendung beinhaltet einen grafischen Welteneditor, welcher dem Benutzer das Zusammenstellen einer Videospielwelt ermöglicht. Hierzu wird die erstellte Videospielwelt im zentralen Bereich des Editors dargestellt.
 
 Darüber Hinaus befindet sich in diesem Welteneditor eine Liste an Objekten, die sich in der Videospielwelt befinden, aus welcher der Benutzer beliebige Objekte auswählen und inspizieren kann.
 
@@ -69,6 +69,7 @@ Für das jeweils ausgewählte Objekt stellt ein weiterer Bereich des Editors die
 In einem weiteren Bereich des Welteneditors soll der Benutzer vorgefertigte Formen (bspw. Rechtecke, Dreiecke, Kreise, Lichtquellen, ...) auswählen und in die Videospielwelt ziehen können. Hier kann der Benutzer ebenfalls eigene sogenannte Assets erstellen und aufbewahren. Damit solche Assets besser angepasst werden können, soll der Benutzer hier auch die Möglichkeit haben, eigene Texturen hochzuladen.
 
 Diese Anforderung basiert auf den folgenden User Stories:
+
 1. [Als Spieleentwickler möchte ich die Welt, in der mein Spiel stattfindet, durch Drag and Drop zusammenbauen können, damit ich meiner gestalterischen Kreativität freien Lauf lassen kann](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=41353628)
 2. [Als Spieleentwickler möchte ich das Kollisionsverhalten von Objekten bearbeiten können](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=41354086)
 3. [Als Spieleentwickler möchte ich eigene Texturen laden können](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=42294330)
@@ -98,6 +99,7 @@ Darüber Hinaus kann der Benutzer Events registrieren, die dann vom Videospiel w
 Die API wird in Java zur Verfügung gestellt, damit der Benutzer zugriff auf die Umfangreiche Standardbibliothek hat und die Implementation des Benutzers problemlos in das Videospiel integriert werden kann.
 
 Diese Anforderung basiert auf den User Stories:
+
 1. [Als Spieler möchte ich Fähigkeiten meines Charakters leveln können](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=41353987)
 2. [Als Spieleentwickler möchte ich auf grundlegende physikalische Funktionalitäten der Engine zugreifen, sodass ich diese beliebig verwenden kann.](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=41354193)
 3. [Als Spielentwickler möchte ich Musik/Geräusche zu meinem Spiel hinzufügen, sodass dieses ein immersives Spielerlebnis bieten kann.](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=41652124)
@@ -125,6 +127,7 @@ Hierzu kann der Benutzer einige Einstellungen, wie beispielsweise die zur kompil
 Anschließend kann der Benutzer das Spiel in eine Jar-Datei exportieren.
 
 Diese Anforderung basiert auf der User Story:
+
 1. [Als Spieleentwickler möchte ich das entwickelte Spiel exportieren können, sodass es einfach von Spielern gespielt werden kann.](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=41353971)
 
 Der Aufwand für diese Anforderung wird auf **mittel** geschätzt.
@@ -148,6 +151,7 @@ Diese physikalischen Funktionalitäten werden über die [API](#23-programmiersch
 Zu den funktionalitäten zählen bspw. Das Berechnen von Gravitationskräften oder Flugbahnen.
 
 Diese Anforderung basiert auf der User Story:
+
 1. [Als Spieleentwickler möchte ich auf grundlegende physikalische Funktionalitäten der Engine zugreifen, sodass ich diese beliebig verwenden kann.](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=41354193)
 
 Der Aufwand für diese Anforderung wird auf **niedrig** geschätzt.
@@ -189,7 +193,3 @@ Kategorien: Benutzerfreundlichkeit, Zuverlässigkeit, Leistung, Effizienz, Integ
 ## 4. Technische Einschränkungen
 
 Bei dieser Anwendung soll, soweit möglich, auf externe Bibliotheken verzichtet werden. Hiervon ausgenommen ist die Java Standardbibliothek. Des Weiteren behält sich das Entwicklungsteam vor, bei Bedarf und nach gründlicher Ausarbeitung einzelne externe Bibliotheken zu inkludieren, was entsprechend gekennzeichnet wird.
-
-<!-- Picture-URL definitions: -->
-[AnwUML]: https://github.com/Christian-2003/CrInGE/blob/master/docs/resources/UML/AnwendungsdiagrammUML.png "Overall Use Case Diagram"
-[MockUp]: https://github.com/Christian-2003/CrInGE/blob/master/docs/resources/UI%20Mockup/MochUp.png "Project Mock-Up"
