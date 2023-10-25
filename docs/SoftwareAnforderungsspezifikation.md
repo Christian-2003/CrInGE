@@ -53,7 +53,17 @@ Im Nachfolgenden folgt eine Liste aller Referenzen, die im weiteren Verlauf dies
 
 Titel | Datum | Veröffentlichungsorganisation | Link
 --- | --: | --- | ---
-Placeholder | 13.10.2023 | CrInGE Entwicklungsteam | [README](../README.md)
+Projekt-README     | 13.10.2023 | CrInGE Entwicklungsteam | [README](../README.md)
+MockUp             | 25.10.2023 | CrInGE Entwicklungsteam | [Mock-Up](./resources/UI%20Mockup/MochUp.png)   
+Anwendungsdiagramm | 25.10.2023 | CrInGE Entwicklungsteam | [AndwendungsdiagrammUML](./resources/UML/AnwendungsdiagrammUML.png)
+
+### 1.6 UML-Anwendungsfalldiagramm 
+
+![AnwUML](./resources/UML/AnwendungsdiagrammUML.png)
+
+### 1.7 Mock-Up
+
+![MockUp](./resources/UI%20Mockup/MochUp.png)
 
 ## 2. Funktionale Anforderungen
 
@@ -200,3 +210,7 @@ Kategorien: Benutzerfreundlichkeit, Zuverlässigkeit, Leistung, Effizienz, Integ
 ## 4. Technische Einschränkungen
 
 Bei dieser Anwendung soll, soweit möglich, auf externe Bibliotheken verzichtet werden. Hiervon ausgenommen ist die Java Standardbibliothek. Des Weiteren behält sich das Entwicklungsteam vor, bei Bedarf und nach gründlicher Ausarbeitung einzelne externe Bibliotheken zu inkludieren, was entsprechend gekennzeichnet wird.
+
+<!-- Picture-URL definitions: -->
+[AnwUML]: https://github.com/Christian-2003/CrInGE/blob/master/docs/resources/UML/AnwendungsdiagrammUML.png "Overall Use Case Diagram"
+[MockUp]: https://github.com/Christian-2003/CrInGE/blob/master/docs/resources/UI%20Mockup/MochUp.png "Project Mock-Up"
