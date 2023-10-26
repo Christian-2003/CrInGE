@@ -5,7 +5,7 @@
 The **C**ompute**r**ized **In**tegrated **G**ame **E**ngine is a simple Game Engine capable of developing two-dimensional video games with Java Swing.  
 
 **Status**: In Development 🚧
-
+[![Tests](https://github.com/Christian-2003/CrInGE/actions/workflows/test.yaml/badge.svg)](https://github.com/Christian-2003/CrInGE/actions/workflows/test.yaml)
 **Table of Contents**:
 
 1. [Project Management](#project-management)

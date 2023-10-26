@@ -3,10 +3,14 @@ run-name: ${{ github.event.head_commit.message }} by @${{ github.actor }}
 on:
   push:
     branches: ["Git-Hub-Action"]
-    paths-ignore: -'docs/**'
+    paths-ignore: 
+      -'docs/**'
+      -'target/**'
   pull_request:
     branches: ["main"]
-    paths-ignore: -'docs/**'
+    paths-ignore: 
+      -'docs/**'
+      -'target/**'
   workflow_dispatch:
 
 jobs:
@@ -27,6 +31,11 @@ jobs:
     needs: Build
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/cache@v3
+        with:
+          key: setup-java-Windows-maven-${{hashFiles('pom.xml')}}
+          path: '~/.m2'
+          lookup-only: true
       - name: Set Up JDK
         uses: actions/setup-java@v3
         with:
@@ -34,4 +43,4 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Test with Maven
-        run: mvn -B test --file pom.xml
+        run: mvn test --file pom.xml
