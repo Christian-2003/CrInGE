@@ -35,6 +35,9 @@ Titel | Datum | Veröffentlichungsorganisation | Link
 --- | --: | --- | ---
 UI-MockUps | 25.10.2023 | CrInGE Entwicklungsteam | [UI-MockUps](./resources/UI%20Mockup)
 Anwendungsdiagramm | 25.10.2023 | CrInGE Entwicklungsteam | [Anwendungsfalldiagramm](./resources/UML/Anwendungsfalldiagramm.png)
+Aktivitäsdiagramm Welteneditor | 31.10.2023 | CrInGE Entwicklungsteam | [Aktivitäsdiagramm Welteneditor](./resources/UML/Aktivitätsdiagramm_Welteneditor.png)
+Aktivitäsdiagramm API | 31.10.2023 | CrInGE Entwicklungsteam | [Aktivitäsdiagramm API](./resources/UML/Aktivitätsdiagramm_API.png)
+Aktivitäsdiagramm Exportieren | 31.10.2023 | CrInGE Entwicklungsteam | [Aktivitäsdiagramm Exportieren](./resources/UML/Aktivitätsdiagramm_Exportieren.png)
 
 ## 2. Funktionale Anforderungen
 
@@ -58,11 +61,17 @@ Des Weiteren kann der Benutzer das erstellte Videospiel anschließend in eine Ja
 
 Die Anwendung beinhaltet einen grafischen Welteneditor, welcher dem Benutzer das Zusammenstellen einer Videospielwelt ermöglicht. Hierzu wird die erstellte Videospielwelt im zentralen Bereich des Editors dargestellt.
 
+<div align="center">
+    <img src="./resources/UML/Aktivitätsdiagramm_Welteneditor.png" height="390">
+</div>
+
+In diesem Welteneditor kann der Benutzer ein bereits existierendes Objekt auswählen. Anschließend kann das gewählte Objekt dann in der Videospielwelt frei bewegt und an einer neuen gewünschten Position abgelegt werden. Des Weiteren kann der Benutzer jederzeit die Attribute des gewählten Objektes im Objektinspektor bearbeiten. Anschließend wird das bearbeitete Objekt gespeichert.
+
 Darüber Hinaus befindet sich in diesem Welteneditor eine Liste an Objekten, die sich in der Videospielwelt befinden, aus welcher der Benutzer beliebige Objekte auswählen und inspizieren kann.
 
-Für das jeweils ausgewählte Objekt stellt ein weiterer Bereich des Editors die Möglichkeit bereit, dessen Einstellungen (bspw. Kollisionsverhalten, Farbe, Textur, Durchsichtigkeit, ID, ...) zu bearbeiten.
+In dem zuvor genannten Objektinspektor kann der Benutzer einige Attribute (bspw. Kollisionsverhalten, Farbe, Textur, Durchsichtigkeit, ID, ...) des jeweils gewählten Objektes bearbeiten. Um derartige Attribute zu bearbeiten, kann der Benutzer das zu Bearbeitende Attribut auswählen und einen neuen Attributwert eingeben. Wenn der eingegebene Attributwert akzeptiert wird, dann wird der neue Attributwert für das Objekt übernommen und gespeichert. Wenn der neue Attributwert nicht akzeptiert wird (dies könnte passieren wenn als Eingabe eine Ganzzahl gewünscht wird und der Benutzer einen Text eingibt), dann wird der vorherige Attributwert wiederhergestellt und der Benutzer muss erneut ein Attribut zur Änderung auswählen.
 
-In einem weiteren Bereich des Welteneditors soll der Benutzer vorgefertigte Formen (bspw. Rechtecke, Dreiecke, Kreise, Lichtquellen, ...) auswählen und in die Videospielwelt ziehen können. Hier kann der Benutzer ebenfalls eigene sogenannte Assets erstellen und aufbewahren. Damit solche Assets besser angepasst werden können, soll der Benutzer hier auch die Möglichkeit haben, eigene Texturen hochzuladen.
+In einem weiteren Bereich des Welteneditors soll der Benutzer vorgefertigte Formen (bspw. Rechtecke, Dreiecke, Kreise, Lichtquellen, ...) auswählen und in die Videospielwelt ziehen können. Diese vorgefertigte Formen werden als Assets bezeichnet. Hier kann der Benutzer ebenfalls eigene sogenannte Assets erstellen und aufbewahren. Damit solche Assets besser angepasst werden können, soll der Benutzer hier auch die Möglichkeit haben, eigene Texturen hochzuladen.
 
 Diese Anforderung basiert auf den folgenden User Stories:
 
@@ -96,6 +105,15 @@ Darüber Hinaus kann der Benutzer Events registrieren, die dann vom Videospiel w
 
 Die API wird in Java zur Verfügung gestellt, damit der Benutzer zugriff auf die Umfangreiche Standardbibliothek hat und die Implementation des Benutzers problemlos in das Videospiel integriert werden kann.
 
+<div align="center">
+    <img src="./resources/UML/Aktivitätsdiagramm_API.png" height="390">
+</div>
+
+Um das Prinzip der API besser zu verstehen, soll dies an einem einfachen Beispiel (oben) erläutert werden:
+
+Damit der Benutzer Attributwerte von Objekten in der Videospielwelt bearbeiten kann, muss die APU zuerst importiert werden. Danach kann eine Instanz einer Objekt-Klasse erstellt werden, die dem Benutzer den Zugriff auf ein Objekt der Videospielwelt ermöglicht. Ist das Objekt, auf welches zugegriffen werden soll nicht existent, wird der Benutzer auf diesen Fehler nach dem Exportieren hingewiesen.
+Sollte das Objekt existieren, dann kann der Benutzer über die Instanz der Objekt-Klasse dessen Attributwerte bearbeiten.
+
 Diese Anforderung basiert auf den User Stories:
 
 1. [Als Spieler möchte ich Fähigkeiten meines Charakters leveln können](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=41353987)
@@ -122,9 +140,17 @@ N/A
 
 Damit das Videospiel auf möglichst vielen Endgeräten problemlos ausgeführt werden kann, ohne dass die Videospielengine CrInGE installiert ist, sollen erstellte Videospiele exportiert werden können.
 
-Hierzu kann der Benutzer einige Einstellungen, wie beispielsweise die zur kompilierung verwendete Java-Version oder Ähnliches bearbeiten.
+<div align="center">
+    <img src="./resources/UML/Aktivitätsdiagramm_Exportieren.png" height="390">
+</div>
 
-Anschließend kann der Benutzer das Spiel in eine Jar-Datei exportieren.
+Hierzu kann der Benutzer einen Knopf zum Exportieren drücken. Anschließend erlaubt die Videospielengine dem Benutzer, einige Einstellungen zu tätigen, wie beispielsweise die zur Kompilierung zu verwendende Java-Version oder Ähnliches.
+
+Wenn diese Einstellungen nicht akzeptiert werden (bspw. da der Benutzer eine inkorrekte Java-Version angegeben hat), dann wird der Benutzer darauf hingewiesen und kann diese Einstellung erneut bearbeiten.
+
+Wenn alle Einstellungen akzeptiert werden, dann wird das Videospiel als Jar-Datei exportiert. Wenn der Export erfolgreich verläuft, dann wird die exportierte Jar-Datei im Dateiexplorer geöffnet.
+
+Andernfalls wird der Benutzer auf Fehler beim Export hingewiesen und kann das Spiel bei Bedarf erneut exportieren.
 
 Diese Anforderung basiert auf der User Story:
 
