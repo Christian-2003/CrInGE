@@ -1,3 +1,5 @@
+<img src="./resources/img/logo.png" height="100" align="right">
+
 # CrInGE - Softwareanforderungen
 
 ## 1. Einleitung
@@ -113,6 +115,14 @@ Um das Prinzip der API besser zu verstehen, soll dies an einem einfachen Beispie
 
 Damit der Benutzer Attributwerte von Objekten in der Videospielwelt bearbeiten kann, muss die APU zuerst importiert werden. Danach kann eine Instanz einer Objekt-Klasse erstellt werden, die dem Benutzer den Zugriff auf ein Objekt der Videospielwelt ermöglicht. Ist das Objekt, auf welches zugegriffen werden soll nicht existent, wird der Benutzer auf diesen Fehler nach dem Exportieren hingewiesen.
 Sollte das Objekt existieren, dann kann der Benutzer über die Instanz der Objekt-Klasse dessen Attributwerte bearbeiten.
+
+<div align="center">
+    <img src="./resources/UML/Sequenzdiagramm_API.png" height="390">
+</div>
+
+Um die Funktionsweise der API besser zu verstehen, soll das obige Sequenzdiagramm erläutert werden:
+
+Das Sequenzdiagramm beschreibt die Kommunikation zwischen Benutezer (oben Videospielentwickler), Programmierschnittstelle (API) und der Videospielengine. Zuerst muss der Benutzer die API importieren. Anschließend kann der Benutzer eine Instanz der Objektklasse erstellen, um auf Videospielobjekte in der Videospielwelt zuzugreifen. Die API überprüft zunächst über die Videospielengine, ob das erstellte Videospielobjekt in der Videospielwelt existiert. Die Videospielengine informiert die API dann über die Existenz des gewünschten Videospielobjetes. Die API leitet diese Information dann an den Benutzer weiter. Anschließend kann der Benutzer beliebig häufig jeweils ein Attribut des Videospielobjektes bearbeiten. Dazu leitete die API das bearbeitete Attribut and die Videospielengine weiter. Die Videospielengine bearbeitet dann das Attribut und updated bei Bedarf das Videospielobjekt. Anschließend teilt die Videospielengine der API das Update des Videospielobjektes mit. Die API leitet dies an den Benutzer weiter.
 
 Diese Anforderung basiert auf den User Stories:
 

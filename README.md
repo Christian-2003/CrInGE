@@ -1,32 +1,32 @@
-<img src="https://cdn.discordapp.com/attachments/1159393243507736617/1165983298300956732/very_CrInGE_wei_lecht.png" height="100" align="right">
+<img src="./docs/resources/img/logo.png" height="100" align="right">
 
 # CrInGE
 
-The **C**ompute**r**ized **In**tegrated **G**ame **E**ngine is a simple Game Engine capable of developing two-dimensional video games with Java Swing.  
+Die <ins>C</ins>ompute<ins>r</ins>ized <ins>In</ins>tegrated <ins>G</ins>ame <ins>E</ins>ngine ist eine einfache Videospielengine, mit welcher zweidimensionale Videospiele mithilfe von Java Swing entwickelt werden können.
 
 **Status**: In Development 🚧
 
-**Table of Contents**:
+## Inahlt
 
-1. [Project Management](#project-management)
-2. [Documentation](#documentation)
-3. [Contributors](#contributors)
+1. [Projektmanagement](#projektmanagement)
+2. [Dokumentation](#dokumentation)
+3. [Entwicklungsteam](#entwicklungsteam)
 
-## Project Management
+## Projektmanagement
 
-All Requirements and Tasks can be seen in the corresponding [GitHub Project](https://github.com/users/Christian-2003/projects/2)
+Alle Aufgaben können im zugehörigen [GitHub Projekt](https://github.com/users/Christian-2003/projects/2) eingesehen werden.
 
-## Documentation
+Die Anforderungen für das Projekt sind in der [Software Anforderungsspezifikation](./docs/SoftwareAnforderungsspezifikation.md) enthalten.
 
-The [Software Requirement Specifications](https://github.com/Christian-2003/CrInGE/blob/master/docs/SoftwareAnforderungsspezifikation.md) document the ideas of the Requirements as well as their corresponding User Story, UML diagrams, and a UI Mockup.
+## Dokumentation
 
->Documentation about the implementation does not exist due to missing implementations
+Die Dokumentation des Projektes ist im Ordner [docs](./docs/) zu finden.
 
----
+Sämtliche Dokumentation des Quellcodes wird den entsprechenden Java-Dateien mittels Javadoc angefügt.
 
-### Contributors
+## Entwicklungsteam
 
-Currently, the project is developed by the following people:
+Die Anwendung CrInGE wird von den Nachfolgenden Mitgliedern entwickelt:
 
 * [elekt0](https://github.com/Elekt0)
 * [FabianDev001](https://github.com/FabianDev001)
