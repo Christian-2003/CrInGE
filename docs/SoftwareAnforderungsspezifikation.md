@@ -40,6 +40,8 @@ Anwendungsdiagramm | 25.10.2023 | CrInGE Entwicklungsteam | [Anwendungsfalldiagr
 Aktivitäsdiagramm Welteneditor | 31.10.2023 | CrInGE Entwicklungsteam | [Aktivitäsdiagramm Welteneditor](./resources/UML/Aktivitätsdiagramm_Welteneditor.png)
 Aktivitäsdiagramm API | 31.10.2023 | CrInGE Entwicklungsteam | [Aktivitäsdiagramm API](./resources/UML/Aktivitätsdiagramm_API.png)
 Aktivitäsdiagramm Exportieren | 31.10.2023 | CrInGE Entwicklungsteam | [Aktivitäsdiagramm Exportieren](./resources/UML/Aktivitätsdiagramm_Exportieren.png)
+Sequenzdiagramm Welteneditor | 01.11.2023 | CrInGE Entwicklungsteam | [Sequenzdiagramm Welteneditor](./resources/UML/Sequenzdiagramm_Welteneditor.png)
+Sequenzdiagramm API | 01.11.2023 | CrInGE Entwicklungsteam | [Sequenzdiagramm API](./resources/UML/Sequenzdiagramm_API.png)
 
 ## 2. Funktionale Anforderungen
 
@@ -74,6 +76,12 @@ Darüber Hinaus befindet sich in diesem Welteneditor eine Liste an Objekten, die
 In dem zuvor genannten Objektinspektor kann der Benutzer einige Attribute (bspw. Kollisionsverhalten, Farbe, Textur, Durchsichtigkeit, ID, ...) des jeweils gewählten Objektes bearbeiten. Um derartige Attribute zu bearbeiten, kann der Benutzer das zu Bearbeitende Attribut auswählen und einen neuen Attributwert eingeben. Wenn der eingegebene Attributwert akzeptiert wird, dann wird der neue Attributwert für das Objekt übernommen und gespeichert. Wenn der neue Attributwert nicht akzeptiert wird (dies könnte passieren wenn als Eingabe eine Ganzzahl gewünscht wird und der Benutzer einen Text eingibt), dann wird der vorherige Attributwert wiederhergestellt und der Benutzer muss erneut ein Attribut zur Änderung auswählen.
 
 In einem weiteren Bereich des Welteneditors soll der Benutzer vorgefertigte Formen (bspw. Rechtecke, Dreiecke, Kreise, Lichtquellen, ...) auswählen und in die Videospielwelt ziehen können. Diese vorgefertigte Formen werden als Assets bezeichnet. Hier kann der Benutzer ebenfalls eigene sogenannte Assets erstellen und aufbewahren. Damit solche Assets besser angepasst werden können, soll der Benutzer hier auch die Möglichkeit haben, eigene Texturen hochzuladen.
+
+Zur vereinfachten Darstellung können die obigen Anforderungen dem Sequenzdiagramm (unten) entnommen werden.
+
+<div align="center">
+    <img src="./resources/UML/Sequenzdiagramm_Welteneditor.png" height="390">
+</div>
 
 Diese Anforderung basiert auf den folgenden User Stories:
 
