@@ -1,4 +1,4 @@
-package backend.math;
+package game_engine.controller.math_engine;
 
 import java.io.Serializable;
 import java.util.Objects;

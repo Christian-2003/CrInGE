@@ -6,7 +6,7 @@ package Professional {
   actor Developer as p
 }
 }
-package "Game Engine"{
+package "Game game_editor.controller.Engine"{
   usecase "Create Game Project" as UC1
   usecase "Design Game" as UC2
   usecase "Design Object" as UC3
