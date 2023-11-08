@@ -66,7 +66,7 @@ Des Weiteren kann der Benutzer das erstellte Videospiel anschließend in eine Ja
 Die Anwendung beinhaltet einen grafischen Welteneditor, welcher dem Benutzer das Zusammenstellen einer Videospielwelt ermöglicht. Hierzu wird die erstellte Videospielwelt im zentralen Bereich des Editors dargestellt.
 
 <div align="center">
-    <img src="./resources/UML/Aktivitätsdiagramm_Welteneditor.png" height="390">
+    <img src="./resources/UML/Aktivitätsdiagramm_Welteneditor.png">
 </div>
 
 In diesem Welteneditor kann der Benutzer ein bereits existierendes Objekt auswählen. Anschließend kann das gewählte Objekt dann in der Videospielwelt frei bewegt und an einer neuen gewünschten Position abgelegt werden. Des Weiteren kann der Benutzer jederzeit die Attribute des gewählten Objektes im Objektinspektor bearbeiten. Anschließend wird das bearbeitete Objekt gespeichert.
@@ -116,7 +116,7 @@ Darüber Hinaus kann der Benutzer Events registrieren, die dann vom Videospiel w
 Die API wird in Java zur Verfügung gestellt, damit der Benutzer zugriff auf die Umfangreiche Standardbibliothek hat und die Implementation des Benutzers problemlos in das Videospiel integriert werden kann.
 
 <div align="center">
-    <img src="./resources/UML/Aktivitätsdiagramm_API.png" height="390">
+    <img src="./resources/UML/Aktivitätsdiagramm_API.png">
 </div>
 
 Um das Prinzip der API besser zu verstehen, soll dies an einem einfachen Beispiel (oben) erläutert werden:
@@ -125,7 +125,7 @@ Damit der Benutzer Attributwerte von Objekten in der Videospielwelt bearbeiten k
 Sollte das Objekt existieren, dann kann der Benutzer über die Instanz der Objekt-Klasse dessen Attributwerte bearbeiten.
 
 <div align="center">
-    <img src="./resources/UML/Sequenzdiagramm_API.png" height="390">
+    <img src="./resources/UML/Sequenzdiagramm_API.png">
 </div>
 
 Um die Funktionsweise der API besser zu verstehen, soll das obige Sequenzdiagramm erläutert werden:
@@ -159,7 +159,7 @@ N/A
 Damit das Videospiel auf möglichst vielen Endgeräten problemlos ausgeführt werden kann, ohne dass die Videospielengine CrInGE installiert ist, sollen erstellte Videospiele exportiert werden können.
 
 <div align="center">
-    <img src="./resources/UML/Aktivitätsdiagramm_Exportieren.png" height="390">
+    <img src="./resources/UML/Aktivitätsdiagramm_Exportieren.png">
 </div>
 
 Hierzu kann der Benutzer einen Knopf zum Exportieren drücken. Anschließend erlaubt die Videospielengine dem Benutzer, einige Einstellungen zu tätigen, wie beispielsweise die zur Kompilierung zu verwendende Java-Version oder Ähnliches.
