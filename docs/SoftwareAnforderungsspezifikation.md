@@ -40,7 +40,7 @@ Anwendungsdiagramm | 25.10.2023 | CrInGE Entwicklungsteam | [Anwendungsfalldiagr
 Aktivitäsdiagramm Welteneditor | 31.10.2023 | CrInGE Entwicklungsteam | [Aktivitäsdiagramm Welteneditor](./resources/UML/Aktivitätsdiagramm_Welteneditor.png)
 Aktivitäsdiagramm API | 31.10.2023 | CrInGE Entwicklungsteam | [Aktivitäsdiagramm API](./resources/UML/Aktivitätsdiagramm_API.png)
 Aktivitäsdiagramm Exportieren | 31.10.2023 | CrInGE Entwicklungsteam | [Aktivitäsdiagramm Exportieren](./resources/UML/Aktivitätsdiagramm_Exportieren.png)
-Sequenzdiagramm Welteneditor | 01.11.2023 | CrInGE Entwicklungsteam | [Sequenzdiagramm Welteneditor](./resources/UML/Sequenzdiagramm_Welteneditor.png)
+Sequenzdiagramm Welteneditor | 01.11.2023 | CrInGE Entwicklungsteam | [Sequenzdiagramm Welteneditor](./resources/UML/Sequenzdiagramm_Welteneditor_Class.png)
 Sequenzdiagramm API | 01.11.2023 | CrInGE Entwicklungsteam | [Sequenzdiagramm API](./resources/UML/Sequenzdiagramm_API.png)
 
 ## 2. Funktionale Anforderungen
@@ -80,7 +80,7 @@ In einem weiteren Bereich des Welteneditors soll der Benutzer vorgefertigte Form
 Zur vereinfachten Darstellung können die obigen Anforderungen dem Sequenzdiagramm (unten) entnommen werden.
 
 <div align="center">
-    <img src="./resources/UML/Sequenzdiagramm_Welteneditor.png" height="390">
+    <img src="./resources/UML/Sequenzdiagramm_Welteneditor_Class.png" height="390">
 </div>
 
 Diese Anforderung basiert auf den folgenden User Stories:
