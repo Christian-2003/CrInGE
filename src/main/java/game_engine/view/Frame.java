@@ -14,19 +14,41 @@ import java.awt.*;
 public class Frame extends JFrame {
 
     /**
+     * Attribute stores the canvas which is used to display a String.
+     */
+    private final DemoCanvas demoCanvas;
+
+
+    /**
      * Constructor instantiates a new {@link Frame} which contains a {@link DemoCanvas} to display a String.
      *
-     * @param text                  Text to be displayed within the Frame.
+     * @param title                 Title to be displayed within the Frame.
      * @throws NullPointerException The passed text is {@code null}.
      */
-    public Frame(String text) throws NullPointerException {
-        super();
-        DemoCanvas demoCanvas = new DemoCanvas(text);
+    public Frame(String title, String[] lines) throws NullPointerException {
+        super(title);
+        demoCanvas = new DemoCanvas(lines);
         add(demoCanvas, BorderLayout.CENTER);
         setTitle("Demo Game");
         setSize(480, 320); //HVGA screen resolution.
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+    }
+
+
+    /**
+     * Method scrolls down.
+     */
+    public void scrollDown() {
+        demoCanvas.scrollDown();
+    }
+
+
+    /**
+     * Method scrolls up.
+     */
+    public void scrollUp() {
+        demoCanvas.scrollUp();
     }
 
 }

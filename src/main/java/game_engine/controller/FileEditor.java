@@ -42,7 +42,7 @@ public class FileEditor {
         try (BufferedReader reader = new BufferedReader(new FileReader(filepath))) {
             while (reader.ready()) {
                 content.append(reader.readLine());
-                content.append(System.lineSeparator());
+                content.append("\n");
             }
         }
         return content.toString();
