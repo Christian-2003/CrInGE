@@ -12,7 +12,7 @@ import java.awt.event.KeyEvent;
 public class Engine {
     
     public static void main(String[] args) throws NullPointerException, MathException {
-        GameLoop loop = new GameLoop("C:\\Users\\chst0\\Documents\\.Privat\\Repositories\\Java\\CrInGE\\res\\tempData.txt");
+        GameLoop loop = new GameLoop();
     }
     
 }

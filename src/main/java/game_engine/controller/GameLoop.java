@@ -6,6 +6,7 @@ import game_engine.view.Frame;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.io.FileReader;
 
 /**
@@ -31,12 +32,30 @@ public class GameLoop {
     private String[] lines;
 
 
-    public GameLoop(String filepath) {
+    public GameLoop() {
         keyEventManager = new KeyEventManager();
+
+        //Get a text file in the current folder:
+        File folder = new File("./");
+        String selectedPath = null;
+        File[] files = folder.listFiles();
+        if (files == null) {
+            JOptionPane.showMessageDialog(null, "Did not find any file to read.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        for (File file : files) {
+            if (file.isFile() && file.getName().toLowerCase().endsWith(".txt")) {
+                selectedPath = file.getPath();
+            }
+        }
+        if (selectedPath == null) {
+            JOptionPane.showMessageDialog(null, "Did not find any file to read.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         //Read file contents:
         try {
-            FileEditor fileEditor = new FileEditor(filepath);
+            FileEditor fileEditor = new FileEditor(selectedPath);
             lines = fileEditor.read().split("\n");
         }
         catch (Exception e) {
