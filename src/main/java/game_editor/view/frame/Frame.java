@@ -3,7 +3,6 @@ package game_editor.view.frame;
 import javax.swing.*;
 
 import game_editor.view.project_editor.ProjectEditorPanel;
-import game_editor.view.project_selecter.ProjectSelectorPanel;
 
 import java.awt.*;
 
@@ -34,7 +33,7 @@ public class Frame extends JFrame {
     }
 
     private void initCards(){
-        JPanel editorPanel = new ProjectEditorPanel(), selectPanel = new ProjectSelectorPanel();
+        JPanel editorPanel = new ProjectEditorPanel(), selectPanel = new ProjectEditorPanel();
         //TODO richtige Panel zufügen
         this.add(selectPanel, this.selectionCard);
         this.add(editorPanel, this.editorCard);

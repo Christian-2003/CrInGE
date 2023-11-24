@@ -102,7 +102,7 @@ public class GameChunk {
         if (currentExternalMapObject == -1) {
             throw new NullPointerException("No external MapObjects available in " + getClass().getSimpleName());
         }
-        if (currentExternalMapObject >= mapObjects.length) {
+        if (currentExternalMapObject >= externalMapObjects.length) {
             throw new IndexOutOfBoundsException("No more external MapObjects available in " + getClass().getSimpleName());
         }
         return externalMapObjects[currentExternalMapObject++];
