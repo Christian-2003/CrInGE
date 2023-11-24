@@ -12,7 +12,7 @@ public class GameMap {
     /**
      * Attribute stores all {@link GameChunk}s of the {@link GameMap}. Chunks are stored in one dimension, the following
      * formula applies to convert two-dimensional chunk-coordinates {@code (x, y)} to an index within this array:
-     * {@code i = (y * height + x)}.
+     * {@code i = (y * width + x)}.
      */
     private final GameChunk[] chunks;
 
@@ -105,7 +105,7 @@ public class GameMap {
         if (y < 0 || y >= height) {
             throw new IndexOutOfBoundsException("Index " + y + " out of bounds for height " + height);
         }
-        return y * height + x;
+        return y * width + x;
     }
 
 }
