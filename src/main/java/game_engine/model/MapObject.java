@@ -26,8 +26,8 @@ public class MapObject extends GameObject {
      *
      * @param visible               Whether the MapObject is visible.
      * @param tangible              Whether the MapObject is tangible.
-     * @param hitBox                Dimensions of the hit box for the MapObject.
      * @param size                  Size of the MapObject.
+     * @param hitBox                Dimensions of the hit box for the MapObject.
      * @param graphics              Graphics for the MapObject.
      * @param moving                Whether the MapObject is moving.
      * @param movable               Whether the MapObject is movable.
