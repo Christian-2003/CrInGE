@@ -17,13 +17,12 @@ public class Checkpoint extends MapObject {
      * @param tangible              Whether the Checkpoint is tangible.
      * @param hitBox                Dimensions of the hit box for the Checkpoint.
      * @param size                  Size of the Checkpoint.
-     * @param graphics              Graphics for the Checkpoint.
      * @param moving                Whether the Checkpoint is moving.
      * @param movable               Whether the Checkpoint is movable.
      * @throws NullPointerException One of the passed arguments is {@code null}.
      */
-    public Checkpoint(boolean visible, boolean tangible, Dimension hitBox, Dimension size, Graphics graphics, boolean moving, boolean movable) throws NullPointerException {
-        super(visible, tangible, hitBox, size, graphics, moving, movable);
+    public Checkpoint(boolean visible, boolean tangible, Dimension hitBox, Dimension size, boolean moving, boolean movable) throws NullPointerException {
+        super(visible, tangible, hitBox, size, moving, movable);
     }
 
     /**

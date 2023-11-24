@@ -17,11 +17,10 @@ public class Projectile extends Entity {
      * @param tangible              Whether the Projectile is tangible.
      * @param hitBox                Dimensions of the hit box for the Projectile.
      * @param size                  Size of the Projectile.
-     * @param graphics              Graphics for the Projectile.
      * @throws NullPointerException One of the passed arguments is {@code null}.
      */
-    public Projectile(boolean visible, boolean tangible, Dimension hitBox, Dimension size, Graphics graphics) throws NullPointerException {
-        super(visible, tangible, hitBox, size, graphics);
+    public Projectile(boolean visible, boolean tangible, Dimension hitBox, Dimension size) throws NullPointerException {
+        super(visible, tangible, hitBox, size);
     }
 
     /**

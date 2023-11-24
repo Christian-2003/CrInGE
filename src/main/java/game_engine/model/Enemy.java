@@ -17,11 +17,10 @@ public class Enemy extends Entity {
      * @param tangible              Whether the Enemy is tangible.
      * @param hitBox                Dimensions of the hit box for the Enemy.
      * @param size                  Size of the Enemy.
-     * @param graphics              Graphics for the Enemy.
      * @throws NullPointerException One of the passed arguments is {@code null}.
      */
-    public Enemy(boolean visible, boolean tangible, Dimension hitBox, Dimension size, Graphics graphics) throws NullPointerException {
-        super(visible, tangible, hitBox, size, graphics);
+    public Enemy(boolean visible, boolean tangible, Dimension hitBox, Dimension size) throws NullPointerException {
+        super(visible, tangible, hitBox, size);
     }
 
     /**

@@ -30,11 +30,6 @@ public abstract class GameObject {
      */
     protected Dimension size;
 
-    /**
-     * Attribute stores the graphics of the GameObject.
-     */
-    protected Graphics graphics;
-
 
     /**
      * Constructor instantiates a new {@link GameObject} with the passed arguments.
@@ -43,18 +38,16 @@ public abstract class GameObject {
      * @param tangible              Whether the GameObject is tangible.
      * @param hitBox                Dimensions of the hit box for the GameObject.
      * @param size                  Size of the GameObject.
-     * @param graphics              Graphics for the GameObject.
      * @throws NullPointerException One of the passed arguments is {@code null}.
      */
-    public GameObject(boolean visible, boolean tangible, Dimension hitBox, Dimension size, Graphics graphics) throws NullPointerException {
-        if (hitBox == null || size == null || graphics == null) {
+    public GameObject(boolean visible, boolean tangible, Dimension hitBox, Dimension size) throws NullPointerException {
+        if (hitBox == null || size == null) {
             throw new NullPointerException("Null is invalid argument.");
         }
         this.visible = visible;
         this.tangible = tangible;
         this.hitBox = hitBox;
         this.size = size;
-        this.graphics = graphics;
     }
 
     /**
@@ -72,7 +65,6 @@ public abstract class GameObject {
         tangible = gameObject.isTangible();
         hitBox = gameObject.getHitBox();
         size = gameObject.getSize();
-        graphics = gameObject.getGraphics();
     }
 
 
@@ -112,17 +104,6 @@ public abstract class GameObject {
             throw new NullPointerException("Null is invalid size.");
         }
         this.size = size;
-    }
-
-    public Graphics getGraphics() {
-        return graphics;
-    }
-
-    public void setGraphics(Graphics graphics) throws NullPointerException {
-        if (graphics == null) {
-            throw new NullPointerException("Null is invalid Graphics.");
-        }
-        this.graphics = graphics;
     }
 
 

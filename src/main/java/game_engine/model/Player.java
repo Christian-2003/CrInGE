@@ -17,11 +17,10 @@ public class Player extends Entity {
      * @param tangible              Whether the Player is tangible.
      * @param hitBox                Dimensions of the hit box for the Player.
      * @param size                  Size of the Player.
-     * @param graphics              Graphics for the Player.
      * @throws NullPointerException One of the passed arguments is {@code null}.
      */
-    public Player(boolean visible, boolean tangible, Dimension hitBox, Dimension size, Graphics graphics) throws NullPointerException {
-        super(visible, tangible, hitBox, size, graphics);
+    public Player(boolean visible, boolean tangible, Dimension hitBox, Dimension size) throws NullPointerException {
+        super(visible, tangible, hitBox, size);
     }
 
     /**

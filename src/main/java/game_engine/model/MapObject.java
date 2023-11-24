@@ -28,13 +28,12 @@ public class MapObject extends GameObject {
      * @param tangible              Whether the MapObject is tangible.
      * @param size                  Size of the MapObject.
      * @param hitBox                Dimensions of the hit box for the MapObject.
-     * @param graphics              Graphics for the MapObject.
      * @param moving                Whether the MapObject is moving.
      * @param movable               Whether the MapObject is movable.
      * @throws NullPointerException One of the passed arguments is {@code null}.
      */
-    public MapObject(boolean visible, boolean tangible, Dimension hitBox, Dimension size, Graphics graphics, boolean moving, boolean movable) throws NullPointerException {
-        super(visible, tangible, hitBox, size, graphics);
+    public MapObject(boolean visible, boolean tangible, Dimension hitBox, Dimension size, boolean moving, boolean movable) throws NullPointerException {
+        super(visible, tangible, hitBox, size);
         this.moving = moving;
         this.movable = movable;
     }

@@ -23,14 +23,13 @@ public class MapObjectLightEmitting extends MapObject {
      * @param tangible              Whether the MapObject is tangible.
      * @param hitBox                Dimensions of the hit box for the MapObject.
      * @param size                  Size of the MapObject.
-     * @param graphics              Graphics for the MapObject.
      * @param moving                Whether the MapObject is moving.
      * @param movable               Whether the MapObject is movable.
      * @param lightColor            Color of the light that is emitted from this MapObject.
      * @throws NullPointerException One of the passed arguments is {@code null}.
      */
-    public MapObjectLightEmitting(boolean visible, boolean tangible, Dimension hitBox, Dimension size, Graphics graphics, boolean moving, boolean movable, Color lightColor) throws NullPointerException {
-        super(visible, tangible, hitBox, size, graphics, moving, movable);
+    public MapObjectLightEmitting(boolean visible, boolean tangible, Dimension hitBox, Dimension size, boolean moving, boolean movable, Color lightColor) throws NullPointerException {
+        super(visible, tangible, hitBox, size, moving, movable);
         if (lightColor == null) {
             throw new NullPointerException("Null is invalid lightColor.");
         }
