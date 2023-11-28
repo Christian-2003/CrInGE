@@ -62,9 +62,9 @@ Fehler, die in entwickelte Videospiele durch den Videospielentwickler eingeführ
 
 Die Engine verarbeitet weitgehen Daten, die durch den Editor erstellt wurden. Hierzu gehören beispielsweise Map-Dateien oder Assets. Beim Exportieren des Videospiels müssen diese Daten in korrekte Dateiformate überführt werden, damit diese von der Engine verwendet werden können.
 
-Die von der Engine erstellten Dateien müssen korrekt sein. Dazu muss die Engine dies bei jedem Zugriff auf die Dateien überprüfen. Wenn die Dateien nicht korrekt sind, kann das Videospiel nciht ausgeführt werden.
+Die von der Engine erstellten Dateien müssen korrekt sein. Dazu muss die Engine dies bei jedem Zugriff auf die Dateien überprüfen. Wenn die Dateien nicht korrekt sind, kann das Videospiel nicht ausgeführt werden.
 
-Vom Videospielentwickler erstellte Skripte müssen ebenfalls auf Korrektheit überprüft werden. Diese Skripe werden in der Programmiersprache Java entwickelt und beim Exportieren des Videospiels durch den Java Kompiler kompiliert. Dadurch werden die Skripte in die Jar-Datei, die das entwickelte Videospiel darstellt, eingebunden. Treten beim kompilieren des Spiels keine Fehler auf, ist davon auszugehen, dass die Skripte korrekt sind. Treten beim Ausführen solcher Skripte Laifzeitfehler auf, so können diese abgefangen und Log-Dateien dokumentiert werden. Hierbei handelt es sich dann durch Fehler, die durch den Videospielentwickler eingeführt werden (siehe [3.1 Verfügbarkeit](#31-verfügbarkeit)).
+Vom Videospielentwickler erstellte Skripte müssen ebenfalls auf Korrektheit überprüft werden. Diese Skripe werden in der Programmiersprache Java entwickelt und beim Exportieren des Videospiels durch den Java Kompiler kompiliert. Dadurch werden die Skripte in die Jar-Datei, die das entwickelte Videospiel darstellt, eingebunden. Treten beim Kompilieren des Spiels keine Fehler auf, ist davon auszugehen, dass die Skripte korrekt sind. Treten beim Ausführen solcher Skripte Laifzeitfehler auf, so können diese abgefangen und in Log-Dateien dokumentiert werden. Hierbei handelt es sich dann um Fehler, die durch den Videospielentwickler eingeführt werden (siehe [3.1 Verfügbarkeit](#31-verfügbarkeit)).
 
 ### 3.3 Änderbarkeit
 
@@ -78,7 +78,7 @@ Dies ist jedoch sehr aufwendig, da ein hoher Planungsaufwand notwendig wäre um 
 
 Damit unsere Software eine attraktive Alternative zu bestehenden Angeboten darstellt, ist eine entsprechende Performance notwendig.
 
-Videospielentwicklern muss das Entwickeln von Videospielen ohne größere Umstände ermöglicht werden. Dazu sollen Wartezeiten während der Entwicklung von Videospielen möglichst gering gehalten werden. Ladezeiten von Dateien (beispielsweise Map-Dateien) sollen den Videospielentwickler nicht negativ beeinträchtigen. Dies gilt ebenfalls für Schreiboperationen zum Ändern von Dateien. Insgesamt sollen derartige Operationen nie länger als wenige Sekunden dauern. Dieser Maßstab wird ebenfalls beibehalten, wenn mehrere Dateien zeitgleich geladen werden müssen. Idealerweise werden derartige aufwändige Operationen auf Prozesse oder Threads ausgelagert, um eine flüssigere Benutzererfahrung zu ermöglichen. Ausgenommen hiervon sind aufwendige Lese- und Schreiboperationen zum Öffnen oder Schließen eines Projektes durch den Videospielentwickler, da die dabei zu betrachtende Datenmenge nicht in wenigen Sekunden bearbeitet werden kann.
+Videospielentwicklern muss das Entwickeln von Videospielen ohne größere Umstände ermöglicht werden. Dazu sollen Wartezeiten während der Entwicklung von Videospielen möglichst gering gehalten werden. Ladezeiten von Dateien (beispielsweise Map-Dateien) sollen den Videospielentwickler nicht negativ beeinträchtigen. Dies gilt ebenfalls für Schreiboperationen zum Ändern von Dateien. Insgesamt sollen derartig Operationen nie länger als wenige Sekunden dauern. Dieser Maßstab wird ebenfalls beibehalten, wenn mehrere Dateien zeitgleich geladen werden müssen. Idealerweise werden derartige aufwändige Operationen auf Prozesse oder Threads ausgelagert, um eine flüssigere Benutzererfahrung zu ermöglichen. Ausgenommen hiervon sind aufwendige Lese- und Schreiboperationen zum Öffnen oder Schließen eines Projektes durch den Videospielentwickler, da die dabei zu betrachtende Datenmenge nicht in wenigen Sekunden bearbeitet werden kann.
 
 Ladezeiten sollen in der Engine ebenfalls gering sein. Hier bietet sich derselbe Maßstab, wie oben beschrieben, an. Darüber Hinaus gibt es einige Kennzahlen, die von Videospielern häufig gesondert betrachtet werden. Solche Kennzahlen müssen von der Engine attraktiv gestaltet werden, sodass Videospieler eine angenehme Erfahrung mit Videospielen dieser Anwendung haben. Eine besonders wichtige Kennzahl ist durch die sogenannten FPS gegeben. Um den Videospieler zufriedenzustellen, sollen entwickelte Videospiele mit mehr als 20 FPS ausgeführt werden. Darüber Hinaus soll die Engine den Arbeitsspeicher des Videospielers mit nicht mehr als 4 GB belasten.
 
@@ -86,7 +86,7 @@ Diese Kennzahlen sind selbstverständlich stark vom ausführenden Endgerät abh�
 
 ### 3.5 Sicherheit
 
-Die vom Videospieleditor erzeugten Dateien dürfen nicht von Unbefugten bearbeitet werden, sodass deren Integrität fortlaufend bewahrt wird. Des Weiteren müssen diese Daten dem Editor jederzeit zur Verfügung stehen. Dies gilt ebenfalls für die Engine.
+Die vom Videospieleditor erzeugten Dateien dürfen nicht von Unbefugten bearbeitet werden, sodass deren Integrität fortlaufend gewahrt wird. Des Weiteren müssen diese Daten dem Editor jederzeit zur Verfügung stehen. Dies gilt ebenfalls für die Engine.
 
 Während der Entwicklung eines Videospiels liegen entsprechende Dateien hauptsächlich in einem Projektverzeichnis vor. Hier ist der Schutz vor Unbefugten nur schwer umzusetzen. Es wäre möglich die Dateien zu signieren, jedoch sind hierfür zertifizierte Signaturschlüssel notwendig. Des Weiteren dürfte eine solche Signatur nicht auf dem Endgerät des Videospielentwicklers durchgeführt werden, damit bei einer Dekompilierung des Editors der Signaturschlüssel nicht kompromittiert wird. Hierfür wäre also eine seperate Serverinfrastruktur notwendig, was einen erheblichen Aufwand erzeugen würde. Daher werden die Daten zur Videospielentwicklung nicht weiter vor unbefugten Zugriff geschützt.
 
@@ -100,16 +100,16 @@ Zur Verinngerung von Ausfallzeiten und der Maximierung der [Verfügbarkeit](#31-
 
 Es ist Anzunehmen, dass zwischen 30 % und 50 % des entstehenden Arbeitsaufwands zum Testen der Anwendung anfällt. Diese Schätzung basiert sowohl auf bisheriger Erfahrung des CrInGE Entwicklungsteams, als auch auf Berichten anderer Softwareentwicklungshäuser.
 
-Insgesamt können die meisten Komponenten durch Unit-Tests mittels JUnit abgedeckt werden, wodruch die Fehlerzahl stark sinkt.
+Insgesamt können die meisten Komponenten durch Unit-Tests mittels JUnit abgedeckt werden, wodurch die Fehleranzahl stark sinkt.
 
 ### 3.7 Benutzbarkeit
 
 Damit die Anwendung als konkurrenzfähiges Produkt angesehen wird, muss sowohl Engine als auch Editor benutzbar und Benutzerfreundlich gestaltet sein.
 
-Für die Videospielengine ist dies von geringerer Bedeutung, da diese ausschließlich in Videospielen verwendet wird, die durch den zugehörigen CrInGE-Editor erzeugt werden und die Videospielentwickler und Videospieler die inneren Funktionsweisen der Engine nicht weiter beachten müssen.
+Für die Videospielengine ist dies von geringerer Bedeutung, da diese ausschließlich in Videospielen verwendet wird, die durch den zugehörigen CrInGE-Editor erzeugt werden. Daher sind für sowohl Videospielentwickler als auch Videospieler die inneren Funktionsweisen der Engine nicht weiter beachtenswert.
 
 Für den Editor ergeben sich im Sinne der Benutzbarkeit jedoch einige Maßstäbe, die zu beachten sind. Beispielsweise sollen gängige Tastenkürzel verwendet werden, wie `STRG + C`, `STRG + V` oder `STRG + S`, die in anderer (unter Umständen vergleichbarer) Software auffindbar sind. Hierdurch wird sichergestellt, dass der Videospielentwickler intuitiv den Editor verwenden kann.
 
-Des Weiteren sollen gängige Designprinzipien beachtet werden. Beispielsweise soll es eine Menüleiste am oberen Bildschirmrand geben. Die Menüs sollen dabei vergleichbar zu anderer Software aufgebaut werden. Eine EInteilung in "Datei", "Bearbeiten", "Build", usw. wäre hierbei denkbar. Solche Menüaufteilungen sind dem Videospielentwickler bereits aus anderen Anwendungen bekannt, wodurch der Editor benutzerfreundlicher wird.
+Des Weiteren sollen gängige Designprinzipien beachtet werden. Beispielsweise soll es eine Menüleiste am oberen Bildschirmrand geben. Die Menüs sollen dabei vergleichbar zu anderer Software aufgebaut werden. Eine Einteilung in "Datei", "Bearbeiten", "Build", usw. wäre hierbei denkbar. Solche Menüaufteilungen sind dem Videospielentwickler bereits aus anderen Anwendungen bekannt, wodurch der Editor benutzerfreundlicher wird.
 
-Insgesamt ist die Benutzerfreundlichkeit und die Benutzbarkeit - nicht zuletzt aufgrund der bestehenden Komplexität des zu behandelnden Themas - nur schwer messbar.
+Insgesamt ist die Benutzerfreundlichkeit und die Benutzbarkeit - nicht zuletzt aufgrund der Komplexität der entstehenden Anwendung - nur schwer messbar.
