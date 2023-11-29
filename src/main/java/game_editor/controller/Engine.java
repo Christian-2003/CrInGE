@@ -21,7 +21,7 @@ public class Engine {
     public static void main(String[] args) throws NullPointerException, MathException {
 
         int width = 5, height = 2;
-        GameMap map = new GameMap(width, height, createChunks(width, height, 50));
+        GameMap map = new GameMap(width, height, createChunks(width, height, 20));
         SwingGameCanvas canvas = new SwingGameCanvas(map);
 
         JFrame frame = new JFrame("Game Test");
@@ -41,7 +41,9 @@ public class Engine {
             for (int x = 0; x < 16; x++) {
                 for (int y = 0; y < 16; y++) {
                     if (random.nextInt(100) < objectPercentage) {
-                        mapObjects.add(new MapObject(true, false, new Dimension(1, 1), new Dimension(1, 1), x, y, false, false));
+                        int objectWidth = random.nextInt(2) + 1;
+                        int objectHeight = random.nextInt(2) + 1;
+                        mapObjects.add(new MapObject(true, false, new Dimension(objectWidth, objectHeight), new Dimension(objectWidth, objectHeight), x, y, false, false));
                     }
                 }
             }

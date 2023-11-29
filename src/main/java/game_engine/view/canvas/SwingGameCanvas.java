@@ -63,6 +63,9 @@ public class SwingGameCanvas extends JComponent {
             int y = mapObject.getY() * OBJECT_HEIGHT + OFFSET;
             int width = mapObject.getSize().width * OBJECT_HEIGHT;
             int height = mapObject.getSize().height * OBJECT_HEIGHT;
+            //Draw back of the map object:
+            g.setColor(Color.BLACK);
+            g.fillRect(x, y, width, height);
             //Draw border of map object:
             g.setColor(Color.WHITE);
             g.drawLine(x, y, x + width, y); //Top line
@@ -70,7 +73,7 @@ public class SwingGameCanvas extends JComponent {
             g.drawLine(x + width, y, x + width, y + height); //Right line
             g.drawLine(x, y + height, x + width, y + height); //Bottom line
             g.drawLine(x, y, x + width, y + height); //Diagonal line 1
-            g.drawLine(x + width, y, x, y + width); //Diagonal line 2
+            g.drawLine(x + width, y, x, y + height); //Diagonal line 2
         }
         //Draw chunk borders:
         int x = OFFSET;
