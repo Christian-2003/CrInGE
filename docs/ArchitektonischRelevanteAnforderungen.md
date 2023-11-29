@@ -1,4 +1,4 @@
-<img src="./resources/img/logo.png" align="right">
+<img src="./resources/img/logo.png" height="100" align="right">
 
 # CrInGE - Architektonische Anforderungen
 
