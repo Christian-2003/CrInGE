@@ -24,16 +24,19 @@ public class MapObject extends GameObject {
     /**
      * Constructor instantiates a new {@link MapObject} with the passed arguments.
      *
-     * @param visible               Whether the MapObject is visible.
-     * @param tangible              Whether the MapObject is tangible.
-     * @param size                  Size of the MapObject.
-     * @param hitBox                Dimensions of the hit box for the MapObject.
-     * @param moving                Whether the MapObject is moving.
-     * @param movable               Whether the MapObject is movable.
-     * @throws NullPointerException One of the passed arguments is {@code null}.
+     * @param visible                   Whether the MapObject is visible.
+     * @param tangible                  Whether the MapObject is tangible.
+     * @param size                      Size of the MapObject.
+     * @param x                         X-coordinate of the MapObject within the chunk.
+     * @param y                         Y-coordinate of the MapObjeMapct within the chunk.
+     * @param hitBox                    Dimensions of the hit box for the MapObject.
+     * @param moving                    Whether the MapObject is moving.
+     * @param movable                   Whether the MapObject is movable.
+     * @throws NullPointerException     One of the passed arguments is {@code null}.
+     * @throws IllegalArgumentException The passed coordinates are invalid.
      */
-    public MapObject(boolean visible, boolean tangible, Dimension hitBox, Dimension size, boolean moving, boolean movable) throws NullPointerException {
-        super(visible, tangible, hitBox, size);
+    public MapObject(boolean visible, boolean tangible, Dimension hitBox, Dimension size, int x, int y, boolean moving, boolean movable) throws NullPointerException, IllegalArgumentException {
+        super(visible, tangible, hitBox, size, x, y);
         this.moving = moving;
         this.movable = movable;
     }

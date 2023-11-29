@@ -13,6 +13,12 @@ package game_engine.model;
 public class GameChunk {
 
     /**
+     * Constant stores the maximum width and height of a chunk.
+     */
+    public static int DIMENSION = 16;
+
+
+    /**
      * Attribute stores all {@link MapObject}s that are located within this chunk.
      */
     private MapObject[] mapObjects;
@@ -87,6 +93,15 @@ public class GameChunk {
         }
     }
 
+    /**
+     * Method determines whether there are any more {@link MapObject}s within {@link #mapObjects}.
+     *
+     * @return  Whethere thare are any more MapObjects.
+     */
+    public boolean hasNextMapObject() {
+        return currentMapObject >= 0 && currentMapObject < mapObjects.length - 1;
+    }
+
 
     /**
      * Method returns the next external {@link MapObject} in {@link #externalMapObjects} (chronologically). if this
@@ -118,6 +133,15 @@ public class GameChunk {
         if (externalMapObjects == null) {
             currentExternalMapObject = -1;
         }
+    }
+
+    /**
+     * Method determines whether there are any more {@link MapObject}s within {@link #externalMapObjects}.
+     *
+     * @return  Whethere thare are any more MapObjects.
+     */
+    public boolean hasNextExternalMapObject() {
+        return currentExternalMapObject >= 0 && currentExternalMapObject < externalMapObjects.length - 1;
     }
 
 }

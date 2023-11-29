@@ -19,17 +19,20 @@ public class MapObjectLightEmitting extends MapObject {
     /**
      * Constructor instantiates a new {@link MapObjectLightEmitting} with the passed arguments.
      *
-     * @param visible               Whether the MapObject is visible.
-     * @param tangible              Whether the MapObject is tangible.
-     * @param hitBox                Dimensions of the hit box for the MapObject.
-     * @param size                  Size of the MapObject.
-     * @param moving                Whether the MapObject is moving.
-     * @param movable               Whether the MapObject is movable.
-     * @param lightColor            Color of the light that is emitted from this MapObject.
-     * @throws NullPointerException One of the passed arguments is {@code null}.
+     * @param visible                   Whether the MapObject is visible.
+     * @param tangible                  Whether the MapObject is tangible.
+     * @param hitBox                    Dimensions of the hit box for the MapObject.
+     * @param size                      Size of the MapObject.
+     * @param x                         X-coordinate of the MapObject within the chunk.
+     * @param y                         Y-coordinate of the MapObject within the chunk.
+     * @param moving                    Whether the MapObject is moving.
+     * @param movable                   Whether the MapObject is movable.
+     * @param lightColor                Color of the light that is emitted from this MapObject.
+     * @throws NullPointerException     One of the passed arguments is {@code null}.
+     * @throws IllegalArgumentException The passed coordinates are invalid.
      */
-    public MapObjectLightEmitting(boolean visible, boolean tangible, Dimension hitBox, Dimension size, boolean moving, boolean movable, Color lightColor) throws NullPointerException {
-        super(visible, tangible, hitBox, size, moving, movable);
+    public MapObjectLightEmitting(boolean visible, boolean tangible, Dimension hitBox, Dimension size, int x, int y, boolean moving, boolean movable, Color lightColor) throws NullPointerException, IllegalArgumentException {
+        super(visible, tangible, hitBox, size, x, y, moving, movable);
         if (lightColor == null) {
             throw new NullPointerException("Null is invalid lightColor.");
         }

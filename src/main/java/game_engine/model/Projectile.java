@@ -13,14 +13,17 @@ public class Projectile extends Entity {
     /**
      * Constructor instantiates a new {@link Projectile} with the passed arguments.
      *
-     * @param visible               Whether the Projectile is visible.
-     * @param tangible              Whether the Projectile is tangible.
-     * @param hitBox                Dimensions of the hit box for the Projectile.
-     * @param size                  Size of the Projectile.
-     * @throws NullPointerException One of the passed arguments is {@code null}.
+     * @param visible                   Whether the Projectile is visible.
+     * @param tangible                  Whether the Projectile is tangible.
+     * @param hitBox                    Dimensions of the hit box for the Projectile.
+     * @param size                      Size of the Projectile.
+     * @param x                         X-coordinate of the Projectile within the chunk.
+     * @param y                         Y-coordinate of the Projectile within the chunk.
+     * @throws NullPointerException     One of the passed arguments is {@code null}.
+     * @throws IllegalArgumentException The passed coordinates are invalid.
      */
-    public Projectile(boolean visible, boolean tangible, Dimension hitBox, Dimension size) throws NullPointerException {
-        super(visible, tangible, hitBox, size);
+    public Projectile(boolean visible, boolean tangible, Dimension hitBox, Dimension size, int x, int y) throws NullPointerException, IllegalArgumentException {
+        super(visible, tangible, hitBox, size, x, y);
     }
 
     /**

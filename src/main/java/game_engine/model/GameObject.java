@@ -1,5 +1,6 @@
 package game_engine.model;
 
+import javax.swing.text.Position;
 import java.awt.*;
 
 
@@ -30,24 +31,37 @@ public abstract class GameObject {
      */
     protected Dimension size;
 
+    /**
+     * Attribute stores the coordinates of the MapObject within the {@link GameChunk}.
+     */
+    protected int x, y;
+
 
     /**
      * Constructor instantiates a new {@link GameObject} with the passed arguments.
      *
-     * @param visible               Whether the GameObject is visible.
-     * @param tangible              Whether the GameObject is tangible.
-     * @param hitBox                Dimensions of the hit box for the GameObject.
-     * @param size                  Size of the GameObject.
-     * @throws NullPointerException One of the passed arguments is {@code null}.
+     * @param visible                   Whether the GameObject is visible.
+     * @param tangible                  Whether the GameObject is tangible.
+     * @param hitBox                    Dimensions of the hit box for the GameObject.
+     * @param size                      Size of the GameObject.
+     * @param x                         X-coordinate of the GameObject within the chunk.
+     * @param y                         Y-coordinate of the GameObject within the chunk.
+     * @throws NullPointerException     One of the passed arguments is {@code null}.
+     * @throws IllegalArgumentException The passed coordinates are invalid.
      */
-    public GameObject(boolean visible, boolean tangible, Dimension hitBox, Dimension size) throws NullPointerException {
+    public GameObject(boolean visible, boolean tangible, Dimension hitBox, Dimension size, int x, int y) throws NullPointerException, IllegalArgumentException {
         if (hitBox == null || size == null) {
             throw new NullPointerException("Null is invalid argument.");
+        }
+        if (x < 0 || x >= GameChunk.DIMENSION || y < 0 || y >= GameChunk.DIMENSION) {
+            throw new IllegalArgumentException("Invalid coordinate for MapObject: (" + x + ", " + y + ")");
         }
         this.visible = visible;
         this.tangible = tangible;
         this.hitBox = hitBox;
         this.size = size;
+        this.x = x;
+        this.y = y;
     }
 
     /**
@@ -65,6 +79,7 @@ public abstract class GameObject {
         tangible = gameObject.isTangible();
         hitBox = gameObject.getHitBox();
         size = gameObject.getSize();
+
     }
 
 
@@ -106,6 +121,27 @@ public abstract class GameObject {
         this.size = size;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) throws IllegalArgumentException {
+        if (x < 0 || x >= GameChunk.DIMENSION) {
+            throw new IllegalArgumentException("Invalid coordinate for MapObject: (" + x + ", " + y + ")");
+        }
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) throws IllegalArgumentException {
+        if (y < 0 || y >= GameChunk.DIMENSION) {
+            throw new IllegalArgumentException("Invalid coordinate for MapObject: (" + x + ", " + y + ")");
+        }
+        this.y = y;
+    }
 
     /**
      * Method tests whether the attributes of the passed {@link GameObject} match the attributes of

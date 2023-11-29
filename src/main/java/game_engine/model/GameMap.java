@@ -54,6 +54,14 @@ public class GameMap {
     }
 
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
     /**
      * Method returns the {@link GameChunk} at the specified index. The returned chunk may be {@code null} if there is
      * nothing inside the corresponding chunk.

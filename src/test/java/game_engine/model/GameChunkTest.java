@@ -32,7 +32,7 @@ public class GameChunkTest {
     @Test
     @DisplayName("Access MapObject")
     public void accessMapObject() {
-        MapObject[] mapObjects = {new MapObject(true, true, new Dimension(128, 128), new Dimension(128, 128), false, false)};
+        MapObject[] mapObjects = {new MapObject(true, true, new Dimension(128, 128), new Dimension(128, 128), 0, 0, false, false)};
         GameChunk chunk = new GameChunk(mapObjects, null);
         Assertions.assertEquals(mapObjects[0], chunk.nextMapObject());
     }
@@ -41,7 +41,7 @@ public class GameChunkTest {
     @Test
     @DisplayName("Access external MapObject")
     public void accessExternalMapObject() {
-        MapObject[] mapObjects = {new MapObject(true, true, new Dimension(128, 128), new Dimension(128, 128), false, false)};
+        MapObject[] mapObjects = {new MapObject(true, true, new Dimension(128, 128), new Dimension(128, 128), 0, 0, false, false)};
         GameChunk chunk = new GameChunk(null, mapObjects);
         Assertions.assertEquals(mapObjects[0], chunk.nextExternalMapObject());
     }
@@ -50,7 +50,7 @@ public class GameChunkTest {
     @Test
     @DisplayName("Access non existent MapObject")
     public void accessNonExistentMapObject() {
-        MapObject[] mapObjects = {new MapObject(true, true, new Dimension(128, 128), new Dimension(128, 128), false, false)};
+        MapObject[] mapObjects = {new MapObject(true, true, new Dimension(128, 128), new Dimension(128, 128), 0, 0, false, false)};
         GameChunk chunk = new GameChunk(mapObjects, null);
         Assertions.assertEquals(mapObjects[0], chunk.nextMapObject());
         Assertions.assertThrowsExactly(IndexOutOfBoundsException.class, chunk::nextMapObject);
@@ -60,7 +60,7 @@ public class GameChunkTest {
     @Test
     @DisplayName("Access non existent external MapObject")
     public void accessNonExistentExternalMapObject() {
-        MapObject[] mapObjects = {new MapObject(true, true, new Dimension(128, 128), new Dimension(128, 128), false, false)};
+        MapObject[] mapObjects = {new MapObject(true, true, new Dimension(128, 128), new Dimension(128, 128), 0, 0, false, false)};
         GameChunk chunk = new GameChunk(null, mapObjects);
         Assertions.assertEquals(mapObjects[0], chunk.nextExternalMapObject());
         Assertions.assertThrowsExactly(IndexOutOfBoundsException.class, chunk::nextExternalMapObject);
@@ -70,7 +70,7 @@ public class GameChunkTest {
     @Test
     @DisplayName("Reset MapObject iterator")
     public void resetMapObjectIterator() {
-        MapObject[] mapObjects = {new MapObject(true, true, new Dimension(128, 128), new Dimension(128, 128), false, false)};
+        MapObject[] mapObjects = {new MapObject(true, true, new Dimension(128, 128), new Dimension(128, 128), 0, 0, false, false)};
         GameChunk chunk = new GameChunk(mapObjects, null);
         Assertions.assertEquals(mapObjects[0], chunk.nextMapObject());
         Assertions.assertThrowsExactly(IndexOutOfBoundsException.class, chunk::nextMapObject);
@@ -82,7 +82,7 @@ public class GameChunkTest {
     @Test
     @DisplayName("Reset external MapObject iterator")
     public void resetExternalMapObjectIterator() {
-        MapObject[] mapObjects = {new MapObject(true, true, new Dimension(128, 128), new Dimension(128, 128), false, false)};
+        MapObject[] mapObjects = {new MapObject(true, true, new Dimension(128, 128), new Dimension(128, 128), 0, 0, false, false)};
         GameChunk chunk = new GameChunk(null, mapObjects);
         Assertions.assertEquals(mapObjects[0], chunk.nextExternalMapObject());
         Assertions.assertThrowsExactly(IndexOutOfBoundsException.class, chunk::nextExternalMapObject);
