@@ -1,4 +1,4 @@
-<img src="./resources/img/logo.png" height="100" align="right">
+<img src="./resources/img/logo.png" align="right">
 
 # CrInGE - Architektonische Anforderungen
 
@@ -58,6 +58,10 @@ Fehler innerhalb des Quellcodes der Engine und des Editors können ausschließli
 
 Fehler, die in entwickelte Videospiele durch den Videospielentwickler eingeführt werden, können durch das CrInGE Entwicklungsteam nicht behoben werden. Auftretende Fehler können aber auf dieselbe Weise wie zuvor beschrieben in Log-Dateien dokumentiert werden. Videospieler können dann beim Auftreten von Fehlern diese Log-Dateien beim Videospielentwickler einreichen.
 
+<div align="center">
+    <img src="./resources/Qualitaetsbaeume/Verfuebarkeit.PNG" >
+</div>
+
 ### 3.2 Interoperabilität
 
 Die Engine verarbeitet weitgehen Daten, die durch den Editor erstellt wurden. Hierzu gehören beispielsweise Map-Dateien oder Assets. Beim Exportieren des Videospiels müssen diese Daten in korrekte Dateiformate überführt werden, damit diese von der Engine verwendet werden können.
@@ -65,6 +69,10 @@ Die Engine verarbeitet weitgehen Daten, die durch den Editor erstellt wurden. Hi
 Die von der Engine erstellten Dateien müssen korrekt sein. Dazu muss die Engine dies bei jedem Zugriff auf die Dateien überprüfen. Wenn die Dateien nicht korrekt sind, kann das Videospiel nicht ausgeführt werden.
 
 Vom Videospielentwickler erstellte Skripte müssen ebenfalls auf Korrektheit überprüft werden. Diese Skripe werden in der Programmiersprache Java entwickelt und beim Exportieren des Videospiels durch den Java Kompiler kompiliert. Dadurch werden die Skripte in die Jar-Datei, die das entwickelte Videospiel darstellt, eingebunden. Treten beim Kompilieren des Spiels keine Fehler auf, ist davon auszugehen, dass die Skripte korrekt sind. Treten beim Ausführen solcher Skripte Laifzeitfehler auf, so können diese abgefangen und in Log-Dateien dokumentiert werden. Hierbei handelt es sich dann um Fehler, die durch den Videospielentwickler eingeführt werden (siehe [3.1 Verfügbarkeit](#31-verfügbarkeit)).
+
+<div align="center">
+    <img src="./resources/Qualitaetsbaeume/Interoperabilitaet.PNG" >
+</div>
 
 ### 3.3 Änderbarkeit
 
@@ -84,6 +92,10 @@ Ladezeiten sollen in der Engine ebenfalls gering sein. Hier bietet sich derselbe
 
 Diese Kennzahlen sind selbstverständlich stark vom ausführenden Endgerät abhängig, jedoch wurden sie zur Orientierung des CrInGE Entwicklungsteam genau beziffert aufgenommen.
 
+<div align="center">
+    <img src="./resources/Qualitaetsbaeume/Performance.PNG" >
+</div>
+
 ### 3.5 Sicherheit
 
 Die vom Videospieleditor erzeugten Dateien dürfen nicht von Unbefugten bearbeitet werden, sodass deren Integrität fortlaufend gewahrt wird. Des Weiteren müssen diese Daten dem Editor jederzeit zur Verfügung stehen. Dies gilt ebenfalls für die Engine.
@@ -102,6 +114,10 @@ Es ist Anzunehmen, dass zwischen 30 % und 50 % des entstehenden Arbeitsaufwands 
 
 Insgesamt können die meisten Komponenten durch Unit-Tests mittels JUnit abgedeckt werden, wodurch die Fehleranzahl stark sinkt.
 
+<div align="center">
+    <img src="./resources/Qualitaetsbaeume/Testbarkeit.PNG" >
+</div>
+
 ### 3.7 Benutzbarkeit
 
 Damit die Anwendung als konkurrenzfähiges Produkt angesehen wird, muss sowohl Engine als auch Editor benutzbar und Benutzerfreundlich gestaltet sein.
@@ -113,3 +129,7 @@ Für den Editor ergeben sich im Sinne der Benutzbarkeit jedoch einige Maßstäbe
 Des Weiteren sollen gängige Designprinzipien beachtet werden. Beispielsweise soll es eine Menüleiste am oberen Bildschirmrand geben. Die Menüs sollen dabei vergleichbar zu anderer Software aufgebaut werden. Eine Einteilung in "Datei", "Bearbeiten", "Build", usw. wäre hierbei denkbar. Solche Menüaufteilungen sind dem Videospielentwickler bereits aus anderen Anwendungen bekannt, wodurch der Editor benutzerfreundlicher wird.
 
 Insgesamt ist die Benutzerfreundlichkeit und die Benutzbarkeit - nicht zuletzt aufgrund der Komplexität der entstehenden Anwendung - nur schwer messbar.
+
+<div align="center">
+    <img src="./resources/Qualitaetsbaeume/Benutzbarkeit.PNG" >
+</div>
