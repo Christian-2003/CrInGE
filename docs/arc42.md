@@ -83,7 +83,7 @@ Hier ein Überblick möglicher Themen (basierend auf dem ISO 25010
 Standard):
 
 ![Kategorien von
-Qualitätsanforderungen](images/01_2_iso-25010-topics-DE.drawio.png)
+Qualitätsanforderungen](resources/arc42-template-images/01_2_iso-25010-topics-DE.drawio.png)
 
 ::: formalpara-title
 **Motivation**
@@ -356,7 +356,7 @@ viele Implementierungsdetails offenlegen zu müssen.
 Die Bausteinsicht ist eine hierarchische Sammlung von Blackboxen und
 Whiteboxen (siehe Abbildung unten) und deren Beschreibungen.
 
-![Hierarchie in der Bausteinsicht](images/05_building_blocks-DE.png)
+![Hierarchie in der Bausteinsicht](resources/arc42-template-images/05_building_blocks-DE.png)
 
 **Ebene 1** ist die Whitebox-Beschreibung des Gesamtsystems, zusammen
 mit Blackbox-Beschreibungen der darin enthaltenen Bausteine.
@@ -792,7 +792,7 @@ den Gruppen nicht immer eindeutig ist):
 -   Betriebskonzepte
 
 ![Possible topics for crosscutting
-concepts](images/08-Crosscutting-Concepts-Structure-DE.png)
+concepts](resources/arc42-template-images/08-Crosscutting-Concepts-Structure-DE.png)
 
 Siehe [Querschnittliche Konzepte](https://docs.arc42.org/section-8/) in
 der online-Dokumentation (auf Englisch).
