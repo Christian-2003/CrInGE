@@ -1,22 +1,4 @@
-# 
-
-**Über arc42**
-
-arc42, das Template zur Dokumentation von Software- und
-Systemarchitekturen.
-
-Template Version 8.2 DE. (basiert auf AsciiDoc Version), Januar 2023
-
-Created, maintained and © by Dr. Peter Hruschka, Dr. Gernot Starke and
-contributors. Siehe <https://arc42.org>.
-
-::: note
-Diese Version des Templates enthält Hilfen und Erläuterungen. Sie dient
-der Einarbeitung in arc42 sowie dem Verständnis der Konzepte. Für die
-Dokumentation eigener System verwenden Sie besser die *plain* Version.
-:::
-
-# Einführung und Ziele {#section-introduction-and-goals}
+# Einführung und Ziele
 
 Beschreibt die wesentlichen Anforderungen und treibenden Kräfte, die bei
 der Umsetzung der Softwarearchitektur und Entwicklung des Systems
@@ -34,7 +16,7 @@ Dazu gehören:
 
 -   relevante Stakeholder und deren Erwartungshaltung.
 
-## Aufgabenstellung {#_aufgabenstellung}
+## Aufgabenstellung
 
 ::: formalpara-title
 **Inhalt**
@@ -67,7 +49,7 @@ und Redundanzfreiheit gegeneinander ab.
 Siehe [Anforderungen und Ziele](https://docs.arc42.org/section-1/) in
 der online-Dokumentation (auf Englisch!).
 
-## Qualitätsziele {#_qualit_tsziele}
+## Qualitätsziele
 
 ::: formalpara-title
 **Inhalt**
@@ -100,7 +82,7 @@ Qualitätsziele kennen, möglichst konkret und operationalisierbar.
 Tabellarische Darstellung der Qualitätsziele mit möglichst konkreten
 Szenarien, geordnet nach Prioritäten.
 
-## Stakeholder {#_stakeholder}
+## Stakeholder
 
 ::: formalpara-title
 **Inhalt**
@@ -136,15 +118,12 @@ von Ihnen zu leistenden Arbeit und Ergebnisse.
 Tabelle mit Rollen- oder Personennamen, sowie deren Erwartungshaltung
 bezüglich der Architektur und deren Dokumentation.
 
-+-----------------+-----------------+-----------------------------------+
 | Rolle           | Kontakt         | Erwartungshaltung                 |
-+=================+=================+===================================+
+|---|---|---|
 | *\<Rolle-1>*    | *\<Kontakt-1>*  | *\<Erwartung-1>*                  |
-+-----------------+-----------------+-----------------------------------+
 | *\<Rolle-2>*    | *\<Kontakt-2>*  | *\<Erwartung-2>*                  |
-+-----------------+-----------------+-----------------------------------+
 
-# Randbedingungen {#section-architecture-constraints}
+# Randbedingungen
 
 ::: formalpara-title
 **Inhalt**
@@ -177,7 +156,7 @@ Namenskonvention).
 Siehe [Randbedingungen](https://docs.arc42.org/section-2/) in der
 online-Dokumentation (auf Englisch!).
 
-# Kontextabgrenzung {#section-system-scope-and-context}
+# Kontextabgrenzung
 
 ::: formalpara-title
 **Inhalt**
@@ -213,7 +192,7 @@ Verschiedene Optionen:
 Siehe [Kontextabgrenzung](https://docs.arc42.org/section-3/) in der
 online-Dokumentation (auf Englisch!).
 
-## Fachlicher Kontext {#_fachlicher_kontext}
+## Fachlicher Kontext
 
 ::: formalpara-title
 **Inhalt**
@@ -246,7 +225,7 @@ Kommunikationsbeziehung, Eingabe, Ausgabe.
 
 **\<optional: Erläuterung der externen fachlichen Schnittstellen>**
 
-## Technischer Kontext {#_technischer_kontext}
+## Technischer Kontext
 
 ::: formalpara-title
 **Inhalt**
@@ -280,7 +259,7 @@ Ein-/Ausgaben abbildet.
 
 **\<Mapping fachliche auf technische Schnittstellen>**
 
-# Lösungsstrategie {#section-solution-strategy}
+# Lösungsstrategie
 
 ::: formalpara-title
 **Inhalt**
@@ -324,7 +303,7 @@ auf weitere Ausführungen in Folgeabschnitten.
 Siehe [Lösungsstrategie](https://docs.arc42.org/section-4/) in der
 online-Dokumentation (auf Englisch!).
 
-# Bausteinsicht {#section-building-block-view}
+# Bausteinsicht
 
 ::: formalpara-title
 **Inhalt**
@@ -371,7 +350,7 @@ Bausteine.
 Siehe [Bausteinsicht](https://docs.arc42.org/section-5/) in der
 online-Dokumentation (auf Englisch!).
 
-## Whitebox Gesamtsystem {#_whitebox_gesamtsystem}
+## Whitebox Gesamtsystem
 
 An dieser Stelle beschreiben Sie die Zerlegung des Gesamtsystems anhand
 des nachfolgenden Whitebox-Templates. Dieses enthält:
@@ -423,20 +402,17 @@ Hier folgen jetzt Erläuterungen zu Blackboxen der Ebene 1.
 Falls Sie die tabellarische Beschreibung wählen, so werden Blackboxen
 darin nur mit Name und Verantwortung nach folgendem Muster beschrieben:
 
-+-----------------------+-----------------------------------------------+
-| **Name**              | **Verantwortung**                             |
-+=======================+===============================================+
-| *\<Blackbox 1>*       |  *\<Text>*                                    |
-+-----------------------+-----------------------------------------------+
-| *\<Blackbox 2>*       |  *\<Text>*                                    |
-+-----------------------+-----------------------------------------------+
+| **Name** | **Verantwortung** |
+|---|---|
+| *\<Blackbox 1>*  |  *\<Text>*  |
+| *\<Blackbox 2>*  |  *\<Text>* |
 
 Falls Sie die ausführliche Liste von Blackbox-Beschreibungen wählen,
 beschreiben Sie jede wichtige Blackbox in einem eigenen
 Blackbox-Template. Dessen Überschrift ist jeweils der Namen dieser
 Blackbox.
 
-### \<Name Blackbox 1> {#__name_blackbox_1}
+### \<Name Blackbox 1>
 
 Beschreiben Sie die \<Blackbox 1> anhand des folgenden
 Blackbox-Templates:
@@ -469,21 +445,21 @@ Blackbox-Templates:
 
 *\<(optional) Offene Punkte/Probleme/Risiken>*
 
-### \<Name Blackbox 2> {#__name_blackbox_2}
+### \<Name Blackbox 2>
 
 *\<Blackbox-Template>*
 
-### \<Name Blackbox n> {#__name_blackbox_n}
+### \<Name Blackbox n>
 
 *\<Blackbox-Template>*
 
-### \<Name Schnittstelle 1> {#__name_schnittstelle_1}
+### \<Name Schnittstelle 1>
 
 ...
 
-### \<Name Schnittstelle m> {#__name_schnittstelle_m}
+### \<Name Schnittstelle m>
 
-## Ebene 2 {#_ebene_2}
+## Ebene 2
 
 Beschreiben Sie den inneren Aufbau (einiger) Bausteine aus Ebene 1 als
 Whitebox.
@@ -494,23 +470,23 @@ Skizzieren Sie wichtige, überraschende, riskante, komplexe oder
 besonders volatile Bausteine. Normale, einfache oder standardisierte
 Teile sollten Sie weglassen.
 
-### Whitebox *\<Baustein 1>* {#_whitebox_emphasis_baustein_1_emphasis}
+### Whitebox *\<Baustein 1>*
 
 ...zeigt das Innenleben von *Baustein 1*.
 
 *\<Whitebox-Template>*
 
-### Whitebox *\<Baustein 2>* {#_whitebox_emphasis_baustein_2_emphasis}
+### Whitebox *\<Baustein 2>*
 
 *\<Whitebox-Template>*
 
 ...
 
-### Whitebox *\<Baustein m>* {#_whitebox_emphasis_baustein_m_emphasis}
+### Whitebox *\<Baustein m>*
 
 *\<Whitebox-Template>*
 
-## Ebene 3 {#_ebene_3}
+## Ebene 3
 
 Beschreiben Sie den inneren Aufbau (einiger) Bausteine aus Ebene 2 als
 Whitebox.
@@ -518,21 +494,21 @@ Whitebox.
 Bei tieferen Gliederungen der Architektur kopieren Sie diesen Teil von
 arc42 für die weiteren Ebenen.
 
-### Whitebox \<\_Baustein x.1\_\> {#_whitebox_baustein_x_1}
+### Whitebox \<\_Baustein x.1\_\>
 
 ...zeigt das Innenleben von *Baustein x.1*.
 
 *\<Whitebox-Template>*
 
-### Whitebox \<\_Baustein x.2\_\> {#_whitebox_baustein_x_2}
+### Whitebox \<\_Baustein x.2\_\>
 
 *\<Whitebox-Template>*
 
-### Whitebox \<\_Baustein y.1\_\> {#_whitebox_baustein_y_1}
+### Whitebox \<\_Baustein y.1\_\>
 
 *\<Whitebox-Template>*
 
-# Laufzeitsicht {#section-runtime-view}
+# Laufzeitsicht
 
 ::: formalpara-title
 **Inhalt**
@@ -592,22 +568,22 @@ Ausdrucksmöglichkeiten. Nutzen Sie beispielsweise:
 Siehe [Laufzeitsicht](https://docs.arc42.org/section-6/) in der
 online-Dokumentation (auf Englisch!).
 
-## *\<Bezeichnung Laufzeitszenario 1>* {#__emphasis_bezeichnung_laufzeitszenario_1_emphasis}
+## *\<Bezeichnung Laufzeitszenario 1>*
 
 -   \<hier Laufzeitdiagramm oder Ablaufbeschreibung einfügen>
 
 -   \<hier Besonderheiten bei dem Zusammenspiel der Bausteine in diesem
     Szenario erläutern>
 
-## *\<Bezeichnung Laufzeitszenario 2>* {#__emphasis_bezeichnung_laufzeitszenario_2_emphasis}
+## *\<Bezeichnung Laufzeitszenario 2>*
 
 ...
 
-## *\<Bezeichnung Laufzeitszenario n>* {#__emphasis_bezeichnung_laufzeitszenario_n_emphasis}
+## *\<Bezeichnung Laufzeitszenario n>*
 
 ...
 
-# Verteilungssicht {#section-deployment-view}
+# Verteilungssicht
 
 ::: formalpara-title
 **Inhalt**
@@ -664,7 +640,7 @@ hinein:
 Siehe [Verteilungssicht](https://docs.arc42.org/section-7/) in der
 online-Dokumentation (auf Englisch!).
 
-## Infrastruktur Ebene 1 {#_infrastruktur_ebene_1}
+## Infrastruktur Ebene 1
 
 An dieser Stelle beschreiben Sie (als Kombination von Diagrammen mit
 Tabellen oder Texten):
@@ -696,28 +672,28 @@ Zuordnung von Bausteinen zu Infrastruktur
 
 :   *\<Beschreibung der Zuordnung>*
 
-## Infrastruktur Ebene 2 {#_infrastruktur_ebene_2}
+## Infrastruktur Ebene 2
 
 An dieser Stelle können Sie den inneren Aufbau (einiger)
 Infrastrukturelemente aus Ebene 1 beschreiben.
 
 Für jedes Infrastrukturelement kopieren Sie die Struktur aus Ebene 1.
 
-### *\<Infrastrukturelement 1>* {#__emphasis_infrastrukturelement_1_emphasis}
+### *\<Infrastrukturelement 1>*
 
 *\<Diagramm + Erläuterungen>*
 
-### *\<Infrastrukturelement 2>* {#__emphasis_infrastrukturelement_2_emphasis}
+### *\<Infrastrukturelement 2>*
 
 *\<Diagramm + Erläuterungen>*
 
 ...
 
-### *\<Infrastrukturelement n>* {#__emphasis_infrastrukturelement_n_emphasis}
+### *\<Infrastrukturelement n>*
 
 *\<Diagramm + Erläuterungen>*
 
-# Querschnittliche Konzepte {#section-concepts}
+# Querschnittliche Konzepte
 
 ::: formalpara-title
 **Inhalt**
@@ -797,21 +773,21 @@ concepts](resources/arc42-template-images/08-Crosscutting-Concepts-Structure-DE.
 Siehe [Querschnittliche Konzepte](https://docs.arc42.org/section-8/) in
 der online-Dokumentation (auf Englisch).
 
-## *\<Konzept 1>* {#__emphasis_konzept_1_emphasis}
+## *\<Konzept 1>*
 
 *\<Erklärung>*
 
-## *\<Konzept 2>* {#__emphasis_konzept_2_emphasis}
+## *\<Konzept 2>*
 
 *\<Erklärung>*
 
 ...
 
-## *\<Konzept n>* {#__emphasis_konzept_n_emphasis}
+## *\<Konzept n>*
 
 *\<Erklärung>*
 
-# Architekturentscheidungen {#section-design-decisions}
+# Architekturentscheidungen
 
 ::: formalpara-title
 **Inhalt**
@@ -854,7 +830,7 @@ Siehe [Architekturentscheidungen](https://docs.arc42.org/section-9/) in
 der arc42 Dokumentation (auf Englisch!). Dort finden Sie Links und
 Beispiele zum Thema ADR.
 
-# Qualitätsanforderungen {#section-quality-scenarios}
+# Qualitätsanforderungen
 
 ::: formalpara-title
 **Inhalt**
@@ -882,7 +858,7 @@ Qualitätsanforderungen kennen, möglichst konkret und operationalisiert.
 Siehe [Qualitätsanforderungen](https://docs.arc42.org/section-10/) in
 der online-Dokumentation (auf Englisch!).
 
-## Qualitätsbaum {#_qualit_tsbaum}
+## Qualitätsbaum
 
 ::: formalpara-title
 **Inhalt**
@@ -905,7 +881,7 @@ die --- oftmals zahlreichen --- Qualitätsanforderungen.
 In jedem Fall sollten Sie hier Verweise auf die Qualitätsszenarien des
 folgenden Abschnittes aufnehmen.
 
-## Qualitätsszenarien {#_qualit_tsszenarien}
+## Qualitätsszenarien
 
 ::: formalpara-title
 **Inhalt**
@@ -948,7 +924,7 @@ diskutierbaren und nachprüfbaren Szenarien.
 
 Entweder tabellarisch oder als Freitext.
 
-# Risiken und technische Schulden {#section-technical-risks}
+# Risiken und technische Schulden
 
 ::: formalpara-title
 **Inhalt**
@@ -977,7 +953,7 @@ Siehe [Risiken und technische
 Schulden](https://docs.arc42.org/section-11/) in der
 online-Dokumentation (auf Englisch!).
 
-# Glossar {#section-glossary}
+# Glossar
 
 ::: formalpara-title
 **Inhalt**
@@ -1006,10 +982,7 @@ Eventuell weitere Spalten mit Übersetzungen, falls notwendig.
 Siehe [Glossar](https://docs.arc42.org/section-12/) in der
 online-Dokumentation (auf Englisch!).
 
-+-----------------------+-----------------------------------------------+
-| Begriff               | Definition                                    |
-+=======================+===============================================+
-| *\<Begriff-1>*        | *\<Definition-1>*                             |
-+-----------------------+-----------------------------------------------+
-| *\<Begriff-2*         | *\<Definition-2>*                             |
-+-----------------------+-----------------------------------------------+
+| Begriff | Definition |
+|---|---|
+| *\<Begriff-1>* | *\<Definition-1>*  |
+| *\<Begriff-2* | *\<Definition-2>* |
