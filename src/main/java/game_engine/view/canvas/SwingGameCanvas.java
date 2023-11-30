@@ -1,5 +1,6 @@
 package game_engine.view.canvas;
 
+import game_engine.controller.RendererManager;
 import game_engine.model.GameChunk;
 import game_engine.model.GameMap;
 import game_engine.model.MapObject;
@@ -10,46 +11,23 @@ import java.awt.*;
 public class SwingGameCanvas extends JComponent {
 
     /**
-     * Constant stores the height and width for {@link game_engine.model.MapObject}s in pixels.
+     * Attribute <i>references</i> the {@link RendererManager} which renders a {@link GameMap} to this component.
      */
-    private static final int OBJECT_HEIGHT = 16;
-
-    /**
-     * Constant stores how far the game shall be offset from the top left corner in pixels.
-     */
-    private static final int OFFSET = 1;
-
-    /**
-     * Attribute references the {@link GameMap} which shall be rendered.
-     */
-    private GameMap map;
-
-    /**
-     * Attribute stores the position of the first component (upper left corner) to be painted.
-     */
-    private int x, y;
+    private final RendererManager rendererManager;
 
 
-    public SwingGameCanvas(GameMap map) throws NullPointerException {
-        if (map == null) {
-            throw new NullPointerException("Null is invalid map.");
+    public SwingGameCanvas(RendererManager rendererManager) throws NullPointerException {
+        if (rendererManager == null) {
+            throw new NullPointerException("Null is invalid RendererManager.");
         }
-        this.map = map;
+        this.rendererManager = rendererManager;
     }
 
-
-    public void setCoordinates(int x, int y) throws IllegalArgumentException, IndexOutOfBoundsException {
-        if (x < 0 || y < 0 || x >= map.getWidth() * GameChunk.DIMENSION || y >= map.getHeight() * GameChunk.DIMENSION) {
-            //Passed coordinate out of bounds:
-            throw new IndexOutOfBoundsException("Coordinate (" + x + ", " + y + ") out of bounds for map width=" + map.getWidth() + " and height=" + map.getHeight());
-        }
-        this.x = x;
-        this.y = y;
-        repaint();
-    }
 
     @Override
     public void paintComponent(Graphics g) {
+        rendererManager.renderGameMap(this, g);
+        /*
         //Fill background:
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, getSize().width, getSize().height);
@@ -84,6 +62,7 @@ public class SwingGameCanvas extends JComponent {
         g.drawLine(x, y, x, y + width); //Left line
         g.drawLine(x + width, y, x + width, y + width); //Right line
         g.drawLine(x, y + width, x + width, y + width); //Bottom line
+        */
     }
 
 }

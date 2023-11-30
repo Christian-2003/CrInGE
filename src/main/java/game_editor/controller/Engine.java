@@ -3,6 +3,7 @@ package game_editor.controller;
 import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.awt.GLCanvas;
+import game_engine.controller.RendererManager;
 import game_engine.controller.math_engine.MathException;
 import game_engine.model.GameChunk;
 import game_engine.model.GameMap;
@@ -22,7 +23,8 @@ public class Engine {
 
         int width = 5, height = 2;
         GameMap map = new GameMap(width, height, createChunks(width, height, 20));
-        SwingGameCanvas canvas = new SwingGameCanvas(map);
+        RendererManager renderer = new RendererManager(map);
+        SwingGameCanvas canvas = new SwingGameCanvas(renderer);
 
         JFrame frame = new JFrame("Game Test");
         frame.add(canvas);
