@@ -21,7 +21,7 @@ public class Engine {
     
     public static void main(String[] args) throws NullPointerException, MathException {
 
-        int width = 5, height = 2;
+        int width = 3, height = 2;
         GameMap map = new GameMap(width, height, createChunks(width, height, 20));
         RendererManager renderer = new RendererManager(map);
         SwingGameCanvas canvas = new SwingGameCanvas(renderer);

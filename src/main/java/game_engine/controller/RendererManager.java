@@ -165,13 +165,8 @@ public class RendererManager {
                 //Ignore current mapObject, as it does not need to be rendered..
                 continue;
             }
-            int width = mapObject.getSize().width;
-            int height = mapObject.getSize().height;
-            //Convert coordinates to canvas coordinates:
-            x += x * MAP_OBJECT_SIZE + offsetX;
-            y += y * MAP_OBJECT_SIZE + offsetY;
             //Render mapObject:
-            renderMapObject(mapObject, x, y);
+            renderMapObject(mapObject, x * MAP_OBJECT_SIZE + offsetX, y * MAP_OBJECT_SIZE + offsetY);
         }
         //Draw chunk borders:
         int width = (endX - startX) * MAP_OBJECT_SIZE;
@@ -208,7 +203,7 @@ public class RendererManager {
 
         //Render MapObject:
         g.setColor(Color.BLACK);
-        g.fillRect(x, y, x + width, y + height); //Fill background color
+        g.fillRect(x, y, width, height); //Fill background color
         g.setColor(Color.WHITE);
         g.drawLine(x, y, x + width, y); //Top line
         g.drawLine(x, y, x, y + height); //Left line
