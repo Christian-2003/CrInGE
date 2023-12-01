@@ -1,4 +1,6 @@
-# Inhaltsverzeichnis
+# Momentane Softwarearchitektur
+
+## Inhaltsverzeichnis
 
 1. [Kapitel 1 - Einführung und Ziele](#kapitel-1---einführung-und-ziele)
 2. [Kapitel-2 - Randbedingungen](#kapitel-2---randbedingungen)
@@ -12,7 +14,7 @@
 10. [Kapitel 10 - Qualitätsanforderungen](#kapitel-10---qualitätsanforderungen)
 11. [Kapitel 11 - Risiken und technische Schulden](#kapitel-11---risiken-und-technische-schulden)
 
-# Kapitel 1 - Einführung und Ziele
+## Kapitel 1 - Einführung und Ziele
 
 Beschreibt die wesentlichen Anforderungen und treibenden Kräfte, die bei
 der Umsetzung der Softwarearchitektur und Entwicklung des Systems
@@ -20,17 +22,13 @@ berücksichtigt werden müssen.
 
 Dazu gehören:
 
--   zugrunde liegende Geschäftsziele,
+- zugrunde liegende Geschäftsziele,
+- wesentliche Aufgabenstellungen,
+- wesentliche funktionale Anforderungen,
+- Qualitätsziele für die Architektur und
+- relevante Stakeholder und deren Erwartungshaltung.
 
--   wesentliche Aufgabenstellungen,
-
--   wesentliche funktionale Anforderungen,
-
--   Qualitätsziele für die Architektur und
-
--   relevante Stakeholder und deren Erwartungshaltung.
-
-## Aufgabenstellung
+### Aufgabenstellung
 
 ::: formalpara-title
 **Inhalt**
@@ -63,7 +61,7 @@ und Redundanzfreiheit gegeneinander ab.
 Siehe [Anforderungen und Ziele](https://docs.arc42.org/section-1/) in
 der online-Dokumentation (auf Englisch!).
 
-## Qualitätsziele
+### Qualitätsziele
 
 ::: formalpara-title
 **Inhalt**
@@ -96,7 +94,7 @@ Qualitätsziele kennen, möglichst konkret und operationalisierbar.
 Tabellarische Darstellung der Qualitätsziele mit möglichst konkreten
 Szenarien, geordnet nach Prioritäten.
 
-## Stakeholder
+### Stakeholder
 
 ::: formalpara-title
 **Inhalt**
@@ -105,16 +103,11 @@ Szenarien, geordnet nach Prioritäten.
 Expliziter Überblick über die Stakeholder des Systems -- über alle
 Personen, Rollen oder Organisationen --, die
 
--   die Architektur kennen sollten oder
-
--   von der Architektur überzeugt werden müssen,
-
--   mit der Architektur oder dem Code arbeiten (z.B. Schnittstellen
-    nutzen),
-
--   die Dokumentation der Architektur für ihre eigene Arbeit benötigen,
-
--   Entscheidungen über das System und dessen Entwicklung treffen.
+- die Architektur kennen sollten oder
+- von der Architektur überzeugt werden müssen,
+- mit der Architektur oder dem Code arbeiten (z.B. Schnittstellen nutzen),
+- die Dokumentation der Architektur für ihre eigene Arbeit benötigen,
+- Entscheidungen über das System und dessen Entwicklung treffen.
 
 ::: formalpara-title
 **Motivation**
@@ -137,7 +130,7 @@ bezüglich der Architektur und deren Dokumentation.
 | *\<Rolle-1>*    | *\<Kontakt-1>*  | *\<Erwartung-1>*                  |
 | *\<Rolle-2>*    | *\<Kontakt-2>*  | *\<Erwartung-2>*                  |
 
-# Kapitel 2 - Randbedingungen
+## Kapitel 2 - Randbedingungen
 
 ::: formalpara-title
 **Inhalt**
@@ -170,7 +163,7 @@ Namenskonvention).
 Siehe [Randbedingungen](https://docs.arc42.org/section-2/) in der
 online-Dokumentation (auf Englisch!).
 
-# Kapitel 3 - Kontextabgrenzung
+## Kapitel 3 - Kontextabgrenzung
 
 ::: formalpara-title
 **Inhalt**
@@ -199,14 +192,13 @@ diese komplett verstanden haben.
 
 Verschiedene Optionen:
 
--   Diverse Kontextdiagramme
-
--   Listen von Kommunikationsbeziehungen mit deren Schnittstellen
+- Diverse Kontextdiagramme
+- Listen von Kommunikationsbeziehungen mit deren Schnittstellen
 
 Siehe [Kontextabgrenzung](https://docs.arc42.org/section-3/) in der
 online-Dokumentation (auf Englisch!).
 
-## Fachlicher Kontext
+### Fachlicher Kontext
 
 ::: formalpara-title
 **Inhalt**
@@ -239,7 +231,7 @@ Kommunikationsbeziehung, Eingabe, Ausgabe.
 
 **\<optional: Erläuterung der externen fachlichen Schnittstellen>**
 
-## Technischer Kontext
+### Technischer Kontext
 
 ::: formalpara-title
 **Inhalt**
@@ -273,7 +265,7 @@ Ein-/Ausgaben abbildet.
 
 **\<Mapping fachliche auf technische Schnittstellen>**
 
-# Kapitel 4 - Lösungsstrategie
+## Kapitel 4 - Lösungsstrategie
 
 ::: formalpara-title
 **Inhalt**
@@ -283,18 +275,10 @@ Kurzer Überblick über die grundlegenden Entscheidungen und
 Lösungsansätze, die Entwurf und Implementierung des Systems prägen.
 Hierzu gehören:
 
--   Technologieentscheidungen
-
--   Entscheidungen über die Top-Level-Zerlegung des Systems,
-    beispielsweise die Verwendung gesamthaft prägender Entwurfs- oder
-    Architekturmuster,
-
--   Entscheidungen zur Erreichung der wichtigsten Qualitätsanforderungen
-    sowie
-
--   relevante organisatorische Entscheidungen, beispielsweise für
-    bestimmte Entwicklungsprozesse oder Delegation bestimmter Aufgaben
-    an andere Stakeholder.
+- Technologieentscheidungen
+- Entscheidungen über die Top-Level-Zerlegung des Systems, beispielsweise die Verwendung gesamthaft prägender Entwurfs- oder Architekturmuster,
+- Entscheidungen zur Erreichung der wichtigsten Qualitätsanforderungen sowie
+- relevante organisatorische Entscheidungen, beispielsweise für bestimmte Entwicklungsprozesse oder Delegation bestimmter Aufgaben an andere Stakeholder.
 
 ::: formalpara-title
 **Motivation**
@@ -317,7 +301,7 @@ auf weitere Ausführungen in Folgeabschnitten.
 Siehe [Lösungsstrategie](https://docs.arc42.org/section-4/) in der
 online-Dokumentation (auf Englisch!).
 
-# Kapitel 5 - Bausteinsicht
+## Kapitel 5 - Bausteinsicht
 
 ::: formalpara-title
 **Inhalt**
@@ -364,38 +348,17 @@ Bausteine.
 Siehe [Bausteinsicht](https://docs.arc42.org/section-5/) in der
 online-Dokumentation (auf Englisch!).
 
-## Whitebox Gesamtsystem
+### Whitebox Gesamtsystem
 
 An dieser Stelle beschreiben Sie die Zerlegung des Gesamtsystems anhand
 des nachfolgenden Whitebox-Templates. Dieses enthält:
 
--   Ein Übersichtsdiagramm
-
--   die Begründung dieser Zerlegung
-
--   Blackbox-Beschreibungen der hier enthaltenen Bausteine. Dafür haben
-    Sie verschiedene Optionen:
-
-    -   in *einer* Tabelle, gibt einen kurzen und pragmatischen
-        Überblick über die enthaltenen Bausteine sowie deren
-        Schnittstellen.
-
-    -   als Liste von Blackbox-Beschreibungen der Bausteine, gemäß dem
-        Blackbox-Template (siehe unten). Diese Liste können Sie, je nach
-        Werkzeug, etwa in Form von Unterkapiteln (Text), Unter-Seiten
-        (Wiki) oder geschachtelten Elementen (Modellierungswerkzeug)
-        darstellen.
-
--   (optional:) wichtige Schnittstellen, die nicht bereits im
-    Blackbox-Template eines der Bausteine erläutert werden, aber für das
-    Verständnis der Whitebox von zentraler Bedeutung sind. Aufgrund der
-    vielfältigen Möglichkeiten oder Ausprägungen von Schnittstellen
-    geben wir hierzu kein weiteres Template vor. Im schlimmsten Fall
-    müssen Sie Syntax, Semantik, Protokolle, Fehlerverhalten,
-    Restriktionen, Versionen, Qualitätseigenschaften, notwendige
-    Kompatibilitäten und vieles mehr spezifizieren oder beschreiben. Im
-    besten Fall kommen Sie mit Beispielen oder einfachen Signaturen
-    zurecht.
+- Ein Übersichtsdiagramm
+- die Begründung dieser Zerlegung
+- Blackbox-Beschreibungen der hier enthaltenen Bausteine. Dafür haben Sie verschiedene Optionen:
+  - in *einer* Tabelle, gibt einen kurzen und pragmatischen Überblick über die enthaltenen Bausteine sowie deren Schnittstellen.
+  - als Liste von Blackbox-Beschreibungen der Bausteine, gemäß dem Blackbox-Template (siehe unten). Diese Liste können Sie, je nach Werkzeug, etwa in Form von Unterkapiteln (Text), Unter-Seiten (Wiki) oder geschachtelten Elementen (Modellierungswerkzeug) darstellen.
+- (optional:) wichtige Schnittstellen, die nicht bereits im Blackbox-Template eines der Bausteine erläutert werden, aber für das Verständnis der Whitebox von zentraler Bedeutung sind. Aufgrund der vielfältigen Möglichkeiten oder Ausprägungen von Schnittstellen geben wir hierzu kein weiteres Template vor. Im schlimmsten Fall müssen Sie Syntax, Semantik, Protokolle, Fehlerverhalten, Restriktionen, Versionen, Qualitätseigenschaften, notwendige Kompatibilitäten und vieles mehr spezifizieren oder beschreiben. Im besten Fall kommen Sie mit Beispielen oder einfachen Signaturen zurecht.
 
 ***\<Übersichtsdiagramm>***
 
@@ -426,26 +389,26 @@ beschreiben Sie jede wichtige Blackbox in einem eigenen
 Blackbox-Template. Dessen Überschrift ist jeweils der Namen dieser
 Blackbox.
 
-### \<Name Blackbox 1>
+#### \<Name Blackbox 1>
 
 Beschreiben Sie die \<Blackbox 1> anhand des folgenden
 Blackbox-Templates:
 
--   Zweck/Verantwortung
+- Zweck/Verantwortung
 
--   Schnittstelle(n), sofern diese nicht als eigenständige
+- Schnittstelle(n), sofern diese nicht als eigenständige
     Beschreibungen herausgezogen sind. Hierzu gehören eventuell auch
     Qualitäts- und Leistungsmerkmale dieser Schnittstelle.
 
--   (Optional) Qualitäts-/Leistungsmerkmale der Blackbox, beispielsweise
+- (Optional) Qualitäts-/Leistungsmerkmale der Blackbox, beispielsweise
     Verfügbarkeit, Laufzeitverhalten o. Ä.
 
--   (Optional) Ablageort/Datei(en)
+- (Optional) Ablageort/Datei(en)
 
--   (Optional) Erfüllte Anforderungen, falls Sie Traceability zu
+- (Optional) Erfüllte Anforderungen, falls Sie Traceability zu
     Anforderungen benötigen.
 
--   (Optional) Offene Punkte/Probleme/Risiken
+- (Optional) Offene Punkte/Probleme/Risiken
 
 *\<Zweck/Verantwortung>*
 
@@ -459,21 +422,21 @@ Blackbox-Templates:
 
 *\<(optional) Offene Punkte/Probleme/Risiken>*
 
-### \<Name Blackbox 2>
+#### \<Name Blackbox 2>
 
 *\<Blackbox-Template>*
 
-### \<Name Blackbox n>
+#### \<Name Blackbox n>
 
 *\<Blackbox-Template>*
 
-### \<Name Schnittstelle 1>
+#### \<Name Schnittstelle 1>
 
 ...
 
-### \<Name Schnittstelle m>
+#### \<Name Schnittstelle m>
 
-## Ebene 2
+### Ebene 2
 
 Beschreiben Sie den inneren Aufbau (einiger) Bausteine aus Ebene 1 als
 Whitebox.
@@ -484,23 +447,23 @@ Skizzieren Sie wichtige, überraschende, riskante, komplexe oder
 besonders volatile Bausteine. Normale, einfache oder standardisierte
 Teile sollten Sie weglassen.
 
-### Whitebox *\<Baustein 1>*
+#### Whitebox *\<Baustein 1>*
 
 ...zeigt das Innenleben von *Baustein 1*.
 
 *\<Whitebox-Template>*
 
-### Whitebox *\<Baustein 2>*
+#### Whitebox *\<Baustein 2>*
 
 *\<Whitebox-Template>*
 
 ...
 
-### Whitebox *\<Baustein m>*
+#### Whitebox *\<Baustein m>*
 
 *\<Whitebox-Template>*
 
-## Ebene 3
+### Ebene 3
 
 Beschreiben Sie den inneren Aufbau (einiger) Bausteine aus Ebene 2 als
 Whitebox.
@@ -508,21 +471,21 @@ Whitebox.
 Bei tieferen Gliederungen der Architektur kopieren Sie diesen Teil von
 arc42 für die weiteren Ebenen.
 
-### Whitebox \<\_Baustein x.1\_\>
+#### Whitebox \<\_Baustein x.1\_\>
 
 ...zeigt das Innenleben von *Baustein x.1*.
 
 *\<Whitebox-Template>*
 
-### Whitebox \<\_Baustein x.2\_\>
+#### Whitebox \<\_Baustein x.2\_\>
 
 *\<Whitebox-Template>*
 
-### Whitebox \<\_Baustein y.1\_\>
+#### Whitebox \<\_Baustein y.1\_\>
 
 *\<Whitebox-Template>*
 
-# Kapitel 6 - Laufzeitsicht
+## Kapitel 6 - Laufzeitsicht
 
 ::: formalpara-title
 **Inhalt**
@@ -531,15 +494,10 @@ arc42 für die weiteren Ebenen.
 Diese Sicht erklärt konkrete Abläufe und Beziehungen zwischen Bausteinen
 in Form von Szenarien aus den folgenden Bereichen:
 
--   Wichtige Abläufe oder *Features*: Wie führen die Bausteine der
-    Architektur die wichtigsten Abläufe durch?
-
--   Interaktionen an kritischen externen Schnittstellen: Wie arbeiten
-    Bausteine mit Nutzern und Nachbarsystemen zusammen?
-
--   Betrieb und Administration: Inbetriebnahme, Start, Stop.
-
--   Fehler- und Ausnahmeszenarien
+- Wichtige Abläufe oder *Features*: Wie führen die Bausteine der Architektur die wichtigsten Abläufe durch?
+- Interaktionen an kritischen externen Schnittstellen: Wie arbeiten Bausteine mit Nutzern und Nachbarsystemen zusammen?
+- Betrieb und Administration: Inbetriebnahme, Start, Stop.
+- Fehler- und Ausnahmeszenarien
 
 Anmerkung: Das Kriterium für die Auswahl der möglichen Szenarien (d.h.
 Abläufe) des Systems ist deren Architekturrelevanz. Es geht nicht darum,
@@ -566,38 +524,31 @@ verständlich finden.
 Für die Beschreibung von Szenarien gibt es zahlreiche
 Ausdrucksmöglichkeiten. Nutzen Sie beispielsweise:
 
--   Nummerierte Schrittfolgen oder Aufzählungen in Umgangssprache
-
--   Aktivitäts- oder Flussdiagramme
-
--   Sequenzdiagramme
-
--   BPMN (Geschäftsprozessmodell und -notation) oder EPKs
-    (Ereignis-Prozessketten)
-
--   Zustandsautomaten
-
--   ...
+- Nummerierte Schrittfolgen oder Aufzählungen in Umgangssprache
+- Aktivitäts- oder Flussdiagramme
+- Sequenzdiagramme
+- BPMN (Geschäftsprozessmodell und -notation) oder EPKs (Ereignis-Prozessketten)
+- Zustandsautomaten
+- ...
 
 Siehe [Laufzeitsicht](https://docs.arc42.org/section-6/) in der
 online-Dokumentation (auf Englisch!).
 
-## *\<Bezeichnung Laufzeitszenario 1>*
+### *\<Bezeichnung Laufzeitszenario 1>*
 
--   \<hier Laufzeitdiagramm oder Ablaufbeschreibung einfügen>
-
--   \<hier Besonderheiten bei dem Zusammenspiel der Bausteine in diesem
+- \<hier Laufzeitdiagramm oder Ablaufbeschreibung einfügen>
+- \<hier Besonderheiten bei dem Zusammenspiel der Bausteine in diesem
     Szenario erläutern>
 
-## *\<Bezeichnung Laufzeitszenario 2>*
+### *\<Bezeichnung Laufzeitszenario 2>*
 
 ...
 
-## *\<Bezeichnung Laufzeitszenario n>*
+### *\<Bezeichnung Laufzeitszenario n>*
 
 ...
 
-# Kapitel 7 - Verteilungssicht
+## Kapitel 7 - Verteilungssicht
 
 ::: formalpara-title
 **Inhalt**
@@ -605,12 +556,8 @@ online-Dokumentation (auf Englisch!).
 
 Die Verteilungssicht beschreibt:
 
-1.  die technische Infrastruktur, auf der Ihr System ausgeführt wird,
-    mit Infrastrukturelementen wie Standorten, Umgebungen, Rechnern,
-    Prozessoren, Kanälen und Netztopologien sowie sonstigen
-    Bestandteilen, und
-
-2.  die Abbildung von (Software-)Bausteinen auf diese Infrastruktur.
+1. die technische Infrastruktur, auf der Ihr System ausgeführt wird, mit Infrastrukturelementen wie Standorten, Umgebungen, Rechnern, Prozessoren, Kanälen und Netztopologien sowie sonstigen Bestandteilen, und
+2. die Abbildung von (Software-)Bausteinen auf diese Infrastruktur.
 
 Häufig laufen Systeme in unterschiedlichen Umgebungen, beispielsweise
 Entwicklung-/Test- oder Produktionsumgebungen. In solchen Fällen sollten
@@ -642,32 +589,21 @@ Kontext enthalten sein, mit Ihrer Infrastruktur als EINE Blackbox. Jetzt
 zoomen Sie in diese Infrastruktur mit weiteren Verteilungsdiagrammen
 hinein:
 
--   Die UML stellt mit Verteilungsdiagrammen (Deployment diagrams) eine
-    Diagrammart zur Verfügung, um diese Sicht auszudrücken. Nutzen Sie
-    diese, evtl. auch geschachtelt, wenn Ihre Verteilungsstruktur es
-    verlangt.
-
--   Falls Ihre Infrastruktur-Stakeholder andere Diagrammarten
-    bevorzugen, die beispielsweise Prozessoren und Kanäle zeigen, sind
-    diese hier ebenfalls einsetzbar.
+- Die UML stellt mit Verteilungsdiagrammen (Deployment diagrams) eine Diagrammart zur Verfügung, um diese Sicht auszudrücken. Nutzen Sie diese, evtl. auch geschachtelt, wenn Ihre Verteilungsstruktur es verlangt.
+- Falls Ihre Infrastruktur-Stakeholder andere Diagrammarten bevorzugen, die beispielsweise Prozessoren und Kanäle zeigen, sind diese hier ebenfalls einsetzbar.
 
 Siehe [Verteilungssicht](https://docs.arc42.org/section-7/) in der
 online-Dokumentation (auf Englisch!).
 
-## Infrastruktur Ebene 1
+### Infrastruktur Ebene 1
 
 An dieser Stelle beschreiben Sie (als Kombination von Diagrammen mit
 Tabellen oder Texten):
 
--   die Verteilung des Gesamtsystems auf mehrere Standorte, Umgebungen,
-    Rechner, Prozessoren o. Ä., sowie die physischen Verbindungskanäle
-    zwischen diesen,
-
--   wichtige Begründungen für diese Verteilungsstruktur,
-
--   Qualitäts- und/oder Leistungsmerkmale dieser Infrastruktur,
-
--   Zuordnung von Softwareartefakten zu Bestandteilen der Infrastruktur
+- die Verteilung des Gesamtsystems auf mehrere Standorte, Umgebungen, Rechner, Prozessoren o. Ä., sowie die physischen Verbindungskanäle zwischen diesen,
+- wichtige Begründungen für diese Verteilungsstruktur,
+- Qualitäts- und/oder Leistungsmerkmale dieser Infrastruktur,
+- Zuordnung von Softwareartefakten zu Bestandteilen der Infrastruktur
 
 Für mehrere Umgebungen oder alternative Deployments kopieren Sie diesen
 Teil von arc42 für alle wichtigen Umgebungen/Varianten.
@@ -686,28 +622,28 @@ Zuordnung von Bausteinen zu Infrastruktur
 
 :   *\<Beschreibung der Zuordnung>*
 
-## Infrastruktur Ebene 2
+### Infrastruktur Ebene 2
 
 An dieser Stelle können Sie den inneren Aufbau (einiger)
 Infrastrukturelemente aus Ebene 1 beschreiben.
 
 Für jedes Infrastrukturelement kopieren Sie die Struktur aus Ebene 1.
 
-### *\<Infrastrukturelement 1>*
+#### *\<Infrastrukturelement 1>*
 
 *\<Diagramm + Erläuterungen>*
 
-### *\<Infrastrukturelement 2>*
+#### *\<Infrastrukturelement 2>*
 
 *\<Diagramm + Erläuterungen>*
 
 ...
 
-### *\<Infrastrukturelement n>*
+#### *\<Infrastrukturelement n>*
 
 *\<Diagramm + Erläuterungen>*
 
-# Kapitel 8 - Querschnittliche Konzepte
+## Kapitel 8 - Querschnittliche Konzepte
 
 ::: formalpara-title
 **Inhalt**
@@ -720,16 +656,11 @@ sind.
 Solche Konzepte betreffen oft mehrere Bausteine. Dazu können vielerlei
 Themen gehören, beispielsweise:
 
--   Modelle, insbesondere fachliche Modelle
-
--   Architektur- oder Entwurfsmuster
-
--   Regeln für den konkreten Einsatz von Technologien
-
--   prinzipielle --- meist technische --- Festlegungen übergreifender
-    Art
-
--   Implementierungsregeln
+- Modelle, insbesondere fachliche Modelle
+- Architektur- oder Entwurfsmuster
+- Regeln für den konkreten Einsatz von Technologien
+- prinzipielle --- meist technische --- Festlegungen übergreifender Art
+- Implementierungsregeln
 
 ::: formalpara-title
 **Motivation**
@@ -748,16 +679,10 @@ Architektur unterbringen (z.B. das Thema „Sicherheit").
 
 Kann vielfältig sein:
 
--   Konzeptpapiere mit beliebiger Gliederung,
-
--   übergreifende Modelle/Szenarien mit Notationen, die Sie auch in den
-    Architektursichten nutzen,
-
--   beispielhafte Implementierung speziell für technische Konzepte,
-
--   Verweise auf „übliche" Nutzung von Standard-Frameworks
-    (beispielsweise die Nutzung von Hibernate als Object/Relational
-    Mapper).
+- Konzeptpapiere mit beliebiger Gliederung,
+- übergreifende Modelle/Szenarien mit Notationen, die Sie auch in den Architektursichten nutzen,
+- beispielhafte Implementierung speziell für technische Konzepte,
+- Verweise auf „übliche" Nutzung von Standard-Frameworks (beispielsweise die Nutzung von Hibernate als Object/Relational Mapper).
 
 ::: formalpara-title
 **Struktur**
@@ -767,19 +692,13 @@ Eine mögliche (nicht aber notwendige!) Untergliederung dieses
 Abschnittes könnte wie folgt aussehen (wobei die Zuordnung von Themen zu
 den Gruppen nicht immer eindeutig ist):
 
--   Fachliche Konzepte
-
--   User Experience (UX)
-
--   Sicherheitskonzepte (Safety und Security)
-
--   Architektur- und Entwurfsmuster
-
--   Unter-der-Haube
-
--   Entwicklungskonzepte
-
--   Betriebskonzepte
+- Fachliche Konzepte
+- User Experience (UX)
+- Sicherheitskonzepte (Safety und Security)
+- Architektur- und Entwurfsmuster
+- Unter-der-Haube
+- Entwicklungskonzepte
+- Betriebskonzepte
 
 ![Possible topics for crosscutting
 concepts](resources/arc42-template-images/08-Crosscutting-Concepts-Structure-DE.png)
@@ -787,21 +706,21 @@ concepts](resources/arc42-template-images/08-Crosscutting-Concepts-Structure-DE.
 Siehe [Querschnittliche Konzepte](https://docs.arc42.org/section-8/) in
 der online-Dokumentation (auf Englisch).
 
-## *\<Konzept 1>*
+### *\<Konzept 1>*
 
 *\<Erklärung>*
 
-## *\<Konzept 2>*
+### *\<Konzept 2>*
 
 *\<Erklärung>*
 
 ...
 
-## *\<Konzept n>*
+### *\<Konzept n>*
 
 *\<Erklärung>*
 
-# Kapitel 9 - Architekturentscheidungen
+## Kapitel 9 - Architekturentscheidungen
 
 ::: formalpara-title
 **Inhalt**
@@ -831,20 +750,15 @@ nachvollziehen können.
 
 Verschiedene Möglichkeiten:
 
--   ADR ([Documenting Architecture
-    Decisions](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions))
-    für jede wichtige Entscheidung
-
--   Liste oder Tabelle, nach Wichtigkeit und Tragweite der
-    Entscheidungen geordnet
-
--   ausführlicher in Form einzelner Unterkapitel je Entscheidung
+- ADR ([Documenting Architecture Decisions](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions)) für jede wichtige Entscheidung
+- Liste oder Tabelle, nach Wichtigkeit und Tragweite der Entscheidungen geordnet
+- ausführlicher in Form einzelner Unterkapitel je Entscheidung
 
 Siehe [Architekturentscheidungen](https://docs.arc42.org/section-9/) in
 der arc42 Dokumentation (auf Englisch!). Dort finden Sie Links und
 Beispiele zum Thema ADR.
 
-# Kapitel 10 - Qualitätsanforderungen
+## Kapitel 10 - Qualitätsanforderungen
 
 ::: formalpara-title
 **Inhalt**
@@ -872,7 +786,7 @@ Qualitätsanforderungen kennen, möglichst konkret und operationalisiert.
 Siehe [Qualitätsanforderungen](https://docs.arc42.org/section-10/) in
 der online-Dokumentation (auf Englisch!).
 
-## Qualitätsbaum
+### Qualitätsbaum
 
 ::: formalpara-title
 **Inhalt**
@@ -887,15 +801,13 @@ Der Qualitätsbaum (à la ATAM) mit Qualitätsszenarien an den Blättern.
 Die mit Prioritäten versehene Baumstruktur gibt Überblick über
 die --- oftmals zahlreichen --- Qualitätsanforderungen.
 
--   Baumartige Verfeinerung des Begriffes „Qualität", mit „Qualität"
-    oder „Nützlichkeit" als Wurzel.
-
--   Mindmap mit Qualitätsoberbegriffen als Hauptzweige
+- Baumartige Verfeinerung des Begriffes „Qualität", mit „Qualität" oder „Nützlichkeit" als Wurzel.
+- Mindmap mit Qualitätsoberbegriffen als Hauptzweige
 
 In jedem Fall sollten Sie hier Verweise auf die Qualitätsszenarien des
 folgenden Abschnittes aufnehmen.
 
-## Qualitätsszenarien
+### Qualitätsszenarien
 
 ::: formalpara-title
 **Inhalt**
@@ -909,16 +821,8 @@ System in bestimmten Situationen geschieht.
 
 Wesentlich sind zwei Arten von Szenarien:
 
--   Nutzungsszenarien (auch bekannt als Anwendungs- oder
-    Anwendungsfallszenarien) beschreiben, wie das System zur Laufzeit
-    auf einen bestimmten Auslöser reagieren soll. Hierunter fallen auch
-    Szenarien zur Beschreibung von Effizienz oder Performance. Beispiel:
-    Das System beantwortet eine Benutzeranfrage innerhalb einer Sekunde.
-
--   Änderungsszenarien beschreiben eine Modifikation des Systems oder
-    seiner unmittelbaren Umgebung. Beispiel: Eine zusätzliche
-    Funktionalität wird implementiert oder die Anforderung an ein
-    Qualitätsmerkmal ändert sich.
+- Nutzungsszenarien (auch bekannt als Anwendungs- oder Anwendungsfallszenarien) beschreiben, wie das System zur Laufzeit auf einen bestimmten Auslöser reagieren soll. Hierunter fallen auch Szenarien zur Beschreibung von Effizienz oder Performance. Beispiel: Das System beantwortet eine Benutzeranfrage innerhalb einer Sekunde.
+- Änderungsszenarien beschreiben eine Modifikation des Systems oder seiner unmittelbaren Umgebung. Beispiel: Eine zusätzliche Funktionalität wird implementiert oder die Anforderung an ein Qualitätsmerkmal ändert sich.
 
 ::: formalpara-title
 **Motivation**
@@ -938,7 +842,7 @@ diskutierbaren und nachprüfbaren Szenarien.
 
 Entweder tabellarisch oder als Freitext.
 
-# Kapitel 11 - Risiken und technische Schulden
+## Kapitel 11 - Risiken und technische Schulden
 
 ::: formalpara-title
 **Inhalt**
@@ -967,7 +871,7 @@ Siehe [Risiken und technische
 Schulden](https://docs.arc42.org/section-11/) in der
 online-Dokumentation (auf Englisch!).
 
-# Kapitel 12 - Glossar
+## Kapitel 12 - Glossar
 
 ::: formalpara-title
 **Inhalt**
@@ -985,9 +889,8 @@ mehrsprachigen Teams arbeiten.
 
 Sie sollten relevante Begriffe klar definieren, so dass alle Beteiligten
 
--   diese Begriffe identisch verstehen, und
-
--   vermeiden, mehrere Begriffe für die gleiche Sache zu haben.
+- diese Begriffe identisch verstehen, und
+- vermeiden, mehrere Begriffe für die gleiche Sache zu haben.
 
 Zweispaltige Tabelle mit \<Begriff> und \<Definition>.
 
