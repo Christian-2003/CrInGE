@@ -7,7 +7,7 @@
 2. [Randbedingungen](#2-randbedingungen)
 3. [Kontextabgrenzung](#3-kontextabgrenzung)
 4. [Lösungsstrategie](#4-lösungsstrategie)
-5. TODO
+5. [Bausteinsicht](#5-bausteinsicht)
 6. TODO
 7. TODO
 8. TODO
@@ -116,6 +116,131 @@ Um sicherzustellen, dass die Software zukünftig ohne hohen Aufwand durch besteh
 ### 4.4 Organisatorische Entscheidungen
 
 Die Dokumentation des Projektmanagements findet über [Github Projects](https://github.com/users/Christian-2003/projects/2) statt. Hier sind alle Aufgaben zu dokumentieren, sodass diese nach Ablauf des Projektes, gemäß den Anforderungen der Vorlesung Software Engineering, ausgewertet werden können.
+
+## 5. Bausteinsicht
+
+Das zu entwickelnde System lässt sich grob in drei Bestandteile aufteilen: Den Videospieleditor, die Videospielengine und den Kompiler, der das entwickelte Videospiel erstellt.
+
+<div align="center">
+    <img src="./resources/UML/Bausteinsicht_Komplett.png" >
+</div>
+
+### 5.1 Kontextabgrenzung
+
+<div align="center">
+    <img src="./resources/UML/Bausteinsicht_Kontextabrenzung.png" >
+</div>
+
+_Ausschnitt aus der Bausteinansicht_
+
+Die Software lässt sich in die Folgenden Bausteine aufteilen:
+
+Baustein | Verantwortung
+--- | ---
+CrInGE Videospieleditor | Der Videospieleditor ermöglicht dem Videospielentwickler das komfortable Erstellen von Videospielen. Es ist das Hauptwerkzeug für Videospielentwickler um mit dieser Software Videospiele zu erstellen.
+Compiler | Nachdem ein Videospiel erstellt wurde, wird dieses vom Compiler so geändert, dass die Videospielengine damit weiter arbeiten kann.
+CrInGE Videospielengine | Kompilierte Videospiele könnten durch die Videospielengie von Videospielern gespielt werden. Die Engine greigt zum Rendern gegebenenfalls auf OpenGL zurück.
+OpenGL | OpenGL ermöglicht der Engine effizientes Rendern über die Grafikkarte des Videospielers.
+
+### 5.2 Ebene 1
+
+<div align="center">
+    <img src="./resources/UML/Bausteinsicht_Ebene1.png" >
+</div>
+
+_Ausschnitt aus der Bausteinansicht_
+
+Die erste Ebene lässt sich in die Folgenden Bausteine aufteilen:
+
+Baustein | Übergeordneter Baustein | Verantwortung
+--- | --- | ---
+ProjectSetup | Editor | Dieser Baustein ermöglicht dem Entwickler das Erstellen von Projekten, in welchen Videospiele erstellt werden können.
+ProjectManager | Editor | Dieser Baustein verwaltet das aktuell bearbeitete Videospiel.
+FileEditor | Editor | Dieser Baustein ermöglicht das persistieren von allen Daten, die für das Erstellen von Videospielen nötig ist.
+Frame | Editor | Dieser Bausteim visualisiert das editierte Videospiel.
+Skripteditor | Editor | Dieser Baustein ermöglicht das Editieren von Skripten für das Videospiel.
+ObjectInspector | Editor | Dieser Baustein ermöglich das Inspizieren und Bearbeiten von einzelnen Objekten in der Videospielwelt.
+Welteneditor | Editor | Dieser Baustein ermöglicht das Erstellen und Editieren von Videospielwelten.
+Compiler | Compiler | Dieser Baustein verwaltet den Export des entwickelten Videospiels in Formate, die von der Engine verwertet werden können.
+Skriptcompiler | Compiler | Dieser Baustein ermöglicht das Kompilieren von Skripten.
+FileConverter | Compiler | Dieser Baustein ermöglicht das Umwandeln von Dateien des Editors in Formate, die von der Engine verwaltet werden können.
+Canvas | Engine | Dieser Baustein ist als Leinwand für die Visualisierung des Videospiels gedacht.
+RendererManager | Engine | Dieser Baustein rendert (eventuell mittels OpenGL) das Videospiel auf einem Canvas.
+GameMap | Engine | Dieser Baustein repräsentiert die Videospielwelt.
+GameLoop | Engine | Dieser Baustein verwaltet alles, was es im Videospiel zu Verwalten gibt.
+EventManager | Engine | Dieser Baustein verwaltet alle Events, die im Videospiel registriert sind und führt den entsprechenden Eventcode aus, wenn ein Event auftritt.
+
+### 5.3 Ebene 2
+
+<div align="center">
+    <img src="./resources/UML/Bausteinsicht_Ebene2.png" >
+</div>
+
+_Ausschnitt aus der Bausteinansicht_
+
+Die erste Ebene lässt sich in die Folgenden Bausteine aufteilen:
+
+Baustein | Übergeordneter Baustein | Verantwortung
+--- | --- | ---
+Inspector | ObjectInspector | Dieser Bausteim ermöglicht das Inspizieren einzelner Objekte in der Videospielwelt.
+MapObject | ObjectInspector | Dieser Baustein stellt das inspizierte Object der Videospielwelt dar.
+Attributes | ObjectInspector | Dieser Baustein stellt die inspizierbaren (bearbeitbaren) Attribute des inspizierten Objektes dar.
+Editor | Welteneditor |Dieser Baustein ermöglicht das Erstellen und Bearbeiten der Videospielwelt.
+Map-Explorer | Welteneditor | Dieser Baustein ermöglicht das Betrachten der Objekte innerhalb der Videospielwelt.
+MapObjects | Welteneditor | Dieser Baustein stellt die Objekte in der Videospielwelt dar.
+Asset-Tree | Welteneditor | Dieser Baustein ermöglicht das Berachten der Assets des Videospiels.
+Assets | Welteneditor | Dieser Baustein stellt die Assets des Videospiels dar.
+Java-Datei | Skripcompiler | Dieser Baustein stellt die Dateien dar, welche die entwickelten Skripte enthält.
+Java-Compiler | Skriptcompiler | Dieser Baustein stellt den Java-Compiler dar, welcher die Java-Dateien welche die Skripte enthalten kompiliert, damit diese von der Engine ausgeführt werden können.
+Class-Datei | Skriptcompiler | Dieser Baustein stellt die kompilierten Skripte dar, welche von der Engine ausgeführt werden können.
+MapConverter | FileConverter | Dieser Baustein ermöglicht das Konvertieren von Videospielwelten in ein Format, welches die Engine verwalten kann.
+FileConverter | FileConverter | Dieser Baustein überwacht und verwaltet das Kovertieren der Dateien in ein geeignetes Format für die Engine.
+AssetConverter | FileConverter | Dieser Baustein ermöglicht das Konvertieren von Assets in ein Format, welches die Engine verwalten kann.
+GameChunk | GameMap | Dieser Baustein stellt einen Chunk dar, welcher vom RendererManager einzelnd betrachtet werden kann. Jeder GameChunk besteht aus MapObjects.
+MapObject | GameMap | Dieser Baustein stellt die Objekte dar, die sich innerhalb eines Chunks in der Welt befinden.
+GameObject | GameMap | Dieser Baustein stellt den übergeordneten Kontext für MapObjects dar, von welchen diese erben.
+GameObjects | GameLoop | Dieser Baustein stellt die Objekte der Videospielwelt dar, welche durch die GameLoop bearbeitet werden können.
+GameFiles | GameLoop | Dieser Baustein stellt alle Dateien dar, welcher während der Ausführung des Videospiels relevant sind.
+Loop | GameLoop | Dieser Baustein stellt die GameLoop dar.
+Scripts | GameLoop | Dieser Baustein stellt die Skripte dar, die von der Engine ausgeführt werden können.
+EventListener | GameLoop | Dieser Baustein erkennt, welche Events mit jeder Iteration der GameLoop ausgeführt werden, un reicht dies an die Loop weiter.
+RendererManager | Engine | Dieser Baustein rendert (eventuell mittels OpenGL) das Videospiel auf einem Canvas.
+EventManager | Engine / EventManager | Dieser Baustein verwaltet alle Events, die im Videospiel registriert sind und führt den entsprechenden Eventcode aus, wenn ein Event auftritt.
+RegisteredEvents | EventManager | Dieser Baustein enthält alle registrierten Events, die vom EventManager verwaltet werden.
+KeyEvent | EventManager | Dieser Baustein stellt KeyEvents dar, welche durch Tastendrücke auf der Tastatur des Videospielers ausgelöst werden.
+MapEvent | EventManager | Dieser Baustein stellt MapEvents dar, welche auf der Videospielwelt auftreten.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## 10. Qualitätsanforderungen
 
