@@ -15,7 +15,7 @@ public class GameChunk {
     /**
      * Constant stores the maximum width and height of a chunk.
      */
-    public static int DIMENSION = 16;
+    public static int SIZE = 16;
 
 
     /**

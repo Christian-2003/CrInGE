@@ -1,6 +1,5 @@
 package game_engine.model;
 
-import javax.swing.text.Position;
 import java.awt.*;
 
 
@@ -53,7 +52,7 @@ public abstract class GameObject {
         if (hitBox == null || size == null) {
             throw new NullPointerException("Null is invalid argument.");
         }
-        if (x < 0 || x >= GameChunk.DIMENSION || y < 0 || y >= GameChunk.DIMENSION) {
+        if (x < 0 || x >= GameChunk.SIZE || y < 0 || y >= GameChunk.SIZE) {
             throw new IllegalArgumentException("Invalid coordinate for MapObject: (" + x + ", " + y + ")");
         }
         this.visible = visible;
@@ -126,7 +125,7 @@ public abstract class GameObject {
     }
 
     public void setX(int x) throws IllegalArgumentException {
-        if (x < 0 || x >= GameChunk.DIMENSION) {
+        if (x < 0 || x >= GameChunk.SIZE) {
             throw new IllegalArgumentException("Invalid coordinate for MapObject: (" + x + ", " + y + ")");
         }
         this.x = x;
@@ -137,7 +136,7 @@ public abstract class GameObject {
     }
 
     public void setY(int y) throws IllegalArgumentException {
-        if (y < 0 || y >= GameChunk.DIMENSION) {
+        if (y < 0 || y >= GameChunk.SIZE) {
             throw new IllegalArgumentException("Invalid coordinate for MapObject: (" + x + ", " + y + ")");
         }
         this.y = y;
