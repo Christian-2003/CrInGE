@@ -29,18 +29,13 @@ public class RendererManager {
     private final GameMap map;
 
     /**
-     * Attribute stores the Java swing {@link JComponent} onto which the {@link #map} shall be rendered.
-     */
-    private JComponent component;
-
-    /**
-     * Attribute stores the {@link Graphics} that are used to draw onto {@link #component}.
+     * Attribute stores the {@link Graphics} that are used to draw onto the Java Swing component.
      */
     private Graphics g;
 
     /**
      * Attributes store the absolute world coordinates of the {@link game_engine.model.MapObject} that shall be rendered
-     * in the top left corner of {@link #component}.
+     * in the top left corner of the Java Swing component.
      */
     private int absoluteWorldX, absoluteWorldY;
 
@@ -80,7 +75,7 @@ public class RendererManager {
 
 
     /**
-     * Method renders an entire {@link GameMap} onto the {@link #component} using the provided {@linkplain Graphics}.
+     * Method renders an entire {@link GameMap} onto the Java Swing component using the provided {@linkplain Graphics}.
      * Please make sure that the passed Graphics is the instance that is passed to the component's
      * {@linkplain JComponent#paintComponent(Graphics)}-method. Any other instance will not work.
      *
@@ -96,7 +91,6 @@ public class RendererManager {
         if (g == null) {
             throw new NullPointerException("Null is invalid Graphics");
         }
-        this.component = component;
         this.g = g;
         //Define how many MapObjects fit into the window:
         int numberOfMapObjectsX = component.getWidth() / MAP_OBJECT_SIZE + 1;
@@ -105,29 +99,29 @@ public class RendererManager {
         int topLeftChunkX = absoluteWorldX / GameChunk.WIDTH;
         int topLeftChunkY = absoluteWorldY / GameChunk.HEIGHT;
         //Find the chunk that contains the MaoObject in the bottom right corner:
-        int bottomRightChunkX = topLeftChunkX + numberOfMapObjectsX / GameChunk.WIDTH + 1;
+        int bottomRightChunkX = topLeftChunkX + (numberOfMapObjectsX + (absoluteWorldX - topLeftChunkX * GameChunk.WIDTH)) / GameChunk.WIDTH + 1;
         if (bottomRightChunkX > map.getWidth()) {
             bottomRightChunkX = map.getWidth();
         }
-        int bottomRightChunkY = topLeftChunkY + numberOfMapObjectsY / GameChunk.HEIGHT + 1;
+        int bottomRightChunkY = topLeftChunkY + (numberOfMapObjectsY + (absoluteWorldY - topLeftChunkY * GameChunk.HEIGHT)) / GameChunk.HEIGHT + 1;
         if (bottomRightChunkY > map.getHeight()) {
             bottomRightChunkY = map.getHeight();
         }
-        /*
-        System.out.println("=============== [ CHUNK DEBUGGING INFO ] ===============");
-        System.out.println("TopLeftChunkX=" + topLeftChunkX + ", TopLeftChunkY=" + topLeftChunkY);
-        System.out.println("NumberOfObjectsX=" + numberOfMapObjectsX + ", NumberOfObjectsY=" + numberOfMapObjectsY);
-        System.out.println("BottomRightChunkX=" + bottomRightChunkX + ", BottomRightChunkY=" + bottomRightChunkY);
-        */
+        //System.out.println("=============== [ CHUNK DEBUGGING INFO ] ===============");
+        //System.out.println("TopLeftChunkX=" + topLeftChunkX + ", TopLeftChunkY=" + topLeftChunkY);
+        //System.out.println("NumberOfObjectsX=" + numberOfMapObjectsX + ", NumberOfObjectsY=" + numberOfMapObjectsY);
+        //System.out.println("BottomRightChunkX=" + bottomRightChunkX + ", BottomRightChunkY=" + bottomRightChunkY);
 
         //Change background:
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, component.getWidth(), component.getHeight());
 
+        //Define variables to remember how many MapObjects were skipped total in rendered chunks:
         int skippedMapObjectsX = 0;
         int skippedMapObjectsY = 0;
 
         //Render each chunk:
+        //System.out.println("=============== [ CHUNK RENDERING DEBUG ] ===============");
         for (int x = topLeftChunkX; x < bottomRightChunkX; x++) {
             for (int y = topLeftChunkY; y < bottomRightChunkY; y++) {
                 //System.out.println("Accessing chunk (" + x + ", " + y + ")");
@@ -160,7 +154,6 @@ public class RendererManager {
                 int chunkOffsetX = (x - topLeftChunkX) * GameChunk.WIDTH - skippedMapObjectsX;
                 int chunkOffsetY = (y - topLeftChunkY) * GameChunk.HEIGHT - skippedMapObjectsY;
                 renderGameChunk(chunk, chunkOffsetX, chunkOffsetY, startX, startY, endX, endY);
-
 
             }
         }
@@ -197,8 +190,8 @@ public class RendererManager {
             renderMapObject(mapObject, chunkOffsetX, chunkOffsetY);
         }
         //Draw chunk borders:
-        int chunkX = (chunkOffsetX < 0 ? 0: chunkOffsetX) * MAP_OBJECT_SIZE;
-        int chunkY = (chunkOffsetY < 0 ? 0: chunkOffsetY) * MAP_OBJECT_SIZE;
+        int chunkX = (Math.max(chunkOffsetX, 0)) * MAP_OBJECT_SIZE;
+        int chunkY = (Math.max(chunkOffsetY, 0)) * MAP_OBJECT_SIZE;
         int chunkWidth = (endX - startX) * MAP_OBJECT_SIZE;
         int chunkHeight = (endY - startY) * MAP_OBJECT_SIZE;
         g.setColor(Color.RED);

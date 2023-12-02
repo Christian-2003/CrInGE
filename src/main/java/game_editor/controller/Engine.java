@@ -24,7 +24,7 @@ public class Engine {
         int width = 3, height = 2;
         GameMap map = new GameMap(width, height, createChunks(width, height, 20));
         RendererManager renderer = new RendererManager(map);
-        renderer.updateMapPosition(30, 10);
+        renderer.updateMapPosition(5, 10);
         SwingGameCanvas canvas = new SwingGameCanvas(renderer);
 
         JFrame frame = new JFrame("Game Test");
