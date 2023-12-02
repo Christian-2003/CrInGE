@@ -70,7 +70,7 @@ public class RendererManager {
      * @throws IndexOutOfBoundsException    The passed coordinate is out of bounds.
      */
     public void updateMapPosition(int absoluteWorldX, int absoluteWorldY) throws IndexOutOfBoundsException {
-        if (absoluteWorldX < 0 || absoluteWorldX > map.getWidth() * GameChunk.SIZE || absoluteWorldY < 0 || absoluteWorldY > map.getHeight() * GameChunk.SIZE) {
+        if (absoluteWorldX < 0 || absoluteWorldX > map.getWidth() * GameChunk.WIDTH || absoluteWorldY < 0 || absoluteWorldY > map.getHeight() * GameChunk.HEIGHT) {
             //Passed coordinate out of bounds:
             throw new IndexOutOfBoundsException("Absolute world coordinate (" + absoluteWorldX + ", " + absoluteWorldY + ") out of bounds for width " + map.getWidth() + " and height " + map.getHeight());
         }
@@ -102,21 +102,23 @@ public class RendererManager {
         int numberOfMapObjectsX = component.getWidth() / MAP_OBJECT_SIZE + 1;
         int numberOfMapObjectsY = component.getHeight() / MAP_OBJECT_SIZE + 1;
         //Find the chunk that contains the MapObject in the top left corner:
-        int topLeftChunkX = absoluteWorldX / GameChunk.SIZE;
-        int topLeftChunkY = absoluteWorldY / GameChunk.SIZE;
+        int topLeftChunkX = absoluteWorldX / GameChunk.WIDTH;
+        int topLeftChunkY = absoluteWorldY / GameChunk.HEIGHT;
         //Find the chunk that contains the MaoObject in the bottom right corner:
-        int bottomRightChunkX = topLeftChunkX + numberOfMapObjectsX / GameChunk.SIZE + 1;
+        int bottomRightChunkX = topLeftChunkX + numberOfMapObjectsX / GameChunk.WIDTH + 1;
         if (bottomRightChunkX > map.getWidth()) {
             bottomRightChunkX = map.getWidth();
         }
-        int bottomRightChunkY = topLeftChunkY + numberOfMapObjectsY / GameChunk.SIZE + 1;
+        int bottomRightChunkY = topLeftChunkY + numberOfMapObjectsY / GameChunk.HEIGHT + 1;
         if (bottomRightChunkY > map.getHeight()) {
             bottomRightChunkY = map.getHeight();
         }
+        /*
         System.out.println("=============== [ CHUNK DEBUGGING INFO ] ===============");
         System.out.println("TopLeftChunkX=" + topLeftChunkX + ", TopLeftChunkY=" + topLeftChunkY);
         System.out.println("NumberOfObjectsX=" + numberOfMapObjectsX + ", NumberOfObjectsY=" + numberOfMapObjectsY);
         System.out.println("BottomRightChunkX=" + bottomRightChunkX + ", BottomRightChunkY=" + bottomRightChunkY);
+        */
 
         //Change background:
         g.setColor(Color.BLACK);
@@ -128,7 +130,7 @@ public class RendererManager {
         //Render each chunk:
         for (int x = topLeftChunkX; x < bottomRightChunkX; x++) {
             for (int y = topLeftChunkY; y < bottomRightChunkY; y++) {
-                System.out.println("Accessing chunk (" + x + ", " + y + ")");
+                //System.out.println("Accessing chunk (" + x + ", " + y + ")");
                 GameChunk chunk = map.get(x, y);
                 if (chunk == null) {
                     continue;
@@ -136,15 +138,15 @@ public class RendererManager {
 
                 int startX = 0;
                 int startY = 0;
-                int endX = GameChunk.SIZE;
-                int endY = GameChunk.SIZE;
+                int endX = GameChunk.WIDTH;
+                int endY = GameChunk.HEIGHT;
                 if (x == topLeftChunkX) {
                     //Chunk is the first chunk to be rendered:
-                    startX = absoluteWorldX - topLeftChunkX * GameChunk.SIZE;
+                    startX = absoluteWorldX - topLeftChunkX * GameChunk.WIDTH;
                 }
                 if (y == topLeftChunkY) {
                     //Chunk is the first chunk to be rendered:
-                    startY = absoluteWorldY - topLeftChunkY * GameChunk.SIZE;
+                    startY = absoluteWorldY - topLeftChunkY * GameChunk.HEIGHT;
                 }
                 if (x == topLeftChunkX && skippedMapObjectsX == 0) {
                     //Remember how many MapObjects in columns were ignored at the beginning:
@@ -155,8 +157,8 @@ public class RendererManager {
                     skippedMapObjectsY = startY;
                 }
 
-                int chunkOffsetX = (x - topLeftChunkX) * GameChunk.SIZE - skippedMapObjectsX;
-                int chunkOffsetY = (y - topLeftChunkY) * GameChunk.SIZE - skippedMapObjectsY;
+                int chunkOffsetX = (x - topLeftChunkX) * GameChunk.WIDTH - skippedMapObjectsX;
+                int chunkOffsetY = (y - topLeftChunkY) * GameChunk.HEIGHT - skippedMapObjectsY;
                 renderGameChunk(chunk, chunkOffsetX, chunkOffsetY, startX, startY, endX, endY);
 
 

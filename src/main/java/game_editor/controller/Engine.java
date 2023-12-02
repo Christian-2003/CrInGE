@@ -24,7 +24,7 @@ public class Engine {
         int width = 3, height = 2;
         GameMap map = new GameMap(width, height, createChunks(width, height, 20));
         RendererManager renderer = new RendererManager(map);
-        renderer.updateMapPosition(5, 10);
+        renderer.updateMapPosition(30, 10);
         SwingGameCanvas canvas = new SwingGameCanvas(renderer);
 
         JFrame frame = new JFrame("Game Test");
@@ -41,8 +41,8 @@ public class Engine {
         for (int i = 0; i < chunks.length; i++) {
             ArrayList<MapObject> mapObjects = new ArrayList<>();
             //Generate mapObjects:
-            for (int x = 0; x < 16; x++) {
-                for (int y = 0; y < 16; y++) {
+            for (int x = 0; x < GameChunk.WIDTH; x++) {
+                for (int y = 0; y < GameChunk.HEIGHT; y++) {
                     if (random.nextInt(100) < objectPercentage) {
                         int objectWidth = random.nextInt(2) + 1;
                         int objectHeight = random.nextInt(2) + 1;

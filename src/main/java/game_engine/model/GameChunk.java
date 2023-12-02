@@ -13,9 +13,14 @@ package game_engine.model;
 public class GameChunk {
 
     /**
-     * Constant stores the maximum width and height of a chunk.
+     * Constant stores the height of a chunk.
      */
-    public static int SIZE = 16;
+    public static int HEIGHT = 16;
+
+    /**
+     * Constant stores the width of a chunk.
+     */
+    public static int WIDTH = 16;
 
 
     /**
@@ -94,9 +99,9 @@ public class GameChunk {
     }
 
     /**
-     * Method determines whether there are any more {@link MapObject}s within {@link #mapObjects}.
+     * Method determines whether there are more {@link MapObject}s within {@link #mapObjects}.
      *
-     * @return  Whethere thare are any more MapObjects.
+     * @return  Whether there are more MapObjects.
      */
     public boolean hasNextMapObject() {
         return currentMapObject >= 0 && currentMapObject < mapObjects.length - 1;
@@ -136,9 +141,9 @@ public class GameChunk {
     }
 
     /**
-     * Method determines whether there are any more {@link MapObject}s within {@link #externalMapObjects}.
+     * Method determines whether there are more {@link MapObject}s within {@link #externalMapObjects}.
      *
-     * @return  Whethere thare are any more MapObjects.
+     * @return  Whether there are more MapObjects.
      */
     public boolean hasNextExternalMapObject() {
         return currentExternalMapObject >= 0 && currentExternalMapObject < externalMapObjects.length - 1;

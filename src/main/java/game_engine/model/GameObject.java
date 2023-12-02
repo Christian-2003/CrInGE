@@ -52,7 +52,7 @@ public abstract class GameObject {
         if (hitBox == null || size == null) {
             throw new NullPointerException("Null is invalid argument.");
         }
-        if (x < 0 || x >= GameChunk.SIZE || y < 0 || y >= GameChunk.SIZE) {
+        if (x < 0 || x >= GameChunk.WIDTH || y < 0 || y >= GameChunk.HEIGHT) {
             throw new IllegalArgumentException("Invalid coordinate for MapObject: (" + x + ", " + y + ")");
         }
         this.visible = visible;
@@ -125,7 +125,7 @@ public abstract class GameObject {
     }
 
     public void setX(int x) throws IllegalArgumentException {
-        if (x < 0 || x >= GameChunk.SIZE) {
+        if (x < 0 || x >= GameChunk.WIDTH) {
             throw new IllegalArgumentException("Invalid coordinate for MapObject: (" + x + ", " + y + ")");
         }
         this.x = x;
@@ -136,7 +136,7 @@ public abstract class GameObject {
     }
 
     public void setY(int y) throws IllegalArgumentException {
-        if (y < 0 || y >= GameChunk.SIZE) {
+        if (y < 0 || y >= GameChunk.HEIGHT) {
             throw new IllegalArgumentException("Invalid coordinate for MapObject: (" + x + ", " + y + ")");
         }
         this.y = y;
