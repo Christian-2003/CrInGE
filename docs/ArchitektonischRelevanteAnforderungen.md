@@ -1,24 +1,52 @@
 <img src="./resources/img/logo.png" height="100" align="right">
 
-# CrInGE - Architektonische Anforderungen
+# CrInGE - Momentane Softwarearchitektur
 
-## 1. Einleitung
+## Inhaltsverzeichnis
+1. [Einführung und Ziele](#1-einführung-und-ziele)
+2. [Randbedingungen](#2-randbedingungen)
+3. [Kontextabgrenzung](#3-kontextabgrenzung)
+4. [Lösungsstrategie](#4-lösungsstrategie)
+5. TODO
+6. TODO
+7. TODO
+8. TODO
+9. TODO
+10. [Qualitätsanforderungen](#10-qualitätsanforderungen)
 
-Dieses Dokument beschreibt die Softwarearchitektur und alle daraus entstehenden Anforderungen für die Anwendung "CrInGE".
 
-### 1.1 Übersicht
+## 1. Einführung und Ziele
 
 Um die Softwarearchitektur der Videospielengine "CrInGE" und des dazugehörigen Videospieleditors klar zu definieren und festzuhalten, sollen in diesem Dokument alle relevanten Anforderungen an die zugehörige Softwarearchitektur zentral dokumentiert werden. Damit soll sichergestellt werden, dass die Entwicklung der Software stringent den dokumentierten Anforderungen genügt und eine Software entsprechender Qualität produziert wird.
 
-### 1.2 Geltungsbereich
+### 1.1 Aufgabenstellung
 
-Dieses Dokument beschreibt alle Anforderungen für die Anwendung "CrInGE". Dies beinhaltet sowohl alle Anforderungen an die Videospielengine, als auch an den Videospieleditor.
+Es soll eine Videospielengine und ein dezugehöriger Videospieleditor entwickelt werden. Hiermit soll die Hürde für neueinsteigende Videospielentwickler gesenkt werden. Daher soll der Videospieleditor  einfache zweidimensionale Videospiele entwickeln können. Der Benutzer soll den Videospieleditor dabei intuitiv und ohne große Probleme benutzen können. Einige grundlegende Bestandteile von Videospielen sollen dem Benutzer zur vereinfachten Benutzbarkeit bereitgestellt werden. Weitere Anforderungen an die Software werden in der [Software Anforderungsspezifikation](./SoftwareAnforderungsspezifikation.md) dokumentiert.
 
-Sollte dies notwendig sein, können Subsysteme zukünftig mit ihren eigenen architektonischen Anforderungen ausgestattet werden. Dies wird dann in diesem Dokument entsprechend gekennzeichnet. Aktuell ist dies jedoch nicht geplant.
+### 1.2 Qualitätsziele
 
-### 1.3 Definitionen, Akronyme und Abkürzungen
+Um eine Software entsprechend hoher Qualität zu entwickeln, sollen einige zentrale Qualitätsmerkmale durchgehend beachtet werden.
 
-Im Nachfolgenden folgt eine List aller Definitionen, Akronyme und Abkürzungen, die im Weiteren Verlauf dieses Dokumentes verwendet werden.
+Ein zentrales zu beachtendes Qualitätsmerkmal ist die [Änderbarkeit](#103-änderbarkeit). Hiermit ist gemeint, dass zukünftig neue Funktionen in die Software eingebaut werden können, ohne dass dabei ein hoher Aufwand durch bestehenden Quellcode entsteht. Mit anderen Worten soll bestehender Quellcode zukünftigen Änderungen "nicht im Weg stehen". Dadurch sollen zukünftige Kosten und zukünftiger Aufwand minimiert werden.
+
+Als weiteres dringlichst zu beachtendes Qualitätsmerkmal kann die [Testbarkeit](#106-testbarkeit) angeführt werden. Hiermit ist gemeint, dass die Software Test-Driven entwickelt wird, damit Fehler und Probleme frühzeitig erkannt werden, wodurch zukünftige Aufwände und Kosten minimiert werden.
+
+Das dritte Qualitätsmerkmal ist die [Benutzbarkeit](#107-benutzbarkeit). Hiermit ist gemeint, dass die Software so entwickelt wird, dass diese vom Endbenutzer einfach bedient werden kann. Dies ist wichtig, damit die Videospielengine und der dazugehörige Videospieleditor als konkurrenzfähige und attraktive Alternative zu bestehenden Angeboten wahrgenommen werden. Dies ist besonders aufmerksam bei der Entwicklung des Videospieleditors zu beachten.
+
+Dies sind die grundlegenden Qualitätsmerkmale. Alle weiteren Qualitätsmerkmale sind [hier](#10-qualitätsanforderungen) zu finden.
+
+### 1.3 Stakeholder
+
+Es folgt eine Liste sämtlicher Stakeholder des Projektes.
+
+Rolle | Erwartungshaltung
+--- | ---
+Herr Harald Ichters | Als Dozent möchte Herr Harald Ichters, dass den Aufgaben unter Beachtung des Aspektes des Software Engineerings pflichtbewusst und zielgerichtet im jeweiligen Zeitrahmen nachgegangen wird.
+CrInGE Entwicklungsteam | Das Entwicklungsteam der Software möchte, dass die Software gemäß einer hohen Qualität entwickelt wird. Des Weiteren möchte das Entwicklungsteam stetig Neues lernen.
+
+### 1.4 Definitionen, Akronyme und Abkürzungen
+
+Im Nachfolgenden folgt eine List aller Definitionen, Akronymen und Abkürzungen, die im Weiteren Verlauf dieses Dokumentes verwendet werden.
 
 <!-- Bitte beachten: Die Einträge in dieser Tabelle sollen alphabetisch (nach dem Akronym) sortiert werden! -->
 Akronym | Bedeutung
@@ -29,7 +57,7 @@ CrInGE | <ins>C</ins>ompute<ins>r</ins>ized <ins>In</ins>tegrated <ins>G</ins>am
 FPS | <ins>F</ins>rames <ins>p</ins>er <ins>s</ins>econd
 MVC | <ins>M</ins>odel-<ins>V</ins>iew-<ins>C</ins>ontroller
 
-### 1.4 Referenzen
+### 1.5 Referenzen
 
 Im Nachfolgenden folgt eine Liste aller Referenzen, die im weiteren Verlauf dieses Dokumentes verwendet werden.
 
@@ -38,19 +66,64 @@ Titel | Datum | Veröffentlichungsorganisation | Link
 --- | --: | --- | ---
 CrInGE Logo | 01.11.2023 | CrInGE Entwicklungsteam | [CrInGE Logo](./resources/img/logo.png)
 
-## 2. Architektonische Darstellung
+## 2. Randbedingungen
+
+Dieses Projekt wird nach den Verfahren und Vorgaben, die in der Vorlesung Software Engineering an der DHBW Karlsruhe besprochen werden, entwickelt.
+
+Es ist stets darauf zu achten, dass diese Vorhaben und Verfahren konsequent eingehalten werden.
+
+## 3. Kontextabgrenzung
+
+Im Nachfolgenden Kapitel sollen alle Kontextabgrenzung bezüglich Kommuniktionspartnern der Software dargestellt werden.
+
+### 3.1 Formaler Kontext
+
+Die Software kann von Videospielentwicklern verwendet werden, um einfache Videospiele zu entwickeln. Derartige Videospiele können dann an weitere Personen (sogenannte Videospieler) weitergegeben werden, welche diese dann spielen.
+
+<div align="center">
+    <img src="./resources/UML/Kommuniktaionsdiagramm_Formale_Kontextabgrenzung.png" >
+</div>
+
+### 3.2 Technischer Kontext
+
+Für das Projekt ergeben sich folgende Abhängigkeiten zu anderen Systemen:
+
+System | Beschreibung
+--- | ---
+JUnit | Für die Realisierung der Test-Driven-Entwicklung wird das [JUnit-Framework](https://junit.org/junit5/) _(externer Link)_ verwendet. Es wird in der Version 5.10.0 über eine Maven-Abhängigkeit eingebundne. Das Framework kann in vollem Funktionsumfang ohne Einschränkungen verwendet werden.
+OpenGL | Zurzeit wird die Möglichkeit ausgetestet, das Rendering der Engine mittels [JOGL](https://jogamp.org/jogl/www/) _(externer Link)_ durchzuführen.
+
+## 4. Lösungsstrategie
+
+Im Nachfolgenden sollen alle Lösungsstrategien erläutert werden.
+
+### 4.1 Technologieentscheidungen
+
+Die Software wird mit Java Swing entwickelt, da dies dem gesamten Entwicklungsteam geläufig ist und weitgehend auf allen gängigen Systemen zur Verfügung steht.
+
+### 4.2 Architekturmuster
 
 Dieses Projekt verwendet das MVC-Entwurfsmuster sowohl für den Videospieleditor, als auch für die Videospielengine. Beide genannten Bestandteile des Projektes werden mit Java Swing entwickelt, weshalb sich dieses Entwurfsmuster anbietet.
 
 Darüber Hinaus ermöglicht das MVC-Entwurfsmuster eine saubere und übersichtliche Trennung der Geschäftslogik und der Darstellung. Hierdurch kann übersichtlicherer Quellcode entstehen, was die Entwicklung und Weiterentwicklung der Anwendung erleichtert.
 
-## 3. Qualitätsmerkmale
+### 4.3 Erreichen wichtiger Qualitätsmerkmale
+
+Die Software wird Test-Driven entwickelt, sodass Fehler und Probleme frühzeitig erkannt werden können. Hierdurch können hohe zukünftige Aufwände und Kosten verhindert werden.
+
+Um sicherzustellen, dass die Software zukünftig ohne hohen Aufwand durch bestehenden Quellcode erweitert werden kann, wird das **Open-Closed-Principle** duchgesetzt, wodurch Änderungen bestehenden Quellcodes für die Erweiterung der Software verhindert wird.
+
+### 4.4 Organisatorische Entscheidungen
+
+Die Dokumentation des Projektmanagements findet über [Github Projects](https://github.com/users/Christian-2003/projects/2) statt. Hier sind alle Aufgaben zu dokumentieren, sodass diese nach Ablauf des Projektes, gemäß den Anforderungen der Vorlesung Software Engineering, ausgewertet werden können.
+
+## 10. Qualitätsanforderungen
 
 Um eine entsprechend hohe Softwarequalität zu wahren, wurden einige Qualitätsmerkmale festgestellt. Diese sollen bei der Entwicklung der Software konsequent berücksichtigt werden.
 
 Qualitätserkmale beziehen sich sowohl auf den Videospieleditor, deren Benutzer im Nachfolgenden als _Videospielentwickler_ bezeichnet werden, als auch auf die Videospielengine, deren Benutzer im Nachfolgenden als _Videospieler_ bezeichnet werden.
 
-### 3.1 Verfügbarkeit
+### 10.1 Verfügbarkeit
 
 Sowohl Videospielengine, als auch Videospieleditor werden durch dieses Projekt entwickelt. Fehler im Quellcode dieser Bestandteile können demnach sowohl zu Ausfällen beim Videospielentwickler, als auch beim Videospieler führen.
 
@@ -62,7 +135,7 @@ Fehler, die in entwickelte Videospiele durch den Videospielentwickler eingeführ
     <img src="./resources/Qualitaetsbaeume/Verfuebarkeit.PNG" >
 </div>
 
-### 3.2 Interoperabilität
+### 10.2 Interoperabilität
 
 Die Engine verarbeitet weitgehen Daten, die durch den Editor erstellt wurden. Hierzu gehören beispielsweise Map-Dateien oder Assets. Beim Exportieren des Videospiels müssen diese Daten in korrekte Dateiformate überführt werden, damit diese von der Engine verwendet werden können.
 
@@ -74,7 +147,7 @@ Vom Videospielentwickler erstellte Skripte müssen ebenfalls auf Korrektheit üb
     <img src="./resources/Qualitaetsbaeume/Interoperabilitaet.PNG" >
 </div>
 
-### 3.3 Änderbarkeit
+### 10.3 Änderbarkeit
 
 Sowohl Editor als auch Engine sollen durch zukünftige Softwareupdates um Funktionen erweitert werden können. Dabei soll möglichst kein hoher Mehraufwand entstehen.
 
@@ -82,7 +155,7 @@ Um dies sicherzustellen, müssen potenzielle Änderungen vorhergesehen werden. D
 
 Dies ist jedoch sehr aufwendig, da ein hoher Planungsaufwand notwendig wäre um eine große Anzahl potenzieller zukünftiger Änderungen vorherzusehen. Aus diesem Grund beschränkt sich das Entwicklungsteam darauf, alle bisher ausgearbeiteten Funktionen wie sie in der [Software Anforderungsspezifikation](./SoftwareAnforderungsspezifikation.md#2-funktionale-anforderungen) aufgeführt werden, wie erläutert zu behandeln.
 
-### 3.4 Performance
+### 10.4 Performance
 
 Damit unsere Software eine attraktive Alternative zu bestehenden Angeboten darstellt, ist eine entsprechende Performance notwendig.
 
@@ -96,7 +169,7 @@ Diese Kennzahlen sind selbstverständlich stark vom ausführenden Endgerät abh�
     <img src="./resources/Qualitaetsbaeume/Performance.PNG" >
 </div>
 
-### 3.5 Sicherheit
+### 10.5 Sicherheit
 
 Die vom Videospieleditor erzeugten Dateien dürfen nicht von Unbefugten bearbeitet werden, sodass deren Integrität fortlaufend gewahrt wird. Des Weiteren müssen diese Daten dem Editor jederzeit zur Verfügung stehen. Dies gilt ebenfalls für die Engine.
 
@@ -106,7 +179,7 @@ Die Videospielengine greift hauptsächlich auf Dateien zu, die den Resources der
 
 Von besonderer Bedeutung sind die vom Videospielentwickler entwickelten Skripte. Da diese in Java programmiert werden, können mittels solcher Skripte erhebliche Schäden auf dem Endgerät des Videospielers erzeugt werden. Dies kann durch diese Anwendung zwar nicht verhindert werden, jedoch muss ebenfalls in Betracht gezogen werden, dass nach Kompilierung des Videospiles solche Skripte durch Unbefugte bearbeitet werden. Hierdurch könnte beispielsweise Malware auf dem Endgerät des Videospielers ausgeführt werden. Dem wird entgegengewirkt, indem die Skripte ausschließlich in kompilierter Form in der Jar-Datei aufgenommen werden. Es wäre zwar durch Dekompilierung möglich, den ursprünglichen Skript wiederherzustellen, jedoch könnte der Videospielentwickler durch Bereitstellen von Prüfsummen oder Signaturen sicherstellen, dass das entwickelte Videospiel nicht von Unbefugten bearbeitet wurde, bevor es auf dem Endgerät des Videospielers ausgeführt wird. Dies ist jedoch vom Videospielentwickler abhängig, sodass das CrInGE Entwicklungsteam keinen Einfluss darauf hat.
 
-### 3.6 Testbarkeit
+### 10.6 Testbarkeit
 
 Zur Verinngerung von Ausfallzeiten und der Maximierung der [Verfügbarkeit](#31-verfügbarkeit) wird die Anwendung Test-Driven entwickelt. Dies beinhaltet sowohl die Engine, als auch den Editor. Hierdurch werden mögliche Fehler und Bugs frühzeitig in der Entwicklung erkannt, was den Aufwand zur Behebung solcher Probleme stark verringert.
 
@@ -118,7 +191,7 @@ Insgesamt können die meisten Komponenten durch Unit-Tests mittels JUnit abgedec
     <img src="./resources/Qualitaetsbaeume/Testbarkeit.PNG" >
 </div>
 
-### 3.7 Benutzbarkeit
+### 10.7 Benutzbarkeit
 
 Damit die Anwendung als konkurrenzfähiges Produkt angesehen wird, muss sowohl Engine als auch Editor benutzbar und Benutzerfreundlich gestaltet sein.
 

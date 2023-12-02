@@ -22,17 +22,19 @@ Des Weiteren werden keine Anforderungen in andere Dokumente ausgelagert. Hiervon
 
 ### 1.3 Definitionen, Akronyme und Abkürzungen
 
-Im Nachfolgenden folgt eine List aller Definitionen, Akronyme und Abkürzungen, die im Weiteren Verlauf dieses Dokumentes verwendet werden.
+Im Nachfolgenden folgt eine List aller Definitionen, Akronymen und Abkürzungen, die im Weiteren Verlauf dieses Dokumentes verwendet werden.
 
+<!-- Bitte beachten: Die Einträge in dieser Tabelle sollen alphabetisch (nach dem Akronym) sortiert werden! -->
 Akronym | Bedeutung
 --- | ---
-CrInGE | <ins>C</ins>ompute<ins>r</ins>ized <ins>In</ins>tegrated <ins>G</ins>ame <ins>E</ins>ngine
 API | Application Programmer Interface (Deutsch: Programmierschnittstelle)
+CrInGE | <ins>C</ins>ompute<ins>r</ins>ized <ins>In</ins>tegrated <ins>G</ins>ame <ins>E</ins>ngine
 
 ### 1.4 Referenzen
 
 Im Nachfolgenden folgt eine Liste aller Referenzen, die im weiteren Verlauf dieses Dokumentes verwendet werden.
 
+<!-- Bitte beachten: Die Einträge in dieser Tabelle sollen nach dem Veröffentlichungsdatum sortiert werden! -->
 Titel | Datum | Veröffentlichungsorganisation | Link
 --- | --: | --- | ---
 UI-MockUps | 25.10.2023 | CrInGE Entwicklungsteam | [UI-MockUps](./resources/UI%20Mockup)
