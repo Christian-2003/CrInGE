@@ -11,7 +11,7 @@
 6. TODO
 7. TODO
 8. TODO
-9. TODO
+9. [Architekturentscheidungen](#9-architekturentscheidungen)
 10. [Qualitätsanforderungen](#10-qualitätsanforderungen)
 
 
@@ -238,9 +238,18 @@ MapEvent | EventManager | Dieser Baustein stellt MapEvents dar, welche auf der V
 
 
 
+## 9. Architekturentscheidungen
 
+Wichtige Architekturentscheidungen werden innerhalb dieses Dokumentes jeweils nach Erwähnung begründet. Um Redundazen zu vermeiden folgt eine Liste mit Referenzen zu den jeweiligen Architekturentscheidungen:
 
-
+<!-- Bitte beachten: Diese Liste soll alphabetisch sortiert werden! -->
+* [Bausteinaufteilung](#3-kontextabgrenzung)
+* [Entwurfsmuster](#42-architekturmuster)
+* [Erreichen von Qualitätsmerkmalen](#43-erreichen-wichtiger-qualitätsmerkmale)
+* [Gewählte Qualitätsziele](#12-qualitätsziele)
+* [Organisatorisches](#44-organisatorische-entscheidungen)
+* [Verwendete Bibliotheken und Abhängigkeiten](#32-technischer-kontext)
+* [Verwendete Entwicklungssoftware](#41-technologieentscheidungen)
 
 ## 10. Qualitätsanforderungen
 
