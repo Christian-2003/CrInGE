@@ -1,9 +1,13 @@
 package game_engine.model;
 
 
+import javax.swing.*;
+
 /**
  * Class models a GameMap which contains an array of {@link GameChunk}s. Chunks are stored in a one-dimensional array
  * (see {@link #chunks}).
+ * Furthermore, the class contains an array of {@linkplain ImageIcon}s, which resemble the {@link #textures} for the
+ * {@link MapObject}s of this GameMap.
  *
  * @author  Christian-2003
  */
@@ -15,6 +19,12 @@ public class GameMap {
      * {@code i = (y * width + x)}.
      */
     private final GameChunk[] chunks;
+
+    /**
+     * Attribute stores all available textures for the {@link MapObject}s. Each MapObject only stores the index to
+     * its respective texture within this array.
+     */
+    private final ImageIcon[] textures;
 
     /**
      * Attributes store the width and height (in chunks) for the {@link GameMap}.
@@ -30,13 +40,17 @@ public class GameMap {
      * @param width                     Total width of the GameMap (in chunks).
      * @param height                    Total height of the GameMap (in chunks).
      * @param chunks                    Array of chunks for the GameMap.
+     * @param textures                  Array of ImageIcons resembling the textures for the MapObjects.
      * @throws NullPointerException     The passed array is {@code null}.
      * @throws IllegalArgumentException The passed with or height is less than 0 or the number of passed chunks does not
      *                                  match the map size.
      */
-    public GameMap(int width, int height, GameChunk[] chunks) throws NullPointerException, IllegalArgumentException {
+    public GameMap(int width, int height, GameChunk[] chunks, ImageIcon[] textures) throws NullPointerException, IllegalArgumentException {
         if (chunks == null) {
             throw new NullPointerException("Null is invalid array for chunks");
+        }
+        if (textures == null) {
+            throw new NullPointerException("Null is invalid array for textures");
         }
         if (width < 0) {
             throw new IllegalArgumentException("Width (" + width + ") illegal");
@@ -51,6 +65,8 @@ public class GameMap {
         this.height = height;
         this.chunks = new GameChunk[chunks.length];
         System.arraycopy(chunks, 0, this.chunks, 0, chunks.length);
+        this.textures = new ImageIcon[textures.length];
+        System.arraycopy(textures, 0, this.textures, 0, textures.length);
     }
 
 
@@ -61,6 +77,31 @@ public class GameMap {
     public int getHeight() {
         return height;
     }
+
+
+    /**
+     * Method returns the number of available textures.
+     *
+     * @return  Number of available textures.
+     */
+    public int getNumberOfTextures() {
+        return textures.length;
+    }
+
+    /**
+     * Method returns the texture at the specified index.
+     *
+     * @param index                         Index whose texture shall be returned.
+     * @return                              Texture at the specified index.
+     * @throws IndexOutOfBoundsException    The passed index is out of bounds.
+     */
+    public ImageIcon getTexture(int index) throws IndexOutOfBoundsException {
+        if (index < 0 || index > textures.length) {
+            throw new IndexOutOfBoundsException("Index " + index + " out of bounds for length " + textures.length);
+        }
+        return textures[index];
+    }
+
 
     /**
      * Method returns the {@link GameChunk} at the specified index. The returned chunk may be {@code null} if there is

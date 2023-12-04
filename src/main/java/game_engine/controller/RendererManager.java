@@ -2,7 +2,10 @@ package game_engine.controller;
 
 import game_engine.model.GameChunk;
 import game_engine.model.GameMap;
+import game_engine.model.GameObject;
 import game_engine.model.MapObject;
+import jdk.jshell.Snippet;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -39,6 +42,12 @@ public class RendererManager {
      */
     private int absoluteWorldX, absoluteWorldY;
 
+    /**
+     * Attribute stores a flag which indicates whether the RendererManager shall render additional debugging information,
+     * such as Chunk and MapObject borders.
+     */
+    private boolean debugRendering;
+
 
     /**
      * Constructor instantiates a new {@link RendererManager}.
@@ -53,6 +62,16 @@ public class RendererManager {
         this.map = map;
         absoluteWorldX = 0;
         absoluteWorldY = 0;
+        debugRendering = false;
+    }
+
+
+    public void setDebugRendering(boolean debugRendering) {
+        this.debugRendering = debugRendering;
+    }
+
+    public boolean isDebugRendering() {
+        return debugRendering;
     }
 
 
@@ -189,16 +208,18 @@ public class RendererManager {
             //Render mapObject:
             renderMapObject(mapObject, chunkOffsetX, chunkOffsetY);
         }
-        //Draw chunk borders:
-        int chunkX = (Math.max(chunkOffsetX, 0)) * MAP_OBJECT_SIZE;
-        int chunkY = (Math.max(chunkOffsetY, 0)) * MAP_OBJECT_SIZE;
-        int chunkWidth = (endX - startX) * MAP_OBJECT_SIZE;
-        int chunkHeight = (endY - startY) * MAP_OBJECT_SIZE;
-        g.setColor(Color.RED);
-        g.drawLine(chunkX, chunkY, chunkX + chunkWidth, chunkY); //Top line
-        g.drawLine(chunkX, chunkY, chunkX, chunkY + chunkHeight); //Left line
-        g.drawLine(chunkX + chunkWidth, chunkY, chunkX + chunkWidth, chunkY + chunkHeight); //Right line
-        g.drawLine(chunkX, chunkY + chunkHeight, chunkX + chunkWidth, chunkY + chunkHeight); //Bottom line
+        if (debugRendering) {
+            //Draw chunk borders:
+            int chunkX = (Math.max(chunkOffsetX, 0)) * MAP_OBJECT_SIZE;
+            int chunkY = (Math.max(chunkOffsetY, 0)) * MAP_OBJECT_SIZE;
+            int chunkWidth = (endX - startX) * MAP_OBJECT_SIZE;
+            int chunkHeight = (endY - startY) * MAP_OBJECT_SIZE;
+            g.setColor(Color.RED);
+            g.drawLine(chunkX, chunkY, chunkX + chunkWidth, chunkY); //Top line
+            g.drawLine(chunkX, chunkY, chunkX, chunkY + chunkHeight); //Left line
+            g.drawLine(chunkX + chunkWidth, chunkY, chunkX + chunkWidth, chunkY + chunkHeight); //Right line
+            g.drawLine(chunkX, chunkY + chunkHeight, chunkX + chunkWidth, chunkY + chunkHeight); //Bottom line
+        }
     }
 
 
@@ -224,15 +245,54 @@ public class RendererManager {
         int height = mapObject.getSize().height * MAP_OBJECT_SIZE;
 
         //Render MapObject:
-        g.setColor(Color.BLACK);
-        g.fillRect(x, y, width, height); //Fill background color
-        g.setColor(Color.WHITE);
-        g.drawLine(x, y, x + width, y); //Top line
-        g.drawLine(x, y, x, y + height); //Left line
-        g.drawLine(x + width, y, x + width, y + height); //Right line
-        g.drawLine(x, y + height, x + width, y + height); //Bottom line
-        g.drawLine(x, y, x + width, y + height); //Diagonal line 1
-        g.drawLine(x + width, y, x, y + height); //Diagonal line 2
+        boolean textureRendered = false;
+        int texture = mapObject.getTexture();
+        if (texture >= 0 && texture < map.getNumberOfTextures()) {
+            ImageIcon icon = map.getTexture(texture);
+            if (icon != null) {
+                g.drawImage(icon.getImage(), x, y, width, height, Color.BLACK, null);
+                textureRendered = true;
+            }
+        }
+        if (!textureRendered && texture != GameObject.NO_TEXTURE) {
+            drawInvalidTexture(x, y, width, height);
+            textureRendered = true;
+        }
+
+        if (debugRendering) {
+            //Render MapObject borders:
+            if (!textureRendered) {
+                g.setColor(Color.BLACK);
+                g.fillRect(x, y, width, height); //Fill background color
+            }
+            g.setColor(Color.WHITE);
+            g.drawLine(x, y, x + width, y); //Top line
+            g.drawLine(x, y, x, y + height); //Left line
+            g.drawLine(x + width, y, x + width, y + height); //Right line
+            g.drawLine(x, y + height, x + width, y + height); //Bottom line
+            g.drawLine(x, y, x + width, y + height); //Diagonal line 1
+            g.drawLine(x + width, y, x, y + height); //Diagonal line 2
+        }
+    }
+
+
+    /**
+     * Method draws the "invalid texture" to the canvas.
+     *
+     * @param x         Canvas coordinates for the upper left corner.
+     * @param y         Canvas coordinates for the upper left corner.
+     * @param width     Canvas width for the texture.
+     * @param height    Canvas height for the texture.
+     */
+    private void drawInvalidTexture(int x, int y, int width, int height) {
+        int halfWidth = width / 2;
+        int halfHeight = height / 2;
+        g.setColor(Color.MAGENTA);
+        g.fillRect(x, y, halfWidth, halfHeight);
+        g.fillRect(x + halfWidth, y + halfHeight, halfWidth, halfHeight);
+        g.setColor(Color.DARK_GRAY);
+        g.fillRect(x + halfWidth, y, halfWidth, halfHeight);
+        g.fillRect(x, y + halfHeight, halfWidth, halfHeight);
     }
 
 }

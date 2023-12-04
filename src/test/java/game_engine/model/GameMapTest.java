@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import javax.swing.*;
+
 
 /**
  * Class implements unit tests for {@link GameMap}.
@@ -16,7 +18,7 @@ public class GameMapTest {
     @DisplayName("Create GameMap with chunk")
     public void createWithChunk() {
         GameChunk[] chunks = {new GameChunk(null, null)};
-        new GameMap(1, 1, chunks);
+        new GameMap(1, 1, chunks, new ImageIcon[]{});
     }
 
 
@@ -24,7 +26,7 @@ public class GameMapTest {
     @DisplayName("Create GameMap without height")
     public void createWithNoHeight() {
         GameChunk[] chunks = {new GameChunk(null, null)};
-        Assertions.assertThrowsExactly(IllegalArgumentException.class, () -> new GameMap(1, 0, chunks));
+        Assertions.assertThrowsExactly(IllegalArgumentException.class, () -> new GameMap(1, 0, chunks, new ImageIcon[]{}));
     }
 
 
@@ -32,14 +34,14 @@ public class GameMapTest {
     @DisplayName("Create GameMap without width")
     public void createWithNoWidth() {
         GameChunk[] chunks = {new GameChunk(null, null)};
-        Assertions.assertThrowsExactly(IllegalArgumentException.class, () -> new GameMap(0, 1, chunks));
+        Assertions.assertThrowsExactly(IllegalArgumentException.class, () -> new GameMap(0, 1, chunks, new ImageIcon[]{}));
     }
 
     @Test
     @DisplayName("Create GameMap without correct number of chunks")
     public void createWithIncorrectChunkNumber() {
         GameChunk[] chunks = {new GameChunk(null, null)};
-        Assertions.assertThrowsExactly(IllegalArgumentException.class, () -> new GameMap(2, 1, chunks));
+        Assertions.assertThrowsExactly(IllegalArgumentException.class, () -> new GameMap(2, 1, chunks, new ImageIcon[]{}));
     }
 
 
@@ -47,7 +49,7 @@ public class GameMapTest {
     @DisplayName("Create GameMap with correct number of chunks")
     public void createWithCorrectNumberOfChunks() {
         GameChunk[] chunks = {new GameChunk(null, null), new GameChunk(null, null)};
-        new GameMap(2, 1, chunks);
+        new GameMap(2, 1, chunks, new ImageIcon[]{});
     }
 
 
@@ -55,7 +57,7 @@ public class GameMapTest {
     @DisplayName("Create GameMap with null as chunk")
     public void createWithNullChunk() {
         GameChunk[] chunks = {null};
-        new GameMap(1, 1, chunks);
+        new GameMap(1, 1, chunks, new ImageIcon[]{});
     }
 
 
@@ -64,7 +66,7 @@ public class GameMapTest {
     public void accessChunkOutOfRange() {
         //10 Chunks:
         GameChunk[] chunks = {new GameChunk(null, null), new GameChunk(null, null), new GameChunk(null, null), new GameChunk(null, null), new GameChunk(null, null), new GameChunk(null, null), new GameChunk(null, null), new GameChunk(null, null), new GameChunk(null, null), new GameChunk(null, null)};
-        GameMap map = new GameMap(5, 2, chunks);
+        GameMap map = new GameMap(5, 2, chunks, new ImageIcon[]{});
         Assertions.assertThrowsExactly(IndexOutOfBoundsException.class, () -> map.get(10));
         Assertions.assertThrowsExactly(IndexOutOfBoundsException.class, () -> map.get(-1));
     }
@@ -75,7 +77,7 @@ public class GameMapTest {
     public void accessChunkWithCoordinates() {
         //10 Chunks:
         GameChunk[] chunks = {new GameChunk(null, null), new GameChunk(null, null), new GameChunk(null, null), new GameChunk(null, null), new GameChunk(null, null), new GameChunk(null, null), new GameChunk(null, null), new GameChunk(null, null), new GameChunk(null, null), new GameChunk(null, null)};
-        GameMap map = new GameMap(5, 2, chunks);
+        GameMap map = new GameMap(5, 2, chunks, new ImageIcon[]{});
         Assertions.assertEquals(map.get(2, 0), chunks[2]);
         Assertions.assertEquals(map.get(2, 1), chunks[7]);
     }
@@ -86,7 +88,7 @@ public class GameMapTest {
     public void accessChunkOutOfRangeWithCoordinates() {
         //10 Chunks:
         GameChunk[] chunks = {new GameChunk(null, null), new GameChunk(null, null), new GameChunk(null, null), new GameChunk(null, null), new GameChunk(null, null), new GameChunk(null, null), new GameChunk(null, null), new GameChunk(null, null), new GameChunk(null, null), new GameChunk(null, null)};
-        GameMap map = new GameMap(5, 2, chunks);
+        GameMap map = new GameMap(5, 2, chunks, new ImageIcon[]{});
         Assertions.assertThrowsExactly(IndexOutOfBoundsException.class, () -> map.get(7, 0));
         Assertions.assertThrowsExactly(IndexOutOfBoundsException.class, () -> map.get(3, 2));
     }

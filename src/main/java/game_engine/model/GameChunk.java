@@ -104,7 +104,7 @@ public class GameChunk {
      * @return  Whether there are more MapObjects.
      */
     public boolean hasNextMapObject() {
-        return currentMapObject >= 0 && currentMapObject < mapObjects.length - 1;
+        return currentMapObject >= 0 && currentMapObject < mapObjects.length;
     }
 
 
@@ -146,7 +146,7 @@ public class GameChunk {
      * @return  Whether there are more MapObjects.
      */
     public boolean hasNextExternalMapObject() {
-        return currentExternalMapObject >= 0 && currentExternalMapObject < externalMapObjects.length - 1;
+        return currentExternalMapObject >= 0 && currentExternalMapObject < externalMapObjects.length;
     }
 
 }
