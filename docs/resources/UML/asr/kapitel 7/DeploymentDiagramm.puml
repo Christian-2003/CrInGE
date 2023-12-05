@@ -1,8 +1,8 @@
 @startuml
 
 
-Node "<<Java Runtime>>" as JR{
-  Node "<<Java Development Kit>>" as JDK{
+Node "Version 1.8" <<Java Runtime>> as JR{
+  Node "Version 21+" <<Java Development Kit>> as JDK{
     Node "Game Editor" as GE{
 
 
