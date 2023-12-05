@@ -48,18 +48,7 @@ CrInGE Entwicklungsteam | Das Entwicklungsteam der Software möchte, dass die So
 
 ### 1.4 Definitionen, Akronyme und Abkürzungen
 
-Im Nachfolgenden folgt eine List aller Definitionen, Akronymen und Abkürzungen, die im Weiteren Verlauf dieses Dokumentes verwendet werden.
-
-<!-- Bitte beachten: Die Einträge in dieser Tabelle sollen alphabetisch (nach dem Akronym) sortiert werden! -->
-Akronym | Bedeutung
---- | ---
-API | <ins>A</ins>pplication <ins>P</ins>rogrammer <ins>I</ins>nterface (Deutsch: Programmierschnittstelle)
-ASR | <ins>A</ins>rchitecutrally <ins>s</ins>ignificant <ins>r</ins>equirements
-CrInGE | <ins>C</ins>ompute<ins>r</ins>ized <ins>In</ins>tegrated <ins>G</ins>ame <ins>E</ins>ngine
-FPS | <ins>F</ins>rames <ins>p</ins>er <ins>s</ins>econd
-MVC | <ins>M</ins>odel-<ins>V</ins>iew-<ins>C</ins>ontroller
-JRE | Java Runtime Enviroment
-JDK | Jave Developer Kit
+Eine Liste aller Definitionen, Akronymen und Abkürzungen, die im Weiteren Verlauf dieses Dokumentes verwendet werden, ist im [Glossar](#12-glossar) zu finden.
 
 ### 1.5 Referenzen
 
@@ -367,3 +356,16 @@ Insgesamt ist die Benutzerfreundlichkeit und die Benutzbarkeit - nicht zuletzt a
 ## 11. Risiken und technische Schulden
 
 ## 12. Glossar
+
+Im Nachfolgenden folgt eine List aller Definitionen, Akronymen und Abkürzungen, welche innerhalb dieses Dokumentes verwendet wurden.
+
+<!-- Bitte beachten: Die Einträge in dieser Tabelle sollen alphabetisch (nach dem Akronym) sortiert werden! -->
+Akronym | Bedeutung
+--- | ---
+API | <ins>A</ins>pplication <ins>P</ins>rogrammer <ins>I</ins>nterface (Deutsch: Programmierschnittstelle)
+ASR | <ins>A</ins>rchitecutrally <ins>s</ins>ignificant <ins>r</ins>equirements
+CrInGE | <ins>C</ins>ompute<ins>r</ins>ized <ins>In</ins>tegrated <ins>G</ins>ame <ins>E</ins>ngine
+FPS | <ins>F</ins>rames <ins>p</ins>er <ins>s</ins>econd
+JRE | Java Runtime Enviroment
+JDK | Jave Developer Kit
+MVC | <ins>M</ins>odel-<ins>V</ins>iew-<ins>C</ins>ontroller
