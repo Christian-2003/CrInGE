@@ -3,13 +3,14 @@
 # CrInGE - Momentane Softwarearchitektur
 
 ## Inhaltsverzeichnis
+
 1. [Einführung und Ziele](#1-einführung-und-ziele)
 2. [Randbedingungen](#2-randbedingungen)
 3. [Kontextabgrenzung](#3-kontextabgrenzung)
 4. [Lösungsstrategie](#4-lösungsstrategie)
 5. [Bausteinsicht](#5-bausteinsicht)
-6. TODO - [Laufzeitsicht](#6-laufzeitsicht)
-7. TODO - [Verteilungssicht](#7-verteilungssicht)
+6. [Laufzeitsicht](#6-laufzeitsicht)
+7. [Verteilungssicht](#7-verteilungssicht)
 8. TODO - [Querschnittliche Konzepte](#8-querschnittliche-konzepte)
 9. [Architekturentscheidungen](#9-architekturentscheidungen)
 10. [Qualitätsanforderungen](#10-qualitätsanforderungen)
