@@ -68,11 +68,11 @@ Im Nachfolgenden folgt eine Liste aller Referenzen, die im weiteren Verlauf dies
 Titel | Datum | Veröffentlichungsorganisation | Link
 --- | --: | --- | ---
 CrInGE Logo | 01.11.2023 | CrInGE Entwicklungsteam | [CrInGE Logo](./resources/img/logo.png)
-| Oberste Ebene Sequenzdiagramm | 05.12.2023 | CrInGE Entwicklungsteam | [Oberste Ebene Sequenzdiagramm](./resources/UML/asr/Kapitel 6/SequenzDiagrammObersteEbene.png)
-| Game Engine Sequenzdiagramm | 05.12.2023 | CrInGE Entwicklungsteam | [Game Engine Sequenzdiagramm](./resources/UML/asr/Kapitel 6/SequenzdiagrammGameEngine.png)
-| Projekt Sequenzdiagramm | 05.12.2023 | CrInGE Entwicklungsteam | [Projekt Sequenzdiagramm](./resources/UML/asr/Kapitel 6/Project_Selector_Sequenz.png)
-| Welteneditor Sequenzdiagramm | 05.12.2023 | CrInGE Entwicklungsteam | [Welteneditor Sequenzdiagramm](./resources/UML/asr/Kapitel 6/Welteneditor_Sequenz.png)
-| Deployment Diagramm | 05.12.2023 | CrInGE Entwicklungsteam | [Deployment Diagramm](./resources/UML/asr/kapitel 7/DeploymentDiagramm.png)
+| Oberste Ebene Sequenzdiagramm | 05.12.2023 | CrInGE Entwicklungsteam | [Oberste Ebene Sequenzdiagramm](./resources/UML/asr/Kapitel%206/SequenzDiagrammObersteEbene.png)
+| Game Engine Sequenzdiagramm | 05.12.2023 | CrInGE Entwicklungsteam | [Game Engine Sequenzdiagramm](./resources/UML/asr/Kapitel%206/SequenzdiagrammGameEngine.png)
+| Projekt Sequenzdiagramm | 05.12.2023 | CrInGE Entwicklungsteam | [Projekt Sequenzdiagramm](./resources/UML/asr/Kapitel%206/Project_Selector_Sequenz.png)
+| Welteneditor Sequenzdiagramm | 05.12.2023 | CrInGE Entwicklungsteam | [Welteneditor Sequenzdiagramm](./resources/UML/asr/Kapitel%206/Welteneditor_Sequenz.png)
+| Deployment Diagramm | 05.12.2023 | CrInGE Entwicklungsteam | [Deployment Diagramm](./resources/UML/asr/kapitel%207/DeploymentDiagramm.png)
 
 ## 2. Randbedingungen
 
