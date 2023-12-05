@@ -14,8 +14,8 @@
 8. [Querschnittliche Konzepte](#8-querschnittliche-konzepte)
 9. [Architekturentscheidungen](#9-architekturentscheidungen)
 10. [Qualitätsanforderungen](#10-qualitätsanforderungen)
-11. TODO - [Risiken und technische Schulden](#11-risiken-und-technische-schulden)
-12. TODO - [Glossar](#12-glossar)
+11. [Risiken und technische Schulden](#11-risiken-und-technische-schulden)
+12. [Glossar](#12-glossar)
 
 ## 1. Einführung und Ziele
 
@@ -354,6 +354,14 @@ Insgesamt ist die Benutzerfreundlichkeit und die Benutzbarkeit - nicht zuletzt a
 </div>
 
 ## 11. Risiken und technische Schulden
+
+<!-- Bitte beachten: Die Einträge in diser Tabelle sollen nach Priorität geordnet sein -->
+| Risiko | Gegenmaßnahme |
+| --- | --- |
+| schlechte Note | arbeitet mehr, Sklaven! |
+| unvollständiger Editor | ausführliche Dokumentation der offenen, benötigten Schnittstellen |
+| unvollständige Engine | Sperren der Features im Editor |
+| fehlerhafte Schnittstelle zwischen Engine und Editor | klare dokumentation der benötigten Datenstrukturen |
 
 ## 12. Glossar
 
