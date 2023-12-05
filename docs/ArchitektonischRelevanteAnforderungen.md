@@ -11,7 +11,7 @@
 5. [Bausteinsicht](#5-bausteinsicht)
 6. [Laufzeitsicht](#6-laufzeitsicht)
 7. [Verteilungssicht](#7-verteilungssicht)
-8. TODO - [Querschnittliche Konzepte](#8-querschnittliche-konzepte)
+8. [Querschnittliche Konzepte](#8-querschnittliche-konzepte)
 9. [Architekturentscheidungen](#9-architekturentscheidungen)
 10. [Qualitätsanforderungen](#10-qualitätsanforderungen)
 11. TODO - [Risiken und technische Schulden](#11-risiken-und-technische-schulden)
@@ -252,6 +252,16 @@ Will man hingegen selbst ein Spiel entwickeln benötigt der Game Editor den Comp
 
 ## 8. Querschnittliche Konzepte
 
+Wichtige Architekturentscheidungen werden innerhalb dieses Dokumentes jeweils nach Erwähnung begründet. Um Redundazen zu vermeiden folgt eine Liste mit Referenzen zu den jeweiligen Architekturentscheidungen:
+
+<!-- Bitte beachten: Diese Liste soll alphabetisch sortiert werden! -->
+* [Bausteinaufteilung](#31-formaler-kontext)
+* [Externe Abhängigkeiten](#32-technischer-kontext)
+* [MVC](#42-architekturmuster)
+* [Organisatorisches](#44-organisatorische-entscheidungen)
+* [Hohe Testabdeckung](#43-erreichen-wichtiger-qualitätsmerkmale)
+* [Hohe Benutzerfreundlichkeit](#107-benutzbarkeit)
+
 ## 9. Architekturentscheidungen
 
 Wichtige Architekturentscheidungen werden innerhalb dieses Dokumentes jeweils nach Erwähnung begründet. Um Redundazen zu vermeiden folgt eine Liste mit Referenzen zu den jeweiligen Architekturentscheidungen:
@@ -261,7 +271,6 @@ Wichtige Architekturentscheidungen werden innerhalb dieses Dokumentes jeweils na
 * [Entwurfsmuster](#42-architekturmuster)
 * [Erreichen von Qualitätsmerkmalen](#43-erreichen-wichtiger-qualitätsmerkmale)
 * [Gewählte Qualitätsziele](#12-qualitätsziele)
-* [Organisatorisches](#44-organisatorische-entscheidungen)
 * [Verwendete Bibliotheken und Abhängigkeiten](#32-technischer-kontext)
 * [Verwendete Entwicklungssoftware](#41-technologieentscheidungen)
 
