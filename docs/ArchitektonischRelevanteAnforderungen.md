@@ -8,12 +8,13 @@
 3. [Kontextabgrenzung](#3-kontextabgrenzung)
 4. [Lösungsstrategie](#4-lösungsstrategie)
 5. [Bausteinsicht](#5-bausteinsicht)
-6. TODO
-7. TODO
-8. TODO
+6. TODO - [Laufzeitsicht](#6-laufzeitsicht)
+7. TODO - [Verteilungssicht](#7-verteilungssicht)
+8. TODO - [Querschnittliche Konzepte](#8-querschnittliche-konzepte)
 9. [Architekturentscheidungen](#9-architekturentscheidungen)
 10. [Qualitätsanforderungen](#10-qualitätsanforderungen)
-
+11. TODO - [Risiken und technische Schulden](#11-risiken-und-technische-schulden)
+12. TODO - [Glossar](#12-glossar)
 
 ## 1. Einführung und Ziele
 
@@ -130,7 +131,6 @@ Das zu entwickelnde System lässt sich grob in drei Bestandteile aufteilen: Den 
 <div align="center">
     <img src="./resources/UML/Bausteinsicht_Kontextabrenzung.png" >
 </div>
-
 _Ausschnitt aus der Bausteinansicht_
 
 Die Software lässt sich in die Folgenden Bausteine aufteilen:
@@ -147,7 +147,6 @@ OpenGL | OpenGL ermöglicht der Engine effizientes Rendern über die Grafikkarte
 <div align="center">
     <img src="./resources/UML/Bausteinsicht_Ebene1.png" >
 </div>
-
 _Ausschnitt aus der Bausteinansicht_
 
 Die erste Ebene lässt sich in die Folgenden Bausteine aufteilen:
@@ -175,7 +174,6 @@ EventManager | Engine | Dieser Baustein verwaltet alle Events, die im Videospiel
 <div align="center">
     <img src="./resources/UML/Bausteinsicht_Ebene2.png" >
 </div>
-
 _Ausschnitt aus der Bausteinansicht_
 
 Die erste Ebene lässt sich in die Folgenden Bausteine aufteilen:
@@ -210,33 +208,14 @@ RegisteredEvents | EventManager | Dieser Baustein enthält alle registrierten Ev
 KeyEvent | EventManager | Dieser Baustein stellt KeyEvents dar, welche durch Tastendrücke auf der Tastatur des Videospielers ausgelöst werden.
 MapEvent | EventManager | Dieser Baustein stellt MapEvents dar, welche auf der Videospielwelt auftreten.
 
+## 6. Laufzeitsicht
 
 
 
 
+## 7. Verteilungssicht
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## 8. Querschnittliche Konzepte
 
 ## 9. Architekturentscheidungen
 
@@ -275,7 +254,7 @@ Die Engine verarbeitet weitgehen Daten, die durch den Editor erstellt wurden. Hi
 
 Die von der Engine erstellten Dateien müssen korrekt sein. Dazu muss die Engine dies bei jedem Zugriff auf die Dateien überprüfen. Wenn die Dateien nicht korrekt sind, kann das Videospiel nicht ausgeführt werden.
 
-Vom Videospielentwickler erstellte Skripte müssen ebenfalls auf Korrektheit überprüft werden. Diese Skripe werden in der Programmiersprache Java entwickelt und beim Exportieren des Videospiels durch den Java Kompiler kompiliert. Dadurch werden die Skripte in die Jar-Datei, die das entwickelte Videospiel darstellt, eingebunden. Treten beim Kompilieren des Spiels keine Fehler auf, ist davon auszugehen, dass die Skripte korrekt sind. Treten beim Ausführen solcher Skripte Laifzeitfehler auf, so können diese abgefangen und in Log-Dateien dokumentiert werden. Hierbei handelt es sich dann um Fehler, die durch den Videospielentwickler eingeführt werden (siehe [3.1 Verfügbarkeit](#31-verfügbarkeit)).
+Vom Videospielentwickler erstellte Skripte müssen ebenfalls auf Korrektheit überprüft werden. Diese Skripe werden in der Programmiersprache Java entwickelt und beim Exportieren des Videospiels durch den Java Kompiler kompiliert. Dadurch werden die Skripte in die Jar-Datei, die das entwickelte Videospiel darstellt, eingebunden. Treten beim Kompilieren des Spiels keine Fehler auf, ist davon auszugehen, dass die Skripte korrekt sind. Treten beim Ausführen solcher Skripte Laifzeitfehler auf, so können diese abgefangen und in Log-Dateien dokumentiert werden. Hierbei handelt es sich dann um Fehler, die durch den Videospielentwickler eingeführt werden (siehe [10.1 Verfügbarkeit](#101-verfügbarkeit)).
 
 <div align="center">
     <img src="./resources/Qualitaetsbaeume/Interoperabilitaet.PNG" >
@@ -315,7 +294,7 @@ Von besonderer Bedeutung sind die vom Videospielentwickler entwickelten Skripte.
 
 ### 10.6 Testbarkeit
 
-Zur Verinngerung von Ausfallzeiten und der Maximierung der [Verfügbarkeit](#31-verfügbarkeit) wird die Anwendung Test-Driven entwickelt. Dies beinhaltet sowohl die Engine, als auch den Editor. Hierdurch werden mögliche Fehler und Bugs frühzeitig in der Entwicklung erkannt, was den Aufwand zur Behebung solcher Probleme stark verringert.
+Zur Verinngerung von Ausfallzeiten und der Maximierung der [Verfügbarkeit](#101-verfügbarkeit) wird die Anwendung Test-Driven entwickelt. Dies beinhaltet sowohl die Engine, als auch den Editor. Hierdurch werden mögliche Fehler und Bugs frühzeitig in der Entwicklung erkannt, was den Aufwand zur Behebung solcher Probleme stark verringert.
 
 Es ist Anzunehmen, dass zwischen 30 % und 50 % des entstehenden Arbeitsaufwands zum Testen der Anwendung anfällt. Diese Schätzung basiert sowohl auf bisheriger Erfahrung des CrInGE Entwicklungsteams, als auch auf Berichten anderer Softwareentwicklungshäuser.
 
@@ -340,3 +319,7 @@ Insgesamt ist die Benutzerfreundlichkeit und die Benutzbarkeit - nicht zuletzt a
 <div align="center">
     <img src="./resources/Qualitaetsbaeume/Benutzbarkeit.PNG" >
 </div>
+
+## 11. Risiken und technische Schulden
+
+## 12. Glossar
