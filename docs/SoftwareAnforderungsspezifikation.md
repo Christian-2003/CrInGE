@@ -135,7 +135,7 @@ Das Sequenzdiagramm beschreibt die Kommunikation zwischen Benutezer (oben Videos
 Diese Anforderung basiert auf den User Stories:
 
 1. [Als Spieler möchte ich Fähigkeiten meines Charakters leveln können](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=41353987)
-2. [Als Spieleentwickler möchte ich auf grundlegende physikalische Funktionalitäten der game_editor.controller.Engine zugreifen, sodass ich diese beliebig verwenden kann.](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=41354193)
+2. [Als Spieleentwickler möchte ich auf grundlegende physikalische Funktionalitäten der game_engine.Engine zugreifen, sodass ich diese beliebig verwenden kann.](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=41354193)
 3. [Als Spielentwickler möchte ich Musik/Geräusche zu meinem Spiel hinzufügen, sodass dieses ein immersives Spielerlebnis bieten kann.](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=41652124)
 
 Der Aufwand für diese Anforderung wird auf **hoch** geschätzt.
@@ -198,7 +198,7 @@ Zu den funktionalitäten zählen bspw. Das Berechnen von Gravitationskräften od
 
 Diese Anforderung basiert auf der User Story:
 
-1. [Als Spieleentwickler möchte ich auf grundlegende physikalische Funktionalitäten der game_editor.controller.Engine zugreifen, sodass ich diese beliebig verwenden kann.](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=41354193)
+1. [Als Spieleentwickler möchte ich auf grundlegende physikalische Funktionalitäten der game_engine.Engine zugreifen, sodass ich diese beliebig verwenden kann.](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=41354193)
 
 Der Aufwand für diese Anforderung wird auf **niedrig** geschätzt.
 

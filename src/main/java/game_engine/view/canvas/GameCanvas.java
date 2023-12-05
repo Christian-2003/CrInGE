@@ -1,75 +1,48 @@
 package game_engine.view.canvas;
 
-import com.jogamp.opengl.GLAutoDrawable;
-import com.jogamp.opengl.GLEventListener;
+import game_engine.controller.RendererManager;
 import game_engine.model.GameMap;
 import javax.swing.*;
+import java.awt.*;
 
 
 /**
- * Class implements a canvas which can display a {@link GameMap} with OpenGL.
+ * Class implements a canvas onto which a {@link GameMap} can be rendered through a {@link RendererManager}. The canvas
+ * calls a specified RendererManager whenever it needs to be rendered.
  *
- * @author      Christian-2003
- * @deprecated  For some reason that I do not understand, OpenGL does not work with this repository. I will fix this
- *              later,for now, use {@link SwingGameCanvas} instead!
+ * @author  Christian-2003
  */
-public class GameCanvas implements GLEventListener {
+public class GameCanvas extends JComponent {
 
     /**
-     * Attribute references the {@link GameMap} which shall be rendered by this canvas.
+     * Attribute <i>references</i> the {@link RendererManager} which renders a {@link GameMap} to this component.
      */
-    private GameMap map;
-
-
-
+    private final RendererManager rendererManager;
 
 
     /**
-     * Method is called by the referenced {@linkplain GLAutoDrawable} immediately after the OpenGL context is
-     * initialized.
+     * Constructor instantiates a new {@link GameCanvas} onto which a {@link RendererManager} can render a
+     * {@link GameMap}.
      *
-     * @param drawable  Instance which called the method.
+     * @param rendererManager       <i>Reference</i> to the RendererManager to be used for rendering.
+     * @throws NullPointerException The passed RendererManager is {@code null}.
      */
-    @Override
-    public void init(GLAutoDrawable drawable) {
-        //Do nothing...
+    public GameCanvas(RendererManager rendererManager) throws NullPointerException {
+        if (rendererManager == null) {
+            throw new NullPointerException("Null is invalid RendererManager.");
+        }
+        this.rendererManager = rendererManager;
     }
 
 
     /**
-     * Method is called by the referenced {@linkplain GLAutoDrawable} to dispose of this canvas.
+     * Method calls the {@link #rendererManager} to render the game to the canvas.
      *
-     * @param drawable  Instance which called the method.
+     * @param g The {@linkplain Graphics} object to protect.
      */
     @Override
-    public void dispose(GLAutoDrawable drawable) {
-        //Do nothing...
-    }
-
-
-    /**
-     * Method is called by the referenced {@linkplain GLAutoDrawable} to initiate rendering by the canvas.
-     *
-     * @param drawable  Instance which called the method.
-     */
-    @Override
-    public void display(GLAutoDrawable drawable) {
-
-    }
-
-
-    /**
-     * Method is called by the referenced {@linkplain GLAutoDrawable} during the first repaint.
-     *
-     * @param drawable  Instance which called the method.
-     * @param x         New x-coordinate for the canvas.
-     * @param y         New y-coordinate for the canvas.
-     * @param width     New width for the canvas.
-     * @param height    New height for the canvas.
-     */
-    @Override
-    public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
-        //Do nothing...
+    public void paintComponent(Graphics g) {
+        rendererManager.renderGameMap(this, g);
     }
 
 }

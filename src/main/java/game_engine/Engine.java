@@ -1,12 +1,9 @@
-package game_editor.controller;
+package game_engine;
 
-import game_engine.controller.RendererManager;
-import game_engine.controller.math_engine.MathException;
+import game_engine.controller.GameLoop;
 import game_engine.model.GameChunk;
 import game_engine.model.GameMap;
-import game_engine.model.GameObject;
 import game_engine.model.MapObject;
-import game_engine.view.canvas.SwingGameCanvas;
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
@@ -21,20 +18,20 @@ import java.util.Random;
  */
 public class Engine {
     
-    public static void main(String[] args) throws NullPointerException, MathException {
+    public static void main(String[] args) throws NullPointerException {
+        GameLoop gameLoop = new GameLoop(generateGameMap(5, 3));
+    }
 
-        int width = 5, height = 3;
-        GameMap map = new GameMap(width, height, createChunks(width, height, 100), loadTextures());
-        RendererManager renderer = new RendererManager(map);
-        //renderer.setDebugRendering(true);
-        //renderer.updateMapPosition(5, 10);
-        SwingGameCanvas canvas = new SwingGameCanvas(renderer);
 
-        JFrame frame = new JFrame("Game Test");
-        frame.add(canvas);
-        frame.setSize(500, 400);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+    /**
+     * Method generates a new random GameMap that can be used for testing.
+     *
+     * @param width     Width for the GameMap.
+     * @param height    Height for the GameMap.
+     * @return          Generated GameMap.
+     */
+    private static GameMap generateGameMap(int width, int height) {
+        return new GameMap(width, height, createChunks(width, height, 100), loadTextures());
     }
 
 
@@ -49,7 +46,7 @@ public class Engine {
      * @param objectPercentage  Probability (number between 0 and 100) for a MapObject to be generated.
      * @return                  Array of GameChunks.
      */
-    public static GameChunk[] createChunks(int width, int height, int objectPercentage) {
+    private static GameChunk[] createChunks(int width, int height, int objectPercentage) {
         GameChunk[] chunks = new GameChunk[width * height];
         Random random = new Random();
         for (int i = 0; i < chunks.length; i++) {
@@ -64,7 +61,19 @@ public class Engine {
                         int objectWidth = 1;
                         int objectHeight = 1;
                         int texture = MapObject.NO_TEXTURE;
-                        if (chunkHeight > height / 2) {
+                        if (chunkHeight == 0) {
+                            //Top chunk:
+                            if (y == 0) {
+                                texture = 8;
+                            }
+                            else if (y <= 5) {
+                                texture = random.nextInt(3) + 9;
+                            }
+                            else {
+                                texture = random.nextInt(5);
+                            }
+                        }
+                        else if (chunkHeight > height / 2) {
                             texture = random.nextInt(3) + 5;
                         }
                         else {
@@ -91,8 +100,8 @@ public class Engine {
      *
      * @return  Array of textures.
      */
-    public static ImageIcon[] loadTextures() {
-        ImageIcon[] icons = new ImageIcon[8];
+    private static ImageIcon[] loadTextures() {
+        ImageIcon[] icons = new ImageIcon[12];
         URL cobblestone = Engine.class.getResource("/textures/cobblestone.png");
         if (cobblestone != null) {
             icons[0] = new ImageIcon(cobblestone);
@@ -124,6 +133,22 @@ public class Engine {
         URL tuff = Engine.class.getResource("/textures/tuff.png");
         if (tuff != null) {
             icons[7] = new ImageIcon(tuff);
+        }
+        URL grass = Engine.class.getResource("/textures/grass.png");
+        if (grass != null) {
+            icons[8] = new ImageIcon(grass);
+        }
+        URL dirt = Engine.class.getResource("/textures/dirt.png");
+        if (dirt != null) {
+            icons[9] = new ImageIcon(dirt);
+        }
+        URL coarse_dirt = Engine.class.getResource("/textures/coarse_dirt.png");
+        if (coarse_dirt != null) {
+            icons[10] = new ImageIcon(coarse_dirt);
+        }
+        URL rooted_dirt = Engine.class.getResource("/textures/rooted_dirt.png");
+        if (rooted_dirt != null) {
+            icons[11] = new ImageIcon(rooted_dirt);
         }
         return icons;
     }
