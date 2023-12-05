@@ -210,8 +210,24 @@ MapEvent | EventManager | Dieser Baustein stellt MapEvents dar, welche auf der V
 
 ## 6. Laufzeitsicht
 
+Die Bausteine arbeiten auf der Obersten Ebene wie folgt zusammen:
 
+<div align="center">
+    <img src="./resources/UML/asr/Kapitel 6/SequenzDiagrammObersteEbene.png" >
+</div>
 
+Des Weiteren arbeitet die Game Engine mit der dem fertigen Spiel wie folgt:
+<div align="center">
+    <img src="./resources/UML/asr/Kapitel 6/SequenzdiagrammGameEngine.png" >
+</div>
+
+Der Game Editor lässt isch in zwei Teile gliedern: die Projektansicht und die Kartenansicht. Nachfolgend sind die Abläufe beider beschrieben.
+<div align="center">
+    <img src="./resources/UML/asr/Kapitel 6/Project_Selector_Sequenz.png" >
+</div>
+<div align="center">
+    <img src="./resources/UML/asr/Kapitel 6/Welteneditor_Sequenz.png" >
+</div>
 
 ## 7. Verteilungssicht
 
