@@ -57,6 +57,8 @@ ASR | <ins>A</ins>rchitecutrally <ins>s</ins>ignificant <ins>r</ins>equirements
 CrInGE | <ins>C</ins>ompute<ins>r</ins>ized <ins>In</ins>tegrated <ins>G</ins>ame <ins>E</ins>ngine
 FPS | <ins>F</ins>rames <ins>p</ins>er <ins>s</ins>econd
 MVC | <ins>M</ins>odel-<ins>V</ins>iew-<ins>C</ins>ontroller
+JRE | Java Runtime Enviroment
+JDK | Jave Developer Kit
 
 ### 1.5 Referenzen
 
@@ -66,6 +68,11 @@ Im Nachfolgenden folgt eine Liste aller Referenzen, die im weiteren Verlauf dies
 Titel | Datum | Veröffentlichungsorganisation | Link
 --- | --: | --- | ---
 CrInGE Logo | 01.11.2023 | CrInGE Entwicklungsteam | [CrInGE Logo](./resources/img/logo.png)
+| Oberste Ebene Sequenzdiagramm | 05.12.2023 | CrInGE Entwicklungsteam | [Oberste Ebene Sequenzdiagramm](./resources/UML/asr/Kapitel 6/SequenzDiagrammObersteEbene.png)
+| Game Engine Sequenzdiagramm | 05.12.2023 | CrInGE Entwicklungsteam | [Game Engine Sequenzdiagramm](./resources/UML/asr/Kapitel 6/SequenzdiagrammGameEngine.png)
+| Projekt Sequenzdiagramm | 05.12.2023 | CrInGE Entwicklungsteam | [Projekt Sequenzdiagramm](./resources/UML/asr/Kapitel 6/Project_Selector_Sequenz.png)
+| Welteneditor Sequenzdiagramm | 05.12.2023 | CrInGE Entwicklungsteam | [Welteneditor Sequenzdiagramm](./resources/UML/asr/Kapitel 6/Welteneditor_Sequenz.png)
+| Deployment Diagramm | 05.12.2023 | CrInGE Entwicklungsteam | [Deployment Diagramm](./resources/UML/asr/kapitel 7/DeploymentDiagramm.png)
 
 ## 2. Randbedingungen
 
@@ -230,6 +237,17 @@ Der Game Editor lässt isch in zwei Teile gliedern: die Projektansicht und die K
 </div>
 
 ## 7. Verteilungssicht
+
+Der CrInGE Editor kann über Git Hub runtergeladen werden. er beinhaltet alles notwendige, um ein Spiel zu entwickeln und zu exportieren.
+
+Der Entwicklere eines Spiels ist jedoch selbst für die Bereitstellung der kompilierten Spieldateien verantwortlich.
+
+<div align="center">
+    <img src="./resources/UML/asr/kapitel 7/DeploymentDiagramm.png" >
+</div>
+Wie oben zu sehen, benötigt die Game Engine für das fertige Spiel lediglich eine funktionierende JRE v1.8.
+
+Will man hingegen selbst ein Spiel entwickeln benötigt der Game Editor den Compiler, welcher seinerseits auf ein JDK v21 zurückgreift.
 
 ## 8. Querschnittliche Konzepte
 
