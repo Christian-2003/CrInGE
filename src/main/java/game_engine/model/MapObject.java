@@ -4,9 +4,9 @@ import java.awt.*;
 
 
 /**
- * TODO: Add description.
+ * Class models a MapObject. A {@link GameMap} is made out of instances of this class.
  *
- * @author  TODO: Add author.
+ * @author  Christian-2003
  */
 public class MapObject extends GameObject {
 

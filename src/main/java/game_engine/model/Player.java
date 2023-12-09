@@ -4,9 +4,9 @@ import java.awt.*;
 
 
 /**
- * TODO: Add description.
+ * Class models a player character which can be used as Entity.
  *
- * @author  TODO: Add author.
+ * @author  Christian-2003
  */
 public class Player extends Entity {
 

@@ -4,9 +4,9 @@ import java.awt.*;
 
 
 /**
- * TODO: Add description.
+ * Class models a checkpoint which can be used as a MapObject.
  *
- * @author  TODO: Add author.
+ * @author  Christian-2003
  */
 public class Checkpoint extends MapObject {
 

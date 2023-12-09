@@ -4,9 +4,9 @@ import java.awt.*;
 
 
 /**
- * TODO: Add description.
+ * Class models a simple enemy which can be used as Entity.
  *
- * @author  TODO: Add author.
+ * @author  Christian-2003
  */
 public class Enemy extends Entity {
 

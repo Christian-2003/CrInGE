@@ -4,9 +4,9 @@ import java.awt.*;
 
 
 /**
- * TODO: Add description.
+ * Class models an Entity. Entities can interact with the GameMap.
  *
- * @author  TODO: Add author.
+ * @author  Christian-2003
  */
 public class Entity extends GameObject {
 

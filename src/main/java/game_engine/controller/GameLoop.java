@@ -1,3 +1,6 @@
+/*
+IMPORTANT NOTICE TO ALL DEVELOPERS:
+*/
 package game_engine.controller;
 
 import game_engine.model.GameMap;
@@ -10,7 +13,7 @@ import game_engine.view.GameFrame;
  *
  * @author  Christian-2003
  */
-public class GameLoop {
+public class GameLoop implements Runnable {
 
     /**
      * Attribute stores the {@link GameFrame} which resembles the main window for the video game.
@@ -20,12 +23,23 @@ public class GameLoop {
     /**
      * Attribute stores the {@link GameMap}.
      */
-    private GameMap map;
+    private final GameMap map;
 
     /**
      * Attribute stores the {@link RendererManager} that is used to render the {@link #map} to the {@link #gameFrame}.
      */
     private final RendererManager rendererManager;
+
+    /**
+     * Attribute stores the {@link Thread} which runs the game loop.
+     */
+    private Thread loop;
+
+    /**
+     * Attribute stores a flag which indicates whether the game loop shall continue running. Set this to {@code false}
+     * to stop the game loop.
+     */
+    private volatile boolean continueLoop;
 
 
     /**
@@ -41,6 +55,47 @@ public class GameLoop {
         this.map = map;
         this.rendererManager = new RendererManager(map);
         gameFrame = new GameFrame(rendererManager);
+        //Set "continueLoop" initially to false. In case anyone tries to make the GameLoop-instance a thread, the loop
+        //will not do anything! The loop will therefore only work when the thread is created through this instance with
+        //proper instantiation beforehand.
+        continueLoop = false;
+    }
+
+
+    /**
+     * Method starts the game loop.
+     *
+     * @throws GameStateException   The game loop is already running!
+     */
+    public void startLoop() throws GameStateException {
+        if (loop != null && !continueLoop) {
+            //Game loop already running:
+            throw new GameStateException("Game loop already running");
+        }
+        continueLoop = true;
+        loop = new Thread(this);
+        loop.start();
+    }
+
+
+    /**
+     * Method stops the game loop.
+     */
+    public void stopLoop() {
+        continueLoop = false;
+    }
+
+
+    /**
+     * Method contains the game loop which allows the game loop to run in another thread. The thread will be initialized
+     * automatically once the classes {@link #startLoop()}-method is invoked. Stop the execution of the thread by
+     * calling {@link #stopLoop()}.
+     */
+    public void run() {
+        //Game loop:
+        while (continueLoop) {
+            //TODO: Implement game loop.
+        }
     }
 
 }

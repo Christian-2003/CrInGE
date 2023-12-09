@@ -4,9 +4,9 @@ import java.awt.*;
 
 
 /**
- * TODO: Add description.
+ * Class models a light-emitting MapObject.
  *
- * @author  TODO: Add author.
+ * @author  Christian-2003
  */
 public class MapObjectLightEmitting extends MapObject {
 
