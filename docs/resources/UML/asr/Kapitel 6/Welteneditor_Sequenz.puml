@@ -1,0 +1,27 @@
+@startuml
+actor User as U
+participant Welteneditor as W
+participant "Object Inspector" as O
+activate W
+loop
+   U -> W : Objekt hinzufügen
+   W -> W : fügt Objekt \n in Karte ein
+   W -> U : Ansicht aktualisieren
+end
+group Bearbeiten
+   U -> W : Klickt auf Element
+   W -> O : intialisiert Object Inspector
+   activate O
+   W -> O : übergibt ausgewähltes Element
+   O -> U : Zeigt alle Eigenschaften des Elements
+   loop
+      U -> O : ändert Eigenschaft
+      O -> O : speichert Änderung zwischen
+      U -> O : Speichern
+      O -> W : Verändert Werte des Objekts auf Karte
+   end
+   U -> O : Schließt Object Inspector
+   deactivate O
+end
+deactivate W
+@enduml

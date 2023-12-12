@@ -2,13 +2,21 @@
 
 # CrInGE - Softwareanforderungen
 
+## Inhaltsverzeichnis
+
+1. [Einleitung](#1-einleitung)
+2. [Funktionale Anforderungen](#2-funktionale-anforderungen)
+3. [Nichtfunktionale Anforderungen](#3-nichtfunktionale-anforderungen)
+4. [Technische Einschränkungen](#4-technische-einschränkungen)
+5. [Glossar](#5-glossar)
+
 ## 1. Einleitung
 
 Diese Software Anforderungsspezifikation (SRS) beschreibt alle Spezifikationen für die Anwendung "CrInGE". Dieses Dokument beinhaltet eine Übersicht über das Projekt, sowie dessen Anforderungen.
 
 ### 1.1 Übersicht
 
-Um die Entwicklung von zweidimensionalen Videospielen zu erleichtern, soll eine Videospielengine entwickelt werden. Die Anwendung CrInGE beinhaltet einen Editor, welcher sowohl das zusammenstellen, sowie die Programmierung von Spielwelten ermöglicht. Damit soll die Hürde für interessierte Entwickler gesenkt werden, die zum Einstig in die Videospielentwicklung existiert.
+Um die Entwicklung von zweidimensionalen Videospielen zu erleichtern, soll eine Videospielengine entwickelt werden. Die Anwendung CrInGE beinhaltet einen Editor, welcher sowohl das Zusammenstellen, sowie die Programmierung von Spielwelten ermöglicht. Damit soll die Hürde für interessierte Entwickler gesenkt werden, die zum Einstig in die Videospielentwicklung existiert.
 
 ### 1.2 Geltungsbereich
 
@@ -20,19 +28,11 @@ In diesem Dokument werden sowohl die funktionalen, als auch die nichtfunktionale
 
 Des Weiteren werden keine Anforderungen in andere Dokumente ausgelagert. Hiervon ausgenommen sind Anforderungen, die (wie oben beschrieben) in weiteren Software Anforderungsspezifikationen für Subsysteme dokumentiert werden.
 
-### 1.3 Definitionen, Akronyme und Abkürzungen
-
-Im Nachfolgenden folgt eine List aller Definitionen, Akronyme und Abkürzungen, die im Weiteren Verlauf dieses Dokumentes verwendet werden.
-
-Akronym | Bedeutung
---- | ---
-CrInGE | <ins>C</ins>ompute<ins>r</ins>ized <ins>In</ins>tegrated <ins>G</ins>ame <ins>E</ins>ngine
-API | Application Programmer Interface (Deutsch: Programmierschnittstelle)
-
-### 1.4 Referenzen
+### 1.3 Referenzen
 
 Im Nachfolgenden folgt eine Liste aller Referenzen, die im weiteren Verlauf dieses Dokumentes verwendet werden.
 
+<!-- Bitte beachten: Die Einträge in dieser Tabelle sollen nach dem Veröffentlichungsdatum sortiert werden! -->
 Titel | Datum | Veröffentlichungsorganisation | Link
 --- | --: | --- | ---
 UI-MockUps | 25.10.2023 | CrInGE Entwicklungsteam | [UI-MockUps](./resources/UI%20Mockup)
@@ -42,6 +42,7 @@ Aktivitäsdiagramm API | 31.10.2023 | CrInGE Entwicklungsteam | [Aktivitäsdiagr
 Aktivitäsdiagramm Exportieren | 31.10.2023 | CrInGE Entwicklungsteam | [Aktivitäsdiagramm Exportieren](./resources/UML/Aktivitätsdiagramm_Exportieren.png)
 Sequenzdiagramm Welteneditor | 01.11.2023 | CrInGE Entwicklungsteam | [Sequenzdiagramm Welteneditor](./resources/UML/Sequenzdiagramm_Welteneditor_Class.png)
 Sequenzdiagramm API | 01.11.2023 | CrInGE Entwicklungsteam | [Sequenzdiagramm API](./resources/UML/Sequenzdiagramm_API.png)
+Architektonisch Relevante Anforderungen (ASR) | 28.11.2023 | CrInGE Entwicklungsteam | [ArchitektonischRelevanteAnforderungen](./ArchitektonischRelevanteAnforderungen.md)
 
 ## 2. Funktionale Anforderungen
 
@@ -95,6 +96,10 @@ Der Aufwand für diese Anforderung wird auf **hoch** geschätzt.
     <img src="./resources/UI%20Mockup/UI-Mock_Welteneditor.png" height="390">
 </div>
 
+<div align="center">
+    <img src="./resources/UI%20Mockup/UI-Mock_ObjektInspektor.png" height="390">
+</div>
+
 #### 2.2.1 Voraussetzungen
 
 Damit dies möglich ist, muss die Videospielwelt im Backend modelliert und bearbeitet werden können. Dazu müssen wiederrum individuelle Objekte im Backend modelliert und bearbeitet werden können.
@@ -139,10 +144,6 @@ Diese Anforderung basiert auf den User Stories:
 3. [Als Spielentwickler möchte ich Musik/Geräusche zu meinem Spiel hinzufügen, sodass dieses ein immersives Spielerlebnis bieten kann.](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=41652124)
 
 Der Aufwand für diese Anforderung wird auf **hoch** geschätzt.
-
-<div align="center">
-    <img src="./resources/UI%20Mockup/UI-Mock_ObjektInspektor.png" height="390">
-</div>
 
 #### 2.3.1 Voraussetzungen
 
@@ -230,6 +231,45 @@ Im [Welteneditor](#22-welteneditor) sollen Objekte gruppiert werden können, dam
 Diese Anforderung basiert auf folgender User Story:  
 [Als Spieleentwickler möchte ich Blöcke gruppieren können, um deren Eigenschaften gleichzeitig zu bearbeiten](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=42294373)
 
+#### 3.1.3 Benutzbarkeot
+
+Der Editor soll benutzbar und benutzerfreundlich gestaltet werden. Damit ist gemeint, dass gängige Tastenkürzel wie beispielsweise `STRG + C`, `STRG + V` oder `STRG + S` verwendet werden und die Menüs in der Menüleiste gängigen Formaten folgen.
+
+Diese Anforderung basiert auf folgender User Story:  
+[Als Videospielentwickler möchte ich Videospiele ohne hohen Aufwand erstellen können](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=47079880)
+
+### 3.2 Zuverlässigkeit
+
+Sowohl Editor, als auch Engine sollen Logs erstellen, damit Laufzeitfehler dokumentiert werden. Diese Logs sollen dann beim Videospielentwickler und / oder beim CrInGE Entwicklungsteam eingereicht werden können, wenn derartige Laufzeitfehler gemeldet werden. Damit kann der Aufwand zum Finden und Nachstellen von Fehlern seitens der Entwickler reduziert werden, wodurch Fehler schneller behoben werden können.
+
+Diese Anforerung basiert auf folgenden User Stories:  
+[Als Videospielentwickler möchte ich, dass Fehler im Quellcode der Engine oder des Editors schnell behoben werden](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=47079948) und  
+[Als Videospieler möchte ich, dass Fehler im Videospiel schnell behoben werden](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=47079958)
+
+### 3.3 Leistung
+
+Die Engine soll lange Ladezeiten verhindern - hiervon ausgenommen sind Initialladezeiten (beispielsweise durch das Laden der Videospielwelt). Damit das Spielerlebnis angenehm ist, soll der Arbeitsspeicher nie mit mehr als 4 GB belastet werden und das Videospiel soll mit mehr als 20 FPS laufen.
+
+Im Editor sollen ebenfalls lange Ladezeiten verhindert werden. Hiervon ausgenommen sind neben Initialladezeiten auch der Export des Spiels. 
+
+Diese Anforderung basiert auf folgenden User Stories:  
+[Als Videospieler möchte ich ein möglichst angenehmes Videospielerlebnis haben. Das erstellte Spiel sollte mit modernen Endgeräten mit 20FPS gespielt werden, wobei nicht mehr als 4GB Arbeitsspeicher belastet](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=47080088) und  
+[Als Videospielentwickler möchte ich, dass das Videospiel effizient und ohne große Wartezeiten entwickelt werden kann. Das Ändern des Videospiels sollte in allen Fällen sofort und ohne Wartezeit geschehen](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=47080123)
+
+### 3.4 Wartbarkeit
+
+Um hohen Aufwand durch zukünftige Erweiterungen zu verhinden, soll die Software nach dem _Open-Closed-Prinzip_ entwickelt werden. Dazu ist es notwendig zukünftige Änderungen vorherzusehen. Da dies jedoch nur schwer umzusetzen ist, wird die Software so entwickelt, dass die Anforderungen die in diesem Dokument beschrieben werden, ohne große Probleme zukünftig integriert werden können.
+
+Diese Anforderung basiert auf folgender User Story:  
+[Als Kunde möchte ich, dass die Software kostengünstig entwickelt wird](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=47080329)
+
+### 3.5 Testbarkeit
+
+Um Softwarefehler frühzeitig zu erkennen und beheben soll die Software Test-Driven entwickelt werden. Dazu sollen für alle Komponenten - soweit möglich - Unit Tests mit JUnit entwickelt werden. Die Software soll insgesamt erst dann kompiliert werden, wenn alle Uni Tests bestanden sind.
+
+Diese Anforderung basiert auf folgender User Story:  
+[Als Kunde möchte ich, dass die Software kostengünstig entwickelt wird](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=47080329)
+
 <!--
 Kategorien: Benutzerfreundlichkeit, Zuverlässigkeit, Leistung, Effizienz, Integrität, Wartbarkeit, Flexibilität, Testbarkeit, Wiederverwendbarkeit, Sicherheit.
 -->
@@ -237,3 +277,13 @@ Kategorien: Benutzerfreundlichkeit, Zuverlässigkeit, Leistung, Effizienz, Integ
 ## 4. Technische Einschränkungen
 
 Bei dieser Anwendung soll, soweit möglich, auf externe Bibliotheken verzichtet werden. Hiervon ausgenommen ist die Java Standardbibliothek. Des Weiteren behält sich das Entwicklungsteam vor, bei Bedarf und nach gründlicher Ausarbeitung einzelne externe Bibliotheken zu inkludieren, was entsprechend gekennzeichnet wird.
+
+## 5. Glossar
+
+Im Nachfolgenden folgt eine List aller Definitionen, Akronymen und Abkürzungen, die im Weiteren Verlauf dieses Dokumentes verwendet werden.
+
+<!-- Bitte beachten: Die Einträge in dieser Tabelle sollen alphabetisch (nach dem Akronym) sortiert werden! -->
+Akronym | Bedeutung
+--- | ---
+API | Application Programmer Interface (Deutsch: Programmierschnittstelle)
+CrInGE | <ins>C</ins>ompute<ins>r</ins>ized <ins>In</ins>tegrated <ins>G</ins>ame <ins>E</ins>ngine
