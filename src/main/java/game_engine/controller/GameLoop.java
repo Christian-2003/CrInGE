@@ -1,73 +1,101 @@
+/*
+IMPORTANT NOTICE TO ALL DEVELOPERS:
+*/
 package game_engine.controller;
 
+import game_engine.model.GameMap;
+import game_engine.view.GameFrame;
 
-import game_engine.view.Frame;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.FileReader;
 
 /**
- * TODO: Add description.
+ * Class implements the GameLoop, which controls the entire game engine. The class is responsible for everything that
+ * needs to be done repeatedly.
  *
- * @author  TODO: Add author.
+ * @author  Christian-2003
  */
-public class GameLoop {
+public class GameLoop implements Runnable {
 
     /**
-     * Attribute stores the key event manager which manages keystrokes.
+     * Attribute stores the {@link GameFrame} which resembles the main window for the video game.
      */
-    private KeyEventManager keyEventManager;
+    private final GameFrame gameFrame;
 
     /**
-     * Attribute stores the frame which resembles the main window.
+     * Attribute stores the {@link GameMap}.
      */
-    private Frame frame;
+    private final GameMap map;
 
     /**
-     * Attribute stores the lines of the text to be displayed.
+     * Attribute stores the {@link RendererManager} that is used to render the {@link #map} to the {@link #gameFrame}.
      */
-    private String[] lines;
+    private final RendererManager rendererManager;
+
+    /**
+     * Attribute stores the {@link Thread} which runs the game loop.
+     */
+    private Thread loop;
+
+    /**
+     * Attribute stores a flag which indicates whether the game loop shall continue running. Set this to {@code false}
+     * to stop the game loop.
+     */
+    private volatile boolean continueLoop;
 
 
-    public GameLoop() {
-        keyEventManager = new KeyEventManager();
-
-        //Get a text file in the current folder:
-        File folder = new File("./");
-        String selectedPath = null;
-        File[] files = folder.listFiles();
-        if (files == null) {
-            JOptionPane.showMessageDialog(null, "Did not find any file to read.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
+    /**
+     * Constructor instantiates a new {@link GameLoop} for the passed {@link GameMap}.
+     *
+     * @param map                   GameMap to be used for the game.
+     * @throws NullPointerException The passed GameMap is {@code null}.
+     */
+    public GameLoop(GameMap map) throws NullPointerException {
+        if (map == null) {
+            throw new NullPointerException("Null is invalid GameMap");
         }
-        for (File file : files) {
-            if (file.isFile() && file.getName().toLowerCase().endsWith(".txt")) {
-                selectedPath = file.getPath();
-            }
-        }
-        if (selectedPath == null) {
-            JOptionPane.showMessageDialog(null, "Did not find any file to read.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+        this.map = map;
+        this.rendererManager = new RendererManager(map);
+        gameFrame = new GameFrame(rendererManager);
+        //Set "continueLoop" initially to false. In case anyone tries to make the GameLoop-instance a thread, the loop
+        //will not do anything! The loop will therefore only work when the thread is created through this instance with
+        //proper instantiation beforehand.
+        continueLoop = false;
+    }
 
-        //Read file contents:
-        try {
-            FileEditor fileEditor = new FileEditor(selectedPath);
-            lines = fileEditor.read().split("\n");
+
+    /**
+     * Method starts the game loop.
+     *
+     * @throws GameStateException   The game loop is already running!
+     */
+    public void startLoop() throws GameStateException {
+        if (loop != null && !continueLoop) {
+            //Game loop already running:
+            throw new GameStateException("Game loop already running");
         }
-        catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            return;
+        continueLoop = true;
+        loop = new Thread(this);
+        loop.start();
+    }
+
+
+    /**
+     * Method stops the game loop.
+     */
+    public void stopLoop() {
+        continueLoop = false;
+    }
+
+
+    /**
+     * Method contains the game loop which allows the game loop to run in another thread. The thread will be initialized
+     * automatically once the classes {@link #startLoop()}-method is invoked. Stop the execution of the thread by
+     * calling {@link #stopLoop()}.
+     */
+    public void run() {
+        //Game loop:
+        while (continueLoop) {
+            //TODO: Implement game loop.
         }
-
-        frame = new Frame("CrInGE - Demo Game", lines);
-
-        keyEventManager.add(KeyEvent.VK_UP, key -> frame.scrollUp());
-        keyEventManager.add(KeyEvent.VK_DOWN, key -> frame.scrollDown());
-
     }
 
 }

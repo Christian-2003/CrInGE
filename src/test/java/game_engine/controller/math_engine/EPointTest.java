@@ -1,4 +1,4 @@
-package backend.math;
+package game_engine.controller.math_engine;
 
 import game_engine.controller.math_engine.EPoint;
 import org.junit.jupiter.api.*;
