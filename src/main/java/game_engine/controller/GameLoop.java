@@ -54,6 +54,7 @@ public class GameLoop implements Runnable {
         }
         this.map = map;
         this.rendererManager = new RendererManager(map);
+        //rendererManager.setDebugRendering(true);
         gameFrame = new GameFrame(rendererManager);
         //Set "continueLoop" initially to false. In case anyone tries to make the GameLoop-instance a thread, the loop
         //will not do anything! The loop will therefore only work when the thread is created through this instance with
