@@ -355,13 +355,18 @@ Insgesamt ist die Benutzerfreundlichkeit und die Benutzbarkeit - nicht zuletzt a
 
 ## 11. Risiken und technische Schulden
 
+Sowohl Wahrscheinlichkeitsklasse als auch Schadensklasse reichen von 1-5.
+Der Risiko Score ist das Produkt der Wahrscheinlichkeitsklasse und der Schadensklasse. Damit ergibt sich ein Wertebereich von 1-25.
+Dabei beschreiben 1-3 vernachlässigbare und 23-25 unbedingt zu reduzierende Risiken.
+
 <!-- Bitte beachten: Die Einträge in diser Tabelle sollen nach Priorität geordnet sein -->
-| Risiko | Gegenmaßnahme |
-| --- | --- |
-| schlechte Note | arbeitet mehr, Sklaven! |
-| unvollständiger Editor | ausführliche Dokumentation der offenen, benötigten Schnittstellen |
-| unvollständige Engine | Sperren der Features im Editor |
-| fehlerhafte Schnittstelle zwischen Engine und Editor | klare dokumentation der benötigten Datenstrukturen |
+| ID | Beschreibung | Wahrscheinlichkeitsklasse | Schadensklasse | Risiko-Score | Minimierungs-Strategie | Indikatoren | Notfallplan | Status | Verantwortlicher | Datum der letzten Aktualisierung |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | schlechte Note | --- | --- | --- | arbeitet mehr, Sklaven! | --- | --- | --- | --- | --- |
+| --- | unvollständiger Editor | --- | --- | --- | ausführliche Dokumentation der offenen, benötigten Schnittstellen | --- | --- | --- | --- | --- |
+| --- | unvollständige Engine | --- | --- | --- | Sperren der Features im Editor | --- | --- | --- | --- | --- |
+| --- | fehlerhafte Schnittstelle zwischen Engine und Editor | --- | --- | --- | klare dokumentation der benötigten Datenstrukturen | --- | --- | --- | --- | --- |
+
 
 ## 12. Glossar
 
