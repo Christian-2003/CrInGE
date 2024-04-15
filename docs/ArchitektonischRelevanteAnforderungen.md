@@ -355,20 +355,20 @@ Insgesamt ist die Benutzerfreundlichkeit und die Benutzbarkeit - nicht zuletzt a
 
 ## 11. Risiken und technische Schulden
 
-Sowohl Wahrscheinlichkeitsklasse als auch Schadensklasse reichen von 1-5.  
-Der Risiko Score ist das Produkt der Wahrscheinlichkeitsklasse und der Schadensklasse. Damit ergibt sich ein Wertebereich von 1-25.  
-Dabei beschreiben 1-5 vernachlässigbare und 21-25 unbedingt zu reduzierende Risiken.  
+Sowohl Wahrscheinlichkeitsklasse als auch Schadensklasse reichen von 1 bis 5.  
+Der Risikoscore ist das Produkt der Wahrscheinlichkeitsklasse und der Schadensklasse. Damit ergibt sich ein Wertebereich von 1 bis 25.  
+Dabei beschreiben Risikoscores von 1 bis 5 vernachlässigbare Risiken, während Risikoscores von 21 bis 25 unbedingt zu reduzierende Risiken beschreiben.  
 
 <!-- Bitte beachten: Die Einträge in diser Tabelle sollen nach Priorität geordnet sein -->
 | ID | Beschreibung | Wahrscheinlichkeitsklasse | Schadensklasse | Risiko-Score | Minimierungs-Strategie | Indikatoren | Notfallplan | Status <!-- Offen, In Bearbeitung, Reduziert, Eliminiert --> | Verantwortlicher | Datum der letzten Aktualisierung |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 09 | Kritische Echtzeit Performance | 3 | 5 | 15 | Abläufe möglichst effizient und frei von Overhead halten | Tests der Features mit größeren Datenmengen | Entsprechende Features mit Warnungen zu kritischen Größen versehen, sofern kein offensichtliches Verbesserungspotenzial besteht | Offen | Jannik | 15.04.2024 |
-| 02 | unvollständiger Editor | 3 | 4 | 12 | Paralleles Entwickeln der Features sowohl in Editor als auch Engine | Funktionen der Engine sind nicht in dem Editor umgesetzt | Ausführliche Dokumentation der offenen bzw. benötigten Schnittstellen | Offen | Tim | 15.04.2024 |
-| 05 | Mangelnde Kommunikation innerhalb des Projektteams | 2 | 4 | 12 | Organisation über Scrumboard und Discord | Teammitglied weiß nicht über die Aufgabenverteilung bescheid oder arbeitet ohne Wissen des restlichen Teams | Krisensitzung nach einer Vorlesung, zu welche alle Teammitglieder erschienen sind | Reduziert | Christian | 15.04.2024 |
-| 03 | unvollständige Engine | 2 | 4 | 8 | Paralleles Entwickeln der Features sowohl in Editor als auch Engine | Funktionen der Editor sind nicht in dem Engine umgesetzt | Sperren der Features im Editor | Offen | Felix | 15.04.2024 |
-| 04 | fehlerhafte Schnittstelle zwischen Engine und Editor | 2 | 4 | 8 | klare dokumentation der benötigten Datenstrukturen | Daten, welche der Editor erstellt, können von der Engine nicht gelesen werden | Parserfunktionen zur Verfügung stellen oder anpassen | In Bearbeitung | Kai | 15.04.2024 |
-| 08 | Unrealistische Zeit- und Aufwandsabschätzung | 4 | 2 | 8 | Überwachung der Diverenz zwischen geplanten und erfolgtem Arbeitsaufwand via Scrum Board Statisiken | Aufgaben werden überwiegend deutlich zu komplex oder trivial geschätzt | Rücksprache des Teams mit Scrummaster (Tim) | Offen | Tim | 15.04.2024 |
-| 01 | schlechte Note | 1 | 5 | 5 | Priorisierung der Aufgaben an Benotungsrichtlinie anpassen | Aufgaben, welche Punkte für die Benotung geben, werden nicht fristgerecht abgeschlossen | Auf besinders wichtige und nicht abgeschlossene Aufgaben kurz vor Ende der Frist nochmals persönlich hinweisen | Reduziert | Tim | 15.04.2024 |
+| 02 | Unvollständiger Editor | 3 | 4 | 12 | Paralleles Entwickeln der Features sowohl in Editor als auch Engine | Funktionen der Engine sind nicht in dem Editor umgesetzt | Ausführliche Dokumentation der offenen bzw. benötigten Schnittstellen | Offen | Tim | 15.04.2024 |
+| 05 | Mangelnde Kommunikation innerhalb des Projektteams | 2 | 4 | 12 | Organisation über Scrumboard und Discord | Teammitglied weiß nicht über die Aufgabenverteilung bescheid oder arbeitet ohne Wissen des restlichen Teams | Krisensitzung nach einer Vorlesung, zu welcher alle Teammitglieder erschienen sind | Reduziert | Christian | 15.04.2024 |
+| 03 | Unvollständige Engine | 2 | 4 | 8 | Paralleles Entwickeln der Features sowohl in Editor als auch Engine | Funktionen des Editor sind nicht in der Engine umgesetzt | Sperren der Features im Editor | Offen | Felix | 15.04.2024 |
+| 04 | Fehlerhafte Schnittstelle zwischen Engine und Editor | 2 | 4 | 8 | Klare Dokumentation der benötigten Datenstrukturen | Daten, welche der Editor erstellt, können von der Engine nicht gelesen werden | Parserfunktionen zur Verfügung stellen oder anpassen | In Bearbeitung | Kai | 15.04.2024 |
+| 08 | Unrealistische Zeit- und Aufwandsabschätzung | 4 | 2 | 8 | Überwachung der Diverenz zwischen geplantem und erfolgtem Arbeitsaufwand via Scrumboard-Statisiken | Aufgaben werden überwiegend deutlich zu komplex oder trivial geschätzt | Rücksprache des Teams mit Scrummaster (Tim) | Offen | Tim | 15.04.2024 |
+| 01 | Schlechte Note | 1 | 5 | 5 | Priorisierung der Aufgaben an Benotungsrichtlinien anpassen | Aufgaben, welche Punkte für die Benotung geben, werden nicht fristgerecht abgeschlossen | Auf besonders wichtige und nicht abgeschlossene Aufgaben kurz vor Ende der Frist nochmals persönlich hinweisen | Reduziert | Tim | 15.04.2024 |
 | 06 | Unklare Definition des Umfangs und der Funktionen der Abschlussdemo | 1 | 3 | 3 | Detailierte ausformulierte Liste der Ziele | Unklarheit bei Definition der Aufgaben durch Teammitglieder | Reduziert | Face to Face Gespräch | Tim | 15.04.2024 |
  
 ## 12. Glossar
@@ -382,6 +382,6 @@ API | <ins>A</ins>pplication <ins>P</ins>rogrammer <ins>I</ins>nterface (Deutsch
 ASR | <ins>A</ins>rchitecutrally <ins>s</ins>ignificant <ins>r</ins>equirements
 CrInGE | <ins>C</ins>ompute<ins>r</ins>ized <ins>In</ins>tegrated <ins>G</ins>ame <ins>E</ins>ngine
 FPS | <ins>F</ins>rames <ins>p</ins>er <ins>s</ins>econd
-JRE | Java Runtime Enviroment
-JDK | Jave Developer Kit
+JRE | <ins>J</ins>ava <ins>R</ins>untime <ins>E</ins>nviroment
+JDK | <ins>J</ins>ava <ins>D</ins>evelopment <ins>K</ins>it
 MVC | <ins>M</ins>odel-<ins>V</ins>iew-<ins>C</ins>ontroller
