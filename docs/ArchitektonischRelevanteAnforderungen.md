@@ -355,19 +355,22 @@ Insgesamt ist die Benutzerfreundlichkeit und die Benutzbarkeit - nicht zuletzt a
 
 ## 11. Risiken und technische Schulden
 
-Sowohl Wahrscheinlichkeitsklasse als auch Schadensklasse reichen von 1-5.
-Der Risiko Score ist das Produkt der Wahrscheinlichkeitsklasse und der Schadensklasse. Damit ergibt sich ein Wertebereich von 1-25.
-Dabei beschreiben 1-3 vernachlässigbare und 23-25 unbedingt zu reduzierende Risiken.
+Sowohl Wahrscheinlichkeitsklasse als auch Schadensklasse reichen von 1-5.  
+Der Risiko Score ist das Produkt der Wahrscheinlichkeitsklasse und der Schadensklasse. Damit ergibt sich ein Wertebereich von 1-25.  
+Dabei beschreiben 1-5 vernachlässigbare und 21-25 unbedingt zu reduzierende Risiken.  
 
 <!-- Bitte beachten: Die Einträge in diser Tabelle sollen nach Priorität geordnet sein -->
-| ID | Beschreibung | Wahrscheinlichkeitsklasse | Schadensklasse | Risiko-Score | Minimierungs-Strategie | Indikatoren | Notfallplan | Status | Verantwortlicher | Datum der letzten Aktualisierung |
+| ID | Beschreibung | Wahrscheinlichkeitsklasse | Schadensklasse | Risiko-Score | Minimierungs-Strategie | Indikatoren | Notfallplan | Status <!-- Offen, In Bearbeitung, Reduziert, Eliminiert --> | Verantwortlicher | Datum der letzten Aktualisierung |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| --- | schlechte Note | --- | --- | --- | arbeitet mehr, Sklaven! | --- | --- | --- | --- | --- |
-| --- | unvollständiger Editor | --- | --- | --- | ausführliche Dokumentation der offenen, benötigten Schnittstellen | --- | --- | --- | --- | --- |
-| --- | unvollständige Engine | --- | --- | --- | Sperren der Features im Editor | --- | --- | --- | --- | --- |
-| --- | fehlerhafte Schnittstelle zwischen Engine und Editor | --- | --- | --- | klare dokumentation der benötigten Datenstrukturen | --- | --- | --- | --- | --- |
-
-
+| 05 | Mangelnde Kommunikation innerhalb des Projektteams | 2 | 4 | 12 | Organisation über Scrumboard und Discord | Teammitglied weiß nicht über die Aufgabenverteilung bescheid oder arbeitet ohne Wissen des restlichen Teams | Krisensitzung nach einer Vorlesung, zu welche alle Teammitglieder erschienen sind | Reduziert | Christian | 15.04.2024 |
+| 06 | Unklare Definition des Umfangs und der Funktionen der Abschlussdemo | 1 | 3 | 3 | Detailierte ausformulierte Liste der Ziele | Unklarheit bei Definition der Aufgaben durch Teammitglieder | Reduziert | Face to Face Gespräch | Tim | 15.04.2024 |
+| 08 | Unrealistische Zeit- und Aufwandsabschätzung | 4 | 2 | 8 | Überwachung der Diverenz zwischen geplanten und erfolgtem Arbeitsaufwand via Scrum Board Statisiken | Aufgaben werden überwiegend deutlich zu komplex oder trivial geschätzt | Rücksprache des Teams mit Scrummaster (Tim) | Offen | Tim | 15.04.2024 |
+| 09 | Kritische Echtzeit Performance | 3 | 5 | 15 | Abläufe möglichst effizient und frei von Overhead halten | Tests der Features mit größeren Datenmengen | Entsprechende Features mit Warnungen zu kritischen Größen versehen, sofern kein offensichtliches Verbesserungspotenzial besteht | Offen | Jannik | 15.04.2024 |
+| 01 | schlechte Note | 1 | 5 | 5 | Priorisierung der Aufgaben an Benotungsrichtlinie anpassen | Aufgaben, welche Punkte für die Benotung geben, werden nicht fristgerecht abgeschlossen | Auf besinders wichtige und nicht abgeschlossene Aufgaben kurz vor Ende der Frist nochmals persönlich hinweisen | Reduziert | Tim | 15.04.2024 |
+| 02 | unvollständiger Editor | 3 | 4 | 12 | Paralleles Entwickeln der Features sowohl in Editor als auch Engine | Funktionen der Engine sind nicht in dem Editor umgesetzt | Ausführliche Dokumentation der offenen bzw. benötigten Schnittstellen | Offen | Tim | 15.04.2024 |
+| 03 | unvollständige Engine | 2 | 4 | 8 | Paralleles Entwickeln der Features sowohl in Editor als auch Engine | Funktionen der Editor sind nicht in dem Engine umgesetzt | Sperren der Features im Editor | Offen | Felix | 15.04.2024 |
+| 04 | fehlerhafte Schnittstelle zwischen Engine und Editor | 2 | 4 | 8 | klare dokumentation der benötigten Datenstrukturen | Daten, welche der Editor erstellt, können von der Engine nicht gelesen werden | Parserfunktionen zur Verfügung stellen oder anpassen | In Bearbeitung | Kai | 15.04.2024 |
+ 
 ## 12. Glossar
 
 Im Nachfolgenden folgt eine List aller Definitionen, Akronymen und Abkürzungen, welche innerhalb dieses Dokumentes verwendet wurden.
