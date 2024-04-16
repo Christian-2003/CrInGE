@@ -5,6 +5,8 @@ import javax.swing.*;
 import game_editor.view.project_editor.ProjectEditorPanel;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 /**
@@ -16,7 +18,10 @@ import java.awt.*;
  */
 public class Frame extends JFrame {
 
-    public static final String editorCard = "project_editor", selectionCard = "project_selecter";
+    public static enum cards{
+        project_editor,
+        project_selecter
+    }
 
     private final CardLayout layout;
 
@@ -25,21 +30,24 @@ public class Frame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.layout = new CardLayout();
         this.setLayout(this.layout);
-        this.setSize(width, height);
-        this.setVisible(true);
+        this.setIconImage(new ImageIcon(this.getClass().getResource("logo.png")).getImage());
+        this.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+        this.setResizable(false); //TODO Fenstergröße anpassbar
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         // TODO this.setJMenuBar(new MenuBar());
         initCards();
+
+        this.setVisible(true);
+
     }
 
     private void initCards(){
-        JPanel editorPanel = new ProjectEditorPanel(), selectPanel = new ProjectEditorPanel();
-        //TODO richtige Panel zufügen
-        this.add(selectPanel, this.selectionCard);
-        this.add(editorPanel, this.editorCard);
+        //this.add(new ProjectSelectorPanel(), cards.project_selecter.toString()); TODO add if not demo
+        this.add(new ProjectEditorPanel(), cards.project_editor.toString());
     }
 
-    public void showCard(String cardName){
-        this.layout.show(this.getContentPane(), cardName);
+    public void showCard(cards card){
+        this.layout.show(this.getContentPane(), card.toString());
     }
 }
