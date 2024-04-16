@@ -1,0 +1,13 @@
+sources:[path1;path2;path3]
+[main;
+    [group1;
+        {Asset1;100;200;sources_index};
+        {Asset2;150;300;sources_index}
+    ];
+    [group2;
+        {Asset3;200;400;sources_index};
+        [subgroup1;
+            {Asset4;250;500;sources_index}
+        ]
+    ]
+]
