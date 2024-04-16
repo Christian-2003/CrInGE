@@ -3,7 +3,6 @@ package game_editor.view.frame;
 import javax.swing.*;
 
 import game_editor.view.project_editor.ProjectEditorPanel;
-import game_editor.view.project_selecter.ProjectSelectorPanel;
 
 import java.awt.*;
 import java.util.ArrayList;

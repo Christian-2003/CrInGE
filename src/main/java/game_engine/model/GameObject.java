@@ -4,11 +4,18 @@ import java.awt.*;
 
 
 /**
- * TODO: Add description.
+ * Class models a GameObject and represents the <i>abstract</i> superclass for all {@link MapObject}- and
+ * {@link Entity}-classes.
  *
- * @author  TODO: Add author.
+ * @author  Christian-2003
  */
 public abstract class GameObject {
+
+    /**
+     * Constant indicates that the specific GameObject shall not have any texture.
+     */
+    public static final int NO_TEXTURE = -1;
+
 
     /**
      * Attribute stores whether the GameObject is visible,
@@ -31,30 +38,71 @@ public abstract class GameObject {
     protected Dimension size;
 
     /**
-     * Attribute stores the graphics of the GameObject.
+     * Attribute stores the coordinates of the MapObject within the {@link GameChunk}.
      */
-    protected Graphics graphics;
+    protected int x, y;
+
+    /**
+     * Attribute stores the index for {@link GameMap#textures} at which the texture can be found.
+     */
+    protected int texture;
 
 
     /**
      * Constructor instantiates a new {@link GameObject} with the passed arguments.
      *
-     * @param visible               Whether the GameObject is visible.
-     * @param tangible              Whether the GameObject is tangible.
-     * @param hitBox                Dimensions of the hit box for the GameObject.
-     * @param size                  Size of the GameObject.
-     * @param graphics              Graphics for the GameObject.
-     * @throws NullPointerException One of the passed arguments is {@code null}.
+     * @param visible                   Whether the GameObject is visible.
+     * @param tangible                  Whether the GameObject is tangible.
+     * @param hitBox                    Dimensions of the hit box for the GameObject.
+     * @param size                      Size of the GameObject.
+     * @param x                         X-coordinate of the GameObject within the chunk.
+     * @param y                         Y-coordinate of the GameObject within the chunk.
+     * @throws NullPointerException     One of the passed arguments is {@code null}.
+     * @throws IllegalArgumentException The passed coordinates are invalid.
      */
-    public GameObject(boolean visible, boolean tangible, Dimension hitBox, Dimension size, Graphics graphics) throws NullPointerException {
-        if (hitBox == null || size == null || graphics == null) {
+    public GameObject(boolean visible, boolean tangible, Dimension hitBox, Dimension size, int x, int y) throws NullPointerException, IllegalArgumentException {
+        if (hitBox == null || size == null) {
             throw new NullPointerException("Null is invalid argument.");
+        }
+        if (x < 0 || x >= GameChunk.WIDTH || y < 0 || y >= GameChunk.HEIGHT) {
+            throw new IllegalArgumentException("Invalid coordinate for MapObject: (" + x + ", " + y + ")");
         }
         this.visible = visible;
         this.tangible = tangible;
         this.hitBox = hitBox;
         this.size = size;
-        this.graphics = graphics;
+        this.x = x;
+        this.y = y;
+        this.texture = NO_TEXTURE;
+    }
+
+    /**
+     * Constructor instantiates a new {@link GameObject} with the passed arguments.
+     *
+     * @param visible                   Whether the GameObject is visible.
+     * @param tangible                  Whether the GameObject is tangible.
+     * @param hitBox                    Dimensions of the hit box for the GameObject.
+     * @param size                      Size of the GameObject.
+     * @param x                         X-coordinate of the GameObject within the chunk.
+     * @param y                         Y-coordinate of the GameObject within the chunk.
+     * @param texture                   Index (within {@link GameMap#textures}) of the GameObject's texture.
+     * @throws NullPointerException     One of the passed arguments is {@code null}.
+     * @throws IllegalArgumentException The passed coordinates are invalid.
+     */
+    public GameObject(boolean visible, boolean tangible, Dimension hitBox, Dimension size, int x, int y, int texture) throws NullPointerException, IllegalArgumentException {
+        if (hitBox == null || size == null) {
+            throw new NullPointerException("Null is invalid argument.");
+        }
+        if (x < 0 || x >= GameChunk.WIDTH || y < 0 || y >= GameChunk.HEIGHT) {
+            throw new IllegalArgumentException("Invalid coordinate for MapObject: (" + x + ", " + y + ")");
+        }
+        this.visible = visible;
+        this.tangible = tangible;
+        this.hitBox = hitBox;
+        this.size = size;
+        this.x = x;
+        this.y = y;
+        this.texture = texture;
     }
 
     /**
@@ -72,7 +120,9 @@ public abstract class GameObject {
         tangible = gameObject.isTangible();
         hitBox = gameObject.getHitBox();
         size = gameObject.getSize();
-        graphics = gameObject.getGraphics();
+        x = gameObject.getX();
+        y = gameObject.getY();
+        texture = gameObject.getTexture();
     }
 
 
@@ -114,15 +164,34 @@ public abstract class GameObject {
         this.size = size;
     }
 
-    public Graphics getGraphics() {
-        return graphics;
+    public int getX() {
+        return x;
     }
 
-    public void setGraphics(Graphics graphics) throws NullPointerException {
-        if (graphics == null) {
-            throw new NullPointerException("Null is invalid Graphics.");
+    public void setX(int x) throws IllegalArgumentException {
+        if (x < 0 || x >= GameChunk.WIDTH) {
+            throw new IllegalArgumentException("Invalid coordinate for MapObject: (" + x + ", " + y + ")");
         }
-        this.graphics = graphics;
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) throws IllegalArgumentException {
+        if (y < 0 || y >= GameChunk.HEIGHT) {
+            throw new IllegalArgumentException("Invalid coordinate for MapObject: (" + x + ", " + y + ")");
+        }
+        this.y = y;
+    }
+
+    public int getTexture() {
+        return texture;
+    }
+
+    public void setTexture(int texture) {
+        this.texture = texture;
     }
 
 

@@ -1,7 +1,7 @@
 @startuml
 top to bottom direction
 
-package "Game game_editor.controller.Engine" as GE{
+package "Game game_engine.Engine" as GE{
        package "model" as GEM{
             abstract "GameObject" as GEMGO{
                 -visible : Boolean
@@ -111,7 +111,7 @@ package "Game game_editor.controller.Engine" as GE{
                     }
                 }
 
-                package "Physics game_editor.controller.Engine" as GECPE{
+                package "Physics game_engine.Engine" as GECPE{
                     class Velocity{
 
                     }
@@ -196,7 +196,7 @@ package "Level Editor" as LE{
 Note "Verbindung Level Editor kennt GameEngine" as Note10
 LECM -- GE
 
-Note "Verbindungen der Game game_editor.controller.Engine" as Note12
+Note "Verbindungen der Game game_engine.Engine" as Note12
 GECGL -- GECGOM
 GECGL -- GECGEL
 GECGL -- GECGEM
@@ -221,7 +221,7 @@ GEME <|-- GEMP
 GEME <|-- GEMEN
 GEME <|-- GEMPR
 
-Note "Model des Leveleditors kennt die Baseobjekts von Game game_editor.controller.Engine" as Note11
+Note "Model des Leveleditors kennt die Baseobjekts von Game game_engine.Engine" as Note11
 note7 --|> GEM
 
 LECM -- LEVF : "als Attribut oder so"
