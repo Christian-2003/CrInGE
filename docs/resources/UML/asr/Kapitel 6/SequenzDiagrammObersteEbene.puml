@@ -1,0 +1,40 @@
+@startuml
+actor User as user
+participant  Videospieleditor as VSE
+participant Compiler as C
+participant "Game Engine" as GE
+
+
+user -> VSE : Startet den Videospieleditor
+activate VSE
+user -> VSE : Wählt Projekt/Spiel aus
+
+group loop
+user -> VSE : Arbeitet am Spiel
+VSE  -> user : Zeigt die änderungen an
+end
+
+user -> VSE : gibt Kompilierung in Auftrag
+
+VSE -> C : Initialisiert den Compiler
+activate C
+VSE -> C : Übergibt die zu kompilierenden Inhalte
+C -> C : Kompiliert
+C -> user: übergibt die Kompilierten Dateien
+deactivate C
+
+user -> VSE : Schließen des Programms
+deactivate VSE
+
+user -> GE : startet Game Engine mit den vom Compiler übergebenen Datein
+activate GE
+
+group loop
+user -> GE : Spielt das Spiel
+GE -> user : Zeigt das Spiel an
+end
+
+user -> GE : Schließt das Spiel
+deactivate GE
+
+@enduml

@@ -6,7 +6,8 @@ import java.io.*;
 /**
  * Class implements an editor which can read and write files.
  *
- * @author  Christian-2003
+ * @author      Christian-2003
+ * @deprecated  This class was part of the demo and is no longer needed.
  */
 public class FileEditor {
 

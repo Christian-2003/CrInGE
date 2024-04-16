@@ -11,6 +11,8 @@ import java.io.FileWriter;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 
+import game_editor.view.project_editor.MapEditor.MapEditor;
+
 
 /**
  * TODO: Add description.
@@ -23,21 +25,24 @@ public class ProjectEditorPanel extends JPanel {
     private File file;
 
     public ProjectEditorPanel(){
-        this.initDemo(); // TODO Demo entfernen
+        //this.initDemo(); // TODO Demo entfernen
+        this.add(new MapEditor());
     }
 
     private void initDemo(){
-        this.file = null;
+        File temp = new File("tempData.txt");
+        if(temp.exists()) this.file = temp;
+        else this.file = null;
         JTabbedPane tabs = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.SCROLL_TAB_LAYOUT);
         JPanel editorPanel = new JPanel(new GridLayout(2,1));
         this.editor = new JTextArea(20, 50);
         editorPanel.add(this.editor);
         JPanel buttonPanel = new JPanel();
-        JButton save = new JButton("Speicher");
+        JButton save = new JButton("Speichern");
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFileChooser chooser = new JFileChooser();
+                JFileChooser chooser = new JFileChooser("./");
                 chooser.setFileFilter(new FileFilter() {
                    @Override
                     public String getDescription() {
@@ -66,7 +71,7 @@ public class ProjectEditorPanel extends JPanel {
         open.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFileChooser chooser = new JFileChooser();
+                JFileChooser chooser = new JFileChooser("./");
                 chooser.setFileFilter(new FileFilter() {
                     @Override
                     public String getDescription() {

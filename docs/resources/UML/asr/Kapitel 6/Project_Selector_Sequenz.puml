@@ -1,0 +1,43 @@
+@startuml
+actor User as U
+participant "Project Selector" as S
+participant "Project Details" as D
+U -> S : öffnet Projekte Übersicht
+activate S
+S -> S : Sucht nach bekannten \n CrInGE Projekten
+S -> U : zeigt Liste aller Projekte
+U -> S : Wählt Projekt
+S -> D : lädt Projekt
+deactivate S
+activate D
+D -> U : Zeigt Übersicht über Projekt
+group Exportieren
+   U -> D : Exportiert Projekt
+   D -> "Compiler" as C: übergibt alle zu \n übersetzenden Dateien
+   activate C
+   C -> C : Kompiliert Projekt
+   C -> D : gibt Status zurück
+   deactivate C
+   D -> U : gibt Satus an Benutzer zurück
+end
+group Bearbeiten
+   U -> D : BEarbeiten
+   D -> "Welteneditor" as W : öffnet Karten des Projekts
+   deactivate D
+   activate W
+   W -> U : zeigt Welteneditoransicht
+   U -> W : zeige Projekt Übersicht
+   W -> D : öffnet Projekt Übersicht
+   deactivate W
+   activate D
+end
+group Löschen
+   U -> D : Löschen
+   D -> D : Löscht alle Dateien
+   D -> S : Öffnet Project Selector
+   deactivate D
+   activate S
+   S -> U : zeigt Liste aller Projekte
+   deactivate S
+end
+@enduml

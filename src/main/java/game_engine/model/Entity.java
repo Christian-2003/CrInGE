@@ -4,24 +4,26 @@ import java.awt.*;
 
 
 /**
- * TODO: Add description.
+ * Class models an Entity. Entities can interact with the GameMap.
  *
- * @author  TODO: Add author.
+ * @author  Christian-2003
  */
 public class Entity extends GameObject {
 
     /**
      * Constructor instantiates a new {@link Entity} with the passed arguments.
      *
-     * @param visible               Whether the Entity is visible.
-     * @param tangible              Whether the Entity is tangible.
-     * @param hitBox                Dimensions of the hit box for the Entity.
-     * @param size                  Size of the Entity.
-     * @param graphics              Graphics for the Entity.
-     * @throws NullPointerException One of the passed arguments is {@code null}.
+     * @param visible                   Whether the Entity is visible.
+     * @param tangible                  Whether the Entity is tangible.
+     * @param hitBox                    Dimensions of the hit box for the Entity.
+     * @param size                      Size of the Entity.
+     * @param x                         X-coordinate of the Entity within the chunk.
+     * @param y                         Y-coordinate of the Entity within the chunk.
+     * @throws NullPointerException     One of the passed arguments is {@code null}.
+     * @throws IllegalArgumentException The passed coordinates are invalid.
      */
-    public Entity(boolean visible, boolean tangible, Dimension hitBox, Dimension size, Graphics graphics) throws NullPointerException {
-        super(visible, tangible, hitBox, size, graphics);
+    public Entity(boolean visible, boolean tangible, Dimension hitBox, Dimension size, int x, int y) throws NullPointerException, IllegalArgumentException {
+        super(visible, tangible, hitBox, size, x, y);
     }
 
     /**
