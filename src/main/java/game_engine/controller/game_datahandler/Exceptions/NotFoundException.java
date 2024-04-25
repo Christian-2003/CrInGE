@@ -1,4 +1,4 @@
-package game_engine.controller.game_datahandler.Exceptions;
+package game_engine.controller.game_dataHandler.Exceptions;
 
 /**
  * An Exception for when in a List an items it searched by its ID (like asset or group) and couldn't be found

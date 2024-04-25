@@ -1,12 +1,12 @@
 package backend.dataHandler;
 
-import game_engine.controller.game_datahandler.Exceptions.GameDataFileSyntaxException;
-import game_engine.controller.game_datahandler.Exceptions.NotFoundException;
+import game_engine.controller.game_dataHandler.Exceptions.GameDataFileSyntaxException;
+import game_engine.controller.game_dataHandler.Exceptions.NotFoundException;
 
 
-import game_engine.controller.game_datahandler.game_dataformat.Asset;
-import game_engine.controller.game_datahandler.game_dataformat.Group;
-import game_engine.controller.game_datahandler.game_dataformat.ImageSource;
+import game_engine.controller.game_dataHandler.game_dataFormat.Asset;
+import game_engine.controller.game_dataHandler.game_dataFormat.Group;
+import game_engine.controller.game_dataHandler.game_dataFormat.ImageSource;
 import org.junit.jupiter.api.Test;
 
 /**

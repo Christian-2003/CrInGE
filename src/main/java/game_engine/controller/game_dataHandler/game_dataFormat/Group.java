@@ -1,6 +1,6 @@
-package game_engine.controller.game_datahandler.game_dataformat;
+package game_engine.controller.game_dataHandler.game_dataFormat;
 
-import game_engine.controller.game_datahandler.Exceptions.NotFoundException;
+import game_engine.controller.game_dataHandler.Exceptions.NotFoundException;
 import game_engine.controller.utility.Utils;
 
 import java.util.ArrayList;

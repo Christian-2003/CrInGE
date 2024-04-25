@@ -1,4 +1,4 @@
-package game_engine.controller.game_datahandler.Exceptions;
+package game_engine.controller.game_dataHandler.Exceptions;
 
 /**
  * An Exception for when the GameData File Syntax has encountered any issues

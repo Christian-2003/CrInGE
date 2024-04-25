@@ -1,8 +1,8 @@
-package game_engine.controller.game_datahandler;
+package game_engine.controller.game_dataHandler;
 
-import game_engine.controller.game_datahandler.Exceptions.GameDataFileSyntaxException;
-import game_engine.controller.game_datahandler.game_dataformat.Asset;
-import game_engine.controller.game_datahandler.game_dataformat.Group;
+import game_engine.controller.game_dataHandler.Exceptions.GameDataFileSyntaxException;
+import game_engine.controller.game_dataHandler.game_dataFormat.Asset;
+import game_engine.controller.game_dataHandler.game_dataFormat.Group;
 
 import java.util.*;
 import java.util.regex.Matcher;

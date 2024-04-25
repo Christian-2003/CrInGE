@@ -1,10 +1,10 @@
-package game_engine.controller.game_datahandler;
+package game_engine.controller.game_dataHandler;
 
-import game_engine.controller.game_datahandler.Exceptions.GameDataFileSyntaxException;
-import game_engine.controller.game_datahandler.Exceptions.NotFoundException;
-import game_engine.controller.game_datahandler.game_dataformat.Asset;
-import game_engine.controller.game_datahandler.game_dataformat.Group;
-import game_engine.controller.game_datahandler.game_dataformat.ImageSource;
+import game_engine.controller.game_dataHandler.Exceptions.GameDataFileSyntaxException;
+import game_engine.controller.game_dataHandler.Exceptions.NotFoundException;
+import game_engine.controller.game_dataHandler.game_dataFormat.Asset;
+import game_engine.controller.game_dataHandler.game_dataFormat.Group;
+import game_engine.controller.game_dataHandler.game_dataFormat.ImageSource;
 
 import java.io.*;
 import java.nio.file.Path;
@@ -58,7 +58,7 @@ public class Map {
 
         // Get all data for .gamedata
         String fileName = "fileTypeExampe.gamedata";
-        Path filePath = Paths.get(".","src","main","java","game_engine","controller","game_datahandler" ,fileName).toAbsolutePath();
+        Path filePath = Paths.get(".","src","main","java","game_engine","controller","game_dataHandler" ,fileName).toAbsolutePath();
 
         StringBuilder input = new StringBuilder();
         boolean firstLine = true;

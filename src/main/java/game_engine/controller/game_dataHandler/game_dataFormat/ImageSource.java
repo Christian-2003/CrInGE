@@ -1,4 +1,4 @@
-package game_engine.controller.game_datahandler.game_dataformat;
+package game_engine.controller.game_dataHandler.game_dataFormat;
 
 import java.io.File;
 import java.io.FileNotFoundException;
