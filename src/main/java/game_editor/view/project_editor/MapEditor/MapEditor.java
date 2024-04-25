@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileFilter;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
@@ -176,8 +178,13 @@ public class MapEditor extends JPanel{
 
     private void initGivenAssets(){
         JPanel AssetList = new JPanel(new GridLayout(-1, 3));
-
-        File textures = new File("res/textures");
+        URI texturesUri = null;
+        try{
+            texturesUri = this.getClass().getResource("/textures").toURI();
+        } catch (URISyntaxException ex){
+            ex.printStackTrace();
+        }
+        File textures = new File(texturesUri);
         File[] pictures = textures.listFiles(new FileFilter() {
             @Override
             public boolean accept(File pathname) {
