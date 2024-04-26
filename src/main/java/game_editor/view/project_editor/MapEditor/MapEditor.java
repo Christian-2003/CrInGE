@@ -19,9 +19,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import game_editor.view.project_editor.MapEditor.model.Asset;
-import game_editor.view.project_editor.MapEditor.model.ImageSource;
-import game_editor.view.project_editor.MapEditor.model.MapRepository;
+import game_editor.model.Asset;
+import game_editor.model.ImageSource;
+import game_editor.model.MapRepository;
 
 /**
  * TODO add descriptiom

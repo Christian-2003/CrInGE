@@ -1,4 +1,4 @@
-package game_editor.view.project_editor.MapEditor.model;
+package game_editor.model;
 
 import javax.swing.ImageIcon;
 

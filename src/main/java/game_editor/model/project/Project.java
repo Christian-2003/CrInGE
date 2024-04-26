@@ -1,4 +1,4 @@
-package game_editor.project;
+package game_editor.model.project;
 
 import java.awt.Color;
 

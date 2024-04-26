@@ -2,7 +2,7 @@ package game_editor.view.project_selecter;
 
 import javax.swing.*;
 
-import game_editor.project.Project;
+import game_editor.model.project.Project;
 
 import java.awt.*;
 
