@@ -19,16 +19,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import game_editor.model.Asset;
-import game_editor.model.ImageSource;
-import game_editor.model.MapRepository;
+import game_editor.model.map.Asset;
+import game_editor.model.map.ImageSource;
+import game_editor.model.map.MapRepository;
 
 /**
  * TODO add descriptiom
  * 
  * @author Tim Schnur
  */
-public class MapEditor extends JPanel{
+public class MapEditor extends JPanel {
 
     private MapRepository mapRepository;
 

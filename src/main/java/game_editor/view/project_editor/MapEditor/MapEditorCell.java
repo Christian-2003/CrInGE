@@ -5,7 +5,7 @@ import java.awt.Dimension;
 
 import javax.swing.JButton;
 
-import game_editor.model.Asset;
+import game_editor.model.map.Asset;
 
 /**
  * TODO add descriptiom

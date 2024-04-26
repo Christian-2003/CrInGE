@@ -5,8 +5,6 @@ import javax.swing.*;
 import game_editor.view.project_editor.ProjectEditorPanel;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 
 /**
