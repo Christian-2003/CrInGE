@@ -3,14 +3,18 @@ package game_editor.model.map;
 import javax.swing.ImageIcon;
 
 /**
- * TODO add descriptiom
+ * Represents one Block of the Map
+ * 
+ * @see {@link MapRepository}
  * 
  * @author Tim Schnur
  */
 public class Asset {
     
+    // Koordinates within the map
     private int x, y;
 
+    // Image of the block
     private ImageSource imageSource;
 
     private Group parentGroup;
@@ -45,17 +49,28 @@ public class Asset {
         this.parentGroup = parentGroup;
     }
     public void setImageSource(ImageSource imageSource) {
-        imageSource.unuse();
+        this.imageSource.unuse();
         this.imageSource = imageSource;
-        imageSource.use();
+        this.imageSource.use();
     }
+    /**
+     * @return ImageSource Object with all Image informations
+     */
     public ImageSource getImageSource() {
         return imageSource;
     }
+    /**
+     * The actual Image of the Block
+     * @return ImageIcon of the ImageSource Object
+     */
     public ImageIcon getImage(){
         return imageSource.getImage();
     }
 
+    /**
+     * <p> Clears up all data trash of the asset. </p>
+     * <b> Should be called before unreferencing it </b>
+     */
     public void delete(){
         imageSource.unuse();
         parentGroup.remove(this);
