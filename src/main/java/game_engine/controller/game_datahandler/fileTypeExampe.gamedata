@@ -1,0 +1,14 @@
+sources:[src/test/resources/dummyData/dummy_Cringe02.png;src/test/resources/dummyData/dummy_Cringe01.png;src/test/resources/dummyData/dummy_Crap01.png]
+[main;
+    [group1;
+        {Asset10;100;200;0};
+        {Asset2;150;300;1};
+    ]
+    [group2;
+        {Asset3;200;400;2};
+        [subgroup1;
+            {Asset4;250;500;0};
+        ]
+    ]
+]
+

@@ -1,0 +1,22 @@
+@startuml
+
+
+Node "Version 1.8" <<Java Runtime>> as JR{
+  Node "Version 21+" <<Java Development Kit>> as JDK{
+    Node "Game Editor" as GE{
+
+
+    }
+    Node "Compiler" as C{
+
+
+    }
+  }
+  Node "Game Engine" as GE2{
+
+
+  }
+}
+
+GE .. C
+@enduml

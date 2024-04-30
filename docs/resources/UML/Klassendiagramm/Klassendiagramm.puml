@@ -1,0 +1,234 @@
+@startuml
+top to bottom direction
+
+package "Game game_engine.Engine" as GE{
+       package "model" as GEM{
+            abstract "GameObject" as GEMGO{
+                -visible : Boolean
+                -tangible : Boolean
+                -hitbox : Dimension
+                -size : Dimension
+                -graphics : noClue
+                -coordinates
+
+            }
+
+            class "Mapobject" as GEMMO{
+                -Moving : Boolean
+                -Movable : Boolean
+            }
+            note "Unterschied das eine selbst bewegend das andere durch spieler" as note8
+
+
+            class "MapObjectLightEmitting" as GEMOLE{
+                -Colour : awt.colour
+            }
+
+            class "Checkpoint" as GEMCP{
+
+            }
+
+
+            class "Entitiy" as GEME {
+
+            }
+
+            class "Player" as GEMP {
+
+            }
+
+            class "Enemy" as GEMEN {
+
+            }
+
+            class "Projectile" as GEMPR {
+
+            }
+
+
+
+
+       }
+
+       package "view" as GEV{
+            note "not sure what to put here" as note6
+
+            class "Frame" as GEVF
+
+            package "Menu" as GEVM {
+
+            }
+
+            package "Canvas" as GEVC{
+
+            }
+       }
+
+       package "controller" as GEC{
+
+            class "GameLoop" as GECGL{
+
+            }
+
+            package "active components" {
+
+
+                class "GameObjectManager" as GECGOM{
+
+                }
+
+                class "GameEventListener" as GECGEL{
+
+                }
+
+                class "GameEventManager" as GECGEM{
+
+                }
+
+                class "FiledEditor" as GECFE{
+
+                }
+
+                class "Renderermanager" as GECRM{
+
+                }
+            }
+
+            package "passive components"{
+                package "MathEngine" as GECME{
+                    class Point{
+
+                    }
+
+                    class Vector{
+
+
+                    }
+
+                    class Matrix{
+
+
+                    }
+                }
+
+                package "Physics game_engine.Engine" as GECPE{
+                    class Velocity{
+
+                    }
+
+                    class Movement{
+
+
+                    }
+                }
+
+            }
+       }
+}
+
+
+
+
+
+package "Level Editor" as LE{
+    package "model" as LEM{
+        note "weiß nicht wie darzustellen und was rein" as note7
+
+
+    }
+
+    package "view" as LEV{
+        class "Frame" as LEVF{
+
+        }
+
+        package "Menu/ProjectOverview" as LEVM{
+            class "MenuPanel"{
+
+            }
+        }
+
+        package "ProjectEditor" as LEVPE{
+            class "ProjectEditorpanel"{
+
+            }
+
+
+            package "Objectinspector" as LEVPEOI{
+                note "Kann auch ne klasse sein je nachdem ob es verschiedene Versionen gibt absprechen!" as note1
+
+            }
+
+            package "WorldEditor" as LEVPEWE{
+                note "Kann auch ne klasse sein je nachdem ob es verschiedene Versionen gibt absprechen!" as note2
+            }
+
+            package "AssetList" as LEVPEAL{
+                class "AssetList"
+
+                class "AddedAssetsTree"
+
+                class "ScriptList"
+            }
+
+            class "menüLeiste" as LEVML{
+
+            }
+
+            package "Console" as LEVC{
+                note "Kann auch ne klasse sein je nachdem ob es verschiedene Versionen gibt absprechen!" as note3
+                note "dachte wir machen keine Konsole aber egal" as note4
+            }
+
+
+        }
+
+    }
+
+    package "controller" as LEC{
+        class "Main" as LECM{
+
+        }
+
+    }
+}
+
+Note "Verbindung Level Editor kennt GameEngine" as Note10
+LECM -- GE
+
+Note "Verbindungen der Game game_engine.Engine" as Note12
+GECGL -- GECGOM
+GECGL -- GECGEL
+GECGL -- GECGEM
+GECGL -- GECFE
+GECGL -- GECRM
+
+GECGL -- GECPE
+GECGL -- GECME
+
+Note "Abkürzung weil faul verbunden eig mit frame und frame zusammengesetzt aus den paneln(packages)" as Note13
+GECGL -- GEV
+
+
+GECGL -- GEMGO : "als Attributarray in der Loop wahrscheinlich"
+
+Note "Vererbungen der objekte" as Note9
+GEMGO <|-- GEMMO
+GEMMO <|-- GEMCP
+GEMGO <|-- GEME
+GEMMO <|-- GEMOLE
+GEME <|-- GEMP
+GEME <|-- GEMEN
+GEME <|-- GEMPR
+
+Note "Model des Leveleditors kennt die Baseobjekts von Game game_engine.Engine" as Note11
+note7 --|> GEM
+
+LECM -- LEVF : "als Attribut oder so"
+
+LECM -- LEM
+
+
+LEVF *-- LEVM
+LEVF *-- LEVPE
+@enduml

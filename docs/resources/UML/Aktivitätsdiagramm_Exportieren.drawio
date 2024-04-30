@@ -1,0 +1,88 @@
+<mxfile host="app.diagrams.net" modified="2023-10-31T14:48:34.094Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 Edg/118.0.2088.76" etag="a7At-gcKsdSYtRUP1k1s" version="22.0.8" type="device">
+  <diagram name="Seite-1" id="RIMdOpr2lOWzrgXlLLmI">
+    <mxGraphModel dx="792" dy="429" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="8ycK_79fRJv6SBO_BKyE-1" target="8ycK_79fRJv6SBO_BKyE-63">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-1" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="50" y="50" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="8ycK_79fRJv6SBO_BKyE-3" target="8ycK_79fRJv6SBO_BKyE-57">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-3" value="Knopf zum Exportieren drücken" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="40" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="8ycK_79fRJv6SBO_BKyE-5" target="8ycK_79fRJv6SBO_BKyE-53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-5" value="Einstellungen für Kompilierung tätigen" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="40" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="8ycK_79fRJv6SBO_BKyE-8" target="8ycK_79fRJv6SBO_BKyE-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-8" value="Videospiel in Jar-Datei exportieren" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="40" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-66" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="8ycK_79fRJv6SBO_BKyE-34" target="8ycK_79fRJv6SBO_BKyE-63">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="8ycK_79fRJv6SBO_BKyE-34" target="8ycK_79fRJv6SBO_BKyE-68">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-34" value="" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="130" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-39" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="530" y="210" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-40" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="535" y="215" width="10" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-56" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="8ycK_79fRJv6SBO_BKyE-53" target="8ycK_79fRJv6SBO_BKyE-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="8ycK_79fRJv6SBO_BKyE-53" target="8ycK_79fRJv6SBO_BKyE-57">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-53" value="" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="50" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-55" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;[Einstellungen akzeptiert]&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="460" y="40" width="100" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="8ycK_79fRJv6SBO_BKyE-57" target="8ycK_79fRJv6SBO_BKyE-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-57" value="" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="50" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-60" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;[Einstellungen nicht akzeptiert]&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="340" y="90" width="120" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-64" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="8ycK_79fRJv6SBO_BKyE-63" target="8ycK_79fRJv6SBO_BKyE-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-63" value="" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="50" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-67" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;[Export fehlgeschlagen]&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="490" y="140" width="120" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="8ycK_79fRJv6SBO_BKyE-68" target="8ycK_79fRJv6SBO_BKyE-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-68" value="Jar-Datei im Dateiexplorer öffnen" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="200" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="8ycK_79fRJv6SBO_BKyE-72" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;[Export erfolgreich]&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="620" y="160" width="70" height="10" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

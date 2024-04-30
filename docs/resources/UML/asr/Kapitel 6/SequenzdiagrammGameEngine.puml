@@ -1,0 +1,29 @@
+@startuml
+actor User as user
+participant "Game Loop" as GL
+participant "Renderermanager" as RM
+participant Eventmanager as EM
+
+==Intialisierung==
+user -> GL ** : Startet Game Engine mit dafür erstelltem Spiel
+activate GL
+GL -> RM ** : initialisiert den Renderermanager mit der Map
+activate RM
+GL -> EM ** : initialisiert den Eventmanager mit den Events der Map
+activate EM
+
+==Spiel Verlauf==
+
+loop
+    user -> EM : erzeugt Events durch Eingaben
+    EM -> GL : gibt Events zurück
+    GL -> GL : verarbeitet die Events
+    GL -> RM : gibt den jetztigen Zusatnd der Karte zum rendern weiter
+    RM -> user : anzeigen der Karte auf dem Canvas
+end
+==Beendung==
+user -> GL : schließt das Spiel
+GL -> RM  !! : schließt Renderermanager
+GL -> EM !! : schließt Eventmanager
+GL -> GL --
+@enduml

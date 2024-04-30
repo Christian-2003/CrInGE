@@ -1,0 +1,17 @@
+sources:[
+    path;
+    path;
+    ...
+]
+[main;
+    [group1;
+        {x;y;sources_index};
+        {x;y;sources_index}
+    ];
+    [group2;
+        {x;y;sources_index};
+        [subgroup1;
+            {x;y;sources_index}
+        ]
+    ]
+]
