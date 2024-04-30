@@ -4,7 +4,7 @@
 Die <ins>C</ins>ompute<ins>r</ins>ized <ins>In</ins>tegrated <ins>G</ins>ame <ins>E</ins>ngine ist eine einfache Videospielengine, mit welcher zweidimensionale Videospiele mithilfe von Java Swing entwickelt werden können.
 
 **Status**: In der Entwicklung 🚧
-[![Tests](https://github.com/Christian-2003/CrInGE/actions/workflows/test.yaml/badge.svg)](https://github.com/Christian-2003/CrInGE/actions/workflows/test.yaml)
+[![Tests](https://github.com/Christian-2003/CrInGE/actions/workflows/maven.yml/badge.svg)](https://github.com/Christian-2003/CrInGE/actions/workflows/maven.yml)
 
 ## Inhalt
 1. [Projektmanagement](#projektmanagement)
