@@ -1,0 +1,45 @@
+name: Java CI with Maven
+on:
+  push:
+    branches: ["master"]
+    paths-ignore: 
+      -'docs/**'
+      -'target/**'
+  pull_request:
+    branches: ["main"]
+    paths-ignore: 
+      -'docs/**'
+      -'target/**'
+  workflow_dispatch:
+
+jobs:
+  Build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set Up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build with Maven
+        run: mvn -B compile --file pom.xml
+  Test:
+    runs-on: windows-latest
+    needs: Build
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v3
+        with:
+          key: setup-java-Windows-maven-${{hashFiles('pom.xml')}}
+          path: '~/.m2'
+          lookup-only: true
+      - name: Set Up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+      - name: Test with Maven
+        run: mvn test --file pom.xml
