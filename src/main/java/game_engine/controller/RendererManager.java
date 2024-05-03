@@ -4,8 +4,6 @@ import game_engine.model.GameChunk;
 import game_engine.model.GameMap;
 import game_engine.model.GameObject;
 import game_engine.model.MapObject;
-import jdk.jshell.Snippet;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -66,10 +64,21 @@ public class RendererManager {
     }
 
 
+    /**
+     * Method changes whether debug rendering is enabled. Enabling this automatically draws additional debug-info onto
+     * the canvas.
+     *
+     * @param debugRendering    Whether debug rendering shall be enabled.
+     */
     public void setDebugRendering(boolean debugRendering) {
         this.debugRendering = debugRendering;
     }
 
+    /**
+     * Method returns whether debug rendering is currently enabled.
+     *
+     * @return  Whether debug rendering is enabled.
+     */
     public boolean isDebugRendering() {
         return debugRendering;
     }

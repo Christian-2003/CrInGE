@@ -1,6 +1,7 @@
 package game_engine.model;
 
 import java.awt.*;
+import java.util.UUID;
 
 
 /**
@@ -11,7 +12,14 @@ import java.awt.*;
 public class Entity extends GameObject {
 
     /**
-     * Constructor instantiates a new {@link Entity} with the passed arguments.
+     * Attribute stores a UUID with which the entity can be identified.
+     */
+    private final UUID uuid;
+
+
+    /**
+     * Constructor instantiates a new {@link Entity} with the passed arguments. The UUID for the entity will be randomly
+     * generated.
      *
      * @param visible                   Whether the Entity is visible.
      * @param tangible                  Whether the Entity is tangible.
@@ -24,17 +32,29 @@ public class Entity extends GameObject {
      */
     public Entity(boolean visible, boolean tangible, Dimension hitBox, Dimension size, int x, int y) throws NullPointerException, IllegalArgumentException {
         super(visible, tangible, hitBox, size, x, y);
+        uuid = UUID.randomUUID();
     }
 
     /**
      * Constructor instantiates a new {@link Entity} and copies the attributes of the passed Entity to the
      * generated instance.
      *
-     * @param gameObject            Entity whose attributes shall be copied to this instance.
+     * @param entity                Entity whose attributes shall be copied to this instance.
      * @throws NullPointerException The passed instance is {@code null}.
      */
-    public Entity(Entity gameObject) throws NullPointerException {
-        super(gameObject);
+    public Entity(Entity entity) throws NullPointerException {
+        super(entity);
+        this.uuid = entity.uuid;
+    }
+
+
+    /**
+     * Method returns the UUID of the entity.
+     *
+     * @return  UUID of the entity.
+     */
+    public UUID getUuid() {
+        return uuid;
     }
 
 }

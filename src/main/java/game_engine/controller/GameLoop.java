@@ -1,5 +1,5 @@
 /*
-IMPORTANT NOTICE TO ALL DEVELOPERS:
+IMPORTANT NOTICE TO ALL DEVELOPERS: Kartoffel
 */
 package game_engine.controller;
 

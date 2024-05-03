@@ -202,6 +202,7 @@ public abstract class GameObject {
      * @param obj   Object to be tested.
      * @return      Whether the attributes of both GameObjects match.
      */
+    @Override
     public boolean equals(Object obj) {
         if (obj instanceof GameObject gameObject) {
             return gameObject.isVisible() == visible &&
