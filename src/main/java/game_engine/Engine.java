@@ -56,10 +56,6 @@ public class Engine {
             for (int x = 0; x < GameChunk.WIDTH; x++) {
                 for (int y = 0; y < GameChunk.HEIGHT; y++) {
                     if (random.nextInt(100) < objectPercentage) {
-                        //int objectWidth = random.nextInt(1) + 1;
-                        //int objectHeight = random.nextInt(1) + 1;
-                        int objectWidth = 1;
-                        int objectHeight = 1;
                         int texture = MapObject.NO_TEXTURE;
                         if (chunkHeight == 0) {
                             //Top chunk:
@@ -79,7 +75,7 @@ public class Engine {
                         else {
                             texture = random.nextInt(5);
                         }
-                        mapObjects.add(new MapObject(true, false, new Dimension(objectWidth, objectHeight), new Dimension(objectWidth, objectHeight), x, y, texture, false, false));
+                        mapObjects.add(new MapObject(true, false, x, y, texture));
                     }
                 }
             }

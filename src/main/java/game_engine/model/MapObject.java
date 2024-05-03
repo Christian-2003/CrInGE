@@ -11,6 +11,11 @@ import java.awt.*;
 public class MapObject extends GameObject {
 
     /**
+     * Attributes store the coordinates for the map MapObject within a {@link GameChunk}.
+     */
+    protected int x, y;
+
+    /**
      * Attribute stores whether the MapObject is moving.
      */
     protected boolean moving;
@@ -26,19 +31,17 @@ public class MapObject extends GameObject {
      *
      * @param visible                   Whether the MapObject is visible.
      * @param tangible                  Whether the MapObject is tangible.
-     * @param size                      Size of the MapObject.
      * @param x                         X-coordinate of the MapObject within the chunk.
-     * @param y                         Y-coordinate of the MapObjeMapct within the chunk.
-     * @param hitBox                    Dimensions of the hit box for the MapObject.
-     * @param moving                    Whether the MapObject is moving.
-     * @param movable                   Whether the MapObject is movable.
+     * @param y                         Y-coordinate of the MapObject within the chunk.
      * @throws NullPointerException     One of the passed arguments is {@code null}.
      * @throws IllegalArgumentException The passed coordinates are invalid.
      */
-    public MapObject(boolean visible, boolean tangible, Dimension hitBox, Dimension size, int x, int y, boolean moving, boolean movable) throws NullPointerException, IllegalArgumentException {
-        super(visible, tangible, hitBox, size, x, y);
-        this.moving = moving;
-        this.movable = movable;
+    public MapObject(boolean visible, boolean tangible, int x, int y) throws NullPointerException, IllegalArgumentException {
+        super(visible, tangible, new Dimension(1, 1), new Dimension(1, 1));
+        setX(x);
+        setY(y);
+        setMoving(false);
+        setMovable(false);
     }
 
     /**
@@ -46,20 +49,18 @@ public class MapObject extends GameObject {
      *
      * @param visible                   Whether the MapObject is visible.
      * @param tangible                  Whether the MapObject is tangible.
-     * @param size                      Size of the MapObject.
      * @param x                         X-coordinate of the MapObject within the chunk.
      * @param y                         Y-coordinate of the MapObject within the chunk.
      * @param texture                   Index (within {@link GameMap#textures}) of the MapObject's texture.
-     * @param hitBox                    Dimensions of the hit box for the MapObject.
-     * @param moving                    Whether the MapObject is moving.
-     * @param movable                   Whether the MapObject is movable.
      * @throws NullPointerException     One of the passed arguments is {@code null}.
      * @throws IllegalArgumentException The passed coordinates are invalid.
      */
-    public MapObject(boolean visible, boolean tangible, Dimension hitBox, Dimension size, int x, int y, int texture, boolean moving, boolean movable) throws NullPointerException, IllegalArgumentException {
-        super(visible, tangible, hitBox, size, x, y, texture);
-        this.moving = moving;
-        this.movable = movable;
+    public MapObject(boolean visible, boolean tangible, int x, int y, int texture) throws NullPointerException, IllegalArgumentException {
+        super(visible, tangible, new Dimension(1, 1), new Dimension(1, 1), texture);
+        setX(x);
+        setY(y);
+        setMoving(false);
+        setMovable(false);
     }
 
     /**
@@ -75,6 +76,28 @@ public class MapObject extends GameObject {
         movable = mapObject.isMovable();
     }
 
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) throws IllegalArgumentException {
+        if (x < 0 || x >= GameChunk.WIDTH) {
+            throw new IllegalArgumentException("Invalid coordinate for MapObject: (" + x + ", " + y + ")");
+        }
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) throws IllegalArgumentException {
+        if (y < 0 || y >= GameChunk.HEIGHT) {
+            throw new IllegalArgumentException("Invalid coordinate for MapObject: (" + x + ", " + y + ")");
+        }
+        this.y = y;
+    }
 
     public boolean isMoving() {
         return moving;

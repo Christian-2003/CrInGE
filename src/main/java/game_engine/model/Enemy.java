@@ -17,12 +17,12 @@ public class Enemy extends Entity {
      * @param tangible                  Whether the Enemy is tangible.
      * @param hitBox                    Dimensions of the hit box for the Enemy.
      * @param size                      Size of the Enemy.
-     * @param x                         X-coordinate of the Enemy within the chunk.
-     * @param y                         Y-coordinate of the Enemy within the chunk.
+     * @param x                         X-coordinate of the Enemy.
+     * @param y                         Y-coordinate of the Enemy.
      * @throws NullPointerException     One of the passed arguments is {@code null}.
      * @throws IllegalArgumentException The passed coordinates are invalid.
      */
-    public Enemy(boolean visible, boolean tangible, Dimension hitBox, Dimension size, int x, int y) throws NullPointerException, IllegalArgumentException {
+    public Enemy(boolean visible, boolean tangible, Dimension hitBox, Dimension size, double x, double y) throws NullPointerException, IllegalArgumentException {
         super(visible, tangible, hitBox, size, x, y);
     }
 
