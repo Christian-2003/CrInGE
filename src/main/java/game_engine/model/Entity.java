@@ -21,6 +21,17 @@ public class Entity extends GameObject {
      */
     private double x, y;
 
+    /**
+     * Attribute indicates whether the position of the entity has been changed since it was rendered the last
+     * time.
+     */
+    private boolean positionChangedSinceLastRender;
+
+    /**
+     * Attributes store the previous x- and y-coordinates of the map object.
+     */
+    private double previousX, previousY;
+
 
     /**
      * Constructor instantiates a new {@link Entity} with the passed arguments. The UUID for the entity will be randomly
@@ -40,6 +51,7 @@ public class Entity extends GameObject {
         uuid = UUID.randomUUID();
         this.x = x;
         this.y = y;
+        positionChangedSinceLastRender = false;
     }
 
     /**
@@ -54,6 +66,7 @@ public class Entity extends GameObject {
         this.uuid = entity.uuid;
         this.x = entity.getX();
         this.y = entity.getY();
+        positionChangedSinceLastRender = false;
     }
 
 
@@ -76,15 +89,6 @@ public class Entity extends GameObject {
     }
 
     /**
-     * Method changes the x-coordinate of the entity.
-     *
-     * @param x New x-coordinate for the entity.
-     */
-    public void setX(double x) {
-        this.x = x;
-    }
-
-    /**
      * Method returns the y-coordinate of the entity.
      *
      * @return  Y-coordinate of the entity.
@@ -94,12 +98,58 @@ public class Entity extends GameObject {
     }
 
     /**
-     * Method changes the y-coordinate of the entity.
+     * Method changes the position of the entity.
      *
+     * @param x New x-coordinate for the entity.
      * @param y New y-coordinate for the entity.
      */
-    public void setY(double y) {
+    public void setPosition(double x, double y) {
+        previousX = this.x;
+        previousY = this.y;
+        this.x = x;
         this.y = y;
+    }
+
+    /**
+     * Method returns the x-coordinate of the at which it is currently being displayed.
+     * This method is needed by the {@link game_engine.controller.RendererManager}!
+     *
+     * @return  Previous x-coordinate.
+     */
+    public double getPreviousX() {
+        return previousX;
+    }
+
+    /**
+     * Method returns the y-coordinate of the at which it is currently being displayed.
+     * This method is needed by the {@link game_engine.controller.RendererManager}!
+     *
+     * @return  Previous y-coordinate.
+     */
+    public double getPreviousY() {
+        return previousY;
+    }
+
+    /**
+     * Method returns whether the position of the entity has been changed since it was rendered
+     * the last time.
+     * This method is needed by the {@link game_engine.controller.RendererManager}!
+     *
+     * @return  Whether the position has been changed.
+     */
+    public boolean isPositionChangedSinceLastRender() {
+        return positionChangedSinceLastRender;
+    }
+
+    /**
+     * Method changes whether the position of the entity has been changed since it was rendered
+     * the last time.
+     * This method is needed by the {@link game_engine.controller.RendererManager}!
+     *
+     * @param positionChangedSinceLastRender    Whether the position has changed since last rendering.
+     */
+    public void setPositionChangedSinceLastRender(boolean positionChangedSinceLastRender) {
+        this.positionChangedSinceLastRender = positionChangedSinceLastRender;
     }
 
 }
