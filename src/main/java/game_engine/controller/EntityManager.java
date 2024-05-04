@@ -1,13 +1,15 @@
 package game_engine.controller;
 
 import game_engine.model.Entity;
+
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.UUID;
 
 
 /**
  * Class manages all {@link Entity}-instances for the game engine and is implemented through singleton-pattern.
- * Access the class's instance through {@link #getInstance()}.
+ * Access the class' instance through {@link #getInstance()}.
  *
  * @author  Christian-2003
  */
@@ -27,6 +29,8 @@ public class EntityManager {
 
     /**
      * Constructor instantiates a new entity manager.
+     * The constructor is private to comply with singleton pattern. Get the singleton instance through
+     * {@link #getInstance()}.
      */
     private EntityManager() {
         entities = new HashMap<>();
@@ -132,6 +136,17 @@ public class EntityManager {
      */
     public int size() {
         return entities.size();
+    }
+
+
+    /**
+     * Method returns all available entities within a collection.
+     * Use this method if all entities need to be processed (e.g. by the {@link RendererManager}).
+     *
+     * @return  Collection of all entities.
+     */
+    public Collection<Entity> getAllEntities() {
+        return entities.values();
     }
 
 

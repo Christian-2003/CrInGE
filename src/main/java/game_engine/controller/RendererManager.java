@@ -4,6 +4,7 @@ import game_engine.model.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLOutput;
 
 
 /**
@@ -182,6 +183,15 @@ public class RendererManager {
                 renderGameChunk(chunk, chunkOffsetX, chunkOffsetY, startX, startY, endX, endY);
             }
         }
+
+        //Render entities:
+        for (Entity entity : EntityManager.getInstance().getAllEntities()) {
+            System.out.println("Found entity: " + entity);
+            if (entity.getX() > absoluteWorldX && entity.getX() < absoluteWorldX + numberOfMapObjectsX && entity.getY() > absoluteWorldY && entity.getY() < absoluteWorldY + numberOfMapObjectsY) {
+                //Entity is currently visible:
+                renderEntity(entity);
+            }
+        }
     }
 
 
@@ -276,14 +286,49 @@ public class RendererManager {
             g.drawLine(x, y, x, y + height); //Left line
             g.drawLine(x + width, y, x + width, y + height); //Right line
             g.drawLine(x, y + height, x + width, y + height); //Bottom line
-            g.drawLine(x, y, x + width, y + height); //Diagonal line 1
-            g.drawLine(x + width, y, x, y + height); //Diagonal line 2
+            //g.drawLine(x, y, x + width, y + height); //Diagonal line 1
+            //g.drawLine(x + width, y, x, y + height); //Diagonal line 2
         }
     }
 
 
-    private void renderEntity(Entity entity, int mapOffsetX, int mapOffsetY) throws IllegalArgumentException {
+    /**
+     * Method renders the passed entity to the canvas. Please only pass entities that are actually visible
+     * on the canvas.
+     *
+     * @param entity    Entity to be rendered.
+     */
+    private void renderEntity(Entity entity) {
+        //Prepare for rendering:
+        int x = ((int)entity.getX() - absoluteWorldX) * GameChunk.WIDTH + (int)((entity.getX() - (int)entity.getX()) * GameChunk.WIDTH);
+        int y = ((int)entity.getY() - absoluteWorldY) * GameChunk.HEIGHT + (int)((entity.getY() - (int)entity.getY()) * GameChunk.HEIGHT);
+        int width = (int)entity.getSize().getWidth();
+        int height = (int) entity.getSize().getHeight();
 
+        //Render the entity:
+        boolean textureRendered = false;
+        int texture = entity.getTexture();
+        if (texture >= 0 && texture < map.getNumberOfTextures()) {
+            ImageIcon icon = map.getTexture(texture);
+            if (icon != null) {
+                g.drawImage(icon.getImage(), x, y, width, height, null);
+                textureRendered = true;
+            }
+        }
+        if (!textureRendered && texture != GameObject.NO_TEXTURE) {
+            drawInvalidTexture(x, y, width, height);
+        }
+
+        if (debugRendering) {
+            //Render Entity borders:
+            g.setColor(Color.YELLOW);
+            g.drawLine(x, y, x + width, y); //Top line
+            g.drawLine(x, y, x, y + height); //Left line
+            g.drawLine(x + width, y, x + width, y + height); //Right line
+            g.drawLine(x, y + height, x + width, y + height); //Bottom line
+            g.drawLine(x, y, x + width, y + height); //Diagonal line 1
+            g.drawLine(x + width, y, x, y + height); //Diagonal line 2
+        }
     }
 
 

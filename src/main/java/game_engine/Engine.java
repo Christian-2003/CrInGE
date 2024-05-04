@@ -1,10 +1,13 @@
 package game_engine;
 
+import game_engine.controller.EntityManager;
 import game_engine.controller.GameLoop;
+import game_engine.model.Entity;
 import game_engine.model.GameChunk;
 import game_engine.model.GameMap;
 import game_engine.model.MapObject;
 import javax.swing.*;
+import javax.xml.transform.dom.DOMLocator;
 import java.awt.*;
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,6 +22,15 @@ import java.util.Random;
 public class Engine {
     
     public static void main(String[] args) throws NullPointerException {
+        //Add all entities:
+        Dimension creeperSize = new Dimension(16, 32);
+        Entity creeper1 = new Entity(true, true, creeperSize, creeperSize, 2, 5);
+        creeper1.setTexture(12);
+        Entity creeper2 = new Entity(true, true, creeperSize, creeperSize, 5.5, 7.5);
+        creeper2.setTexture(12);
+        EntityManager.getInstance().put(creeper1);
+        EntityManager.getInstance().put(creeper2);
+
         GameLoop gameLoop = new GameLoop(generateGameMap(5, 3));
     }
 
@@ -97,7 +109,7 @@ public class Engine {
      * @return  Array of textures.
      */
     private static ImageIcon[] loadTextures() {
-        ImageIcon[] icons = new ImageIcon[12];
+        ImageIcon[] icons = new ImageIcon[13];
         URL cobblestone = Engine.class.getResource("/textures/cobblestone.png");
         if (cobblestone != null) {
             icons[0] = new ImageIcon(cobblestone);
@@ -145,6 +157,10 @@ public class Engine {
         URL rooted_dirt = Engine.class.getResource("/textures/rooted_dirt.png");
         if (rooted_dirt != null) {
             icons[11] = new ImageIcon(rooted_dirt);
+        }
+        URL creeper = Engine.class.getResource("/textures/creeper.png");
+        if (creeper != null) {
+            icons[12] = new ImageIcon(creeper);
         }
         return icons;
     }
