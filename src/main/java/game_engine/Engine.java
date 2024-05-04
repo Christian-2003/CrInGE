@@ -23,7 +23,7 @@ public class Engine {
     
     public static void main(String[] args) throws NullPointerException {
         //Add all entities:
-        Dimension creeperSize = new Dimension(16, 32);
+        Dimension creeperSize = new Dimension(1, 2);
         Entity creeper1 = new Entity(true, true, creeperSize, creeperSize, 2, 5);
         creeper1.setTexture(12);
         Entity creeper2 = new Entity(true, true, creeperSize, creeperSize, 5.5, 7.5);

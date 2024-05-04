@@ -4,7 +4,6 @@ import game_engine.model.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.sql.SQLOutput;
 
 
 /**
@@ -299,10 +298,10 @@ public class RendererManager {
      */
     private void renderEntity(Entity entity) {
         //Prepare for rendering:
-        int x = ((int)entity.getX() - absoluteWorldX) * GameChunk.WIDTH + (int)((entity.getX() - (int)entity.getX()) * GameChunk.WIDTH);
-        int y = ((int)entity.getY() - absoluteWorldY) * GameChunk.HEIGHT + (int)((entity.getY() - (int)entity.getY()) * GameChunk.HEIGHT);
-        int width = (int)entity.getSize().getWidth();
-        int height = (int) entity.getSize().getHeight();
+        int x = ((int)entity.getX() - absoluteWorldX) * MAP_OBJECT_SIZE + (int)((entity.getX() - (int)entity.getX()) * MAP_OBJECT_SIZE);
+        int y = ((int)entity.getY() - absoluteWorldY) * MAP_OBJECT_SIZE + (int)((entity.getY() - (int)entity.getY()) * MAP_OBJECT_SIZE);
+        int width = (int)entity.getSize().getWidth() * MAP_OBJECT_SIZE;
+        int height = (int) entity.getSize().getHeight() * MAP_OBJECT_SIZE;
 
         //Render the entity:
         boolean textureRendered = false;
