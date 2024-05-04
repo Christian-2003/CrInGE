@@ -186,7 +186,6 @@ public class RendererManager {
 
         //Render entities:
         for (Entity entity : EntityManager.getInstance().getAllEntities()) {
-            System.out.println("Found entity: " + entity);
             if (entity.getX() > absoluteWorldX && entity.getX() < absoluteWorldX + numberOfMapObjectsX && entity.getY() > absoluteWorldY && entity.getY() < absoluteWorldY + numberOfMapObjectsY) {
                 //Entity is currently visible:
                 renderEntity(entity);
