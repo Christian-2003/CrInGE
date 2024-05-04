@@ -21,18 +21,14 @@ public class MapObjectLightEmitting extends MapObject {
      *
      * @param visible                   Whether the MapObject is visible.
      * @param tangible                  Whether the MapObject is tangible.
-     * @param hitBox                    Dimensions of the hit box for the MapObject.
-     * @param size                      Size of the MapObject.
      * @param x                         X-coordinate of the MapObject within the chunk.
      * @param y                         Y-coordinate of the MapObject within the chunk.
-     * @param moving                    Whether the MapObject is moving.
-     * @param movable                   Whether the MapObject is movable.
      * @param lightColor                Color of the light that is emitted from this MapObject.
      * @throws NullPointerException     One of the passed arguments is {@code null}.
      * @throws IllegalArgumentException The passed coordinates are invalid.
      */
-    public MapObjectLightEmitting(boolean visible, boolean tangible, Dimension hitBox, Dimension size, int x, int y, boolean moving, boolean movable, Color lightColor) throws NullPointerException, IllegalArgumentException {
-        super(visible, tangible, hitBox, size, x, y, moving, movable);
+    public MapObjectLightEmitting(boolean visible, boolean tangible, int x, int y, Color lightColor) throws NullPointerException, IllegalArgumentException {
+        super(visible, tangible, x, y);
         if (lightColor == null) {
             throw new NullPointerException("Null is invalid lightColor.");
         }
@@ -44,19 +40,15 @@ public class MapObjectLightEmitting extends MapObject {
      *
      * @param visible                   Whether the MapObject is visible.
      * @param tangible                  Whether the MapObject is tangible.
-     * @param hitBox                    Dimensions of the hit box for the MapObject.
-     * @param size                      Size of the MapObject.
      * @param x                         X-coordinate of the MapObject within the chunk.
      * @param y                         Y-coordinate of the MapObject within the chunk.
      * @param texture                   Index (within {@link GameMap#textures}) of the MapObject's texture.
-     * @param moving                    Whether the MapObject is moving.
-     * @param movable                   Whether the MapObject is movable.
      * @param lightColor                Color of the light that is emitted from this MapObject.
      * @throws NullPointerException     One of the passed arguments is {@code null}.
      * @throws IllegalArgumentException The passed coordinates are invalid.
      */
-    public MapObjectLightEmitting(boolean visible, boolean tangible, Dimension hitBox, Dimension size, int x, int y, int texture, boolean moving, boolean movable, Color lightColor) throws NullPointerException, IllegalArgumentException {
-        super(visible, tangible, hitBox, size, x, y, texture, moving, movable);
+    public MapObjectLightEmitting(boolean visible, boolean tangible, int x, int y, int texture, Color lightColor) throws NullPointerException, IllegalArgumentException {
+        super(visible, tangible, x, y, texture);
         if (lightColor == null) {
             throw new NullPointerException("Null is invalid lightColor.");
         }

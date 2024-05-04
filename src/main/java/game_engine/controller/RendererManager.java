@@ -1,9 +1,7 @@
 package game_engine.controller;
 
-import game_engine.model.GameChunk;
-import game_engine.model.GameMap;
-import game_engine.model.GameObject;
-import game_engine.model.MapObject;
+import game_engine.model.*;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -182,7 +180,6 @@ public class RendererManager {
                 int chunkOffsetX = (x - topLeftChunkX) * GameChunk.WIDTH - skippedMapObjectsX;
                 int chunkOffsetY = (y - topLeftChunkY) * GameChunk.HEIGHT - skippedMapObjectsY;
                 renderGameChunk(chunk, chunkOffsetX, chunkOffsetY, startX, startY, endX, endY);
-
             }
         }
     }
@@ -282,6 +279,11 @@ public class RendererManager {
             g.drawLine(x, y, x + width, y + height); //Diagonal line 1
             g.drawLine(x + width, y, x, y + height); //Diagonal line 2
         }
+    }
+
+
+    private void renderEntity(Entity entity, int mapOffsetX, int mapOffsetY) throws IllegalArgumentException {
+
     }
 
 
