@@ -42,7 +42,7 @@ public class Engine {
      * @return          Generated GameMap.
      */
     private static GameMap generateGameMap(int width, int height) {
-        return new GameMap(width, height, createChunks(width, height, 100), loadTextures());
+        return new GameMap(width, height, createChunks(width, height, 100), loadTextures(), 13);
     }
 
 
@@ -108,7 +108,7 @@ public class Engine {
      * @return  Array of textures.
      */
     private static ImageIcon[] loadTextures() {
-        ImageIcon[] icons = new ImageIcon[13];
+        ImageIcon[] icons = new ImageIcon[14];
         URL cobblestone = Engine.class.getResource("/textures/cobblestone.png");
         if (cobblestone != null) {
             icons[0] = new ImageIcon(cobblestone);
@@ -160,6 +160,10 @@ public class Engine {
         URL creeper = Engine.class.getResource("/textures/creeper.png");
         if (creeper != null) {
             icons[12] = new ImageIcon(creeper);
+        }
+        URL skybox = Engine.class.getResource("/textures/skybox.png");
+        if (skybox != null) {
+            icons[13] = new ImageIcon(skybox);
         }
         return icons;
     }

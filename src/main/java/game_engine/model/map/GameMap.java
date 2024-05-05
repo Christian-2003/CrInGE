@@ -29,6 +29,12 @@ public class GameMap {
     private final ImageIcon[] textures;
 
     /**
+     * Attribute stores the ID of the background image. The ID corresponds to the index of the background within
+     * {@link #textures}.
+     */
+    private final int background;
+
+    /**
      * Attributes store the width and height (in chunks) for the {@link GameMap}.
      */
     private final int width, height;
@@ -47,7 +53,7 @@ public class GameMap {
      * @throws IllegalArgumentException The passed with or height is less than 0 or the number of passed chunks does not
      *                                  match the map size.
      */
-    public GameMap(int width, int height, GameChunk[] chunks, ImageIcon[] textures) throws NullPointerException, IllegalArgumentException {
+    public GameMap(int width, int height, GameChunk[] chunks, ImageIcon[] textures, int background) throws NullPointerException, IllegalArgumentException {
         if (chunks == null) {
             throw new NullPointerException("Null is invalid array for chunks");
         }
@@ -69,6 +75,7 @@ public class GameMap {
         System.arraycopy(chunks, 0, this.chunks, 0, chunks.length);
         this.textures = new ImageIcon[textures.length];
         System.arraycopy(textures, 0, this.textures, 0, textures.length);
+        this.background = background;
     }
 
 
@@ -78,6 +85,10 @@ public class GameMap {
 
     public int getHeight() {
         return height;
+    }
+
+    public int getBackground() {
+        return background;
     }
 
 

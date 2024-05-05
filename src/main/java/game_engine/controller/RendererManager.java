@@ -5,7 +5,6 @@ import game_engine.model.entities.Entity;
 import game_engine.model.map.GameChunk;
 import game_engine.model.map.GameMap;
 import game_engine.model.map.objects.MapObject;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -128,7 +127,7 @@ public class RendererManager {
         //Find the chunk that contains the MapObject in the top left corner:
         int topLeftChunkX = absoluteWorldX / GameChunk.WIDTH;
         int topLeftChunkY = absoluteWorldY / GameChunk.HEIGHT;
-        //Find the chunk that contains the MaoObject in the bottom right corner:
+        //Find the chunk that contains the MapObject in the bottom right corner:
         int bottomRightChunkX = topLeftChunkX + (numberOfMapObjectsX + (absoluteWorldX - topLeftChunkX * GameChunk.WIDTH)) / GameChunk.WIDTH + 1;
         if (bottomRightChunkX > map.getWidth()) {
             bottomRightChunkX = map.getWidth();
@@ -143,8 +142,7 @@ public class RendererManager {
         //System.out.println("BottomRightChunkX=" + bottomRightChunkX + ", BottomRightChunkY=" + bottomRightChunkY);
 
         //Change background:
-        g.setColor(Color.BLACK);
-        g.fillRect(0, 0, component.getWidth(), component.getHeight());
+        renderBackground(component.getWidth(), component.getHeight());
 
         //Define variables to remember how many MapObjects were skipped total in rendered chunks:
         int skippedMapObjectsX = 0;
@@ -331,6 +329,28 @@ public class RendererManager {
             g.drawLine(x, y, x + width, y + height); //Diagonal line 1
             g.drawLine(x + width, y, x, y + height); //Diagonal line 2
         }
+    }
+
+
+    /**
+     * Method renders the background to the canvas. If no background is available, nothing happens.
+     *
+     * @param componentWidth    Width of the canvas on which the background shall be rendered.
+     * @param componentHeight   Height of the canvas on which the background shall be rendered.
+     */
+    private void renderBackground(int componentWidth, int componentHeight) {
+        if (!(map.getBackground() >= 0 && map.getBackground() < map.getNumberOfTextures())) {
+            g.setColor(Color.BLACK);
+            g.fillRect(0, 0, componentWidth, componentHeight);
+        }
+        //Background available:
+        ImageIcon background = map.getTexture(map.getBackground());
+        int backgroundWidth = background.getIconWidth();
+        int backgroundHeight = background.getIconHeight();
+        double scaleX = (double)componentWidth / backgroundWidth;
+        double scaleY = (double)componentHeight / backgroundHeight;
+        double scale = Math.max(scaleX, scaleY);
+        g.drawImage(background.getImage(), 0, 0, (int)(backgroundWidth * scale), (int)(backgroundHeight * scale), null);
     }
 
 
