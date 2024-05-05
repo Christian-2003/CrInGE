@@ -4,7 +4,7 @@ package game_engine.model.events;
 /**
  * Interface must be implemented for collision events.
  *
- * @author  Christian-2003
+ * @author  Christian-2003, Elekt0
  */
 public interface CollisionListener extends GameEventListener {
 

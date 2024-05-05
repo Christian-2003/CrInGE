@@ -7,7 +7,7 @@ import java.util.Calendar;
  * Class models the event arguments for all events that can occur within the game. Specialized events should
  * use event args extending this class.
  *
- * @author  Christian-2003
+ * @author  Christian-2003, Elekt0
  */
 public class GameEventArgs {
 
