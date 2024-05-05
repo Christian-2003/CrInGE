@@ -4,7 +4,6 @@ import game_engine.model.GameObject;
 import game_engine.model.events.CollisionListener;
 import game_engine.model.events.EventTypes;
 import game_engine.model.events.GameEventListener;
-
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,6 +26,11 @@ public class Entity extends GameObject {
      * Attributes store the coordinate of the entity.
      */
     private double x, y;
+
+    /**
+     * Attributes store the previous coordinates of the entity. This is required to detect whether the entity was moved.
+     */
+    private double previousX, previousY;
 
     /**
      * Attribute stores all events of the entity.
@@ -52,6 +56,8 @@ public class Entity extends GameObject {
         uuid = UUID.randomUUID();
         this.x = x;
         this.y = y;
+        this.previousX = x;
+        this.previousY = y;
         events = new HashMap<>();
     }
 
@@ -67,6 +73,8 @@ public class Entity extends GameObject {
         this.uuid = entity.uuid;
         this.x = entity.getX();
         this.y = entity.getY();
+        this.previousX = entity.getPreviousX();
+        this.previousY = entity.getPreviousY();
         events = new HashMap<>();
     }
 
@@ -99,14 +107,51 @@ public class Entity extends GameObject {
     }
 
     /**
+     * Method returns the previous x-coordinate of the entity.
+     *
+     * @return  Previous x-coordinate of the entity.
+     */
+    public double getPreviousX() {
+        return previousX;
+    }
+
+    /**
+     * Method returns the previous y-coordinate of the entity.
+     *
+     * @return  Previous y-coordinate of the entity.
+     */
+    public double getPreviousY() {
+        return previousY;
+    }
+
+    /**
      * Method changes the position of the entity.
      *
      * @param x New x-coordinate for the entity.
      * @param y New y-coordinate for the entity.
      */
     public void setPosition(double x, double y) {
+        previousX = this.x;
+        previousY = this.y;
         this.x = x;
         this.y = y;
+    }
+
+    /**
+     * Method returns whether the entity has been moved.
+     *
+     * @return  Whether the entity has been moved.
+     */
+    public boolean isMoved() {
+        return previousX != x || previousY != y;
+    }
+
+    /**
+     * Method removes the information from the entity, that it has been moved.
+     */
+    public void removeMovedFlag() {
+        previousX = x;
+        previousY = y;
     }
 
     /**
