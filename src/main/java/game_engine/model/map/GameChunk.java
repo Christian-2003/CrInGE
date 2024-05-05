@@ -1,5 +1,7 @@
-package game_engine.model;
+package game_engine.model.map;
 
+
+import game_engine.model.map.objects.MapObject;
 
 /**
  * Class models a chunk that contains multiple {@link MapObject}s. This is used for handling MapObjects within the

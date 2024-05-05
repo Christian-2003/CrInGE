@@ -1,6 +1,13 @@
-package game_engine.model;
+package game_engine.model.entities;
+
+import game_engine.model.GameObject;
+import game_engine.model.events.CollisionListener;
+import game_engine.model.events.EventTypes;
+import game_engine.model.events.GameEventListener;
 
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 
@@ -22,15 +29,9 @@ public class Entity extends GameObject {
     private double x, y;
 
     /**
-     * Attribute indicates whether the position of the entity has been changed since it was rendered the last
-     * time.
+     * Attribute stores all events of the entity.
      */
-    private boolean positionChangedSinceLastRender;
-
-    /**
-     * Attributes store the previous x- and y-coordinates of the map object.
-     */
-    private double previousX, previousY;
+    protected final Map<EventTypes, GameEventListener> events;
 
 
     /**
@@ -51,7 +52,7 @@ public class Entity extends GameObject {
         uuid = UUID.randomUUID();
         this.x = x;
         this.y = y;
-        positionChangedSinceLastRender = false;
+        events = new HashMap<>();
     }
 
     /**
@@ -66,7 +67,7 @@ public class Entity extends GameObject {
         this.uuid = entity.uuid;
         this.x = entity.getX();
         this.y = entity.getY();
-        positionChangedSinceLastRender = false;
+        events = new HashMap<>();
     }
 
 
@@ -104,52 +105,26 @@ public class Entity extends GameObject {
      * @param y New y-coordinate for the entity.
      */
     public void setPosition(double x, double y) {
-        previousX = this.x;
-        previousY = this.y;
         this.x = x;
         this.y = y;
     }
 
     /**
-     * Method returns the x-coordinate of the at which it is currently being displayed.
-     * This method is needed by the {@link game_engine.controller.RendererManager}!
+     * Method sets the collision listener for the entity.
      *
-     * @return  Previous x-coordinate.
+     * @param collisionListener New collision listener for the entity.
      */
-    public double getPreviousX() {
-        return previousX;
+    public void setCollisionListener(CollisionListener collisionListener) {
+        events.put(EventTypes.COLLISION, collisionListener);
     }
 
     /**
-     * Method returns the y-coordinate of the at which it is currently being displayed.
-     * This method is needed by the {@link game_engine.controller.RendererManager}!
+     * Method returns the collision listener of the entity.
      *
-     * @return  Previous y-coordinate.
+     * @return  Collision listener of the entity.
      */
-    public double getPreviousY() {
-        return previousY;
-    }
-
-    /**
-     * Method returns whether the position of the entity has been changed since it was rendered
-     * the last time.
-     * This method is needed by the {@link game_engine.controller.RendererManager}!
-     *
-     * @return  Whether the position has been changed.
-     */
-    public boolean isPositionChangedSinceLastRender() {
-        return positionChangedSinceLastRender;
-    }
-
-    /**
-     * Method changes whether the position of the entity has been changed since it was rendered
-     * the last time.
-     * This method is needed by the {@link game_engine.controller.RendererManager}!
-     *
-     * @param positionChangedSinceLastRender    Whether the position has changed since last rendering.
-     */
-    public void setPositionChangedSinceLastRender(boolean positionChangedSinceLastRender) {
-        this.positionChangedSinceLastRender = positionChangedSinceLastRender;
+    public CollisionListener getCollisionListener() {
+        return (CollisionListener)events.get(EventTypes.COLLISION);
     }
 
 }

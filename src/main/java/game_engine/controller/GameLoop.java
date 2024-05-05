@@ -3,7 +3,7 @@ IMPORTANT NOTICE TO ALL DEVELOPERS: Kartoffel
 */
 package game_engine.controller;
 
-import game_engine.model.GameMap;
+import game_engine.model.map.GameMap;
 import game_engine.view.GameFrame;
 
 

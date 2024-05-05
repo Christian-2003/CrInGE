@@ -1,7 +1,7 @@
 package game_engine.view.canvas;
 
 import game_engine.controller.RendererManager;
-import game_engine.model.GameMap;
+import game_engine.model.map.GameMap;
 import javax.swing.*;
 import java.awt.*;
 

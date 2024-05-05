@@ -1,5 +1,9 @@
 package game_engine.model;
 
+import game_engine.model.entities.Entity;
+import game_engine.model.map.GameMap;
+import game_engine.model.map.objects.MapObject;
+
 import java.awt.*;
 
 

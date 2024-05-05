@@ -1,4 +1,6 @@
-package game_engine.model;
+package game_engine.model.map.objects;
+
+import game_engine.model.map.GameMap;
 
 import java.awt.*;
 

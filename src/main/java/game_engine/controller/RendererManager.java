@@ -1,6 +1,10 @@
 package game_engine.controller;
 
 import game_engine.model.*;
+import game_engine.model.entities.Entity;
+import game_engine.model.map.GameChunk;
+import game_engine.model.map.GameMap;
+import game_engine.model.map.objects.MapObject;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,7 +37,7 @@ public class RendererManager {
     private Graphics g;
 
     /**
-     * Attributes store the absolute world coordinates of the {@link game_engine.model.MapObject} that shall be rendered
+     * Attributes store the absolute world coordinates of the {@link MapObject} that shall be rendered
      * in the top left corner of the Java Swing component.
      */
     private int absoluteWorldX, absoluteWorldY;
@@ -83,7 +87,7 @@ public class RendererManager {
 
 
     /**
-     * Method updates the coordinates of the {@link game_engine.model.MapObject} in the top left corner to be rendered.
+     * Method updates the coordinates of the {@link MapObject} in the top left corner to be rendered.
      * The map must be updated manually.
      *
      * @param absoluteWorldX                X-coordinate of the MapObject in the upper left corner.

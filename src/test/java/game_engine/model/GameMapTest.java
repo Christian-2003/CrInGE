@@ -1,5 +1,7 @@
 package game_engine.model;
 
+import game_engine.model.map.GameChunk;
+import game_engine.model.map.GameMap;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

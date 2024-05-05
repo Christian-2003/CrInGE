@@ -1,5 +1,7 @@
-package game_engine.model;
+package game_engine.model.map;
 
+
+import game_engine.model.map.objects.MapObject;
 
 import javax.swing.*;
 

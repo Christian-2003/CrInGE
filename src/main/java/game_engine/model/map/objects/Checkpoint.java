@@ -1,5 +1,7 @@
-package game_engine.model;
+package game_engine.model.map.objects;
 
+
+import game_engine.model.map.GameMap;
 
 /**
  * Class models a checkpoint which can be used as a MapObject.

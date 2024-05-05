@@ -2,12 +2,11 @@ package game_engine;
 
 import game_engine.controller.EntityManager;
 import game_engine.controller.GameLoop;
-import game_engine.model.Entity;
-import game_engine.model.GameChunk;
-import game_engine.model.GameMap;
-import game_engine.model.MapObject;
+import game_engine.model.entities.Entity;
+import game_engine.model.map.GameChunk;
+import game_engine.model.map.GameMap;
+import game_engine.model.map.objects.MapObject;
 import javax.swing.*;
-import javax.xml.transform.dom.DOMLocator;
 import java.awt.*;
 import java.net.URL;
 import java.util.ArrayList;

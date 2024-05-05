@@ -1,4 +1,4 @@
-package game_engine.model;
+package game_engine.model.entities;
 
 import java.awt.*;
 

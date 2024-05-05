@@ -1,6 +1,7 @@
 package game_engine.view;
 
 import game_engine.controller.RendererManager;
+import game_engine.model.map.GameMap;
 import game_engine.view.canvas.DemoCanvas;
 import game_engine.view.canvas.GameCanvas;
 
@@ -17,7 +18,7 @@ import java.awt.*;
 public class GameFrame extends JFrame {
 
     /**
-     * Attribute stores the canvas on which the {@link game_engine.model.GameMap} will be displayed.
+     * Attribute stores the canvas on which the {@link GameMap} will be displayed.
      */
     private final GameCanvas canvas;
 

@@ -1,6 +1,6 @@
 package game_engine.controller;
 
-import game_engine.model.Entity;
+import game_engine.model.entities.Entity;
 
 import java.util.Collection;
 import java.util.HashMap;
