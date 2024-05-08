@@ -4,6 +4,8 @@ import game_engine.model.GameObject;
 import game_engine.model.events.CollisionListener;
 import game_engine.model.events.EventTypes;
 import game_engine.model.events.GameEventListener;
+import game_engine.model.events.MoveListener;
+
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +15,7 @@ import java.util.UUID;
 /**
  * Class models an Entity. Entities can interact with the GameMap.
  *
- * @author  Christian-2003
+ * @author  Christian-2003, Elekt0
  */
 public class Entity extends GameObject {
 
@@ -155,6 +157,15 @@ public class Entity extends GameObject {
     }
 
     /**
+     * Method returns all events of the entity.
+     *
+     * @return  All events of the entity.
+     */
+    public Map<EventTypes, GameEventListener> getAllEvents() {
+        return events;
+    }
+
+    /**
      * Method sets the collision listener for the entity.
      *
      * @param collisionListener New collision listener for the entity.
@@ -170,6 +181,24 @@ public class Entity extends GameObject {
      */
     public CollisionListener getCollisionListener() {
         return (CollisionListener)events.get(EventTypes.COLLISION);
+    }
+
+    /**
+     * Method sets the move listener for the entity.
+     *
+     * @param moveListener New move listener for the entity.
+     */
+    public void setMoveListener(MoveListener moveListener) {
+        events.put(EventTypes.MOVE, moveListener);
+    }
+
+    /**
+     * Method returns the collision listener of the entity.
+     *
+     * @return  Collision listener of the entity.
+     */
+    public MoveListener getMoveListener() {
+        return (MoveListener) events.get(EventTypes.MOVE);
     }
 
 }
