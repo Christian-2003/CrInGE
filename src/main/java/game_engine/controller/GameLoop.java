@@ -3,8 +3,14 @@ IMPORTANT NOTICE TO ALL DEVELOPERS: Kartoffel
 */
 package game_engine.controller;
 
+import game_engine.controller.events.CollisionEventDetector;
+import game_engine.controller.events.MoveEventDetector;
+import game_engine.model.entities.Entity;
+import game_engine.model.events.EventTypes;
 import game_engine.model.map.GameMap;
 import game_engine.view.GameFrame;
+
+import java.util.Set;
 
 
 /**
@@ -96,6 +102,18 @@ public class GameLoop implements Runnable {
         //Game loop:
         while (continueLoop) {
             //TODO: Implement game loop.
+
+            // Event detection
+            for(Entity entity : EntityManager.getInstance().getAllEntities()){
+                Set<EventTypes> entityEvents = entity.getAllEvents().keySet();
+
+                if(entityEvents.contains(EventTypes.COLLISION)){
+                    CollisionEventDetector.getInstance().detect(entity);
+                }
+                if(entityEvents.contains(EventTypes.MOVE)){
+                    MoveEventDetector.getInstance().detect(entity);
+                }
+            }
         }
     }
 

@@ -1,5 +1,7 @@
 package game_engine.model.events;
 
+import game_engine.model.entities.Entity;
+
 import java.util.Calendar;
 
 
@@ -15,16 +17,18 @@ public class GameEventArgs {
      * Attribute stores the time at which the event was triggered.
      */
     private final Calendar time;
+    private final Entity entity;
 
 
     /**
      * Constructor instantiates a new event args instance.
      */
-    public GameEventArgs(Calendar time) throws NullPointerException {
-        if (time == null) {
+    public GameEventArgs(Calendar time, Entity entity) throws NullPointerException {
+        if (time == null | entity == null) {
             throw new NullPointerException();
         }
         this.time = time;
+        this.entity = entity;
     }
 
 
@@ -37,4 +41,13 @@ public class GameEventArgs {
         return time;
     }
 
+    /**
+     * Method returns the entity that triggered the event.
+     * May need to be moved to a GameEntityEventArgs class later.
+     *
+     * @return  Entity that triggered the event.
+     */
+    public Entity getEntity() {
+        return entity;
+    }
 }
