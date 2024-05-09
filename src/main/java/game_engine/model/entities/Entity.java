@@ -171,6 +171,9 @@ public class Entity extends GameObject {
      * @param collisionListener New collision listener for the entity.
      */
     public void setCollisionListener(CollisionListener collisionListener) {
+        if(collisionListener == null) {
+            throw new NullPointerException();
+        }
         events.put(EventTypes.COLLISION, collisionListener);
     }
 
@@ -189,6 +192,9 @@ public class Entity extends GameObject {
      * @param moveListener New move listener for the entity.
      */
     public void setMoveListener(MoveListener moveListener) {
+        if(moveListener == null) {
+            throw new NullPointerException();
+        }
         events.put(EventTypes.MOVE, moveListener);
     }
 
