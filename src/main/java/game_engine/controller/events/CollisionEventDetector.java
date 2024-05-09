@@ -34,8 +34,7 @@ public class CollisionEventDetector implements EventDetector {
         }
         Set<Entity> entitiesInvolved = this.getCollidingEntities(entity);
         if (!entitiesInvolved.isEmpty()) {
-            CollisionListener listener = (CollisionListener) entity.getAllEvents().get(EventTypes.COLLISION);
-            listener.onCollision(new CollisionEventArgs(
+            entity.getCollisionListener().onCollision(new CollisionEventArgs(
                     Calendar.getInstance(),
                     entity,
                     entitiesInvolved

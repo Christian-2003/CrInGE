@@ -32,8 +32,7 @@ public class MoveEventDetector implements EventDetector {
             // prevent event double triggering
             entity.setPosition(entity.getX(), entity.getY());
 
-            MoveListener listener = (MoveListener) entity.getAllEvents().get(EventTypes.MOVE);
-            listener.onMove(new MoveEventArgs(
+            entity.getMoveListener().onMove(new MoveEventArgs(
                     Calendar.getInstance(),
                     entity,
                     entity.getPreviousX(),
