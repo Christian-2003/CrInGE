@@ -1,14 +1,15 @@
 package game_engine;
 
-import game_engine.controller.EntityManager;
 import game_engine.controller.GameLoop;
-import game_engine.model.entities.Entity;
+import game_engine.controller.game_dataHandler.Exceptions.GameDataFileSyntaxException;
+import game_engine.controller.game_dataHandler.Exceptions.NotFoundException;
+import game_engine.controller.game_dataHandler.Loader;
 import game_engine.model.map.GameChunk;
 import game_engine.model.map.GameMap;
 import game_engine.model.map.objects.MapObject;
 import javax.swing.*;
-import java.awt.*;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -20,17 +21,11 @@ import java.util.Random;
  */
 public class Engine {
     
-    public static void main(String[] args) throws NullPointerException {
+    public static void main(String[] args) throws NullPointerException, NotFoundException, GameDataFileSyntaxException {
         //Add all entities:
-        Dimension creeperSize = new Dimension(1, 2);
-        Entity creeper1 = new Entity(true, true, creeperSize, creeperSize, 2, 5);
-        creeper1.setTexture(12);
-        Entity creeper2 = new Entity(true, true, creeperSize, creeperSize, 5.5, 7.5);
-        creeper2.setTexture(12);
-        EntityManager.getInstance().put(creeper1);
-        EntityManager.getInstance().put(creeper2);
-
-        GameLoop gameLoop = new GameLoop(generateGameMap(5, 3));
+        Loader load = new Loader();
+        ImageIcon[] icons = load.getImgSources();
+        GameLoop gameLoop = new GameLoop(generateGameMap(5, 3, icons));
     }
 
 
@@ -44,7 +39,17 @@ public class Engine {
     private static GameMap generateGameMap(int width, int height) {
         return new GameMap(width, height, createChunks(width, height, 100), loadTextures(), 13);
     }
-
+    /**
+     * Method generates a new random GameMap with additional entity's.
+     *
+     * @param width     Width for the GameMap.
+     * @param height    Height for the GameMap.
+     * @param icons     A ImageIcon List with all the necessary icons
+     * @return          Generated GameMap.
+     */
+    private static GameMap generateGameMap(int width, int height, ImageIcon[] icons) {
+        return new GameMap(width, height, createChunks(width, height, 100), icons, 13);
+    }
 
     /**
      * Method generates an array of GameChunks of the specified size with random MapObjects.
