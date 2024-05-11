@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 /**
- * @see Asset
+ * @see game_engine.model.entities.Entity
  * @author FabianDev001
  */
 public class ImageSource {
@@ -13,8 +13,8 @@ public class ImageSource {
      */
     private File file;
     /**
-     * Counter on how many assets are using this source
-     * @see Asset
+     * Counter on how many entity's are using this source
+     * @see game_engine.model.entities.Entity
      */
     private int uses = 1;
 

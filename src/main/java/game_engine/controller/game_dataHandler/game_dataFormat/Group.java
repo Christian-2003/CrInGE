@@ -7,16 +7,16 @@ import java.util.ArrayList;
 
 
 /**
- * Class implements a Group of Assets
- * @see Asset
+ * Class implements a Group of Entitys
+ * @see game_engine.model.entities.Entity
  * @author Farbian001
  */
 public class Group {
     private String name;
-    private Integer id;
+    private final Integer id;
     private Integer parentGroupId;
     private ArrayList<Integer> childGroupIds;
-    private ArrayList<Integer> assetsIDs;
+    private final ArrayList<Integer> assetsIDs;
 
     public Group(String name, Integer parentGroupId, ArrayList<Integer> childGroupIds, ArrayList<Integer> assetsIDs) {
         this.name = name;
