@@ -1,0 +1,15 @@
+sources:[/cobblestone.png;/stone.png;/andesite.png;/diorite.png;/granite.png;/deepslate.png;/cobbled_deepslate.png;/tuff.png;/grass.png;/dirt.png;/coarse_dirt.png;/rooted_dirt.png;/creeper.png;/skybox.png;/dummyData\dummy_Crap01.png;/dummyData\dummy_Cringe01.png]
+[main;
+    [group1;
+        {Asset0;14;t;t;1;0;2;2;7.0;5.0};
+        {Asset1;14;t;t;1;2;2;2;5.5;7.5};
+    ]
+    [group2;
+        {creeper1;12;t;t;1;2;1;2;2.0;5.0};
+        {creeper2;12;t;t;6;4;1;2;5.5;7.5};
+        [subgroup1;
+            {human1;13;t;f;1;1;1;1;1.0;2.0};
+        ]
+    ]
+]
+
