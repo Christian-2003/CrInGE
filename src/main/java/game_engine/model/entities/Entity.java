@@ -21,7 +21,10 @@ public class Entity extends GameObject {
      * Attribute stores a UUID with which the entity can be identified.
      */
     private final UUID uuid;
-
+    /**
+     * Attribute stores debugName from Editor, usage for error and debug messages only
+     */
+     private String debugName;
     /**
      * Attributes store the coordinate of the entity.
      */
@@ -172,4 +175,60 @@ public class Entity extends GameObject {
         return (CollisionListener)events.get(EventTypes.COLLISION);
     }
 
+    /**
+     * Set a (new) debug name for current Entity
+     * @param debugName | String
+     */
+    public void setDebugName(String debugName){
+        this.debugName = debugName;
+    }
+
+    /**
+     * Methode returns a unique DebugName of the entity.
+     * @return debugName | String
+     */
+    public String getDebugName(){
+        return this.uuid + "_" + this.debugName;
+    }
+
+    /**
+     * Returns a short summery in GameData Syntax, what's inside this entity
+     * @return String | (pseudo) GameDataSyntax
+     * @author Farbian001
+     */
+    @Override
+    public String toString(){
+        String vis = this.isVisible()? "t" : "f";
+        String tang = this.isTangible()? "t" : "f";
+        return "{"+
+                this.debugName +";"+
+                this.getTexture() + ";"+
+                vis+ ";" +
+                tang+ ";" +
+                (int) this.getSize().getWidth() + ";"+
+                (int) this.getSize().getHeight() + ";"+
+                (int) this.getHitBox().getWidth() + ";"+
+                (int) this.getHitBox().getHeight() + ";" +
+                (double) this.getX() + ";"+
+                (double) this.getY()
+                +"};";
+    }
+
+    /**
+     * Returns additional header-information in GameData Syntax of current Entity
+     * @return String | (pseudo) GameDataSyntax with headers
+     * @author Farbian001
+     */
+    public String toDebugString(){
+        return "Entity-"+ this.getDebugName() +
+                "(Texture-Index: " + this.getTexture() +
+                ",visible: "+ this.isVisible() +
+                ",tangible: "+this.isTangible() +
+                ",size-width: " + this.getSize().width +
+                ",size-height: " + this.getSize().height +
+                ",Hitbox-Widh: "+this.getHitBox().width +
+                ",Hitbox-Height: "+ this.getHitBox().height +
+                ",x: " + this.getX() +
+                ",y: " + this.getY();
+    }
 }
