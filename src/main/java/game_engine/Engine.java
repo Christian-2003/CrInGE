@@ -1,15 +1,14 @@
 package game_engine;
 
 import game_engine.controller.GameLoop;
-import game_engine.controller.game_dataHandler.Exceptions.GameDataFileSyntaxException;
-import game_engine.controller.game_dataHandler.Exceptions.NotFoundException;
-import game_engine.controller.game_dataHandler.Loader;
+import game_engine.controller.data_handler.exceptions.GameDataFileSyntaxException;
+import game_engine.controller.data_handler.exceptions.NotFoundException;
+import game_engine.controller.data_handler.Loader;
 import game_engine.model.map.GameChunk;
 import game_engine.model.map.GameMap;
 import game_engine.model.map.objects.MapObject;
 import javax.swing.*;
 import java.net.URL;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Random;
 

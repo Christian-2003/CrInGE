@@ -1,22 +1,18 @@
-package game_engine.controller.game_dataHandler;
+package game_engine.controller.data_handler;
 
 import game_engine.controller.EntityManager;
-import game_engine.controller.game_dataHandler.Exceptions.GameDataFileSyntaxException;
-import game_engine.controller.game_dataHandler.Exceptions.NotFoundException;
-import game_engine.controller.game_dataHandler.game_dataFormat.Group;
+import game_engine.controller.data_handler.exceptions.GameDataFileSyntaxException;
+import game_engine.controller.data_handler.exceptions.NotFoundException;
+import game_engine.controller.data_handler.game_data_format.Group;
 import game_engine.model.entities.Entity;
-
-
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-
 import java.util.Arrays;
 import java.util.HashMap;
-
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,22 +20,45 @@ import java.util.regex.Pattern;
 
 /**
  * Every prop has to be loaded, this class job is to load each prop from a file and add them into the runtime, as well as to save them into a file.
- * This class is also responsible for loading and saving the map. 
+ * This class is also responsible for loading and saving the map.
+ *
  * @version 1.0
- * @author Fabian001
+ * @author  Fabian001
  */
 public class Loader {
 
+    /**
+     * Field stores the image sources.
+     * Key = FilePath: String
+     */
+    private static final HashMap<Integer, ImageIcon> imgSources = new HashMap<>();
 
-    private static HashMap<Integer, ImageIcon> imgSources = new HashMap<>(); // Key = FilePath: String
-    private static HashMap<Integer, game_engine.model.entities.Entity> entity = new HashMap<>(); // Key = Asset-Index
-    private static HashMap<Integer, Group> groups = new HashMap<>(); // Key = Group-Index
+    /**
+     * Field stores the entities.
+     * Key = Asset-Index
+     */
+    private static final HashMap<Integer, Entity> entity = new HashMap<>();
 
-    // IDs-Counter for Asset and Group
-    private static int idAsset_c = 0;
-    private static int idGroup_c = 1; // <-- Index 0 = main
+    /**
+     * Field stores the groups.
+     * Key = Group-Index
+     */
+    private static final HashMap<Integer, Group> groups = new HashMap<>();
 
-    private static String sourceinput = "";
+
+    /**
+     * Attribute stores the ID counter for assets.
+     */
+    private static int idAssetCounter = 0;
+
+    /**
+     * Attribute stores the ID counter for groups.
+     * Index 0 = main
+     */
+    private static int idGroupCounter = 1;
+
+
+    private static String sourceInput = "";
 
     public ImageIcon[] getImgSources() {
         return imgSources.values().toArray(new ImageIcon[0]);
@@ -69,7 +88,7 @@ public class Loader {
      * @throws GameDataFileSyntaxException
      */
     public Loader() throws NotFoundException, GameDataFileSyntaxException {
-        decode_to_variable(Paths.get(".","src","main","java","game_engine","controller","game_dataHandler", "saveFiles" ,"creeperExample.gamedata").toAbsolutePath());
+        decodeToVariable(Paths.get(".", "src", "main", "java", "game_engine", "controller", "game_dataHandler", "saveFiles", "creeperExample.gamedata").toAbsolutePath());
     }
 
     /**
@@ -79,15 +98,17 @@ public class Loader {
      * @throws GameDataFileSyntaxException
      */
     public Loader(Path path) throws NotFoundException, GameDataFileSyntaxException {
-        if(!path.toString().toLowerCase().endsWith(".gamedata")) throw new GameDataFileSyntaxException("False File-Extension\nExpected:'.gameData' !");
-        decode_to_variable(path.toAbsolutePath());
+        if (!path.toString().toLowerCase().endsWith(".gamedata")) {
+            throw new GameDataFileSyntaxException("False File-Extension\nExpected:'.gameData' !");
+        }
+        decodeToVariable(path.toAbsolutePath());
     }
 
     /**
      * @hidden Only testing!!!
      */
     public static void main(String[] args) throws NotFoundException, GameDataFileSyntaxException {
-         decode_to_variable(Paths.get(".","src","main","java","game_engine","controller","game_dataHandler", "saveFiles" ,"fileTypeExampe.gamedata").toAbsolutePath());
+         decodeToVariable(Paths.get(".", "src", "main", "java", "game_engine", "controller", "game_dataHandler", "saveFiles", "fileTypeExampe.gamedata").toAbsolutePath());
     }
 
 
@@ -95,11 +116,10 @@ public class Loader {
      * Decodes .gameData Syntax to usable variables for the Engine
      * @throws GameDataFileSyntaxException | Throws when the Syntax isn't adding up
      */
-    public static void decode_to_variable(Path filePath) throws GameDataFileSyntaxException, NotFoundException {
-
+    public static void decodeToVariable(Path filePath) throws GameDataFileSyntaxException, NotFoundException {
         // Validate if File exits as .gamedata
         File f = new File(filePath.toUri());
-        if(!(f.exists() && !f.isDirectory())) {
+        if (!(f.exists() && !f.isDirectory())) {
           throw new NotFoundException("No file found on " + f.getPath());
         }
 
@@ -109,31 +129,34 @@ public class Loader {
 
         StringBuilder input = new StringBuilder();
         boolean firstLine = true;
-        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
-            for (String line; (line = br.readLine()) != null; ) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(f))) {
+            for (String line; (line = reader.readLine()) != null; ) {
                 // ImageSource Data is places in line 1
-                if (firstLine) sourceinput = line;
+                if (firstLine) {
+                    sourceInput = line;
+                }
                 firstLine = false;
                 // The rest is placed below line 1
-                input.append(line).append("\r\n");
+                input.append(line);
+                input.append("\r\n");
             }
 
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        /*
-         * Extracts each Path from the first Line of the GameDataFile | Checks if the
-         * File exists and if so creates a new ImageSource object
-         */
-        ArrayList<String> pathArrayList = FileCoder.extractPaths(sourceinput);
+        //Extracts each Path from the first Line of the GameDataFile | Checks if the
+        //File exists and if so creates a new ImageSource object
+        ArrayList<String> pathArrayList = FileCoder.extractPaths(sourceInput);
         int i = 0;
         for (String path : pathArrayList) {
             //? All assets should be in the texture folder if not an absolute path is required
             if(path.startsWith("/")) path = "src/main/resources/textures" + path;
             File imageFile = new File(path);
-            if (!imageFile.exists())
+            if (!imageFile.exists()) {
                 throw new GameDataFileSyntaxException("File Path does not exit");
+            }
             imgSources.put(i, new ImageIcon(imageFile.getAbsolutePath()));
             i++;
         }
@@ -149,7 +172,7 @@ public class Loader {
             String groupContent = matcher.group(0);
             // Get its group name
             String groupName = matcher.group(1);
-            Group curr_group = new Group(groupName, idGroup_c);
+            Group currentGroup = new Group(groupName, idGroupCounter);
 
             // Get each params of an Asset
             String[] assetArray = groupContent.replace("[" + groupName + ";", "").trim().split("\n");
@@ -157,18 +180,17 @@ public class Loader {
             // Iterate through each asset
             for (String assetRaw : assetArray) {
                 if(assetRaw.contains(",")) {
-                    System.out.println("⚠️ Syntax-Warning: Comma found where a semicolom should be.\n -> ("+ f.getName()+":"+((idGroup_c+idAsset_c)+3)+") " +  f.getPath()+":"+((idGroup_c+idAsset_c)+3) );
+                    System.out.println("⚠️ Syntax-Warning: Comma found where a semicolom should be.\n -> (" + f.getName() + ":" + ((idGroupCounter + idAssetCounter) + 3) + ") " + f.getPath() + ":" + ((idGroupCounter + idAssetCounter) + 3));
                     assetRaw = assetRaw.replaceAll(",",";");
                 }
-                String[] val =  Arrays.stream(assetRaw.split(";"))
-                        .map(s -> s.replace("}", ""))
-                        .toArray(String[]::new);
-                if(val.length < 10) {
+                String[] val =  Arrays.stream(assetRaw.split(";")).map(s -> s.replace("}", "")).toArray(String[]::new);
+                if (val.length < 10) {
                     String cache = Arrays.toString(val);
-                    if(cache.contains("[{") && cache.endsWith("]") && !cache.contains(",")){
+                    if (cache.contains("[{") && cache.endsWith("]") && !cache.contains(",")) {
                         throw new GameDataFileSyntaxException("Can't comprehend between Entity or Group | Check if a Semicolon is missing!\nValue: " + cache);
-                    } else {
-                        throw new GameDataFileSyntaxException("Entity Size is to low\nExpected: 10\nHas: "+ val.length+"\nValue: " + cache);
+                    }
+                    else {
+                        throw new GameDataFileSyntaxException("Entity Size is to low\nExpected: 10\nHas: " + val.length + "\nValue: " + cache);
                     }
                 }
 
@@ -176,22 +198,22 @@ public class Loader {
                 //! Entity (Entity-Name/UUID | Texture-Index | visible | tangible | width-size | height-size | width-hitbox | height-hitbox | x:double | y:double)
                 Dimension size = new Dimension(Integer.parseInt(val[4]), Integer.parseInt(val[5]));
                 Dimension hitbox = new Dimension(Integer.parseInt(val[6]), Integer.parseInt(val[7]));
-                Entity new_entity = new Entity(parseBool(val[2]), parseBool(val[3]), size, hitbox, Double.parseDouble(val[8]), Double.parseDouble(val[9]));
+                Entity newEntity = new Entity(parseBool(val[2]), parseBool(val[3]), size, hitbox, Double.parseDouble(val[8]), Double.parseDouble(val[9]));
                 //? Textures need to be set separately
-                new_entity.setTexture(Integer.parseInt(val[1]));
+                newEntity.setTexture(Integer.parseInt(val[1]));
                 //? Debug-Name is used to identify an entity for debug purposes
-                new_entity.setDebugName(val[0].replace("{", "").trim());
+                newEntity.setDebugName(val[0].replace("{", "").trim());
 
                 System.out.println("Entity: " + val[0].replace("{", "").trim() + " created");
 
 
                 //? Adds asset to HashMap
-                entity.put(idAsset_c, new_entity);
-                EntityManager.getInstance().put(new_entity);
+                entity.put(idAssetCounter, newEntity);
+                EntityManager.getInstance().put(newEntity);
                 //? Adds the Asset ID inside the current groups AssetID List
-                curr_group.pushAssetID(idAsset_c);
+                currentGroup.pushAssetID(idAssetCounter);
                 //? Increases the asset ID counter by 1
-                idAsset_c++;
+                idAssetCounter++;
 
             }
 
@@ -202,16 +224,17 @@ public class Loader {
              */
             if (groupContent.startsWith("        ")) {
                 Group lastGroup = getLastInsertedGroup();
-                Integer last_group_id = lastGroup.getId();
-                curr_group.setParentGroupID(last_group_id);
-                lastGroup.addChildGroupID(idGroup_c);
-                groups.put(last_group_id, lastGroup);
-            } else {
-                curr_group.setParentGroupID(0);
-                main.addChildGroupID(idGroup_c);
+                Integer lastGroupID = lastGroup.getId();
+                currentGroup.setParentGroupID(lastGroupID);
+                lastGroup.addChildGroupID(idGroupCounter);
+                groups.put(lastGroupID, lastGroup);
             }
-            groups.put(idGroup_c, curr_group);
-            idGroup_c++;
+            else {
+                currentGroup.setParentGroupID(0);
+                main.addChildGroupID(idGroupCounter);
+            }
+            groups.put(idGroupCounter, currentGroup);
+            idGroupCounter++;
         }
     }
 
@@ -225,11 +248,8 @@ public class Loader {
         return groups.values().stream().reduce((first, second) -> second).orElse(null);
     }
 
-    private static Boolean parseBool(String val){
+    private static Boolean parseBool(String val) {
         return Objects.equals(val, "t");
     }
 
-
 }
-
-

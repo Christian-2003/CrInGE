@@ -1,9 +1,9 @@
 package game_engine.entity_import;
 
-import game_engine.controller.game_dataHandler.Exceptions.GameDataFileSyntaxException;
-import game_engine.controller.game_dataHandler.Exceptions.NotFoundException;
-import game_engine.controller.game_dataHandler.FileCoder;
-import game_engine.controller.game_dataHandler.Loader;
+import game_engine.controller.data_handler.exceptions.GameDataFileSyntaxException;
+import game_engine.controller.data_handler.exceptions.NotFoundException;
+import game_engine.controller.data_handler.FileCoder;
+import game_engine.controller.data_handler.Loader;
 import game_engine.model.entities.Entity;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -72,7 +72,7 @@ public class ImportEntitysTest {
             sB.append(bR.readLine()).append(System.lineSeparator());
         }
         bR.close();
-        String result = FileCoder.encode_ImageIcons(load.getImgSources()) + System.lineSeparator() + FileCoder.encode_assets(load.getGroups(), load.getEntity());
+        String result = FileCoder.encodeImageIcons(load.getImgSources()) + System.lineSeparator() + FileCoder.encodeAssets(load.getGroups(), load.getEntity());
         assertEquals(sB.toString().replaceAll("//.*$", "").trim(), result.trim());
     }
 }

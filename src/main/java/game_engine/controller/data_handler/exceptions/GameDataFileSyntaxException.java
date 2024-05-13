@@ -1,6 +1,4 @@
-package game_engine.controller.game_dataHandler.Exceptions;
-
-import java.nio.file.Path;
+package game_engine.controller.data_handler.exceptions;
 
 /**
  * An Exception for when the GameData File Syntax has encountered any issues
@@ -22,4 +20,5 @@ public class GameDataFileSyntaxException extends Exception {
     public GameDataFileSyntaxException(String error, String path){
         super(error, new Throwable(path));
     }
+
 }

@@ -1,7 +1,7 @@
-package backend.dataHandler;
+package game_engine.controller.data_handler;
 
-import game_engine.controller.game_dataHandler.Exceptions.GameDataFileSyntaxException;
-import game_engine.controller.game_dataHandler.Exceptions.NotFoundException;
+import game_engine.controller.data_handler.exceptions.GameDataFileSyntaxException;
+import game_engine.controller.data_handler.exceptions.NotFoundException;
 
 /**
  * @WIP
@@ -27,9 +27,6 @@ public class EnDeCoderTest {
                         ]
                     ]
                 ]""";
-
-
-
-
     }
+
 }
