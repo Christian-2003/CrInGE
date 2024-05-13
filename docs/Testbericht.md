@@ -18,6 +18,7 @@
 Um eine möglichst hohe Softwarequalität zu gewährleisten und um sicherzustellen, dass die komplexen Mechanismen der Videospielengine korrekt funktionieren, soll CrInGE durchgängig Test-Driven entwickelt werden. Dazu werden Unit-Tests vor der Implementierung testbarer Komponenten entwickelt, die Sonderfälle und Randbedingungen sinnvoll abdecken. Dies wird konsequent während dem gesamtem Entwicklungsprozess durchgeführt.
 
 Einige Komponenten sind nicht einfach über Unit-Tests testbar. Solche Komponenten sind von der Test-Driven-Entwicklung ausgeschlossen.
+
 <!--Dieser Abschnitt gibt einen Überblick über den Softwaretestprozess und den Umfang der Testaktivitäten.-->
 
 ## Teststrategie
@@ -31,11 +32,12 @@ Die entwickelten Unit-Tests sollen die zu testenden Komponenten sinnvoll beanspr
 Aufgrund der hohen Komplexität der Software können einige Komponenten nicht testbar umgesetzt werden - dazu zählen beispielsweise Singleton-Instanzen. Derartige Komponenten können nur mit erheblichem Mehraufwand mit Unit-Tests getestet werden. Da die verfügbaren menschlichen Ressourcen in diesem Projekt jedoch knapp bemessen sind, werden solche Komponenten nicht getestet. Diese Komponenten werden im weiteren Verlauf dieses Dokumentes nicht weiter berücksichtigt.
 
 Des weiteren ist das Testen der Korrektheit der grafischen Benutzeroberfläche ausgeschlossen, da dies nicht realistisch mit Unit-Tests durchgeführt werden kann.
+
 <!--In diesem Abschnitt wird der Gesamtansatz für das Testen beschrieben, einschließlich der Testmethodik, der Testarten und der verwendeten Testtechniken. Geben Sie an, welche automatischen Testwerkzeuge/Frameworks für Ihr Projekt verwendet werden.-->
 
 ## Testplan
 
-**TODO**
+**TODO**  
 In diesem Abschnitt werden die spezifischen Testaufgaben, Zeitpläne und Ressourcen beschrieben, die zum Erreichen der Testziele erforderlich sind.
 
 ## Testfälle
@@ -104,16 +106,28 @@ Nr | Test | Beschreibung | Status | Gefundene Fehler
 
 ## Testergebnisse
 
+**TODO**  
 In diesem Abschnitt werden die Testergebnisse zusammengefasst, einschließlich der wichtigsten gefundenen Fehler, ihres Schweregrads und der zu ihrer Behebung unternommenen Schritte. (Sie können einen Link zu den von Ihrem Testwerkzeug erstellten Testberichten einfügen oder diese kopieren.)
 
 ## Metriken
 
+**TODO**  
 Dieser Abschnitt enthält quantitative Daten über den Testprozess, wie z.B. die Anzahl der gefundenen Fehler, die Zeit zur Fehlerbehebung und die erreichte Testabdeckung.
 
 ## Empfehlungen
 
-Dieser Abschnitt enthält Vorschläge zur Verbesserung des Testprozesses und der Qualität der Software.
+Durch die Durchführen der Test-Driven entwicklung wurden die Unit-Tests von denselben Entwicklern entworfen, die die späteren Komponenten entwickeln. Dies ist unter Umständen nicht sinnvoll, da einige Sonderfälle und Randbedingungen unbeachtet bleiben.  
+Insgesamt wäre es sinnvoll die Entwicklung von Unit-Tests und der zugehörigen Softwarekomponenten von unterschiedlichen Entwicklern durchführen zu lassen.
+
+Des Weiteren ist anzumerken, dass die Durchführung der Test-Driven Entwicklung nicht immer korrekt durchgeführt wurde. Häufig wurden die Softwarekomponenten zuerst entwickelt, was auch anhand verschiedenster Commits nachvollziehbar ist. Dies ist insoweit problematisch, da die anschließend entwickelten Unit-Tests nicht darauf abzielen die Softwarekomponenten auf Randbedingungen und Sonderfälle zu überprüfen, sondern den Fokus auf das "Präsentieren" der bekannten und definierten Eingaben legen. Hierdurch werden im Extremfall Sonderfälle gar nicht abgedeckt.  
+Dies könnte vorgebeugt werden, indem im GitHub-Project explizit Tasks angefertigt werden, die das Anfertigen von Unit-Tests vorschreiben. Die Tasks zum Entwickeln der entsprechenden Softwarekomponente werden solange als "Blocked" markiert, bist der entsprechende Task bezüglich der Unit-Tests abgeschlossen ist. Damit dies eingehalten wird, müssen die entsprechenden Tasks jedoch ebenfalls von einem Entwickler eingestellt werden, der an der Entwicklung der Unit-Tests und Softwarekomponenten unbeteiligt ist.
+
+<!--Dieser Abschnitt enthält Vorschläge zur Verbesserung des Testprozesses und der Qualität der Software.-->
 
 ## Schlussfolgerung
 
-In diesem Abschnitt werden die wichtigsten Ergebnisse der Tests und der Gesamtstatus der Softwarequalität zusammengefasst.
+Da die Entwicklung der Software größtenteils Test-Driven verläuft, sind nur wenige Fehler durch Unit-Tests aufgefallen, da die entsprechenden Unit-Tests vor der tatsächlichen Komponentenentwicklung entworfen wurden.
+
+Insgesamt hat dieses Verfahren insofern funktioniert, dass die zu betrachtenden Randbedingungen von Beginn an betrachtet wurden. Hierdurch konnten die Softwarekomponenten übersichtlicher entwickelt werden, was die Wartung erleichert.
+
+<!--In diesem Abschnitt werden die wichtigsten Ergebnisse der Tests und der Gesamtstatus der Softwarequalität zusammengefasst.-->
