@@ -1,6 +1,7 @@
 <img src="./resources/img/logo.png" height="100" align="right">
 
 # CrInGE - Clean Code Praxis
+
 Im folgenden wird eine Zusammenfassung über die durchgeführten Ansätze des Refactorings geboten:
 
 - Einheitliche Übersetzung der Dokumentation ins Deutsche
