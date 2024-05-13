@@ -102,7 +102,7 @@ public class ImageSource {
      *
      * @throws IndexOutOfBoundsException    The image source cannot be decremented below 0.
      */
-    public void decrementUses(){
+    public void decrementUses() {
         if (this.uses == 0) {
             throw new IndexOutOfBoundsException("Can't decrement below 0 - ImageSoruce");
         }
@@ -114,7 +114,8 @@ public class ImageSource {
      *
      * @return  Generated (pseudo) GameFileSyntax.
      */
-    @Override public String toString(){
+    @Override
+    public String toString() {
         return "ImageSource: { " + this.file.getPath() + "," + this.uses + " }";
     }
 
