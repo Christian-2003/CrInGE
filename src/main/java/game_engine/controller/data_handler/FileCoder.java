@@ -44,7 +44,7 @@ public class FileCoder {
         String pathsString = matcher2.group(1);
 
         if (pathsString.contains(",")) {
-            System.out.println("⚠️ Syntax-Warning-ImageSource: Comma found where a semicolon should be!");
+            System.out.println("Syntax-Warning-ImageSource: Comma found where a semicolon should be!");
             pathsString = pathsString.replaceAll(",",";");
         }
         String[] pathArray = pathsString.split(";");

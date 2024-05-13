@@ -180,7 +180,7 @@ public class Loader {
             // Iterate through each asset
             for (String assetRaw : assetArray) {
                 if(assetRaw.contains(",")) {
-                    System.out.println("⚠️ Syntax-Warning: Comma found where a semicolom should be.\n -> (" + f.getName() + ":" + ((idGroupCounter + idAssetCounter) + 3) + ") " + f.getPath() + ":" + ((idGroupCounter + idAssetCounter) + 3));
+                    System.out.println("Syntax-Warning: Comma found where a semicolom should be.\n -> (" + f.getName() + ":" + ((idGroupCounter + idAssetCounter) + 3) + ") " + f.getPath() + ":" + ((idGroupCounter + idAssetCounter) + 3));
                     assetRaw = assetRaw.replaceAll(",",";");
                 }
                 String[] val =  Arrays.stream(assetRaw.split(";")).map(s -> s.replace("}", "")).toArray(String[]::new);
