@@ -29,7 +29,7 @@ public class CollisionEventDetector implements EventDetector {
      */
     @Override
     public void detect(Entity entity) {
-        if(entity == null) {
+        if(entity == null || entity.getCollisionListener() == null) {
             throw new NullPointerException();
         }
         Set<Entity> entitiesInvolved = this.getCollidingEntities(entity);

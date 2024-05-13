@@ -25,7 +25,7 @@ public class MoveEventDetector implements EventDetector {
      */
     @Override
     public void detect(Entity entity) {
-        if(entity == null) {
+        if(entity == null || entity.getMoveListener() == null) {
             throw new NullPointerException();
         }
         if(entity.getX() != entity.getPreviousX() || entity.getY() != entity.getPreviousY()) {
