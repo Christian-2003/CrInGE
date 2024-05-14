@@ -82,14 +82,14 @@ public class EventDetectionTest {
         @DisplayName("Entity getCollisionListener")
         void getCollisionListener(){
             Entity entity = new Entity(true, true, new Dimension(1, 1), new Dimension(1, 1), 0, 0);
-            assertNull(entity.getCollisionListener());
+            assertTrue(entity.getCollisionListener().isEmpty());
         }
 
         @Test
         @DisplayName("Entity getMoveListener")
         void getMoveListener(){
             Entity entity = new Entity(true, true, new Dimension(1, 1), new Dimension(1, 1), 0, 0);
-            assertNull(entity.getMoveListener());
+            assertTrue(entity.getMoveListener().isEmpty());
         }
     }
 
@@ -102,8 +102,10 @@ public class EventDetectionTest {
             Entity entity = new Entity(true, true, new Dimension(1, 1), new Dimension(1, 1), 0, 0);
             entity.setCollisionListener((args) -> {});
             entity.setMoveListener((args) -> {});
-            assertInstanceOf(CollisionListener.class, entity.getCollisionListener());
-            assertInstanceOf(MoveListener.class, entity.getMoveListener());
+            assertTrue(entity.getCollisionListener().isPresent());
+            assertInstanceOf(CollisionListener.class, entity.getCollisionListener().get());
+            assertTrue(entity.getMoveListener().isPresent());
+            assertInstanceOf(MoveListener.class, entity.getMoveListener().get());
             assertEquals(2, entity.getAllEvents().size());
         }
     }

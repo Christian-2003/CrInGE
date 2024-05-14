@@ -29,12 +29,12 @@ public class CollisionEventDetector implements EventDetector {
      */
     @Override
     public void detect(Entity entity) {
-        if(entity == null || entity.getCollisionListener() == null) {
+        if(entity == null || entity.getCollisionListener().isEmpty()) {
             throw new NullPointerException();
         }
         Set<Entity> entitiesInvolved = this.getCollidingEntities(entity);
         if (!entitiesInvolved.isEmpty()) {
-            entity.getCollisionListener().onCollision(new CollisionEventArgs(
+            entity.getCollisionListener().get().onCollision(new CollisionEventArgs(
                     Calendar.getInstance(),
                     entity,
                     entitiesInvolved

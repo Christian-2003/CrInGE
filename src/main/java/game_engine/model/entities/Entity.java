@@ -9,6 +9,7 @@ import game_engine.model.events.MoveListener;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 
@@ -182,8 +183,11 @@ public class Entity extends GameObject {
      *
      * @return  Collision listener of the entity.
      */
-    public CollisionListener getCollisionListener() {
-        return (CollisionListener)events.get(EventTypes.COLLISION);
+    public Optional<CollisionListener> getCollisionListener() {
+        if(!events.containsKey(EventTypes.COLLISION)) {
+            return Optional.empty();
+        }
+        return Optional.of((CollisionListener)events.get(EventTypes.COLLISION));
     }
 
     /**
@@ -203,8 +207,11 @@ public class Entity extends GameObject {
      *
      * @return  Collision listener of the entity.
      */
-    public MoveListener getMoveListener() {
-        return (MoveListener) events.get(EventTypes.MOVE);
+    public Optional<MoveListener> getMoveListener() {
+        if(!events.containsKey(EventTypes.MOVE)) {
+            return Optional.empty();
+        }
+        return Optional.of((MoveListener) events.get(EventTypes.MOVE));
     }
 
 }
