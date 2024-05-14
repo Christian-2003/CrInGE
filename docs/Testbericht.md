@@ -101,6 +101,24 @@ Nr | Test | Beschreibung | Status | Gefundene Fehler
 41 | GameMap/accessChunkOutOfRange | Testen, ob das Zugreifen auf einen Chunk mit falschen Array-Indes eine Exception wirft | Bestanden | Keine
 42 | GameMap/accessChunkWithCoordinates | Testen, ob das Zugreifen auf einen Chunk mittels Chunk-Koordinaten funktioniert | Bestanden | Keine
 43 | GameMap/accessChunkOutOfRangeWithCoordinates | Testen, ob das Zugreifen auf einen Chunk außerhalb definierter Koordinaten eine Exception wirft | Bestanden | Keine
+44 | EventDetection/instantiateCollisionDetector | Testen, ob das Instanziieren einer `CollisionEventDetector`-Instanz funktioniert | Bestanden | Keine
+45 | EventDetection/instantiateMoveDetector | Testen, ob das Instanziieren einer `MoveEventDetector`-Instanz funktioniert | Bestanden | Keine
+46 | EventDetection/detectCollision | Testen, ob das Erkennen einer Kollision zwischen Entitäten funktioniert | Bestanden | Keine
+47 | EventDetection/detectMove | Testen, ob das Erkennen der Bewegung einer Entität funktioniert | Bestanden | Keine
+48 | EventDetection/emptyEventList | Testen, ob standardmäßig keine Events bei einer Entität registriert sind | Bestanden | Keine
+49 | EventDetection/addCollisionListener | Testen, ob das Hinzufügen einer `CollisionEvent`-Instanz zu einer `Entity` funktioniert | Bestanden | Keine
+50 | EventDetection/addMoveListener | Testen, ob das Hinzufügen einer `MoveEvent`-Instanz zu einer `Entity` funktioniert | Bestanden | Keine
+51 | EventDetection/getCollisionListener | Testen, ob eine registrierte `CollisionEvent`-Instanz korrekt abgefragt werden kann | Bestanden | Keine
+52 | EventDetection/getMoveListener | Testen, ob eine registrierte `MoveEvent`-Instanz korrekt abgefragt werden kann | Bestanden | Keine
+53 | EventDetection/allEventsRegistered | Testen, ob alle Events korrekt hinzugefügt werden können | Bestanden | Keine
+54 | EventDetection/moveEventTrigger | Testen, ob eine Exception geworfen wird, falls ein `MoveEvent` ausgelöst wird, aber kein Event registriert ist | Bestanden | Keine
+55 | EventDetection/moveEventTrigger | Testen, ob ein `MoveEvent` korrekt ausgelöst wird | Bestanden | Keine
+56 | EventDetection/collisionEventTrigger | Testen, ob eine Exception geworfen wird, falls ein `CollisionEvent` ausgelöst wird, aber kein Event registriert ist | Bestanden | Keine
+57 | EventDetection/collisionEventTrigger | Testen, ob ein `CollisionEvent` korrekt ausgelöst wird | Bestanden | Keine
+58 | ImportEntitysTest/init | Testen, ob Entitäten korrekt aus einer Datei geladen werden | Bestanden | Keine
+59 | ImportEntitysTest/loadEntityTest1 | Testen ob die Dimension der geladenen Texturen für Entitäten korrekt ist | Bestanden | Keine
+60 | ImportEntitysTest/checkEntity | Testen, ob die Attributwerte von Entitäten korrekt aus einer Datei geladen werden | Bestanden | Keine
+61 | ImportEntitysTest/decode_and_encode | Testen, ob das enkodieren und darauffolgendes dekodieren einer Entität dieselbe Entität erzeugt | Bestanden | Keine
 
 <!--In diesem Abschnitt werden die spezifischen Testfälle aufgeführt, die ausgeführt wurden, einschließlich des Status "bestanden/nicht bestanden" und der während der Tests gefundenen Fehler. (Sie können auf das Repository mit den Anwendungsfällen verweisen.)-->
 
