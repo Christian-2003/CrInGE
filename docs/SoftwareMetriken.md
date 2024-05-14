@@ -10,7 +10,7 @@ Hier werden die drei gewählten Metriken des Projektes hinterlegt.
 | --- | --- |
 | Lines of Code | ~8000 |
 | Checkstyle Errors | 1900 |
-| Durchschnittliche zyklomatische Komplexität |  |
+| Durchschnittliche zyklomatische Komplexität | 11.6 |
 | Anzahl Dependencies | 1 |
 
 Dependency ist nur OpenGL
