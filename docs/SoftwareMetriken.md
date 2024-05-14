@@ -8,7 +8,7 @@ Hier werden die drei gewählten Metriken des Projektes hinterlegt.
 
 | Metrik | Wert |
 | --- | --- |
-| Lines of Code | ~8000 |
+| Lines of Code | ~8900 |
 | Checkstyle Errors | 1900 |
 | Durchschnittliche zyklomatische Komplexität | 11.6 |
 | Anzahl Dependencies | 1 |
