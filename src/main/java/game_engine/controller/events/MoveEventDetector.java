@@ -25,14 +25,14 @@ public class MoveEventDetector implements EventDetector {
      */
     @Override
     public void detect(Entity entity) {
-        if(entity == null || entity.getMoveListener() == null) {
+        if(entity == null || entity.getMoveListener().isEmpty()) {
             throw new NullPointerException();
         }
         if(entity.getX() != entity.getPreviousX() || entity.getY() != entity.getPreviousY()) {
             // prevent event double triggering
             entity.setPosition(entity.getX(), entity.getY());
 
-            entity.getMoveListener().onMove(new MoveEventArgs(
+            entity.getMoveListener().get().onMove(new MoveEventArgs(
                     Calendar.getInstance(),
                     entity,
                     entity.getPreviousX(),
