@@ -15,6 +15,12 @@ Wie vorab mit dem Entwicklungsteam besprochen wurde **CODESTELLE EINFÜGEN** fü
 Grund dafür ist **GRUND EINFÜGEN**,  
 sowie **WEITEREN GRUND EINFÜGEN**.
 
+## Tagesordnung
+
+**Was wurde geprüft?**  
+**Wer hat es überprüft?**  
+**Tagesordnung**
+
 ## Komponenten des Reviews
 
 **TODO**
