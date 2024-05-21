@@ -10,7 +10,8 @@ Das Protokoll hat von Tim angefertigt.
 
 ## Schwerpunkt des Meetings
 Wie vorab mit dem Entwicklungsteam besprochen wurde das Package "game_dataHandler" für das Review ausgewählt.  
-Jenes soll die verschiedenen Datenstrukturen des Editors und der Engine parsen, serialisieren und in einander umwandeln können.
+Jenes soll die verschiedenen Datenstrukturen des Editors und der Engine parsen, serialisieren und in einander umwandeln können.  
+Somit ist diese Package die Schnittstelle zwischen den beiden Subsystemen.
 
 Grund für die Wahl ist die Komplexität aufgrund der verschiedenen Datenstrukturen,  
 sowie die Kritikalität für das funktionale Zusammenspiel zwischen den beiden Subsystemen.
