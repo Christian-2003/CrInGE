@@ -37,8 +37,25 @@ Des weiteren ist das Testen der Korrektheit der grafischen Benutzeroberfläche a
 
 ## Testplan
 
-**TODO**  
-In diesem Abschnitt werden die spezifischen Testaufgaben, Zeitpläne und Ressourcen beschrieben, die zum Erreichen der Testziele erforderlich sind.
+Die Software wird Test-Driven entwickelt.
+
+Dabei werden vor der eigentlichen Entwicklung von Softwarekomponenten Unit-Tests entworfen, die beispielsweise Randbedingungen oder Sondereingaben prüfen. Zu Testende Eingaben sind beispielsweise (nicht aber beschränkt auf):
+
+* Nullwerte
+* Negative Indizes
+* Randwerte
+
+Demnach werden die Unit-Tests als **Black-Box** Tests entworfen. Das bedeutet, dass Fehler in der Software durch falsche Einfaben identifiziert werden sollen, ohne dass die internen Strukturen und Funktionsweisen der zu Testenden Komponenten bekannt sind.
+
+Nachdem Unit-Tests entworfen wurden, wird die tatsächliche Softwarekomponente entwickelt. Neben der Implementierung der gewünschten Funktionalitäten, ist ein Ziel der Entwicklung sicherzustellen, dass die zuvor entworfenen Unit-Tests erfüllt werden.
+
+Idealerweise werden die Unit-Tests nicht von dem Teammitglied entworfen, dass die Softwarekomponente anschließend entwickelt. In Ausnahmefällen können die Unit-Tests aber vom selben Entwickler entworfen werden, der auch die Softwarekomponente implementiert.
+
+Ausgehend hiervon gibt es keine allgemeine Testphase gegen Ende der Projektlaufzeit. Allgemeinere Tests (bspw. manuelles Testen der Benutzeroberfläche) werden unmittelbar nach der Entwicklung der jeweiligen Komponente durchgeführt.
+
+Die Entwickler der jeweiligen Softwarekomponenten sind selbstständig dafür verantwortlich, dass die entsprechenden Tests gemäß des hier entworfenen Testplans durchgeführt werden.
+
+<!--In diesem Abschnitt werden die spezifischen Testaufgaben, Zeitpläne und Ressourcen beschrieben, die zum Erreichen der Testziele erforderlich sind.-->
 
 ## Testfälle
 
@@ -124,13 +141,32 @@ Nr | Test | Beschreibung | Status | Gefundene Fehler
 
 ## Testergebnisse
 
-**TODO**  
-In diesem Abschnitt werden die Testergebnisse zusammengefasst, einschließlich der wichtigsten gefundenen Fehler, ihres Schweregrads und der zu ihrer Behebung unternommenen Schritte. (Sie können einen Link zu den von Ihrem Testwerkzeug erstellten Testberichten einfügen oder diese kopieren.)
+Insgesamt wurden **62** Unit-Tests im Rahmen der Test-Driven entwicklung entworfen.
+
+Folgende Fehler wurden gefunden:
+
+Fehler | Test | Schweregrad<br/>(0 - 10) | Maßnahmen zur Behebung
+--- | :-: | :-: | :-:
+Der Iterator für `MapObject`-Instanzen wird nicht korrekt zurückgesetzt | 33 | 2 | Änderung der Implementierung
+Der Iterator für externe `MapObject`-Instanzen wird nicht korrekt zurückgesetzt | 34 | 2 | Änderung der Implementierung
+
+<!--In diesem Abschnitt werden die Testergebnisse zusammengefasst, einschließlich der wichtigsten gefundenen Fehler, ihres Schweregrads und der zu ihrer Behebung unternommenen Schritte. (Sie können einen Link zu den von Ihrem Testwerkzeug erstellten Testberichten einfügen oder diese kopieren.)-->
 
 ## Metriken
 
-**TODO**  
-Dieser Abschnitt enthält quantitative Daten über den Testprozess, wie z.B. die Anzahl der gefundenen Fehler, die Zeit zur Fehlerbehebung und die erreichte Testabdeckung.
+Folgende Metriken sind während des Testprozesses angefallen:
+
+Anzahl durchgeführter Tests: **62**
+
+Anzahl gefundener Fehler: **2**
+
+Durchschnittlischer Schweregrad der gefundenen Fehler: **2**
+
+Durchschnittliche Zeit zur Fehlerbehebung: **4 Minuten**
+
+Testabdeckung: **100 %**
+
+<!--Dieser Abschnitt enthält quantitative Daten über den Testprozess, wie z.B. die Anzahl der gefundenen Fehler, die Zeit zur Fehlerbehebung und die erreichte Testabdeckung.-->
 
 ## Empfehlungen
 
