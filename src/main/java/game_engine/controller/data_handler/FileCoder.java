@@ -68,7 +68,8 @@ public class FileCoder {
         if (main == null) {
             throw new GameDataFileSyntaxException("No main-group detected!!! - Encoding failed");
         }
-        builder.append("[main;").append(System.lineSeparator());
+        builder.append("[main;");
+        builder.append(System.lineSeparator());
         for(Integer currentChildGroup : main.getChildGroupIDs()) {
             StringBuilder spaces = new StringBuilder().append("        ");
             Group currentGroup = groups.get(currentChildGroup);

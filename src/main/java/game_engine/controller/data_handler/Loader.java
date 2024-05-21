@@ -194,6 +194,7 @@ public class Loader {
                     }
                 }
 
+
                 //                  0                 1           2          3           4            5             6               7            8          9
                 //! Entity (Entity-Name/UUID | Texture-Index | visible | tangible | width-size | height-size | width-hitbox | height-hitbox | x:double | y:double)
                 Dimension size = new Dimension(Integer.parseInt(val[4]), Integer.parseInt(val[5]));

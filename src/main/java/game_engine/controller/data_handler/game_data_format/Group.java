@@ -201,7 +201,7 @@ public class Group {
      */
     @Override
     public String toString(){
-        return "[" + this.name + ";"+this.getAssetsIDs() +";";
+        return "[" + this.name + ";" + this.getAssetsIDs() + ";";
     }
 
     /**
@@ -211,7 +211,7 @@ public class Group {
      * @return  Generated (pseudo) GameFileSyntax for debugging.
      */
     public String toStringDev(){
-        return "[" + this.name + "; (Parent:"+ this.parentGroupId +")\n\tAssets:{" + this.getAssetsIDs() + "}\n\tSubGroups:{"+ this.getChildGroupIDs() +"}" + "\n];";
+        return "[" + this.name + "; (Parent:" + this.parentGroupId +")\n\tAssets:{" + this.getAssetsIDs() + "}\n\tSubGroups:{" + this.getChildGroupIDs() + "}" + "\n];";
     }
 
 }
