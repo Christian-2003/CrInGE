@@ -164,7 +164,8 @@ Durchschnittlischer Schweregrad der gefundenen Fehler: **2**
 
 Durchschnittliche Zeit zur Fehlerbehebung: **4 Minuten**
 
-Testabdeckung: **100 %**
+Testabdeckung: **25 %**  
+_Hinweis: Unter Testabdeckung wird der Prozentuale Anteil der Klassen gemessen, der von Unit-Tests abgedeckt wird._
 
 <!--Dieser Abschnitt enthält quantitative Daten über den Testprozess, wie z.B. die Anzahl der gefundenen Fehler, die Zeit zur Fehlerbehebung und die erreichte Testabdeckung.-->
 
