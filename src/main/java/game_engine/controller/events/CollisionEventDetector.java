@@ -32,7 +32,7 @@ public class CollisionEventDetector implements EventDetector {
         if(entity == null || entity.getCollisionListener().isEmpty()) {
             throw new NullPointerException();
         }
-        Set<Entity> entitiesInvolved = this.getCollidingEntities(entity);
+        Set<Entity> entitiesInvolved = entity.getCollidingEntities();
         if (!entitiesInvolved.isEmpty()) {
             entity.getCollisionListener().get().onCollision(new CollisionEventArgs(
                     Calendar.getInstance(),
@@ -40,37 +40,6 @@ public class CollisionEventDetector implements EventDetector {
                     entitiesInvolved
             ));
         }
-    }
-
-    /**
-     * Returns the entities that are colliding with the passed entity.
-     *
-     * @param entity  Entity to check for collisions.
-     * @return        Entities that are colliding with the passed entity.
-     */
-    private Set<Entity> getCollidingEntities(Entity entity) {
-        Set<Entity> collidingEntities = new HashSet<>();
-        Rectangle2D.Double entityBounds = new Rectangle2D.Double(
-                entity.getX(),
-                entity.getY(),
-                entity.getHitBox().width,
-                entity.getHitBox().height
-        );
-        for(Entity target : EntityManager.getInstance().getAllEntities()) {
-            if(entity == target) {
-                continue;
-            }
-            Rectangle2D.Double targetBounds = new Rectangle2D.Double(
-                    target.getX(),
-                    target.getY(),
-                    target.getHitBox().width,
-                    target.getHitBox().height
-            );
-            if (entityBounds.intersects(targetBounds)) {
-                collidingEntities.add(target);
-            }
-        }
-        return collidingEntities;
     }
 
     /**

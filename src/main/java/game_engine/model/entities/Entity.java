@@ -1,5 +1,6 @@
 package game_engine.model.entities;
 
+import game_engine.controller.EntityManager;
 import game_engine.model.GameObject;
 import game_engine.model.events.CollisionListener;
 import game_engine.model.events.EventTypes;
@@ -7,10 +8,9 @@ import game_engine.model.events.GameEventListener;
 import game_engine.model.events.MoveListener;
 
 import java.awt.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.awt.geom.Rectangle2D;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 /**
@@ -212,6 +212,27 @@ public class Entity extends GameObject {
             return Optional.empty();
         }
         return Optional.of((MoveListener) events.get(EventTypes.MOVE));
+    }
+
+    /**
+     * Method returns whether the entity is colliding with the passed entity.
+     *
+     * @param target    Entity to check for collision.
+     * @return          Whether the entity is colliding with the passed entity.
+     */
+    public boolean isCollidingWith(Entity target) {
+        Rectangle2D.Double entityBounds = new Rectangle2D.Double(x, y, getHitBox().width, getHitBox().height);
+        Rectangle2D.Double targetBounds = new Rectangle2D.Double(target.getX(), target.getY(), target.getHitBox().width, target.getHitBox().height);
+        return entityBounds.intersects(targetBounds);
+    }
+
+    /**
+     * Method checks for collisions with other entities
+     *
+     * @return The colliding entities.
+     */
+    public Set<Entity> getCollidingEntities() {
+        return EntityManager.getInstance().getAllEntities().stream().filter(target -> target != this).filter(this::isCollidingWith).collect(Collectors.toSet());
     }
 
 }

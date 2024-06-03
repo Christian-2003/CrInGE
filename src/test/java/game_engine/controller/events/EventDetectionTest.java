@@ -148,14 +148,17 @@ public class EventDetectionTest {
         @Test
         @DisplayName("Collision event is triggered")
         void collisionEventTrigger(){
-            Entity entity = new Entity(true, true, new Dimension(1, 1), new Dimension(1, 1), 0, 0);
+            Entity entity = new Entity(true, true, new Dimension(2, 2), new Dimension(2, 2), 0, 0);
             EntityManager.getInstance().put(entity);
             entity.setCollisionListener((args) -> {
                 assertEquals(1, args.getEntitiesInvolved().size());
             });
-            Entity entity2 = new Entity(true, true, new Dimension(1, 1), new Dimension(1, 1), 1, 1);
+            Entity entity2 = new Entity(true, true, new Dimension(2, 2), new Dimension(2, 2), 1, 1);
             EntityManager.getInstance().put(entity2);
-            CollisionEventDetector.getInstance().detect(entity);
+            assertTrue(entity.isCollidingWith(entity2));
+            assertTrue(entity2.isCollidingWith(entity));
+            assertEquals(1, entity.getCollidingEntities().size());
+            assertEquals(1, entity2.getCollidingEntities().size());
         }
     }
 
