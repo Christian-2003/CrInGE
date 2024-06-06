@@ -1,5 +1,9 @@
 package game_engine.model;
 
+import game_engine.model.entities.Entity;
+import game_engine.model.map.GameMap;
+import game_engine.model.map.objects.MapObject;
+
 import java.awt.*;
 
 
@@ -38,11 +42,6 @@ public abstract class GameObject {
     protected Dimension size;
 
     /**
-     * Attribute stores the coordinates of the MapObject within the {@link GameChunk}.
-     */
-    protected int x, y;
-
-    /**
      * Attribute stores the index for {@link GameMap#textures} at which the texture can be found.
      */
     protected int texture;
@@ -55,24 +54,16 @@ public abstract class GameObject {
      * @param tangible                  Whether the GameObject is tangible.
      * @param hitBox                    Dimensions of the hit box for the GameObject.
      * @param size                      Size of the GameObject.
-     * @param x                         X-coordinate of the GameObject within the chunk.
-     * @param y                         Y-coordinate of the GameObject within the chunk.
      * @throws NullPointerException     One of the passed arguments is {@code null}.
-     * @throws IllegalArgumentException The passed coordinates are invalid.
      */
-    public GameObject(boolean visible, boolean tangible, Dimension hitBox, Dimension size, int x, int y) throws NullPointerException, IllegalArgumentException {
+    public GameObject(boolean visible, boolean tangible, Dimension hitBox, Dimension size) throws NullPointerException {
         if (hitBox == null || size == null) {
             throw new NullPointerException("Null is invalid argument.");
-        }
-        if (x < 0 || x >= GameChunk.WIDTH || y < 0 || y >= GameChunk.HEIGHT) {
-            throw new IllegalArgumentException("Invalid coordinate for MapObject: (" + x + ", " + y + ")");
         }
         this.visible = visible;
         this.tangible = tangible;
         this.hitBox = hitBox;
         this.size = size;
-        this.x = x;
-        this.y = y;
         this.texture = NO_TEXTURE;
     }
 
@@ -83,25 +74,17 @@ public abstract class GameObject {
      * @param tangible                  Whether the GameObject is tangible.
      * @param hitBox                    Dimensions of the hit box for the GameObject.
      * @param size                      Size of the GameObject.
-     * @param x                         X-coordinate of the GameObject within the chunk.
-     * @param y                         Y-coordinate of the GameObject within the chunk.
      * @param texture                   Index (within {@link GameMap#textures}) of the GameObject's texture.
      * @throws NullPointerException     One of the passed arguments is {@code null}.
-     * @throws IllegalArgumentException The passed coordinates are invalid.
      */
-    public GameObject(boolean visible, boolean tangible, Dimension hitBox, Dimension size, int x, int y, int texture) throws NullPointerException, IllegalArgumentException {
+    public GameObject(boolean visible, boolean tangible, Dimension hitBox, Dimension size, int texture) throws NullPointerException {
         if (hitBox == null || size == null) {
             throw new NullPointerException("Null is invalid argument.");
-        }
-        if (x < 0 || x >= GameChunk.WIDTH || y < 0 || y >= GameChunk.HEIGHT) {
-            throw new IllegalArgumentException("Invalid coordinate for MapObject: (" + x + ", " + y + ")");
         }
         this.visible = visible;
         this.tangible = tangible;
         this.hitBox = hitBox;
         this.size = size;
-        this.x = x;
-        this.y = y;
         this.texture = texture;
     }
 
@@ -120,8 +103,6 @@ public abstract class GameObject {
         tangible = gameObject.isTangible();
         hitBox = gameObject.getHitBox();
         size = gameObject.getSize();
-        x = gameObject.getX();
-        y = gameObject.getY();
         texture = gameObject.getTexture();
     }
 
@@ -164,28 +145,6 @@ public abstract class GameObject {
         this.size = size;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) throws IllegalArgumentException {
-        if (x < 0 || x >= GameChunk.WIDTH) {
-            throw new IllegalArgumentException("Invalid coordinate for MapObject: (" + x + ", " + y + ")");
-        }
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) throws IllegalArgumentException {
-        if (y < 0 || y >= GameChunk.HEIGHT) {
-            throw new IllegalArgumentException("Invalid coordinate for MapObject: (" + x + ", " + y + ")");
-        }
-        this.y = y;
-    }
-
     public int getTexture() {
         return texture;
     }
@@ -202,6 +161,7 @@ public abstract class GameObject {
      * @param obj   Object to be tested.
      * @return      Whether the attributes of both GameObjects match.
      */
+    @Override
     public boolean equals(Object obj) {
         if (obj instanceof GameObject gameObject) {
             return gameObject.isVisible() == visible &&

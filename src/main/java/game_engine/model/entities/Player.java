@@ -1,4 +1,4 @@
-package game_engine.model;
+package game_engine.model.entities;
 
 import java.awt.*;
 
@@ -17,12 +17,12 @@ public class Player extends Entity {
      * @param tangible                  Whether the Player is tangible.
      * @param hitBox                    Dimensions of the hit box for the Player.
      * @param size                      Size of the Player.
-     * @param x                         X-coordinate of the Player within the chunk.
-     * @param y                         Y-coordinate of the Player within the chunk.
+     * @param x                         X-coordinate of the Player.
+     * @param y                         Y-coordinate of the Player.
      * @throws NullPointerException     One of the passed arguments is {@code null}.
      * @throws IllegalArgumentException The passed coordinates are invalid.
      */
-    public Player(boolean visible, boolean tangible, Dimension hitBox, Dimension size, int x, int y) throws NullPointerException, IllegalArgumentException {
+    public Player(boolean visible, boolean tangible, Dimension hitBox, Dimension size, double x, double y) throws NullPointerException, IllegalArgumentException {
         super(visible, tangible, hitBox, size, x, y);
     }
 

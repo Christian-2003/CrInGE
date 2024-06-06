@@ -1,9 +1,11 @@
 package game_engine;
 
+import game_engine.controller.EntityManager;
 import game_engine.controller.GameLoop;
-import game_engine.model.GameChunk;
-import game_engine.model.GameMap;
-import game_engine.model.MapObject;
+import game_engine.model.entities.Entity;
+import game_engine.model.map.GameChunk;
+import game_engine.model.map.GameMap;
+import game_engine.model.map.objects.MapObject;
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
@@ -19,6 +21,15 @@ import java.util.Random;
 public class Engine {
     
     public static void main(String[] args) throws NullPointerException {
+        //Add all entities:
+        Dimension creeperSize = new Dimension(1, 2);
+        Entity creeper1 = new Entity(true, true, creeperSize, creeperSize, 2, 5);
+        creeper1.setTexture(12);
+        Entity creeper2 = new Entity(true, true, creeperSize, creeperSize, 5.5, 7.5);
+        creeper2.setTexture(12);
+        EntityManager.getInstance().put(creeper1);
+        EntityManager.getInstance().put(creeper2);
+
         GameLoop gameLoop = new GameLoop(generateGameMap(5, 3));
     }
 
@@ -31,7 +42,7 @@ public class Engine {
      * @return          Generated GameMap.
      */
     private static GameMap generateGameMap(int width, int height) {
-        return new GameMap(width, height, createChunks(width, height, 100), loadTextures());
+        return new GameMap(width, height, createChunks(width, height, 100), loadTextures(), 13);
     }
 
 
@@ -56,10 +67,6 @@ public class Engine {
             for (int x = 0; x < GameChunk.WIDTH; x++) {
                 for (int y = 0; y < GameChunk.HEIGHT; y++) {
                     if (random.nextInt(100) < objectPercentage) {
-                        //int objectWidth = random.nextInt(1) + 1;
-                        //int objectHeight = random.nextInt(1) + 1;
-                        int objectWidth = 1;
-                        int objectHeight = 1;
                         int texture = MapObject.NO_TEXTURE;
                         if (chunkHeight == 0) {
                             //Top chunk:
@@ -79,7 +86,7 @@ public class Engine {
                         else {
                             texture = random.nextInt(5);
                         }
-                        mapObjects.add(new MapObject(true, false, new Dimension(objectWidth, objectHeight), new Dimension(objectWidth, objectHeight), x, y, texture, false, false));
+                        mapObjects.add(new MapObject(true, false, x, y, texture));
                     }
                 }
             }
@@ -101,7 +108,7 @@ public class Engine {
      * @return  Array of textures.
      */
     private static ImageIcon[] loadTextures() {
-        ImageIcon[] icons = new ImageIcon[12];
+        ImageIcon[] icons = new ImageIcon[14];
         URL cobblestone = Engine.class.getResource("/textures/cobblestone.png");
         if (cobblestone != null) {
             icons[0] = new ImageIcon(cobblestone);
@@ -149,6 +156,14 @@ public class Engine {
         URL rooted_dirt = Engine.class.getResource("/textures/rooted_dirt.png");
         if (rooted_dirt != null) {
             icons[11] = new ImageIcon(rooted_dirt);
+        }
+        URL creeper = Engine.class.getResource("/textures/creeper.png");
+        if (creeper != null) {
+            icons[12] = new ImageIcon(creeper);
+        }
+        URL skybox = Engine.class.getResource("/textures/skybox.png");
+        if (skybox != null) {
+            icons[13] = new ImageIcon(skybox);
         }
         return icons;
     }

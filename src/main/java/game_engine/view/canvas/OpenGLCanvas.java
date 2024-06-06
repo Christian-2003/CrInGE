@@ -2,7 +2,7 @@ package game_engine.view.canvas;
 
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
-import game_engine.model.GameMap;
+import game_engine.model.map.GameMap;
 
 
 /**

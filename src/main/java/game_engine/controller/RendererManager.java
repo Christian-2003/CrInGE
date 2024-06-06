@@ -1,11 +1,10 @@
 package game_engine.controller;
 
-import game_engine.model.GameChunk;
-import game_engine.model.GameMap;
-import game_engine.model.GameObject;
-import game_engine.model.MapObject;
-import jdk.jshell.Snippet;
-
+import game_engine.model.*;
+import game_engine.model.entities.Entity;
+import game_engine.model.map.GameChunk;
+import game_engine.model.map.GameMap;
+import game_engine.model.map.objects.MapObject;
 import javax.swing.*;
 import java.awt.*;
 
@@ -37,7 +36,7 @@ public class RendererManager {
     private Graphics g;
 
     /**
-     * Attributes store the absolute world coordinates of the {@link game_engine.model.MapObject} that shall be rendered
+     * Attributes store the absolute world coordinates of the {@link MapObject} that shall be rendered
      * in the top left corner of the Java Swing component.
      */
     private int absoluteWorldX, absoluteWorldY;
@@ -66,17 +65,28 @@ public class RendererManager {
     }
 
 
+    /**
+     * Method changes whether debug rendering is enabled. Enabling this automatically draws additional debug-info onto
+     * the canvas.
+     *
+     * @param debugRendering    Whether debug rendering shall be enabled.
+     */
     public void setDebugRendering(boolean debugRendering) {
         this.debugRendering = debugRendering;
     }
 
+    /**
+     * Method returns whether debug rendering is currently enabled.
+     *
+     * @return  Whether debug rendering is enabled.
+     */
     public boolean isDebugRendering() {
         return debugRendering;
     }
 
 
     /**
-     * Method updates the coordinates of the {@link game_engine.model.MapObject} in the top left corner to be rendered.
+     * Method updates the coordinates of the {@link MapObject} in the top left corner to be rendered.
      * The map must be updated manually.
      *
      * @param absoluteWorldX                X-coordinate of the MapObject in the upper left corner.
@@ -117,7 +127,7 @@ public class RendererManager {
         //Find the chunk that contains the MapObject in the top left corner:
         int topLeftChunkX = absoluteWorldX / GameChunk.WIDTH;
         int topLeftChunkY = absoluteWorldY / GameChunk.HEIGHT;
-        //Find the chunk that contains the MaoObject in the bottom right corner:
+        //Find the chunk that contains the MapObject in the bottom right corner:
         int bottomRightChunkX = topLeftChunkX + (numberOfMapObjectsX + (absoluteWorldX - topLeftChunkX * GameChunk.WIDTH)) / GameChunk.WIDTH + 1;
         if (bottomRightChunkX > map.getWidth()) {
             bottomRightChunkX = map.getWidth();
@@ -132,8 +142,7 @@ public class RendererManager {
         //System.out.println("BottomRightChunkX=" + bottomRightChunkX + ", BottomRightChunkY=" + bottomRightChunkY);
 
         //Change background:
-        g.setColor(Color.BLACK);
-        g.fillRect(0, 0, component.getWidth(), component.getHeight());
+        renderBackground(component.getWidth(), component.getHeight());
 
         //Define variables to remember how many MapObjects were skipped total in rendered chunks:
         int skippedMapObjectsX = 0;
@@ -173,7 +182,14 @@ public class RendererManager {
                 int chunkOffsetX = (x - topLeftChunkX) * GameChunk.WIDTH - skippedMapObjectsX;
                 int chunkOffsetY = (y - topLeftChunkY) * GameChunk.HEIGHT - skippedMapObjectsY;
                 renderGameChunk(chunk, chunkOffsetX, chunkOffsetY, startX, startY, endX, endY);
+            }
+        }
 
+        //Render entities:
+        for (Entity entity : EntityManager.getInstance().getAllEntities()) {
+            if (entity.getX() > absoluteWorldX && entity.getX() < absoluteWorldX + numberOfMapObjectsX && entity.getY() > absoluteWorldY && entity.getY() < absoluteWorldY + numberOfMapObjectsY) {
+                //Entity is currently visible:
+                renderEntity(entity);
             }
         }
     }
@@ -270,9 +286,71 @@ public class RendererManager {
             g.drawLine(x, y, x, y + height); //Left line
             g.drawLine(x + width, y, x + width, y + height); //Right line
             g.drawLine(x, y + height, x + width, y + height); //Bottom line
+            //g.drawLine(x, y, x + width, y + height); //Diagonal line 1
+            //g.drawLine(x + width, y, x, y + height); //Diagonal line 2
+        }
+    }
+
+
+    /**
+     * Method renders the passed entity to the canvas. Please only pass entities that are actually visible
+     * on the canvas.
+     *
+     * @param entity    Entity to be rendered.
+     */
+    private void renderEntity(Entity entity) {
+        //Prepare for rendering:
+        int x = ((int)entity.getX() - absoluteWorldX) * MAP_OBJECT_SIZE + (int)((entity.getX() - (int)entity.getX()) * MAP_OBJECT_SIZE);
+        int y = ((int)entity.getY() - absoluteWorldY) * MAP_OBJECT_SIZE + (int)((entity.getY() - (int)entity.getY()) * MAP_OBJECT_SIZE);
+        int width = (int)entity.getSize().getWidth() * MAP_OBJECT_SIZE;
+        int height = (int) entity.getSize().getHeight() * MAP_OBJECT_SIZE;
+
+        //Render the entity:
+        boolean textureRendered = false;
+        int texture = entity.getTexture();
+        if (texture >= 0 && texture < map.getNumberOfTextures()) {
+            ImageIcon icon = map.getTexture(texture);
+            if (icon != null) {
+                g.drawImage(icon.getImage(), x, y, width, height, null);
+                textureRendered = true;
+            }
+        }
+        if (!textureRendered && texture != GameObject.NO_TEXTURE) {
+            drawInvalidTexture(x, y, width, height);
+        }
+
+        if (debugRendering) {
+            //Render Entity borders:
+            g.setColor(Color.YELLOW);
+            g.drawLine(x, y, x + width, y); //Top line
+            g.drawLine(x, y, x, y + height); //Left line
+            g.drawLine(x + width, y, x + width, y + height); //Right line
+            g.drawLine(x, y + height, x + width, y + height); //Bottom line
             g.drawLine(x, y, x + width, y + height); //Diagonal line 1
             g.drawLine(x + width, y, x, y + height); //Diagonal line 2
         }
+    }
+
+
+    /**
+     * Method renders the background to the canvas. If no background is available, nothing happens.
+     *
+     * @param componentWidth    Width of the canvas on which the background shall be rendered.
+     * @param componentHeight   Height of the canvas on which the background shall be rendered.
+     */
+    private void renderBackground(int componentWidth, int componentHeight) {
+        if (!(map.getBackground() >= 0 && map.getBackground() < map.getNumberOfTextures())) {
+            g.setColor(Color.BLACK);
+            g.fillRect(0, 0, componentWidth, componentHeight);
+        }
+        //Background available:
+        ImageIcon background = map.getTexture(map.getBackground());
+        int backgroundWidth = background.getIconWidth();
+        int backgroundHeight = background.getIconHeight();
+        double scaleX = (double)componentWidth / backgroundWidth;
+        double scaleY = (double)componentHeight / backgroundHeight;
+        double scale = Math.max(scaleX, scaleY);
+        g.drawImage(background.getImage(), 0, 0, (int)(backgroundWidth * scale), (int)(backgroundHeight * scale), null);
     }
 
 

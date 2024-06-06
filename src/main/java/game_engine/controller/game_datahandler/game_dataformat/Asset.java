@@ -20,10 +20,12 @@ public class Asset {
      * Shows the grid coordinates on which the asset is located
      */
     private int x,y;
+
     /*
      * Identifier for Asset
      */
     private final Integer id;
+
     /*
      * ImageSource for Sprite
      */
