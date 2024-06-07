@@ -78,6 +78,42 @@ public class GameMap {
         this.background = background;
     }
 
+    /**
+     * Constructor instantiates a new {@link GameMap}, which contains an array of {@link GameChunk}s. The number of
+     * passed chunks must match the map size ({@code width * height}). If a specific chunk does not contain anything,
+     * {@code null} may be passed for the respective chunk.
+     *
+     * @param width                     Total width of the GameMap (in chunks).
+     * @param height                    Total height of the GameMap (in chunks).
+     * @param chunks                    Array of chunks for the GameMap.
+     * @param textures                  Array of ImageIcons resembling the textures for the MapObjects.
+     * @throws NullPointerException     The passed array is {@code null}.
+     */
+    public GameMap(int width, int height, GameChunk[] chunks, ImageIcon[] textures) {
+        if (chunks == null) {
+            throw new NullPointerException("Null is invalid array for chunks");
+        }
+        if (textures == null) {
+            throw new NullPointerException("Null is invalid array for textures");
+        }
+        if (width < 0) {
+            throw new IllegalArgumentException("Width (" + width + ") illegal");
+        }
+        if (height < 0) {
+            throw new IllegalArgumentException("Height (" + height + ") illegal");
+        }
+        if (width * height != chunks.length) {
+            throw new IllegalArgumentException("Number of chunks (" + chunks.length + ") does not match map size (" + width + " * " + height + " = " + width * height + ")");
+        }
+        this.width = width;
+        this.height = height;
+        this.chunks = new GameChunk[chunks.length];
+        System.arraycopy(chunks, 0, this.chunks, 0, chunks.length);
+        this.textures = new ImageIcon[textures.length];
+        System.arraycopy(textures, 0, this.textures, 0, textures.length);
+        this.background = -1;
+    }
+
 
     public int getWidth() {
         return width;
