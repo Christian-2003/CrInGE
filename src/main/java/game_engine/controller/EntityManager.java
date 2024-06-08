@@ -1,15 +1,15 @@
 package game_engine.controller;
 
 import game_engine.model.entities.Entity;
-
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.UUID;
 
 
 /**
- * Class manages all {@link Entity}-instances for the game engine and is implemented through singleton-pattern.
- * Access the class' instance through {@link #getInstance()}.
+ * Class manages all {@link Entity}-instances for the game engine and is
+ * implemented through singleton-pattern. Access the class' instance through
+ * {@link #getInstance()}.
  *
  * @author  Christian-2003
  */
@@ -22,15 +22,16 @@ public class EntityManager {
 
 
     /**
-     * Attribute stores all entities that are being managed by the entity manager.
+     * Attribute stores all entities that are being managed by the entity
+     * manager.
      */
     private final HashMap<UUID, Entity> entities;
 
 
     /**
      * Constructor instantiates a new entity manager.
-     * The constructor is private to comply with singleton pattern. Get the singleton instance through
-     * {@link #getInstance()}.
+     * The constructor is private to comply with singleton pattern.
+     * Get the singleton instance through {@link #getInstance()}.
      */
     private EntityManager() {
         entities = new HashMap<>();
@@ -43,7 +44,7 @@ public class EntityManager {
      * @param entity                Entity to be added to the manager.
      * @throws NullPointerException The passed entity is {@code null}.
      */
-    public void put(Entity entity) throws NullPointerException {
+    public void put(final Entity entity) throws NullPointerException {
         if (entity == null) {
             throw new NullPointerException();
         }
@@ -52,13 +53,14 @@ public class EntityManager {
 
 
     /**
-     * Method returns the entity with the specified UUID from the entity manager.
+     * Method returns the entity with the specified UUID from the entity
+     * manager.
      *
      * @param uuid                  UUID of the entity to be returned.
      * @return                      Entity with the specified UUID.
      * @throws NullPointerException The passed UUID is {@code null}.
      */
-    public Entity get(UUID uuid) throws NullPointerException {
+    public Entity get(final UUID uuid) throws NullPointerException {
         if (uuid == null) {
             throw new NullPointerException();
         }
@@ -66,12 +68,13 @@ public class EntityManager {
     }
 
     /**
-     * Method removes the specified entity from the manager. If {@code null} is passed, nothing happens.
+     * Method removes the specified entity from the manager. If {@code null}
+     * is passed, nothing happens.
      *
      * @param entity    Entity to be removed.
      * @return          Whether the entity was removed from the manager.
      */
-    public boolean remove(Entity entity) {
+    public boolean remove(final Entity entity) {
         if (entity != null) {
             return entities.remove(entity.getUuid()) != null;
         }
@@ -79,12 +82,13 @@ public class EntityManager {
     }
 
     /**
-     * Method removes the specified entity from the manager. If {@code null} is passed, nothing happens.
+     * Method removes the specified entity from the manager. If {@code null}
+     * is passed, nothing happens.
      *
      * @param uuid      UUID of the entity to be removed.
      * @return          Whether the entity was removed from the manager.
      */
-    public boolean remove(UUID uuid) {
+    public boolean remove(final UUID uuid) {
         if (uuid != null) {
             return entities.remove(uuid) != null;
         }
@@ -93,13 +97,13 @@ public class EntityManager {
 
 
     /**
-     * Method tests whether the passed entity is managed by the entity manager. If {@code null} is passed, {@code false}
-     * is returned.
+     * Method tests whether the passed entity is managed by the entity manager.
+     * If {@code null} is passed, {@code false} is returned.
      *
      * @param entity    Entity to be tested.
      * @return          Whether the specified entity is being managed.
      */
-    public boolean contains(Entity entity) {
+    public boolean contains(final Entity entity) {
         if (entity != null) {
             return entities.containsKey(entity.getUuid());
         }
@@ -107,13 +111,15 @@ public class EntityManager {
     }
 
     /**
-     * Method tests whether the entity with the specified UUID is managed by the entity manager. If {@code null} is
-     * passed, {@code false} is returned.
+     * Method tests whether the entity with the specified UUID is managed by
+     * the entity manager. If {@code null} is passed, {@code false} is
+     * returned.
      *
      * @param uuid      UUID of the entity to be tested.
-     * @return          Whether the entity with the specified UUID is being managed.
+     * @return          Whether the entity with the specified UUID is being
+     *                  managed.
      */
-    public boolean contains(UUID uuid) {
+    public boolean contains(final UUID uuid) {
         if (uuid != null) {
             return entities.containsKey(uuid);
         }
@@ -132,7 +138,7 @@ public class EntityManager {
     /**
      * Method returns the number of entities being managed.
      *
-     * @return  Number of managed entitiés.
+     * @return  Number of managed entities.
      */
     public int size() {
         return entities.size();
@@ -141,7 +147,8 @@ public class EntityManager {
 
     /**
      * Method returns all available entities within a collection.
-     * Use this method if all entities need to be processed (e.g. by the {@link RendererManager}).
+     * Use this method if all entities need to be processed
+     * (e.g. by the {@link RendererManager}).
      *
      * @return  Collection of all entities.
      */
