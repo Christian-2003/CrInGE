@@ -9,6 +9,11 @@ import game_engine.model.entities.Entity;
  */
 public interface EventDetector {
 
+    /**
+     * Method detects an event for the specified entity.
+     *
+     * @param entity    Entity for which to detect the event.
+     */
     void detect(Entity entity);
 
 }

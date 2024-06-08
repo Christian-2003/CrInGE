@@ -32,7 +32,7 @@ public class MoveEventDetector implements EventDetector {
      * @param entity  Entity to detect move events for.
      */
     @Override
-    public void detect(Entity entity) {
+    public void detect(final Entity entity) {
         if (entity == null || entity.getMoveListener().isEmpty()) {
             throw new NullPointerException();
         }
