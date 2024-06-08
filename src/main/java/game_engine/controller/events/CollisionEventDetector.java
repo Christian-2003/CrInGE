@@ -1,15 +1,10 @@
 package game_engine.controller.events;
 
-import game_engine.controller.EntityManager;
 import game_engine.model.entities.Entity;
 import game_engine.model.events.CollisionEventArgs;
-import game_engine.model.events.CollisionListener;
-import game_engine.model.events.EventTypes;
-
-import java.awt.geom.Rectangle2D;
 import java.util.Calendar;
-import java.util.HashSet;
 import java.util.Set;
+
 
 /**
  * Class detects entity collision events.
@@ -18,9 +13,19 @@ import java.util.Set;
  */
 public class CollisionEventDetector implements EventDetector {
 
+    /**
+     * Field stores the singleton-instance for this class.
+     */
     private static CollisionEventDetector singleton;
 
-    private CollisionEventDetector() {}
+
+    /**
+     * Constructor instantiates a new event detector.
+     */
+    private CollisionEventDetector() {
+
+    }
+
 
     /**
      * Detects entity collision events.
@@ -28,8 +33,8 @@ public class CollisionEventDetector implements EventDetector {
      * @param entity  Entity to detect collision events for.
      */
     @Override
-    public void detect(Entity entity) {
-        if(entity == null || entity.getCollisionListener().isEmpty()) {
+    public void detect(final Entity entity) {
+        if (entity == null || entity.getCollisionListener().isEmpty()) {
             throw new NullPointerException();
         }
         Set<Entity> entitiesInvolved = entity.getCollidingEntities();
@@ -41,6 +46,7 @@ public class CollisionEventDetector implements EventDetector {
             ));
         }
     }
+
 
     /**
      * Returns the singleton instance.
