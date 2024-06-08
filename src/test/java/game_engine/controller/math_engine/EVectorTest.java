@@ -1,6 +1,5 @@
 package game_engine.controller.math_engine;
 
-import game_engine.controller.math_engine.EVector;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -83,14 +82,14 @@ public class EVectorTest {
     @Test
     @DisplayName("crossproduct with null throws NullPointerException")
     void dependenNull(){
-        assertThrowsExactly(NullPointerException.class, () -> {new EVector().isLinearlyDependend(null);});
+        assertThrowsExactly(NullPointerException.class, () -> {new EVector().isLinearlyDependent(null);});
     }
 
     @Test
     @DisplayName("if two vectors are linearly depended")
     void depended(){
-        assertTrue(new EVector(1,2).isLinearlyDependend(new EVector(2, 4)));
-        assertTrue(new EVector(1, 2).isLinearlyDependend(new EVector(100000, 200000)));
-        assertFalse(new EVector(1, 2).isLinearlyDependend(new EVector(3, 2)));
+        assertTrue(new EVector(1,2).isLinearlyDependent(new EVector(2, 4)));
+        assertTrue(new EVector(1, 2).isLinearlyDependent(new EVector(100000, 200000)));
+        assertFalse(new EVector(1, 2).isLinearlyDependent(new EVector(3, 2)));
     }
 }

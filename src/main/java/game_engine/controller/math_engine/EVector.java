@@ -2,8 +2,8 @@ package game_engine.controller.math_engine;
 
 
 /**
- * Class models a two-dimensional vector and provides basic mathematical operations
- * for vectors.
+ * Class models a two-dimensional vector and provides basic mathematical
+ * operations for vectors.
  *
  * @author  Christian-2003
  */
@@ -17,78 +17,85 @@ public class EVector extends EPoint {
     }
     
     /**
-     * Constructor instantiates the new {@link EVector} with the specified coordinates.
+     * Constructor instantiates the new {@link EVector} with the specified
+     * coordinates.
      *
      * @param x X-coordinate for the vector.
      * @param y Y-coordinate for the vector.
      */
-    public EVector(int x, int y) {
+    public EVector(final int x, final int y) {
         super(x, y);
     }
     
     /**
-     * Constructor instantiates a new {@link EVector} and copies the coordinates of the passed vector
-     * to this instance.
+     * Constructor instantiates a new {@link EVector} and copies the
+     * coordinates of the passed vector to this instance.
      *
-     * @param vector                Vector whose coordinates shall be copied to this vector.
+     * @param vector                Vector whose coordinates shall be copied to
+     *                              this vector.
      * @throws NullPointerException The passed vector is {@code null}.
      */
-    public EVector(EVector vector) {
+    public EVector(final EVector vector) {
         super(vector);
     }
-    
-    
+
+
     /**
-     * Method adds the passed {@link EVector} to this vector and returns the result as a new vector.
+     * Method adds the passed {@link EVector} to this vector and returns the
+     * result as a new vector.
      *
      * @param vector                Vector which shall be added to this vector.
      * @return                      Calculated vector.
      * @throws NullPointerException The passed vector is {@code null}.
      */
-    public EVector add(EVector vector) throws NullPointerException {
+    public EVector add(final EVector vector) throws NullPointerException {
         if (vector == null) {
             throw new NullPointerException("Null is invalid EVector");
         }
         return new EVector(x + vector.getX(), y + vector.getY());
     }
-    
+
     /**
-     * Method subtracts the passed {@link EVector} from this vector and returns the result as a new vector.
+     * Method subtracts the passed {@link EVector} from this vector and
+     * returns the result as a new vector.
      *
-     * @param vector                Vector which shall be subtracted from this vector.
+     * @param vector                Vector which shall be subtracted from this
+     *                              vector.
      * @return                      Calculated vector.
      * @throws NullPointerException The passed vector is {@code null}.
      */
-    public EVector subtract(EVector vector) throws NullPointerException {
+    public EVector subtract(final EVector vector) throws NullPointerException {
         if (vector == null) {
             throw new NullPointerException("Null is invalid EVector");
         }
         return new EVector(x - vector.getX(), y - vector.getY());
     }
-    
+
     /**
-     * Method multiplies this {@link EVector} with the passed scalar and returns the result as a new vector.
+     * Method multiplies this {@link EVector} with the passed scalar and
+     * returns the result as a new vector.
      *
      * @param scalar    Scalar with whom this vector shall be multiplied.
      * @return          Calculated vector.
      */
-    public EVector scalarMultiplication(int scalar) {
+    public EVector scalarMultiplication(final int scalar) {
         return new EVector(x * scalar, y * scalar);
     }
-    
+
     /**
-     * Method multiplies this {@link EVector} with the passed vector and returns the result as a scalar.
+     * Method multiplies this {@link EVector} with the passed vector and
+     * returns the result as a scalar.
      *
      * @param vector    Vector with whom this instance shall be multiplied.
      * @return          Calculated scalar.
      */
-    public int dotProduct(EVector vector) throws NullPointerException {
+    public int dotProduct(final EVector vector) throws NullPointerException {
         if (vector == null) {
             throw new NullPointerException("Null is invalid EVector");
         }
         return x * vector.getX() + y * vector.getY();
     }
-    
+
     /**
      * Method calculates the length of this vector.
      *
@@ -97,47 +104,62 @@ public class EVector extends EPoint {
     public double length() {
         return Math.sqrt(x * x + y * y);
     }
-    
+
     /**
-     * Calculates the angle between this {@link EVector} and the passed vector in <b>radiant</b>.
+     * Calculates the angle between this {@link EVector} and the passed vector
+     * in <b>radiant</b>.
      *
-     * @param vector                Vector with whom the angle shall be calculated.
-     * @return                      Angle between this vector and the passed vector.
+     * @param vector                Vector with whom the angle shall be
+     *                              calculated.
+     * @return                      Angle between this vector and the passed
+     *                              vector.
      * @throws NullPointerException The passed vector is {@code null}.
      */
-    public double angle(EVector vector) throws NullPointerException {
+    public double angle(final EVector vector) throws NullPointerException {
         final int decimalPlace = 10;
         if (vector == null) {
             throw new NullPointerException("Null is invalid EVector");
         }
-        else if (this.equals(vector)){
+        else if (this.equals(vector)) {
             return 0.0;
         }
         double step = dotProduct(vector) / (length() * vector.length());
-        if(step > 1){
+        if (step > 1) {
             return 0.0;
         }
-        return Math.round(Math.acos(step)*Math.pow(10, decimalPlace))/Math.pow(10, decimalPlace);
+        final int decimalPlaceValue = 10;
+        return Math.round(Math.acos(step) * Math.pow(decimalPlaceValue, decimalPlace)) / Math.pow(decimalPlaceValue, decimalPlace);
     }
-    
+
     /**
-     * Method calculates the cross product of this {@link EVector} and the passed vector.
-     * Since these vectors are two-dimensional, the result is a scalar that is identical to
-     * the determinant of the corresponding 2x2 matrix.
+     * Method calculates the cross product of this {@link EVector} and the
+     * passed vector. Since these vectors are two-dimensional, the result is a
+     * scalar that is identical to the determinant of the corresponding 2x2
+     * matrix.
      *
-     * @param vector                Vector with whom the cross product shall be calculated.
+     * @param vector                Vector with whom the cross product shall
+     *                              be calculated.
      * @return                      Calculated cross product.
      * @throws NullPointerException The passed vector is {@code null}.
      */
-    public int crossProduct(EVector vector) throws NullPointerException {
+    public int crossProduct(final EVector vector) throws NullPointerException {
         if (vector == null) {
             throw new NullPointerException("Null is invalid EVector");
         }
         return x * vector.getY() - y * vector.getX();
     }
-    
-    public boolean isLinearlyDependend(EVector vector) throws NullPointerException {
-        if(vector == null){
+
+    /**
+     * Method tests whether this vector and the passed vector are linearly
+     * dependent.
+     *
+     * @param vector                Vector to test.
+     * @return                      Whether both vectors are linearly
+     *                              dependent.
+     * @throws NullPointerException The passed vector is {@code null}.
+     */
+    public boolean isLinearlyDependent(final EVector vector) throws NullPointerException {
+        if (vector == null) {
             throw new NullPointerException("Null is invalid EVector");
         }
         return this.x / vector.getX() == this.y / vector.getY();
