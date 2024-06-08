@@ -6,8 +6,8 @@ import game_engine.model.entities.Entity;
 import game_engine.model.map.GameChunk;
 import game_engine.model.map.GameMap;
 import game_engine.model.map.objects.MapObject;
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.ImageIcon;
+import java.awt.Dimension;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
@@ -19,7 +19,13 @@ import java.util.Random;
  * @author  Christian-2003
  */
 public class Engine {
-    
+
+    /**
+     * Method starts the engine for manual testing purposes.
+     *
+     * @param args                  CLI args.
+     * @throws NullPointerException Idk.
+     */
     public static void main(String[] args) throws NullPointerException {
         //Add all entities:
         Dimension creeperSize = new Dimension(1, 2);
@@ -41,23 +47,25 @@ public class Engine {
      * @param height    Height for the GameMap.
      * @return          Generated GameMap.
      */
-    private static GameMap generateGameMap(int width, int height) {
+    private static GameMap generateGameMap(final int width, final int height) {
         return new GameMap(width, height, createChunks(width, height, 100), loadTextures(), 13);
     }
 
 
     /**
-     * Method generates an array of GameChunks of the specified size with random MapObjects.
-     * The method does not test, whether the arguments are valid, as this method is only meant to be used for
-     * testing!
-     * The returned array can be passed to the constructor of {@link GameMap} directly.
+     * Method generates an array of GameChunks of the specified size with
+     * random MapObjects. The method does not test, whether the arguments are
+     * valid, as this method is only meant to be used for testing!
+     * The returned array can be passed to the constructor of {@link GameMap}
+     * directly.
      *
      * @param width             With (in chunks) for the map.
      * @param height            Width (in chunks) for the map.
-     * @param objectPercentage  Probability (number between 0 and 100) for a MapObject to be generated.
+     * @param objectPercentage  Probability (number between 0 and 100) for a
+     *                          MapObject to be generated.
      * @return                  Array of GameChunks.
      */
-    private static GameChunk[] createChunks(int width, int height, int objectPercentage) {
+    private static GameChunk[] createChunks(final int width, final int height, final int objectPercentage) {
         GameChunk[] chunks = new GameChunk[width * height];
         Random random = new Random();
         for (int i = 0; i < chunks.length; i++) {
@@ -102,13 +110,14 @@ public class Engine {
 
 
     /**
-     * Static method loads the minecraft textures from the "textures" directory from
-     * the resources and returns them as array of {@linkplain ImageIcon}s.
+     * Static method loads the minecraft textures from the "textures" directory
+     * from the resources and returns them as array of {@linkplain ImageIcon}s.
      *
      * @return  Array of textures.
      */
     private static ImageIcon[] loadTextures() {
-        ImageIcon[] icons = new ImageIcon[14];
+        final int numberOfTextures = 14;
+        ImageIcon[] icons = new ImageIcon[numberOfTextures];
         URL cobblestone = Engine.class.getResource("/textures/cobblestone.png");
         if (cobblestone != null) {
             icons[0] = new ImageIcon(cobblestone);
@@ -133,9 +142,9 @@ public class Engine {
         if (deepslate != null) {
             icons[5] = new ImageIcon(deepslate);
         }
-        URL cobbled_deepslate = Engine.class.getResource("/textures/cobbled_deepslate.png");
-        if (cobbled_deepslate != null) {
-            icons[6] = new ImageIcon(cobbled_deepslate);
+        URL cobbledDeepslate = Engine.class.getResource("/textures/cobbled_deepslate.png");
+        if (cobbledDeepslate != null) {
+            icons[6] = new ImageIcon(cobbledDeepslate);
         }
         URL tuff = Engine.class.getResource("/textures/tuff.png");
         if (tuff != null) {
@@ -149,13 +158,13 @@ public class Engine {
         if (dirt != null) {
             icons[9] = new ImageIcon(dirt);
         }
-        URL coarse_dirt = Engine.class.getResource("/textures/coarse_dirt.png");
-        if (coarse_dirt != null) {
-            icons[10] = new ImageIcon(coarse_dirt);
+        URL coarseDirt = Engine.class.getResource("/textures/coarse_dirt.png");
+        if (coarseDirt != null) {
+            icons[10] = new ImageIcon(coarseDirt);
         }
-        URL rooted_dirt = Engine.class.getResource("/textures/rooted_dirt.png");
-        if (rooted_dirt != null) {
-            icons[11] = new ImageIcon(rooted_dirt);
+        URL rootedDirt = Engine.class.getResource("/textures/rooted_dirt.png");
+        if (rootedDirt != null) {
+            icons[11] = new ImageIcon(rootedDirt);
         }
         URL creeper = Engine.class.getResource("/textures/creeper.png");
         if (creeper != null) {
