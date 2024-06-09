@@ -12,6 +12,10 @@ public enum EventTypes {
      * Type for collision events.
      */
     COLLISION,
-    MOVE
+
+    /**
+     * Type for move events.
+     */
+    MOVE;
 
 }

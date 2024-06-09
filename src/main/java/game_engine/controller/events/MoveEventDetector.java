@@ -1,11 +1,9 @@
 package game_engine.controller.events;
 
 import game_engine.model.entities.Entity;
-import game_engine.model.events.EventTypes;
 import game_engine.model.events.MoveEventArgs;
-import game_engine.model.events.MoveListener;
-
 import java.util.Calendar;
+
 
 /**
  * Class detects entity move events.
@@ -14,9 +12,19 @@ import java.util.Calendar;
  */
 public class MoveEventDetector implements EventDetector {
 
+    /**
+     * Field stores the singleton-instance of this class.
+     */
     private static MoveEventDetector singleton;
 
-    private MoveEventDetector() {}
+
+    /**
+     * Constructor instantiates a new move event detector.
+     */
+    private MoveEventDetector() {
+
+    }
+
 
     /**
      * Detects entity move events.
@@ -24,11 +32,11 @@ public class MoveEventDetector implements EventDetector {
      * @param entity  Entity to detect move events for.
      */
     @Override
-    public void detect(Entity entity) {
-        if(entity == null || entity.getMoveListener().isEmpty()) {
+    public void detect(final Entity entity) {
+        if (entity == null || entity.getMoveListener().isEmpty()) {
             throw new NullPointerException();
         }
-        if(entity.getX() != entity.getPreviousX() || entity.getY() != entity.getPreviousY()) {
+        if (entity.getX() != entity.getPreviousX() || entity.getY() != entity.getPreviousY()) {
             // prevent event double triggering
             entity.setPosition(entity.getX(), entity.getY());
 
@@ -43,6 +51,7 @@ public class MoveEventDetector implements EventDetector {
         }
     }
 
+
     /**
      * Returns the singleton instance.
      *
@@ -54,4 +63,5 @@ public class MoveEventDetector implements EventDetector {
         }
         return singleton;
     }
+
 }
