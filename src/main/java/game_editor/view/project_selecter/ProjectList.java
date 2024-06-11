@@ -6,6 +6,11 @@ import game_editor.model.project.Project;
 
 import java.awt.*;
 
+/**
+ * TODO add description
+ * 
+ * @author Tim Schnur
+ */
 public class ProjectList extends JPanel{
     private final GridLayout layout;
 

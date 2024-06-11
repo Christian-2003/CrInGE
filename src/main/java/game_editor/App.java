@@ -11,11 +11,9 @@ import game_editor.view.frame.Frame;
  * @author Tim Schnur
  */
 public class App {
-
-    private static final int w = 550, h = 550;
     
     public static void main(String[] args) {
-        Frame frame = new Frame(w, h);
+        Frame frame = new Frame();
         
         // loading Editor.config
         try {

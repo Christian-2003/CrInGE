@@ -7,7 +7,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
 
 /**
- * TODO add description
+ * The Menubar used for the Editor with all Menu Items
  * 
  * @author Tim Schnur
  */
@@ -15,7 +15,7 @@ public class MenuBar extends JMenuBar{
     public MenuBar(){
         super();
 
-        initMenus();
+        //initMenus(); TODO make Menu
     }
 
     // TODO Settings, Open (Import), new ...
