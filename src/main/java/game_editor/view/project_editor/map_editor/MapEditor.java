@@ -1,42 +1,28 @@
-package game_editor.view.project_editor.MapEditor;
+package game_editor.view.project_editor.map_editor;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileFilter;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javax.swing.*;
 
-import game_editor.model.Asset;
-import game_editor.model.ImageSource;
-import game_editor.model.MapRepository;
+import game_editor.model.map.*;
 
 /**
- * TODO add descriptiom
+ * The Editor for an Map
  * 
  * @author Tim Schnur
  */
-public class MapEditor extends JPanel{
+public class MapEditor extends JPanel {
 
-    private MapRepository mapRepository;
-
-    private ArrayList<ArrayList<MapEditorCell>> cells;
-    private int offset;
     private static int cellcounts = 32; // TODO dynamischer anpassen
     private final int width, height;
     private final Dimension preferedCellSize;
+    private final Color backgroundColor = new Color(204,220,236);
 
     private enum buttons{
         newGroup("Neue Gruppe erstellen"),
@@ -54,11 +40,16 @@ public class MapEditor extends JPanel{
             return this.displayText;
         }
     }
+
+    private Map map;
+
+    private ArrayList<ArrayList<MapEditorCell>> cells;
+    private int offset;
+    private JPanel table;
+
     private String pressedButton = "", pressedAsset = "";
     private MapEditorCell pressedCell = null;
-    private final Color backgroundColor = new Color(204,220,236);
 
-    private JPanel table;
     private final ActionListener cellClickListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -66,33 +57,34 @@ public class MapEditor extends JPanel{
 
                 if(pressedAsset != ""){
                     boolean exists = false;
-                    for(ImageSource imgSource : mapRepository.getImgSources()){
+                    for(ImageSource imgSource : map.getImgSources()){
                         if(imgSource.getName() == pressedAsset){
                             exists = true;
-                            cell.setAsset(new Asset(null, imgSource, 0, 0));
+                            cell.setAsset(new Asset(map.getMain(), imgSource, cell.getX(), cell.getY()));
                             break;
                         }
                     }
                     if(!exists){
                         try{
                             ImageSource imgSource = new ImageSource(new File("res/textures/"+pressedAsset));
-                            cell.setAsset(new Asset(null, imgSource, 0, 0));
+                            cell.setAsset(new Asset(map.getMain(), imgSource, cell.getX(), cell.getY()));
                         }
                          catch (Exception ex){ex.printStackTrace();}
                     }
                 }
-                else if(pressedButton == buttons.newGroup.toString()) ;          //TODO
-                else if(pressedButton == buttons.addToGroup.toString()) ;   //TODO
+                else if(pressedButton == buttons.newGroup.toString()) ; //TODO new Group Button click
+                else if(pressedButton == buttons.addToGroup.toString()) ; //TODO addToGroup Button click
                 else if(pressedButton == buttons.delete.toString()) cell.removeAsset();
                 else if(pressedButton == buttons.move.toString()){
                     if(pressedCell != null){
-                        cell.setAsset(pressedCell.removeAsset());
+                        cell.setAsset(pressedCell.getAsset());
+                        pressedCell.removeAsset();
                         pressedCell = null;
                     }
                     else pressedCell = cell;
                 }
                 else if(pressedButton == buttons.copy.toString()){
-                    if(pressedCell != null) cell.setAsset(new Asset(pressedCell.getAsset(), 0, 0));
+                    if(pressedCell != null) cell.setAsset(new Asset(pressedCell.getAsset(), cell.getX(), cell.getY()));
                     else pressedCell = cell;
                 }
             }
@@ -107,7 +99,7 @@ public class MapEditor extends JPanel{
 
         cells = new ArrayList<>();
         offset = 0;
-        this.mapRepository = new MapRepository();
+        this.map = new Map(); //TODO Load Map from project
         
         this.setLayout(new BorderLayout());
 
@@ -141,18 +133,30 @@ public class MapEditor extends JPanel{
                 }
             }
         };
-        JButton button = new JButton("Nach Links blättern");
-        button.setName("left");
-        button.setBackground(backgroundColor);
-        button.setEnabled(false);
-        button.addActionListener(new ActionListener() {
+        JButton buttonL = new JButton("Nach Links blättern");
+        buttonL.setName("left");
+        buttonL.setBackground(backgroundColor);
+        buttonL.setEnabled(false);
+        buttonL.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(--offset == 0) ((JButton)e.getSource()).setEnabled(false);
+
+                ArrayList<MapEditorCell> lastCol = cells.get(cells.size()-1);
+                boolean emptyCol = true;
+                for (MapEditorCell cell : lastCol) {
+                    if (cell.getAsset() != null) {
+                        emptyCol = false;
+                        break;
+                    }
+                }
+                if(emptyCol) cells.remove(cells.size()-1);
+
                 showTable();
             }
         });
-        headline.add(button);
+        headline.add(buttonL);
+        JButton button;
         for(buttons buttonName : buttons.values()){
             button = new JButton(buttonName.getDisplayText());
             button.setName(buttonName.toString());
@@ -160,14 +164,23 @@ public class MapEditor extends JPanel{
             button.addActionListener(buttonPressedListener);
             headline.add(button);
         }
-        button = new JButton("Nach Reschts blättern");
+        button = new JButton("Nach Rechts blättern");
         button.setName("right");
         button.setBackground(backgroundColor);
-        //button.setEnabled(false);           //TODO fix bug and enable again
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(++offset == 1) headline.getComponent(0).setEnabled(true);
+                buttonL.setEnabled(true);
+
+                int lastCol = ++offset + cellcounts;
+                if ((lastCol) > cells.size()) {
+                    ArrayList<MapEditorCell> cellCol = new ArrayList<>();
+                    cells.add(cellCol);
+                    for (int y=0; y<cellcounts; y++){
+                        cellCol.add(new MapEditorCell(lastCol, y, preferedCellSize, new Color(238, 238, 238)));
+                        cellCol.get(y).addActionListener(cellClickListener);
+                    }
+                }
                 showTable();
             }
         });
@@ -177,7 +190,8 @@ public class MapEditor extends JPanel{
     }
 
     private void initGivenAssets(){
-        JPanel AssetList = new JPanel(new GridLayout(-1, 3));
+        JPanel AssetList = new JPanel(new GridLayout(-1, 3)); //TODO anzahl Elemente?
+        
         URI texturesUri = null;
         try{
             texturesUri = this.getClass().getResource("/textures").toURI();
@@ -191,6 +205,7 @@ public class MapEditor extends JPanel{
                 return pathname.getName().endsWith(".png");
             }
         });
+
         Component[] buttons = ((JPanel)this.getComponents()[0]).getComponents();
         final ActionListener pressedAssetListener = new ActionListener() {
             @Override
@@ -213,7 +228,7 @@ public class MapEditor extends JPanel{
                 asset.addActionListener(pressedAssetListener);
                 AssetList.add(asset);
             }
-            catch (Exception ex){}
+            catch (Exception ex){ex.printStackTrace();}
         }
 
         this.add(AssetList, BorderLayout.EAST);
@@ -221,7 +236,6 @@ public class MapEditor extends JPanel{
 
     private void initTable(){
         int xcells = cellcounts, ycells = cellcounts;
-        table = new JPanel(new GridLayout(ycells, xcells));
         for(int x=0; x<xcells; x++){
             cells.add(new ArrayList<>());
             for(int y=0; y<ycells; y++){
@@ -230,33 +244,21 @@ public class MapEditor extends JPanel{
                 cellCol.get(y).addActionListener(cellClickListener);
             }
         }
+
+        table = new JPanel(new GridLayout(ycells, xcells));
+        this.add(table, BorderLayout.CENTER);
+
         showTable();
     }
 
-    private void cleanTable(){
-        int xcells = cellcounts, ycells = cellcounts;
-        for(int y=0; y<ycells; y++){
-             for(int x=offset-1; x<xcells+offset-1; x++){
-                table.remove(cells.get(x).get(y));
-             }
-        }
-    }
-
     private void showTable(){
-        if(offset != 0) cleanTable();
-        int xcells = cellcounts, ycells = cellcounts;
-        for(int y=0; y<ycells; y++){
-            for(int x=offset; x<xcells+offset; x++){
-                if(x==cells.size()) cells.add(new ArrayList<>());
-                ArrayList<MapEditorCell> cellCol = cells.get(x);
-                if(y==cellCol.size()){
-                    cellCol.add(new MapEditorCell(x, y, preferedCellSize, new Color(238, 238, 238)));
-                    cellCol.get(y).addActionListener(cellClickListener);
-                }
-                table.add(cellCol.get(y));
+        table.removeAll();
+        for (int y=0; y<cellcounts; y++) {
+            for (int x=0+offset; x<cellcounts+offset; x++){
+                table.add(cells.get(x).get(y));
             }
         }
-        this.add(table, BorderLayout.CENTER);
+
         this.repaint();
     }
     

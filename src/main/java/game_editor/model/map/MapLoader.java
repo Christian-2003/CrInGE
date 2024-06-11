@@ -1,15 +1,15 @@
-package game_editor.model;
+package game_editor.model.map;
 
 import java.io.*;
 import java.util.ArrayList;
 
-public class RepositoryLoader {
+public class MapLoader {
 
     private Group main;
 
     private ArrayList<ImageSource> imgSources;
 
-    public RepositoryLoader(File mapFile){
+    public MapLoader(File mapFile){
         //TODO Load Repository
     }
 

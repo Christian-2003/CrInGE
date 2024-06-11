@@ -1,9 +1,9 @@
-package game_editor.model;
+package game_editor.model.map;
 
 import java.util.ArrayList;
 
 /**
- * TODO add descriptiom
+ * Can be used to select multiple Assets at the same time.
  * 
  * @author Tim Schnur
  */
@@ -64,6 +64,10 @@ public class Group {
         this.subGroups.add(group);
     }
 
+    /**
+     * <p> Clears up all Data Trash of the Group and delets all sub Items. </p>
+     * <b> Should be called before unreferencing an Group Object </b>
+     */
     public void delete(){
         for(Group group : this.subGroups){
             group.delete();

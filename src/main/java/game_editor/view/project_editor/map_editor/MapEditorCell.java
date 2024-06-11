@@ -1,14 +1,14 @@
-package game_editor.view.project_editor.MapEditor;
+package game_editor.view.project_editor.map_editor;
 
 import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JButton;
 
-import game_editor.model.Asset;
+import game_editor.model.map.Asset;
 
 /**
- * TODO add descriptiom
+ * Represents an Cell within the Map Editor Table
  * 
  * @author Tim Schnur
  */
@@ -37,18 +37,27 @@ public class MapEditorCell extends JButton{
     }
 
     public void setAsset(Asset asset) {
+        if (this.asset != null) {
+            this.removeAsset();
+        }
         this.asset = asset;
         this.asset.setX(this.x);
         this.asset.setY(this.y);
         this.setIcon(asset.getImage());
     }
-    public Asset removeAsset(){
-        Asset removed = this.asset;
+    public void removeAsset(){
+        asset.delete();
         this.asset = null;
         this.setIcon(null);
-        return removed;
     }
     public Asset getAsset() {
         return asset;
+    }
+
+    public int getX() {
+        return this.x;
+    }
+    public int getY() {
+        return this.y;
     }
 }
