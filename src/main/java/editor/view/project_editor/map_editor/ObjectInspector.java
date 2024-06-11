@@ -1,8 +1,7 @@
-package game_editor.view.project_editor.map_editor;
+package editor.view.project_editor.map_editor;
 
 /**
- * //TODO class describtion
- * 
+ * TODO class describtion.
  * @author Tim Schnur
  */
 public class ObjectInspector {
