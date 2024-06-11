@@ -5,7 +5,7 @@ import javax.swing.ImageIcon;
 /**
  * Represents one Block of the Map
  * 
- * @see {@link MapRepository}
+ * @see {@link Map}
  * 
  * @author Tim Schnur
  */

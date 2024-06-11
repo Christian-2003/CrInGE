@@ -21,7 +21,7 @@ import javax.swing.JPanel;
 
 import game_editor.model.map.Asset;
 import game_editor.model.map.ImageSource;
-import game_editor.model.map.MapRepository;
+import game_editor.model.map.Map;
 
 /**
  * TODO add descriptiom
@@ -30,7 +30,7 @@ import game_editor.model.map.MapRepository;
  */
 public class MapEditor extends JPanel {
 
-    private MapRepository mapRepository;
+    private Map mapRepository;
 
     private ArrayList<ArrayList<MapEditorCell>> cells;
     private int offset;
@@ -107,7 +107,7 @@ public class MapEditor extends JPanel {
 
         cells = new ArrayList<>();
         offset = 0;
-        this.mapRepository = new MapRepository();
+        this.mapRepository = new Map();
         
         this.setLayout(new BorderLayout());
 

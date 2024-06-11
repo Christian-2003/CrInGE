@@ -5,14 +5,17 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 /**
- * TODO add description
+ * <p>This is the representation of an Image.</p>
+ * The purpose of this class to keep track of the usage of ressources.
  * 
  * @author Tim Schnur
  */
 public class ImageSource {
 
+    // Source of the Image
     private File file;
 
+    // Usable Imageicon
     private ImageIcon image;
 
     private int uses;
@@ -28,6 +31,9 @@ public class ImageSource {
         this.uses = 0;
     }
 
+    /**
+     * returns the count of assets and Entitys that use this image
+     */
     public int getUses() {
         return uses;
     }
@@ -50,6 +56,9 @@ public class ImageSource {
         this.file = imageFile;
         this.image = new ImageIcon(ImageIO.read(imageFile));
     }
+    /**
+     * returns the name of this Image File
+     */
     public String getName(){
         return this.file.getName();
     }
