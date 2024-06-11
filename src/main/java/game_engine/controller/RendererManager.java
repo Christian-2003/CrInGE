@@ -1,50 +1,64 @@
 package game_engine.controller;
 
-import game_engine.model.GameChunk;
-import game_engine.model.GameMap;
 import game_engine.model.GameObject;
-import game_engine.model.MapObject;
-import jdk.jshell.Snippet;
-
-import javax.swing.*;
-import java.awt.*;
+import game_engine.model.entities.Entity;
+import game_engine.model.map.GameChunk;
+import game_engine.model.map.GameMap;
+import game_engine.model.map.objects.MapObject;
+import javax.swing.JComponent;
+import javax.swing.ImageIcon;
+import java.awt.Graphics;
+import java.awt.Color;
 
 
 /**
- * Class implements a RendererManager which can render a {@link GameMap} onto a Java Swing component, such as
- * {@linkplain JComponent}. Call {@link #renderGameMap(JComponent, Graphics)} to render the map to the respective
- * component. If the map shall be rendered from specific absolute map coordinates, call
- * {@link #updateMapPosition(int, int)} beforehand.
+ * Class implements a RendererManager which can render a {@link GameMap}
+ * onto a Java Swing component, such as {@linkplain JComponent}. Call
+ * {@link #renderGameMap(JComponent, Graphics)} to render the map to the
+ * respective component. If the map shall be rendered from specific absolute
+ * map coordinates, call {@link #updateMapPosition(int, int)} beforehand.
  *
  * @author  Christian-2003
  */
 public class RendererManager {
 
     /**
-     * Constant stores the size (width and height) for each MapObject in pixels.
+     * Constant stores the size (width and height) for each MapObject in
+     * pixels.
      */
     private static final int MAP_OBJECT_SIZE = 16;
 
 
     /**
-     * Attribute stores the {@link GameMap} that shall be rendered by this {@link RendererManager}.
+     * Attribute stores the {@link GameMap} that shall be rendered by this
+     * {@link RendererManager}.
      */
     private final GameMap map;
 
     /**
-     * Attribute stores the {@link Graphics} that are used to draw onto the Java Swing component.
+     * Attribute stores the {@link Graphics} that are used to draw onto the
+     * Java Swing component.
      */
     private Graphics g;
 
     /**
-     * Attributes store the absolute world coordinates of the {@link game_engine.model.MapObject} that shall be rendered
-     * in the top left corner of the Java Swing component.
+     * Attributes store the absolute world coordinates of the {@link MapObject}
+     * that shall be rendered in the top left corner of the Java Swing
+     * component.
      */
-    private int absoluteWorldX, absoluteWorldY;
+    private int absoluteWorldX;
 
     /**
-     * Attribute stores a flag which indicates whether the RendererManager shall render additional debugging information,
-     * such as Chunk and MapObject borders.
+     * Attributes store the absolute world coordinates of the {@link MapObject}
+     * that shall be rendered in the top left corner of the Java Swing
+     * component.
+     */
+    private int absoluteWorldY;
+
+    /**
+     * Attribute stores a flag which indicates whether the RendererManager
+     * shall render additional debugging information, such as Chunk and
+     * MapObject borders.
      */
     private boolean debugRendering;
 
@@ -55,7 +69,7 @@ public class RendererManager {
      * @param map                   Map, which shall be rendered.
      * @throws NullPointerException The passed map is {@code null}.
      */
-    public RendererManager(GameMap map) throws NullPointerException {
+    public RendererManager(final GameMap map) throws NullPointerException {
         if (map == null) {
             throw new NullPointerException("Null is invalid map");
         }
@@ -66,24 +80,38 @@ public class RendererManager {
     }
 
 
-    public void setDebugRendering(boolean debugRendering) {
+    /**
+     * Method changes whether debug rendering is enabled. Enabling this
+     * automatically draws additional debug-info onto the canvas.
+     *
+     * @param debugRendering    Whether debug rendering shall be enabled.
+     */
+    public void setDebugRendering(final boolean debugRendering) {
         this.debugRendering = debugRendering;
     }
 
+    /**
+     * Method returns whether debug rendering is currently enabled.
+     *
+     * @return  Whether debug rendering is enabled.
+     */
     public boolean isDebugRendering() {
         return debugRendering;
     }
 
 
     /**
-     * Method updates the coordinates of the {@link game_engine.model.MapObject} in the top left corner to be rendered.
-     * The map must be updated manually.
+     * Method updates the coordinates of the {@link MapObject} in the top left
+     * corner to be rendered. The map must be updated manually.
      *
-     * @param absoluteWorldX                X-coordinate of the MapObject in the upper left corner.
-     * @param absoluteWorldY                Y-coordinate of the MapObject in the upper left corner.
-     * @throws IndexOutOfBoundsException    The passed coordinate is out of bounds.
+     * @param absoluteWorldX                X-coordinate of the MapObject in
+     *                                      the upper left corner.
+     * @param absoluteWorldY                Y-coordinate of the MapObject in
+     *                                      the upper left corner.
+     * @throws IndexOutOfBoundsException    The passed coordinate is out of
+     *                                      bounds.
      */
-    public void updateMapPosition(int absoluteWorldX, int absoluteWorldY) throws IndexOutOfBoundsException {
+    public void updateMapPosition(final int absoluteWorldX, final int absoluteWorldY) throws IndexOutOfBoundsException {
         if (absoluteWorldX < 0 || absoluteWorldX > map.getWidth() * GameChunk.WIDTH || absoluteWorldY < 0 || absoluteWorldY > map.getHeight() * GameChunk.HEIGHT) {
             //Passed coordinate out of bounds:
             throw new IndexOutOfBoundsException("Absolute world coordinate (" + absoluteWorldX + ", " + absoluteWorldY + ") out of bounds for width " + map.getWidth() + " and height " + map.getHeight());
@@ -94,16 +122,18 @@ public class RendererManager {
 
 
     /**
-     * Method renders an entire {@link GameMap} onto the Java Swing component using the provided {@linkplain Graphics}.
-     * Please make sure that the passed Graphics is the instance that is passed to the component's
-     * {@linkplain JComponent#paintComponent(Graphics)}-method. Any other instance will not work.
+     * Method renders an entire {@link GameMap} onto the Java Swing component
+     * using the provided {@linkplain Graphics}. Please make sure that the
+     * passed Graphics is the instance that is passed to the component's
+     * {@linkplain JComponent#paintComponent(Graphics)}-method. Any other
+     * instance will not work.
      *
      * @param component             Component onto which the map shall be rendered.
-     * @param g                     Graphics to use for rendering. This must be the same instance that was passed to the
-     *                              component's {@linkplain JComponent#paintComponent(Graphics)}-method.
-     * @throws NullPointerException The passed component or graphics is {@code null}.
+     * @param g                     Graphics to use for rendering.
+     * @throws NullPointerException The passed component or graphics is
+     *                              {@code null}.
      */
-    public void renderGameMap(JComponent component, Graphics g) throws NullPointerException {
+    public void renderGameMap(final JComponent component, final Graphics g) throws NullPointerException {
         if (component == null) {
             throw new NullPointerException("Null is invalid JComponent");
         }
@@ -117,7 +147,7 @@ public class RendererManager {
         //Find the chunk that contains the MapObject in the top left corner:
         int topLeftChunkX = absoluteWorldX / GameChunk.WIDTH;
         int topLeftChunkY = absoluteWorldY / GameChunk.HEIGHT;
-        //Find the chunk that contains the MaoObject in the bottom right corner:
+        //Find the chunk that contains the MapObject in the bottom right corner:
         int bottomRightChunkX = topLeftChunkX + (numberOfMapObjectsX + (absoluteWorldX - topLeftChunkX * GameChunk.WIDTH)) / GameChunk.WIDTH + 1;
         if (bottomRightChunkX > map.getWidth()) {
             bottomRightChunkX = map.getWidth();
@@ -126,24 +156,17 @@ public class RendererManager {
         if (bottomRightChunkY > map.getHeight()) {
             bottomRightChunkY = map.getHeight();
         }
-        //System.out.println("=============== [ CHUNK DEBUGGING INFO ] ===============");
-        //System.out.println("TopLeftChunkX=" + topLeftChunkX + ", TopLeftChunkY=" + topLeftChunkY);
-        //System.out.println("NumberOfObjectsX=" + numberOfMapObjectsX + ", NumberOfObjectsY=" + numberOfMapObjectsY);
-        //System.out.println("BottomRightChunkX=" + bottomRightChunkX + ", BottomRightChunkY=" + bottomRightChunkY);
 
         //Change background:
-        g.setColor(Color.BLACK);
-        g.fillRect(0, 0, component.getWidth(), component.getHeight());
+        renderBackground(component.getWidth(), component.getHeight());
 
         //Define variables to remember how many MapObjects were skipped total in rendered chunks:
         int skippedMapObjectsX = 0;
         int skippedMapObjectsY = 0;
 
         //Render each chunk:
-        //System.out.println("=============== [ CHUNK RENDERING DEBUG ] ===============");
         for (int x = topLeftChunkX; x < bottomRightChunkX; x++) {
             for (int y = topLeftChunkY; y < bottomRightChunkY; y++) {
-                //System.out.println("Accessing chunk (" + x + ", " + y + ")");
                 GameChunk chunk = map.get(x, y);
                 if (chunk == null) {
                     continue;
@@ -173,29 +196,45 @@ public class RendererManager {
                 int chunkOffsetX = (x - topLeftChunkX) * GameChunk.WIDTH - skippedMapObjectsX;
                 int chunkOffsetY = (y - topLeftChunkY) * GameChunk.HEIGHT - skippedMapObjectsY;
                 renderGameChunk(chunk, chunkOffsetX, chunkOffsetY, startX, startY, endX, endY);
+            }
+        }
 
+        //Render entities:
+        for (Entity entity : EntityManager.getInstance().getAllEntities()) {
+            if (entity.getX() > absoluteWorldX && entity.getX() < absoluteWorldX + numberOfMapObjectsX && entity.getY() > absoluteWorldY && entity.getY() < absoluteWorldY + numberOfMapObjectsY) {
+                //Entity is currently visible:
+                renderEntity(entity);
             }
         }
     }
 
 
     /**
-     * Method renders a single {@link GameChunk}. The chunk offset indicates the offset (in map coordinates) for the
-     * top left MapObject of the chunk. The start indicates the coordinates (within the chunk) of the top left MapObject
-     * to be rendered. All MapObjects whose coordinates are greater than the start coordinates are rendered. The end
-     * indicates the coordinates (within the chunk) of the bottom right MapObject to be rendered. All MapObjects whose
-     * coordinates are less than the end coordinates are rendered.
+     * Method renders a single {@link GameChunk}. The chunk offset indicates
+     * the offset (in map coordinates) for the top left MapObject of the chunk.
+     * The start indicates the coordinates (within the chunk) of the top left
+     * MapObject to be rendered. All MapObjects whose coordinates are greater
+     * than the start coordinates are rendered. The end indicates the
+     * coordinates (within the chunk) of the bottom right MapObject to be
+     * rendered. All MapObjects whose coordinates are less than the end
+     * coordinates are rendered.
      *
      * @param chunk                 The chunk to be rendered.
-     * @param chunkOffsetX          X offset for the chunk (in map coordinates).
-     * @param chunkOffsetY          Y offset for the chunk (in map coordinates).
-     * @param startX                X coordinate of the first MapObject to be rendered.
-     * @param startY                Y coordinate of the first MapObject to be rendered.
-     * @param endX                  X coordinate of the last MapObject to be rendered.
-     * @param endY                  Y coordinate of the last MapObject to be rendered.
+     * @param chunkOffsetX          X offset for the chunk
+     *                              (in map coordinates).
+     * @param chunkOffsetY          Y offset for the chunk
+     *                              (in map coordinates).
+     * @param startX                X coordinate of the first MapObject to be
+     *                              rendered.
+     * @param startY                Y coordinate of the first MapObject to be
+     *                              rendered.
+     * @param endX                  X coordinate of the last MapObject to be
+     *                              rendered.
+     * @param endY                  Y coordinate of the last MapObject to be
+     *                              rendered.
      * @throws NullPointerException The passed chunk is {@code null}.
      */
-    private void renderGameChunk(GameChunk chunk, int chunkOffsetX, int chunkOffsetY, int startX, int startY, int endX, int endY) throws NullPointerException {
+    private void renderGameChunk(final GameChunk chunk, final int chunkOffsetX, final int chunkOffsetY, final int startX, final int startY, final int endX, final int endY) throws NullPointerException {
         chunk.resetMapObjectIterator();
         while (chunk.hasNextMapObject()) {
             MapObject mapObject = chunk.nextMapObject();
@@ -224,16 +263,19 @@ public class RendererManager {
 
 
     /**
-     * Method renders the passed {@link MapObject} according to its coordinates as if it were in a chunk in the top
-     * left corner of the canvas. The passed offset indicates how far (in map coordinates) the rendered MapObject shall
-     * be offset.
+     * Method renders the passed {@link MapObject} according to its coordinates
+     * as if it were in a chunk in the top left corner of the canvas. The
+     * passed offset indicates how far (in map coordinates) the rendered
+     * MapObject shall be offset.
      *
      * @param mapObject                 MapObject to be rendered.
-     * @param chunkOffsetX              X offset for the chunk of the rendered MapObject (in map coordinates).
-     * @param chunkOffsetY              Y offset for the chunk of the rendered MapObject (in map coordinates).
+     * @param chunkOffsetX              X offset for the chunk of the rendered
+     *                                  MapObject (in map coordinates).
+     * @param chunkOffsetY              Y offset for the chunk of the rendered
+     *                                  MapObject (in map coordinates).
      * @throws NullPointerException     The passed MapObject is {@code null}.
      */
-    private void renderMapObject(MapObject mapObject, int chunkOffsetX, int chunkOffsetY) throws NullPointerException {
+    private void renderMapObject(final MapObject mapObject, final int chunkOffsetX, final int chunkOffsetY) throws NullPointerException {
         if (mapObject == null) {
             throw new NullPointerException("Null is invalid MapObject");
         }
@@ -270,9 +312,72 @@ public class RendererManager {
             g.drawLine(x, y, x, y + height); //Left line
             g.drawLine(x + width, y, x + width, y + height); //Right line
             g.drawLine(x, y + height, x + width, y + height); //Bottom line
+        }
+    }
+
+
+    /**
+     * Method renders the passed entity to the canvas. Please only pass
+     * entities that are actually visible on the canvas.
+     *
+     * @param entity    Entity to be rendered.
+     */
+    private void renderEntity(final Entity entity) {
+        //Prepare for rendering:
+        int x = ((int) entity.getX() - absoluteWorldX) * MAP_OBJECT_SIZE + (int) ((entity.getX() - (int) entity.getX()) * MAP_OBJECT_SIZE);
+        int y = ((int) entity.getY() - absoluteWorldY) * MAP_OBJECT_SIZE + (int) ((entity.getY() - (int) entity.getY()) * MAP_OBJECT_SIZE);
+        int width = (int) entity.getSize().getWidth() * MAP_OBJECT_SIZE;
+        int height = (int) entity.getSize().getHeight() * MAP_OBJECT_SIZE;
+
+        //Render the entity:
+        boolean textureRendered = false;
+        int texture = entity.getTexture();
+        if (texture >= 0 && texture < map.getNumberOfTextures()) {
+            ImageIcon icon = map.getTexture(texture);
+            if (icon != null) {
+                g.drawImage(icon.getImage(), x, y, width, height, null);
+                textureRendered = true;
+            }
+        }
+        if (!textureRendered && texture != GameObject.NO_TEXTURE) {
+            drawInvalidTexture(x, y, width, height);
+        }
+
+        if (debugRendering) {
+            //Render Entity borders:
+            g.setColor(Color.YELLOW);
+            g.drawLine(x, y, x + width, y); //Top line
+            g.drawLine(x, y, x, y + height); //Left line
+            g.drawLine(x + width, y, x + width, y + height); //Right line
+            g.drawLine(x, y + height, x + width, y + height); //Bottom line
             g.drawLine(x, y, x + width, y + height); //Diagonal line 1
             g.drawLine(x + width, y, x, y + height); //Diagonal line 2
         }
+    }
+
+
+    /**
+     * Method renders the background to the canvas. If no background is
+     * available, nothing happens.
+     *
+     * @param componentWidth    Width of the canvas on which the background
+     *                          shall be rendered.
+     * @param componentHeight   Height of the canvas on which the background
+     *                          shall be rendered.
+     */
+    private void renderBackground(final int componentWidth, final int componentHeight) {
+        if (!(map.getBackground() >= 0 && map.getBackground() < map.getNumberOfTextures())) {
+            g.setColor(Color.BLACK);
+            g.fillRect(0, 0, componentWidth, componentHeight);
+        }
+        //Background available:
+        ImageIcon background = map.getTexture(map.getBackground());
+        int backgroundWidth = background.getIconWidth();
+        int backgroundHeight = background.getIconHeight();
+        double scaleX = (double) componentWidth / backgroundWidth;
+        double scaleY = (double) componentHeight / backgroundHeight;
+        double scale = Math.max(scaleX, scaleY);
+        g.drawImage(background.getImage(), 0, 0, (int) (backgroundWidth * scale), (int) (backgroundHeight * scale), null);
     }
 
 
@@ -284,7 +389,7 @@ public class RendererManager {
      * @param width     Canvas width for the texture.
      * @param height    Canvas height for the texture.
      */
-    private void drawInvalidTexture(int x, int y, int width, int height) {
+    private void drawInvalidTexture(final int x, final int y, final int width, final int height) {
         int halfWidth = width / 2;
         int halfHeight = height / 2;
         g.setColor(Color.MAGENTA);
