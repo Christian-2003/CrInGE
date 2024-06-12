@@ -1,4 +1,4 @@
-package game_engine.controller.game_dataHandler.Exceptions;
+package game_engine.controller.data_handler.exceptions;
 
 /**
  * An Exception for when in a List an items it searched by its ID (like asset or group) and couldn't be found
@@ -7,7 +7,9 @@ package game_engine.controller.game_dataHandler.Exceptions;
  * @author FabianDev001
  */
 public class NotFoundException extends Exception {
+
     public NotFoundException(String message){
         super(message);
     }
+
 }
