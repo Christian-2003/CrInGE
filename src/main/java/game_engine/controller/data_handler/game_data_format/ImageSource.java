@@ -1,3 +1,6 @@
+/**
+ * In this package all game_data_formats are defined
+ */
 package game_engine.controller.data_handler.game_data_format;
 
 import java.io.File;
@@ -13,7 +16,7 @@ public class ImageSource {
     /**
      * Attribute store the file with associated file path.
      */
-    private File file;
+    private final File file;
 
     /**
      * Attribute stores how many entities use this image source as texture.
@@ -23,17 +26,15 @@ public class ImageSource {
 
     /**
      * Constructor instantiates a new image source for the passed file.
-     *
      * @param file  File from which to create the image source.
      */
-    public ImageSource(File file) {
+    public ImageSource(final File file) {
         this.file = file;
     }
 
 
     /**
      * Method returns the file from this image source.
-     *
      * @return  File of this image source.
      */
     public File getFile() {
@@ -42,35 +43,45 @@ public class ImageSource {
 
     /**
      * Method changes the file for this image source.
-     *
      * @param file                      New file for this image source.
      * @return                          This image source.
      * @throws FileNotFoundException    The passed file does not exist.
      */
-    public ImageSource setFile(File file) throws FileNotFoundException {
-        if(!file.exists()) throw new FileNotFoundException("Couldn't find file '" + file.getPath() + "' for image source.");
-        this.file = file;
+    public ImageSource setFile(final File file) throws FileNotFoundException {
+        if (!file.exists()) {
+            throw new FileNotFoundException(
+                    "Couldn't find file '"
+                            + file.getPath()
+                            + "' for image source."
+            );
+        }
+        setFile(file);
         return this;
     }
 
     /**
-     * Method changes the file for this image source based on the passed file path.
-     *
+     * Method changes the file for this image source.
+     * ...based on the passed file path.
      * @param path                      File path.
      * @return                          This image source.
      * @throws FileNotFoundException    The passed file path does not exist.
      */
-    public ImageSource setFile(String path) throws FileNotFoundException {
+    public ImageSource setFile(final String path) throws FileNotFoundException {
         File newFile = new File(path);
-        if(!newFile.exists()) throw new FileNotFoundException("Couldn't find file with path: " + path);
-        this.file = newFile;
+        if (!newFile.exists()) {
+            throw new FileNotFoundException(
+                    "Couldn't find file with path: "
+                            + path
+            );
+        }
+        setFile(newFile);
         return this;
     }
 
     /**
-     * Method returns how many entities use this image source. A value of {@code 0} indicates that
+     * Method returns how many entities use this image source.
+     * A value of {@code 0} indicates that
      * the image source is not used at all.
-     *
      * @return  How often the image source is used.
      */
     public int getUses() {
@@ -79,13 +90,15 @@ public class ImageSource {
 
     /**
      * Method changes how often the image source is used.
-     *
      * @param uses                      How often the image source is used.
      * @return                          This image source.
-     * @throws IllegalArgumentException The number of uses is not allowed to be less than 0.
+     * @throws IllegalArgumentException The number of uses is not
+     *                                  allowed to be less than 0.
      */
-    public ImageSource setUses(int uses) {
-        if(uses < 0) throw new IllegalArgumentException("Negative uses are not allowed");
+    public ImageSource setUses(final int uses) {
+        if (uses < 0) {
+            throw new IllegalArgumentException("Negative uses are not allowed");
+        }
         this.uses = uses;
         return this;
     }
@@ -100,18 +113,20 @@ public class ImageSource {
     /**
      * Method decrements the number of uses for this image source.
      *
-     * @throws IndexOutOfBoundsException    The image source cannot be decremented below 0.
+     * @throws IndexOutOfBoundsException    The image source
+     *                                      cannot be decremented below 0.
      */
     public void decrementUses() {
         if (this.uses == 0) {
-            throw new IndexOutOfBoundsException("Can't decrement below 0 - ImageSoruce");
+            throw new IndexOutOfBoundsException(
+                    "Can't decrement below 0 - ImageSoruce"
+            );
         }
         this.uses--;
     }
 
     /**
      * Method returns a short summary in GameData syntax.
-     *
      * @return  Generated (pseudo) GameFileSyntax.
      */
     @Override
