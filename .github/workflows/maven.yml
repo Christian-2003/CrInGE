@@ -3,13 +3,13 @@ on:
   push:
     branches: ["master"]
     paths-ignore: 
-      -'docs/**'
-      -'target/**'
+      -'/docs/**'
+      -'/target/**'
   pull_request:
-    branches: ["main"]
+    branches: ["master"]
     paths-ignore: 
-      -'docs/**'
-      -'target/**'
+      -'/docs/**'
+      -'/target/**'
   workflow_dispatch:
 
 jobs:
