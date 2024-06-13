@@ -231,7 +231,7 @@ Im [Welteneditor](#22-welteneditor) sollen Objekte gruppiert werden können, dam
 Diese Anforderung basiert auf folgender User Story:  
 [Als Spieleentwickler möchte ich Blöcke gruppieren können, um deren Eigenschaften gleichzeitig zu bearbeiten](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=42294373)
 
-#### 3.1.3 Benutzbarkeot
+#### 3.1.3 Benutzbarkeit
 
 Der Editor soll benutzbar und benutzerfreundlich gestaltet werden. Damit ist gemeint, dass gängige Tastenkürzel wie beispielsweise `STRG + C`, `STRG + V` oder `STRG + S` verwendet werden und die Menüs in der Menüleiste gängigen Formaten folgen.
 

@@ -63,11 +63,7 @@ Die vorhandenen Testfälle werden für den [Editor](#testfälle-für-den-videosp
 
 ### Testfälle für den Videospieleditor
 
-Für den Videospieleditor ergeben sich folgende Testfälle:
-
-Nr | Test | Beschreibung | Status | Gefundene Fehler
---- | --- | --- | --- | ---
-01 | EinleseTest/ressourceTest | Testen ob das Einelesen einer Datei aus den Programmressourcen funktioniert | Bestanden | Keine
+Da das Gesamtprojekt aus den beiden Teilprojekten Editor und Engine besteht, haben wir uns dazu entschieden, lediglich die Engine zu Testen. 
 
 ### Testfälle für die Videospielengine
 
@@ -136,6 +132,7 @@ Nr | Test | Beschreibung | Status | Gefundene Fehler
 59 | ImportEntitysTest/loadEntityTest1 | Testen ob die Dimension der geladenen Texturen für Entitäten korrekt ist | Bestanden | Keine
 60 | ImportEntitysTest/checkEntity | Testen, ob die Attributwerte von Entitäten korrekt aus einer Datei geladen werden | Bestanden | Keine
 61 | ImportEntitysTest/decode_and_encode | Testen, ob das enkodieren und darauffolgendes dekodieren einer Entität dieselbe Entität erzeugt | Bestanden | Keine
+02 | EinleseTest/ressourceTest | Testen ob das Einelesen einer Datei aus den Programmressourcen funktioniert | Bestanden | Keine
 
 <!--In diesem Abschnitt werden die spezifischen Testfälle aufgeführt, die ausgeführt wurden, einschließlich des Status "bestanden/nicht bestanden" und der während der Tests gefundenen Fehler. (Sie können auf das Repository mit den Anwendungsfällen verweisen.)-->
 
