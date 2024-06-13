@@ -35,7 +35,7 @@ Als weiteres dringlichst zu beachtendes Qualitätsmerkmal kann die [Testbarkeit]
 
 Das dritte Qualitätsmerkmal ist die [Benutzbarkeit](#107-benutzbarkeit). Hiermit ist gemeint, dass die Software so entwickelt wird, dass diese vom Endbenutzer einfach bedient werden kann. Dies ist wichtig, damit die Videospielengine und der dazugehörige Videospieleditor als konkurrenzfähige und attraktive Alternative zu bestehenden Angeboten wahrgenommen werden. Dies ist besonders aufmerksam bei der Entwicklung des Videospieleditors zu beachten.
 
-Dies sind die grundlegenden Qualitätsmerkmale. Alle weiteren Qualitätsmerkmale sind [hier](#10-qualitätsanforderungen) zu finden.
+Dies sind die grundlegenden Qualitätsmerkmale. Alle weiteren Qualitätsmerkmale sind in [Kapitel 10 - Qualitätsanforderungen](#10-qualitätsanforderungen) zu finden.
 
 ### 1.3 Stakeholder
 
@@ -88,7 +88,7 @@ Für das Projekt ergeben sich folgende Abhängigkeiten zu anderen Systemen:
 
 System | Beschreibung
 --- | ---
-JUnit | Für die Realisierung der Test-Driven-Entwicklung wird das [JUnit-Framework](https://junit.org/junit5/) _(externer Link)_ verwendet. Es wird in der Version 5.10.0 über eine Maven-Abhängigkeit eingebundne. Das Framework kann in vollem Funktionsumfang ohne Einschränkungen verwendet werden.
+JUnit | Für die Realisierung der Test-Driven-Entwicklung wird das [JUnit-Framework](https://junit.org/junit5/) _(externer Link)_ verwendet. Es wird in der Version 5.10.0 über eine Maven-Abhängigkeit eingebunden. Das Framework kann in vollem Funktionsumfang ohne Einschränkungen verwendet werden.
 OpenGL | Zurzeit wird die Möglichkeit ausgetestet, das Rendering der Engine mittels [JOGL](https://jogamp.org/jogl/www/) _(externer Link)_ durchzuführen.
 
 ## 4. Lösungsstrategie
@@ -117,7 +117,7 @@ Die Dokumentation des Projektmanagements findet über [Github Projects](https://
 
 ## 5. Bausteinsicht
 
-Das zu entwickelnde System lässt sich grob in drei Bestandteile aufteilen: Den Videospieleditor, die Videospielengine und den Kompiler, der das entwickelte Videospiel erstellt.
+Das zu entwickelnde System lässt sich grob in drei Bestandteile aufteilen: Den Videospieleditor, die Videospielengine und den Compiler, der das entwickelte Videospiel erstellt.
 
 <div align="center">
     <img src="./resources/UML/Bausteinsicht_Komplett.png" >
@@ -136,7 +136,7 @@ Baustein | Verantwortung
 --- | ---
 CrInGE Videospieleditor | Der Videospieleditor ermöglicht dem Videospielentwickler das komfortable Erstellen von Videospielen. Es ist das Hauptwerkzeug für Videospielentwickler um mit dieser Software Videospiele zu erstellen.
 Compiler | Nachdem ein Videospiel erstellt wurde, wird dieses vom Compiler so geändert, dass die Videospielengine damit weiter arbeiten kann.
-CrInGE Videospielengine | Kompilierte Videospiele könnten durch die Videospielengie von Videospielern gespielt werden. Die Engine greigt zum Rendern gegebenenfalls auf OpenGL zurück.
+CrInGE Videospielengine | Kompilierte Videospiele könnten durch die Videospielengie von Videospielern gespielt werden. Die Engine greift zum Rendern gegebenenfalls auf OpenGL zurück.
 OpenGL | OpenGL ermöglicht der Engine effizientes Rendern über die Grafikkarte des Videospielers.
 
 ### 5.2 Ebene 1
@@ -198,7 +198,7 @@ GameObjects | GameLoop | Dieser Baustein stellt die Objekte der Videospielwelt d
 GameFiles | GameLoop | Dieser Baustein stellt alle Dateien dar, welcher während der Ausführung des Videospiels relevant sind.
 Loop | GameLoop | Dieser Baustein stellt die GameLoop dar.
 Scripts | GameLoop | Dieser Baustein stellt die Skripte dar, die von der Engine ausgeführt werden können.
-EventListener | GameLoop | Dieser Baustein erkennt, welche Events mit jeder Iteration der GameLoop ausgeführt werden, un reicht dies an die Loop weiter.
+EventListener | GameLoop | Dieser Baustein erkennt, welche Events mit jeder Iteration der GameLoop ausgeführt werden und reicht dies an die Loop weiter.
 RendererManager | Engine | Dieser Baustein rendert (eventuell mittels OpenGL) das Videospiel auf einem Canvas.
 EventManager | Engine / EventManager | Dieser Baustein verwaltet alle Events, die im Videospiel registriert sind und führt den entsprechenden Eventcode aus, wenn ein Event auftritt.
 RegisteredEvents | EventManager | Dieser Baustein enthält alle registrierten Events, die vom EventManager verwaltet werden.
@@ -218,7 +218,7 @@ Des Weiteren arbeitet die Game Engine mit der dem fertigen Spiel wie folgt:
     <img src="./resources/UML/asr/Kapitel 6/SequenzdiagrammGameEngine.png" >
 </div>
 
-Der Game Editor lässt isch in zwei Teile gliedern: die Projektansicht und die Kartenansicht. Nachfolgend sind die Abläufe beider beschrieben.
+Der Game Editor lässt sich in zwei Teile gliedern: die Projektansicht und die Kartenansicht. Nachfolgend sind die Abläufe beider beschrieben.
 <div align="center">
     <img src="./resources/UML/asr/Kapitel 6/Project_Selector_Sequenz.png" >
 </div>
@@ -230,7 +230,7 @@ Der Game Editor lässt isch in zwei Teile gliedern: die Projektansicht und die K
 
 Der CrInGE Editor kann über Git Hub runtergeladen werden. er beinhaltet alles notwendige, um ein Spiel zu entwickeln und zu exportieren.
 
-Der Entwicklere eines Spiels ist jedoch selbst für die Bereitstellung der kompilierten Spieldateien verantwortlich.
+Der Entwickler eines Spiels ist jedoch selbst für die Bereitstellung der kompilierten Spieldateien verantwortlich.
 
 <div align="center">
     <img src="./resources/UML/asr/kapitel 7/DeploymentDiagramm.png" >
@@ -287,7 +287,7 @@ Die Engine verarbeitet weitgehen Daten, die durch den Editor erstellt wurden. Hi
 
 Die von der Engine erstellten Dateien müssen korrekt sein. Dazu muss die Engine dies bei jedem Zugriff auf die Dateien überprüfen. Wenn die Dateien nicht korrekt sind, kann das Videospiel nicht ausgeführt werden.
 
-Vom Videospielentwickler erstellte Skripte müssen ebenfalls auf Korrektheit überprüft werden. Diese Skripe werden in der Programmiersprache Java entwickelt und beim Exportieren des Videospiels durch den Java Kompiler kompiliert. Dadurch werden die Skripte in die Jar-Datei, die das entwickelte Videospiel darstellt, eingebunden. Treten beim Kompilieren des Spiels keine Fehler auf, ist davon auszugehen, dass die Skripte korrekt sind. Treten beim Ausführen solcher Skripte Laifzeitfehler auf, so können diese abgefangen und in Log-Dateien dokumentiert werden. Hierbei handelt es sich dann um Fehler, die durch den Videospielentwickler eingeführt werden (siehe [10.1 Verfügbarkeit](#101-verfügbarkeit)).
+Vom Videospielentwickler erstellte Skripte müssen ebenfalls auf Korrektheit überprüft werden. Diese Skripe werden in der Programmiersprache Java entwickelt und beim Exportieren des Videospiels durch den Java Kompiler kompiliert. Dadurch werden die Skripte in die Jar-Datei, die das entwickelte Videospiel darstellt, eingebunden. Treten beim Kompilieren des Spiels keine Fehler auf, ist davon auszugehen, dass die Skripte korrekt sind. Treten beim Ausführen solcher Skripte Laufzeitfehler auf, so können diese abgefangen und in Log-Dateien dokumentiert werden. Hierbei handelt es sich dann um Fehler, die durch den Videospielentwickler eingeführt werden (siehe [10.1 Verfügbarkeit](#101-verfügbarkeit)).
 
 <div align="center">
     <img src="./resources/Qualitaetsbaeume/Interoperabilitaet.PNG" >
@@ -305,7 +305,7 @@ Dies ist jedoch sehr aufwendig, da ein hoher Planungsaufwand notwendig wäre um 
 
 Damit unsere Software eine attraktive Alternative zu bestehenden Angeboten darstellt, ist eine entsprechende Performance notwendig.
 
-Videospielentwicklern muss das Entwickeln von Videospielen ohne größere Umstände ermöglicht werden. Dazu sollen Wartezeiten während der Entwicklung von Videospielen möglichst gering gehalten werden. Ladezeiten von Dateien (beispielsweise Map-Dateien) sollen den Videospielentwickler nicht negativ beeinträchtigen. Dies gilt ebenfalls für Schreiboperationen zum Ändern von Dateien. Insgesamt sollen derartig Operationen nie länger als wenige Sekunden dauern. Dieser Maßstab wird ebenfalls beibehalten, wenn mehrere Dateien zeitgleich geladen werden müssen. Idealerweise werden derartige aufwändige Operationen auf Prozesse oder Threads ausgelagert, um eine flüssigere Benutzererfahrung zu ermöglichen. Ausgenommen hiervon sind aufwendige Lese- und Schreiboperationen zum Öffnen oder Schließen eines Projektes durch den Videospielentwickler, da die dabei zu betrachtende Datenmenge nicht in wenigen Sekunden bearbeitet werden kann.
+Videospielentwicklern muss das Entwickeln von Videospielen ohne größere Umstände ermöglicht werden. Dazu sollen Wartezeiten während der Entwicklung von Videospielen möglichst gering gehalten werden. Ladezeiten von Dateien (beispielsweise Map-Dateien) sollen den Videospielentwickler nicht negativ beeinträchtigen. Dies gilt ebenfalls für Schreiboperationen zum Ändern von Dateien. Insgesamt sollen derartige Operationen nie länger als wenige Sekunden dauern. Dieser Maßstab wird ebenfalls beibehalten, wenn mehrere Dateien zeitgleich geladen werden müssen. Idealerweise werden derartige aufwändige Operationen auf Prozesse oder Threads ausgelagert, um eine flüssigere Benutzererfahrung zu ermöglichen. Ausgenommen hiervon sind aufwendige Lese- und Schreiboperationen zum Öffnen oder Schließen eines Projektes durch den Videospielentwickler, da die dabei zu betrachtende Datenmenge nicht in wenigen Sekunden bearbeitet werden kann.
 
 Ladezeiten sollen in der Engine ebenfalls gering sein. Hier bietet sich derselbe Maßstab, wie oben beschrieben, an. Darüber Hinaus gibt es einige Kennzahlen, die von Videospielern häufig gesondert betrachtet werden. Solche Kennzahlen müssen von der Engine attraktiv gestaltet werden, sodass Videospieler eine angenehme Erfahrung mit Videospielen dieser Anwendung haben. Eine besonders wichtige Kennzahl ist durch die sogenannten FPS gegeben. Um den Videospieler zufriedenzustellen, sollen entwickelte Videospiele mit mehr als 20 FPS ausgeführt werden. Darüber Hinaus soll die Engine den Arbeitsspeicher des Videospielers mit nicht mehr als 4 GB belasten.
 
@@ -323,13 +323,13 @@ Während der Entwicklung eines Videospiels liegen entsprechende Dateien hauptsä
 
 Die Videospielengine greift hauptsächlich auf Dateien zu, die den Resources der entsprechenden Jar-Datei zugeordnet sind. Der Zugriff auf solche Datein ist zwar mit einem geringen Mehraufwand verbunden, jedoch sollte hierdurch verhindert werden, dass der Videospieler versehentlich Änderungen an diesen Dateien vornimmt.
 
-Von besonderer Bedeutung sind die vom Videospielentwickler entwickelten Skripte. Da diese in Java programmiert werden, können mittels solcher Skripte erhebliche Schäden auf dem Endgerät des Videospielers erzeugt werden. Dies kann durch diese Anwendung zwar nicht verhindert werden, jedoch muss ebenfalls in Betracht gezogen werden, dass nach Kompilierung des Videospiles solche Skripte durch Unbefugte bearbeitet werden. Hierdurch könnte beispielsweise Malware auf dem Endgerät des Videospielers ausgeführt werden. Dem wird entgegengewirkt, indem die Skripte ausschließlich in kompilierter Form in der Jar-Datei aufgenommen werden. Es wäre zwar durch Dekompilierung möglich, den ursprünglichen Skript wiederherzustellen, jedoch könnte der Videospielentwickler durch Bereitstellen von Prüfsummen oder Signaturen sicherstellen, dass das entwickelte Videospiel nicht von Unbefugten bearbeitet wurde, bevor es auf dem Endgerät des Videospielers ausgeführt wird. Dies ist jedoch vom Videospielentwickler abhängig, sodass das CrInGE Entwicklungsteam keinen Einfluss darauf hat.
+Von besonderer Bedeutung sind die vom Videospielentwickler entwickelten Skripte. Da diese in Java programmiert werden, können mittels solcher Skripte erhebliche Schäden auf dem Endgerät des Videospielers erzeugt werden. Dies kann durch diese Anwendung zwar nicht verhindert werden, jedoch muss ebenfalls in Betracht gezogen werden, dass nach Kompilierung des Videospieles solche Skripte durch Unbefugte bearbeitet werden. Hierdurch könnte beispielsweise Malware auf dem Endgerät des Videospielers ausgeführt werden. Dem wird entgegengewirkt, indem die Skripte ausschließlich in kompilierter Form in der Jar-Datei aufgenommen werden. Es wäre zwar durch Dekompilierung möglich, den ursprünglichen Skript wiederherzustellen, jedoch könnte der Videospielentwickler durch Bereitstellen von Prüfsummen oder Signaturen sicherstellen, dass das entwickelte Videospiel nicht von Unbefugten bearbeitet wurde, bevor es auf dem Endgerät des Videospielers ausgeführt wird. Dies ist jedoch vom Videospielentwickler abhängig, sodass das CrInGE Entwicklungsteam keinen Einfluss darauf hat.
 
 ### 10.6 Testbarkeit
 
 Zur Verinngerung von Ausfallzeiten und der Maximierung der [Verfügbarkeit](#101-verfügbarkeit) wird die Anwendung Test-Driven entwickelt. Dies beinhaltet sowohl die Engine, als auch den Editor. Hierdurch werden mögliche Fehler und Bugs frühzeitig in der Entwicklung erkannt, was den Aufwand zur Behebung solcher Probleme stark verringert.
 
-Es ist Anzunehmen, dass zwischen 30 % und 50 % des entstehenden Arbeitsaufwands zum Testen der Anwendung anfällt. Diese Schätzung basiert sowohl auf bisheriger Erfahrung des CrInGE Entwicklungsteams, als auch auf Berichten anderer Softwareentwicklungshäuser.
+Es ist anzunehmen, dass zwischen 30 % und 50 % des entstehenden Arbeitsaufwands zum Testen der Anwendung anfällt. Diese Schätzung basiert sowohl auf bisheriger Erfahrung des CrInGE Entwicklungsteams, als auch auf Berichten anderer Softwareentwicklungshäuser.
 
 Insgesamt können die meisten Komponenten durch Unit-Tests mittels JUnit abgedeckt werden, wodurch die Fehleranzahl stark sinkt.
 
