@@ -21,7 +21,7 @@ Dependency ist nur OpenGL
 | --- | --- |
 | Lines of Code | ~ 10.300 (Stand: 12.06.2024) |
 | Checkstyle Errors | 439 (Stand: 12.06.2024) |
-| Durchschnittliche zyklomatische Komplexität |  |
+| Durchschnittliche zyklomatische Komplexität | 11,1 (Stand: 13.06.2024) |
 | Anzahl Dependencies | 1 |
 
 Dependency ist nur OpenGL
