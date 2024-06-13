@@ -65,7 +65,7 @@ public class ImportEntitysTest {
     @Test()
     @DisplayName("Encode -> Decode Verify")
     public void decode_and_encode() throws GameDataFileSyntaxException, IOException {
-        BufferedReader bR = new BufferedReader(new FileReader(Paths.get(".","src","main","java","game_engine","controller","game_dataHandler", "saveFiles" ,"creeperExample.gamedata").toFile()));
+        BufferedReader bR = new BufferedReader(new FileReader(Paths.get( "src","main","java","game_engine","controller","data_handler","savefiles","creeperExample.gamedata").toFile()));
         StringBuilder sB = new StringBuilder();
 
         while(bR.ready()){
