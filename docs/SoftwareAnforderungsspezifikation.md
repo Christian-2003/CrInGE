@@ -16,7 +16,7 @@ Diese Software Anforderungsspezifikation (SRS) beschreibt alle Spezifikationen f
 
 ### 1.1 Übersicht
 
-Um die Entwicklung von zweidimensionalen Videospielen zu erleichtern, soll eine Videospielengine entwickelt werden. Die Anwendung CrInGE beinhaltet einen Editor, welcher sowohl das Zusammenstellen, sowie die Programmierung von Spielwelten ermöglicht. Damit soll die Hürde für interessierte Entwickler gesenkt werden, die zum Einstig in die Videospielentwicklung existiert.
+Um die Entwicklung von zweidimensionalen Videospielen zu erleichtern, soll eine Videospielengine entwickelt werden. Die Anwendung CrInGE beinhaltet einen Editor, welcher sowohl das Zusammenstellen, sowie die Programmierung von Spielwelten ermöglicht. Damit soll die Hürde für interessierte Entwickler gesenkt werden, die zum Einstieg in die Videospielentwicklung existiert.
 
 ### 1.2 Geltungsbereich
 
@@ -112,13 +112,13 @@ Nachdem die Videospielwelt vom Benutzer erstellt wurde, kann diese über die API
 
 ### 2.3 Programmierschnittstelle (API)
 
-Die Anwendung ermöglicht dem Benutzer das programmieren des Verhaltens des Videospiels. Hiermit ist bspw. gemeint, dass der Benutzer Events (z.B. Berührung des Spielers mit einem Objekt), Bewegungen von objekten (z.B. Feindliche Kreaturen) oder Ähnliches programmieren kann. Hierzu ist eine API nötig.
+Die Anwendung ermöglicht dem Benutzer das programmieren des Verhaltens des Videospiels. Hiermit ist bspw. gemeint, dass der Benutzer Events (z.B. Berührung des Spielers mit einem Objekt), Bewegungen von Objekten (z.B. Feindliche Kreaturen) oder Ähnliches programmieren kann. Hierzu ist eine API nötig.
 
 Die API ermöglicht dem Benutzer den Zugriff auf alle Objekte in der Videospielwelt. Der Benutzer kann über die API die Attribute sämtlicher Objekte der Videospielwelt bearbeiten.
 
 Darüber Hinaus kann der Benutzer Events registrieren, die dann vom Videospiel während der Ausführung getestet und dann eventuell ausgeführt werden.
 
-Die API wird in Java zur Verfügung gestellt, damit der Benutzer zugriff auf die Umfangreiche Standardbibliothek hat und die Implementation des Benutzers problemlos in das Videospiel integriert werden kann.
+Die API wird in Java zur Verfügung gestellt, damit der Benutzer Zugriff auf die umfangreiche Standardbibliothek hat und die Implementation des Benutzers problemlos in das Videospiel integriert werden kann.
 
 <div align="center">
     <img src="./resources/UML/Aktivitätsdiagramm_API.png">
@@ -126,7 +126,7 @@ Die API wird in Java zur Verfügung gestellt, damit der Benutzer zugriff auf die
 
 Um das Prinzip der API besser zu verstehen, soll dies an einem einfachen Beispiel (oben) erläutert werden:
 
-Damit der Benutzer Attributwerte von Objekten in der Videospielwelt bearbeiten kann, muss die APU zuerst importiert werden. Danach kann eine Instanz einer Objekt-Klasse erstellt werden, die dem Benutzer den Zugriff auf ein Objekt der Videospielwelt ermöglicht. Ist das Objekt, auf welches zugegriffen werden soll nicht existent, wird der Benutzer auf diesen Fehler nach dem Exportieren hingewiesen.
+Damit der Benutzer Attributwerte von Objekten in der Videospielwelt bearbeiten kann, muss die API zuerst importiert werden. Danach kann eine Instanz einer Objekt-Klasse erstellt werden, die dem Benutzer den Zugriff auf ein Objekt der Videospielwelt ermöglicht. Ist das Objekt, auf welches zugegriffen werden soll nicht existent, wird der Benutzer auf diesen Fehler nach dem Exportieren hingewiesen.
 Sollte das Objekt existieren, dann kann der Benutzer über die Instanz der Objekt-Klasse dessen Attributwerte bearbeiten.
 
 <div align="center">
@@ -135,7 +135,7 @@ Sollte das Objekt existieren, dann kann der Benutzer über die Instanz der Objek
 
 Um die Funktionsweise der API besser zu verstehen, soll das obige Sequenzdiagramm erläutert werden:
 
-Das Sequenzdiagramm beschreibt die Kommunikation zwischen Benutezer (oben Videospielentwickler), Programmierschnittstelle (API) und der Videospielengine. Zuerst muss der Benutzer die API importieren. Anschließend kann der Benutzer eine Instanz der Objektklasse erstellen, um auf Videospielobjekte in der Videospielwelt zuzugreifen. Die API überprüft zunächst über die Videospielengine, ob das erstellte Videospielobjekt in der Videospielwelt existiert. Die Videospielengine informiert die API dann über die Existenz des gewünschten Videospielobjetes. Die API leitet diese Information dann an den Benutzer weiter. Anschließend kann der Benutzer beliebig häufig jeweils ein Attribut des Videospielobjektes bearbeiten. Dazu leitete die API das bearbeitete Attribut and die Videospielengine weiter. Die Videospielengine bearbeitet dann das Attribut und updated bei Bedarf das Videospielobjekt. Anschließend teilt die Videospielengine der API das Update des Videospielobjektes mit. Die API leitet dies an den Benutzer weiter.
+Das Sequenzdiagramm beschreibt die Kommunikation zwischen Benutzer (oben Videospielentwickler), Programmierschnittstelle (API) und der Videospielengine. Zuerst muss der Benutzer die API importieren. Anschließend kann der Benutzer eine Instanz der Objektklasse erstellen, um auf Videospielobjekte in der Videospielwelt zuzugreifen. Die API überprüft zunächst über die Videospielengine, ob das erstellte Videospielobjekt in der Videospielwelt existiert. Die Videospielengine informiert die API dann über die Existenz des gewünschten Videospielobjektes. Die API leitet diese Information dann an den Benutzer weiter. Anschließend kann der Benutzer beliebig häufig jeweils ein Attribut des Videospielobjektes bearbeiten. Dazu leitete die API das bearbeitete Attribut and die Videospielengine weiter. Die Videospielengine bearbeitet dann das Attribut und updated bei Bedarf das Videospielobjekt. Anschließend teilt die Videospielengine der API das Update des Videospielobjektes mit. Die API leitet dies an den Benutzer weiter.
 
 Diese Anforderung basiert auf den User Stories:
 
@@ -147,7 +147,7 @@ Der Aufwand für diese Anforderung wird auf **hoch** geschätzt.
 
 #### 2.3.1 Voraussetzungen
 
-Damit dies möglich ist, muss die Videospielwelt über die grafische Oberfläche programmiert werden können. Darüber Hinaus müssen die Objekte der Videospielwelt im Backend modelliert und bearbeitet werden können.
+Damit dies möglich ist, muss die Videospielwelt über die grafische Oberfläche programmiert werden können. Darüber hinaus müssen die Objekte der Videospielwelt im Backend modelliert und bearbeitet werden können.
 
 Zudem muss ein System zum verwalten der vom Benutzer registrierten Events existieren.
 
@@ -163,7 +163,7 @@ Damit das Videospiel auf möglichst vielen Endgeräten problemlos ausgeführt we
     <img src="./resources/UML/Aktivitätsdiagramm_Exportieren.png">
 </div>
 
-Hierzu kann der Benutzer einen Knopf zum Exportieren drücken. Anschließend erlaubt die Videospielengine dem Benutzer, einige Einstellungen zu tätigen, wie beispielsweise die zur Kompilierung zu verwendende Java-Version oder Ähnliches.
+Hierzu kann der Benutzer einen Knopf zum Exportieren drücken. Anschließend erlaubt die Videospielengine dem Benutzer einige Einstellungen zu tätigen, wie beispielsweise die zur Kompilierung zu verwendende Java-Version oder Ähnliches.
 
 Wenn diese Einstellungen nicht akzeptiert werden (bspw. da der Benutzer eine inkorrekte Java-Version angegeben hat), dann wird der Benutzer darauf hingewiesen und kann diese Einstellung erneut bearbeiten.
 
@@ -195,7 +195,7 @@ Damit der Benutzer möglichst effizient Videospiele entwickeln kann, soll dieser
 
 Diese physikalischen Funktionalitäten werden über die [API](#23-programmierschnittstelle-api) bereitgestellt.
 
-Zu den funktionalitäten zählen bspw. Das Berechnen von Gravitationskräften oder Flugbahnen.
+Zu den Funktionalitäten zählen bspw. das Berechnen von Gravitationskräften oder Flugbahnen.
 
 Diese Anforderung basiert auf der User Story:
 
@@ -265,7 +265,7 @@ Diese Anforderung basiert auf folgender User Story:
 
 ### 3.5 Testbarkeit
 
-Um Softwarefehler frühzeitig zu erkennen und beheben soll die Software Test-Driven entwickelt werden. Dazu sollen für alle Komponenten - soweit möglich - Unit Tests mit JUnit entwickelt werden. Die Software soll insgesamt erst dann kompiliert werden, wenn alle Uni Tests bestanden sind.
+Um Softwarefehler frühzeitig zu erkennen und beheben soll die Software Test-Driven entwickelt werden. Dazu sollen für alle Komponenten - soweit möglich - Unit Tests mit JUnit entwickelt werden. Die Software soll insgesamt erst dann kompiliert werden, wenn alle Unit Tests bestanden wurden.
 
 Diese Anforderung basiert auf folgender User Story:  
 [Als Kunde möchte ich, dass die Software kostengünstig entwickelt wird](https://github.com/users/Christian-2003/projects/2/views/5?pane=issue&itemId=47080329)
