@@ -1,9 +1,14 @@
 package game_engine;
 
+import game_engine.controller.EntityManager;
 import game_engine.controller.GameLoop;
+import game_engine.controller.GameStateException;
 import game_engine.controller.data_handler.exceptions.GameDataFileSyntaxException;
 import game_engine.controller.data_handler.exceptions.NotFoundException;
 import game_engine.controller.data_handler.Loader;
+import game_engine.model.entities.Enemy;
+import game_engine.model.entities.Entity;
+import game_engine.model.entities.Player;
 import game_engine.model.map.GameChunk;
 import game_engine.model.map.GameMap;
 import game_engine.model.map.objects.MapObject;
@@ -21,11 +26,13 @@ import java.util.Random;
  */
 public class Engine {
     
-    public static void main(String[] args) throws NullPointerException, NotFoundException, GameDataFileSyntaxException {
-        //Add all entities:
-        Loader load = new Loader();
-        ImageIcon[] icons = load.getImgSources();
-        GameLoop gameLoop = new GameLoop(generateGameMap(5, 3, icons));
+    public static void main(String[] args) throws NullPointerException, NotFoundException, GameDataFileSyntaxException, GameStateException {
+        Player player = new Player(true, true, new Dimension(1, 2), new Dimension(1, 2), 0, 0);
+        player.setTexture(14);
+        EntityManager.getInstance().put(player);
+
+        GameLoop gameLoop = new GameLoop(generateGameMap(5, 3));
+        gameLoop.startLoop();
     }
 
 
@@ -115,7 +122,7 @@ public class Engine {
      * @return  Array of textures.
      */
     private static ImageIcon[] loadTextures() {
-        final int numberOfTextures = 14;
+        final int numberOfTextures = 17;
         ImageIcon[] icons = new ImageIcon[numberOfTextures];
         URL cobblestone = Engine.class.getResource("/textures/cobblestone.png");
         if (cobblestone != null) {
@@ -172,6 +179,18 @@ public class Engine {
         URL skybox = Engine.class.getResource("/textures/skybox.png");
         if (skybox != null) {
             icons[13] = new ImageIcon(skybox);
+        }
+        URL player = Engine.class.getResource("/textures/player.png");
+        if (player != null) {
+            icons[14] = new ImageIcon(player);
+        }
+        URL ironGolem = Engine.class.getResource("/textures/iron_golem.png");
+        if (ironGolem != null) {
+            icons[15] = new ImageIcon(ironGolem);
+        }
+        URL item = Engine.class.getResource("/textures/item.png");
+        if (item != null) {
+            icons[16] = new ImageIcon(item);
         }
         return icons;
     }
