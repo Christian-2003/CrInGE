@@ -34,15 +34,15 @@ public class Engine {
             collisionEventArgs.getEntitiesInvolved().stream()
                     .filter((entity) -> (entity instanceof Enemy)).findFirst()
                     .ifPresent((enemy) -> {
-                        // deny collision with enemy (at left side of enemy)
+                        // deny collision with first iterated enemy (at left side of enemy)
                         double xPos = enemy.getX() - player.getHitBox().width - 0.01;
                         player.setPosition(xPos, player.getY());
                         player.setPosition(xPos, player.getY());
                     });
 
             collisionEventArgs.getEntitiesInvolved().stream()
-                    .filter((entity) -> (entity instanceof Projectile)).findFirst()
-                    .ifPresent((projectile) -> {
+                    .filter((entity) -> (entity instanceof Projectile))
+                    .forEach((projectile) -> {
                         // pick up arrow (delete arrow)
                         EntityManager.getInstance().remove(projectile);
                     });
