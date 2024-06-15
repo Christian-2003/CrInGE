@@ -9,6 +9,7 @@ import game_engine.model.map.GameMap;
 import game_engine.view.GameFrame;
 
 import java.awt.event.KeyEvent;
+import java.util.Iterator;
 import java.util.Set;
 
 
@@ -120,13 +121,13 @@ public class GameLoop implements Runnable {
             boolean playerMoveRight = keyInput.keyDown(KeyEvent.VK_D) || keyInput.keyDown(KeyEvent.VK_RIGHT);
 
             if (playerMoveLeft && !playerMoveRight) {
-                player.setPosition(player.getX() - 0.000005, player.getY());
+                player.setPosition(player.getX() - 0.05, player.getY());
             } else if (playerMoveRight && !playerMoveLeft) {
-                player.setPosition(player.getX() + 0.000005, player.getY());
+                player.setPosition(player.getX() + 0.05, player.getY());
             }
 
             // Event detection
-            for (Entity entity : EntityManager.getInstance().getAllEntities()) {
+            for (Entity entity : EntityManager.getInstance().getAllEntities().stream().toList()) {
                 Set<EventTypes> entityEvents = entity.getAllEvents().keySet();
 
                 if (entityEvents.contains(EventTypes.COLLISION)) {
@@ -137,6 +138,11 @@ public class GameLoop implements Runnable {
                 }
             }
             this.gameFrame.repaintCanvas();
+            try {
+                Thread.sleep(1000 / 60);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

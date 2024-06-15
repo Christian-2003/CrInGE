@@ -9,6 +9,7 @@ import game_engine.controller.data_handler.Loader;
 import game_engine.model.entities.Enemy;
 import game_engine.model.entities.Entity;
 import game_engine.model.entities.Player;
+import game_engine.model.entities.Projectile;
 import game_engine.model.map.GameChunk;
 import game_engine.model.map.GameMap;
 import game_engine.model.map.objects.MapObject;
@@ -27,9 +28,34 @@ import java.util.Random;
 public class Engine {
     
     public static void main(String[] args) throws NullPointerException, NotFoundException, GameDataFileSyntaxException, GameStateException {
-        Player player = new Player(true, true, new Dimension(1, 2), new Dimension(1, 2), 0, 0);
+        Player player = new Player(true, true, new Dimension(1, 2), new Dimension(1, 2), 1, 2);
         player.setTexture(14);
+        player.setCollisionListener((collisionEventArgs) -> {
+            collisionEventArgs.getEntitiesInvolved().stream()
+                    .filter((entity) -> (entity instanceof Enemy)).findFirst()
+                    .ifPresent((enemy) -> {
+                        // deny collision with enemy (at left side of enemy)
+                        double xPos = enemy.getX() - player.getHitBox().width - 0.01;
+                        player.setPosition(xPos, player.getY());
+                        player.setPosition(xPos, player.getY());
+                    });
+
+            collisionEventArgs.getEntitiesInvolved().stream()
+                    .filter((entity) -> (entity instanceof Projectile)).findFirst()
+                    .ifPresent((projectile) -> {
+                        // pick up arrow (delete arrow)
+                        EntityManager.getInstance().remove(projectile);
+                    });
+        });
         EntityManager.getInstance().put(player);
+
+        Projectile projectile = new Projectile(true, true, new Dimension(1, 1), new Dimension(1, 1), 6, 3);
+        projectile.setTexture(16);
+        EntityManager.getInstance().put(projectile);
+
+        Enemy enemy = new Enemy(true, true, new Dimension(1, 2), new Dimension(2, 3), 8, 1);
+        enemy.setTexture(15);
+        EntityManager.getInstance().put(enemy);
 
         GameLoop gameLoop = new GameLoop(generateGameMap(5, 3));
         gameLoop.startLoop();
@@ -84,10 +110,13 @@ public class Engine {
                         int texture = MapObject.NO_TEXTURE;
                         if (chunkHeight == 0) {
                             //Top chunk:
-                            if (y == 0) {
+                            if (y < 4) {
+                                continue;
+                            }
+                            else if (y == 4) {
                                 texture = 8;
                             }
-                            else if (y <= 5) {
+                            else if (y <= 9) {
                                 texture = random.nextInt(3) + 9;
                             }
                             else {
@@ -188,9 +217,9 @@ public class Engine {
         if (ironGolem != null) {
             icons[15] = new ImageIcon(ironGolem);
         }
-        URL item = Engine.class.getResource("/textures/item.png");
-        if (item != null) {
-            icons[16] = new ImageIcon(item);
+        URL arrow = Engine.class.getResource("/textures/arrow.png");
+        if (arrow != null) {
+            icons[16] = new ImageIcon(arrow);
         }
         return icons;
     }
