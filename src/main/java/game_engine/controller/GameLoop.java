@@ -3,9 +3,13 @@ package game_engine.controller;
 import game_engine.controller.events.CollisionEventDetector;
 import game_engine.controller.events.MoveEventDetector;
 import game_engine.model.entities.Entity;
+import game_engine.model.entities.Player;
 import game_engine.model.events.EventTypes;
 import game_engine.model.map.GameMap;
 import game_engine.view.GameFrame;
+
+import java.awt.event.KeyEvent;
+import java.util.Iterator;
 import java.util.Set;
 
 
@@ -59,7 +63,7 @@ public class GameLoop implements Runnable {
         }
         this.map = map;
         this.rendererManager = new RendererManager(map);
-        rendererManager.setDebugRendering(true);
+        //rendererManager.setDebugRendering(true);
         gameFrame = new GameFrame(rendererManager);
         //Set "continueLoop" initially to false. In case anyone tries to make
         //the GameLoop-instance a thread, the loop will not do anything! The
@@ -101,11 +105,29 @@ public class GameLoop implements Runnable {
      */
     public void run() {
         //Game loop:
+        Player player = (Player) EntityManager.getInstance().getAllEntities().stream().filter(entity -> entity instanceof Player).findFirst().orElse(null);
+        if(player == null) {
+            throw new NullPointerException("No player found");
+        }
+
+        KeyInput keyInput = new KeyInput();
+        gameFrame.addKeyListener(keyInput);
+
         while (continueLoop) {
             //TODO: Implement game loop.
+            keyInput.poll();
+
+            boolean playerMoveLeft = keyInput.keyDown(KeyEvent.VK_A) || keyInput.keyDown(KeyEvent.VK_LEFT);
+            boolean playerMoveRight = keyInput.keyDown(KeyEvent.VK_D) || keyInput.keyDown(KeyEvent.VK_RIGHT);
+
+            if (playerMoveLeft && !playerMoveRight) {
+                player.setPosition(player.getX() - 0.05, player.getY());
+            } else if (playerMoveRight && !playerMoveLeft) {
+                player.setPosition(player.getX() + 0.05, player.getY());
+            }
 
             // Event detection
-            for (Entity entity : EntityManager.getInstance().getAllEntities()) {
+            for (Entity entity : EntityManager.getInstance().getAllEntities().stream().toList()) {
                 Set<EventTypes> entityEvents = entity.getAllEvents().keySet();
 
                 if (entityEvents.contains(EventTypes.COLLISION)) {
@@ -114,6 +136,12 @@ public class GameLoop implements Runnable {
                 if (entityEvents.contains(EventTypes.MOVE)) {
                     MoveEventDetector.getInstance().detect(entity);
                 }
+            }
+            this.gameFrame.repaintCanvas();
+            try {
+                Thread.sleep(1000 / 60);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }
     }
