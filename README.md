@@ -5,6 +5,11 @@
 
 Die <ins>C</ins>omputerized <ins>In</ins>tegrated <ins>G</ins>ame <ins>E</ins>ngine (kurz CrInGE) ist eine einfache Videospielengine, mit welcher zweidimensionale Videospiele mithilfe von Java Swing entwickelt werden können.
 
+<div align="center">
+  <img src="./docs/resources/img/Demo1.png" height="128">
+  <img src="./docs/resources/img/Demo2.png" height="128">
+</div>
+
 Dazu steht ein Map Editor zur Verfügung, in welchem man Karten designen kann, welche anschließend von der Engine gerendert werden können.
 
 Außerdem bietet die Engine Schnittstellen, um Events und Listener für das eigene Spiel zu implementieren.
