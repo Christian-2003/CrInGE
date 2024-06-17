@@ -1,6 +1,5 @@
 package game_engine.controller.math_engine;
 
-import game_engine.controller.math_engine.EVector;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
