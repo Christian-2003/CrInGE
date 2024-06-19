@@ -2,11 +2,9 @@ package editor.view.frame;
 
 import java.util.ArrayList;
 
-import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JRadioButtonMenuItem;
 
 import editor.model.EditorConfig;
 
@@ -32,8 +30,9 @@ public class MenuBar extends JMenuBar {
         m.addSeparator();
         JMenu load = new JMenu("Load Recent");
         @SuppressWarnings("unchecked")
-        ArrayList<String> knownProjects = (ArrayList<String>) EditorConfig.get(EditorConfig.Attributes.knownProjects);
-        for (String known : knownProjects ) {
+        ArrayList<String> knownProjects = (ArrayList<String>)
+        EditorConfig.get(EditorConfig.Attributes.knownProjects);
+        for (String known : knownProjects) {
             JMenuItem knownItem = new JMenuItem(known);
             load.add(knownItem);
         }

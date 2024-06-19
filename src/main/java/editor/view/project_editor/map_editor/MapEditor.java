@@ -10,9 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileFilter;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
@@ -244,7 +241,10 @@ public class MapEditor extends JPanel {
     /** initializes the given assets list. */
     private void initGivenAssets() { //TODO refactoring into other class?
         // TODO Hardcoded pictures for Demo
-        String[] blocks = {"cobblestone.png", "stone.png", "andesite.png", "diorite.png", "granite.png", "deepslate.png", "cobbled_deepslate.png", "tuff.png", "grass.png", "dirt.png", "coarse_dirt.png", "rooted_dirt.png"};
+        String[] blocks = {"cobblestone.png", "stone.png", "andesite.png",
+            "diorite.png", "granite.png", "deepslate.png",
+            "cobbled_deepslate.png", "tuff.png", "grass.png", "dirt.png",
+            "coarse_dirt.png", "rooted_dirt.png"};
         String[] objects = {"creeper.png", "player.png", "iron_golem.png"};
 
         //TODO Anzahl Elemente?
@@ -300,7 +300,8 @@ System.out.println(pressedAsset);
             }
         };
 
-        JSplitPane givenBox = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, assetList, entityList);
+        JSplitPane givenBox = new JSplitPane(
+            JSplitPane.HORIZONTAL_SPLIT, assetList, entityList);
 
         for (File file : assets) {
             try {
