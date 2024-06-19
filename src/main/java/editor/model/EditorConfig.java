@@ -110,6 +110,7 @@ public final class EditorConfig {
                 String[] line = reader.readLine().split(":");
                 if (line.length > 1) {
                     if (line[0].equals(Attributes.knownProjects.name())) {
+                        line[1] = line[1].substring(1, line[1].length() - 1);
                         for (String project : line[1].split(",")) {
                             addKnownProject(project);
                         }

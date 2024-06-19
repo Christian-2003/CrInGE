@@ -10,14 +10,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileFilter;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 import editor.model.map.Asset;
 import editor.model.map.ImageSource;
@@ -241,9 +240,18 @@ public class MapEditor extends JPanel {
 
     /** initializes the given assets list. */
     private void initGivenAssets() { //TODO refactoring into other class?
+        // TODO Hardcoded pictures for Demo
+        String[] blocks = {"cobblestone.png", "stone.png", "andesite.png",
+            "diorite.png", "granite.png", "deepslate.png",
+            "cobbled_deepslate.png", "tuff.png", "grass.png", "dirt.png",
+            "coarse_dirt.png", "rooted_dirt.png"};
+        String[] objects = {"creeper.png", "player.png", "iron_golem.png"};
+
         //TODO Anzahl Elemente?
         JPanel assetList = new JPanel(new GridLayout(-1, 3));
+        JPanel entityList = new JPanel(new GridLayout(-1, 3));
 
+        /* TODO wrong textures source for demo
         URI texturesUri = null;
         try {
             texturesUri = this.getClass().getResource("/textures").toURI();
@@ -251,11 +259,28 @@ public class MapEditor extends JPanel {
             ex.printStackTrace();
         }
         File textures = new File(texturesUri);
-        File[] pictures = textures.listFiles(new FileFilter() {
+        */
+        File textures = new File("res/textures");
+        File[] assets = textures.listFiles(new FileFilter() {
             @Override
             public boolean accept(final File pathname) {
-                return pathname.getName().endsWith(".png");
+                for (String name : blocks) {
+                    if (pathname.getName().endsWith(name)) {
+                        return true;
+                    }
+                }
+                return false;
             }
+        });
+        File[] entitys = textures.listFiles(new FileFilter() {
+            @Override
+            public boolean accept(final File pathname) {
+                for (String name : objects) {
+                    if (pathname.getName().endsWith(name)) {
+                        return true;
+                    }
+                }
+                return false;            }
         });
 
         Component[] buttons =
@@ -274,11 +299,14 @@ public class MapEditor extends JPanel {
             }
         };
 
-        for (File picture : pictures) {
+        JSplitPane givenBox = new JSplitPane(
+            JSplitPane.HORIZONTAL_SPLIT, assetList, entityList);
+
+        for (File file : assets) {
             try {
                 JButton asset = new JButton(
-                    new ImageIcon(ImageIO.read(picture)));
-                asset.setName(picture.getName());
+                    new ImageIcon(ImageIO.read(file)));
+                asset.setName(file.getName());
                 asset.setPreferredSize(preferedCellSize);
                 asset.addActionListener(pressedAssetListener);
                 assetList.add(asset);
@@ -286,8 +314,20 @@ public class MapEditor extends JPanel {
                 ex.printStackTrace();
             }
         }
+        for (File file : entitys) {
+            try {
+                JButton asset = new JButton(
+                    new ImageIcon(ImageIO.read(file)));
+                asset.setName(file.getName());
+                asset.setPreferredSize(preferedCellSize);
+                asset.addActionListener(pressedAssetListener);
+                entityList.add(asset);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
 
-        this.add(assetList, BorderLayout.EAST);
+        this.add(givenBox, BorderLayout.EAST);
     }
 
     /** initializes the table for the edibale cells. */
