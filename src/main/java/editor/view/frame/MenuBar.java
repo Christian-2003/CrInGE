@@ -1,10 +1,14 @@
 package editor.view.frame;
 
+import java.util.ArrayList;
+
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
+
+import editor.model.EditorConfig;
 
 /**
  * The Menubar used for the Editor with all Menu Items.
@@ -16,18 +20,31 @@ public class MenuBar extends JMenuBar {
     public MenuBar() {
         super();
 
-        //initMenus(); TODO make Menu
+        initMenus();
     }
 
     // TODO Settings, Open (Import), new ...
 
     /** initializes the default menu items. */
     private void initMenus() {
-        JMenu m = new JMenu("Temp");
-        m.add(new JMenuItem("Test"));
+        JMenu m = new JMenu("File");
+        m.add(new JMenuItem("New"));
         m.addSeparator();
+        JMenu load = new JMenu("Load Recent");
+        @SuppressWarnings("unchecked")
+        ArrayList<String> knownProjects = (ArrayList<String>) EditorConfig.get(EditorConfig.Attributes.knownProjects);
+        for (String known : knownProjects ) {
+            JMenuItem knownItem = new JMenuItem(known);
+            load.add(knownItem);
+        }
+        m.add(load);
+        m.addSeparator();
+        m.add(new JMenuItem("Save"));
+
+        this.add(m);
+        /*
         m.add(new JRadioButtonMenuItem("Wääh", false));
         m.add(new JCheckBoxMenuItem("Waah"));
-        this.add(m);
+        */
     }
 }
