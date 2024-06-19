@@ -295,7 +295,6 @@ public class MapEditor extends JPanel {
                 pressedCell = null;
                 JButton source = (JButton) e.getSource();
                 pressedAsset = source.getName();
-System.out.println(pressedAsset);
                 //source.setBackground(Color.GRAY);
             }
         };
