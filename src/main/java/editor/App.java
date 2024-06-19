@@ -19,8 +19,6 @@ public final class App {
      * @param args are not used
      */
     public static void main(final String[] args) {
-        Frame frame = new Frame();
-
         // loading Editor.config
         try {
             EditorConfig.load();
@@ -28,6 +26,8 @@ public final class App {
             JOptionPane.showMessageDialog(null, ex.getMessage(),
             "Editor.config Loading Error", JOptionPane.ERROR_MESSAGE);
         }
+
+        Frame frame = new Frame();
 
         // opening the correct card due to config
         if (EditorConfig.get(EditorConfig.Attributes.recentlyOpened) == "") {
